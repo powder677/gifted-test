@@ -1,0 +1,391 @@
+import React, { useState, useRef } from 'react';
+import { ClipboardCopy, ChevronRight, ChevronLeft, RotateCcw, CheckCircle, BarChart3, AlertCircle } from 'lucide-react';
+
+const SECTIONS = [
+  {
+    id: 'ef',
+    title: 'Section 1: Executive Function (EF)',
+    description: 'Assesses inhibition, working memory, task initiation, and planning.',
+    questions: [
+      "My child interrupts conversations, lessons, or directions before others finish speaking.",
+      "My child reacts emotionally (anger, tears, frustration) faster than expected for their age.",
+      "My child speaks or acts before thinking through consequences.",
+      "My child forgets multi-step instructions unless they are repeated.",
+      "My child needs frequent reminders to stay on track with a task.",
+      "My child leaves tasks unfinished because they forget what they were doing.",
+      "My child delays starting tasks even when they understand what to do.",
+      "My child has difficulty shifting from a preferred activity to a required task.",
+      "My child waits until the last minute to start homework or chores.",
+      "My child struggles to decide where to start when given multiple tasks.",
+      "My child has a messy workspace and loses needed materials.",
+      "My child underestimates how long tasks will take.",
+      "My child becomes upset when plans change unexpectedly.",
+      "My child has difficulty trying a different strategy if the first one doesn't work.",
+      "My child insists on doing things “their way” even when a simpler method exists."
+    ]
+  },
+  {
+    id: 'sensory',
+    title: 'Section 2: Sensory Regulation',
+    description: 'Assesses overstimulation and sensory seeking/avoiding behaviors.',
+    questions: [
+      "My child becomes overwhelmed by loud noises, smells, textures, or visual clutter.",
+      "Small sensory interruptions (tapping, humming, movement) derail their focus.",
+      "My child avoids certain clothing, foods, or environments due to sensory discomfort.",
+      "My child needs movement breaks to stay regulated while working.",
+      "My child describes sensory experiences as “too much,” “too loud,” or “too tight.”",
+      "My child gets overstimulated in busy environments and needs time to decompress.",
+      "My child covers ears, hides, or withdraws when overstimulated."
+    ]
+  },
+  {
+    id: 'emotional',
+    title: 'Section 3: Emotional Interpretation & Regulation',
+    description: 'Assesses emotional resilience and rejection sensitivity.',
+    questions: [
+      "My child interprets correction as criticism or personal failure.",
+      "My child becomes upset if they cannot do something perfectly on the first try.",
+      "My child shuts down or refuses to continue when frustrated.",
+      "My child struggles to name or describe their feelings in the moment.",
+      "My child takes things personally even when no offense is intended.",
+      "My child gets stuck in negative thoughts after making a mistake.",
+      "My child avoids tasks that previously caused emotional discomfort."
+    ]
+  },
+  {
+    id: 'motivation',
+    title: 'Section 4: Motivation Architecture',
+    description: 'Assesses what drives engagement versus disengagement.',
+    questions: [
+      "My child works more effectively when allowed to choose the order/method of tasks.",
+      "My child prefers easy tasks they can win rather than challenging tasks they might fail.",
+      "My child gives up quickly when something is difficult.",
+      "My child needs to understand the “why” behind an assignment before engaging.",
+      "My child becomes highly motivated when tasks connect to their passions.",
+      "My child resists work that feels pointless or repetitive.",
+      "My child becomes absorbed in topics they love and loses track of time."
+    ]
+  },
+  {
+    id: 'avoidance',
+    title: 'Section 5: Task Avoidance / Cognitive Friction',
+    description: 'Assesses specific anxiety or overwhelm related to work.',
+    questions: [
+      "My child freezes or goes blank when a task feels too big or confusing.",
+      "My child becomes angry, silly, or chaotic when overwhelmed by schoolwork.",
+      "My child avoids tasks that require long periods of attention.",
+      "My child struggles to restart a task after taking a break.",
+      "My child “checks out” mentally when stressed or overstimulated.",
+      "My child gets stuck thinking about doing the task instead of actually starting."
+    ]
+  },
+  {
+    id: 'selfconcept',
+    title: 'Section 6: Self-Concept, Confidence & Identity',
+    description: 'Assesses internal narrative and self-esteem.',
+    questions: [
+      "My child worries they are “not good enough” even when their performance is excellent.",
+      "My child compares themselves to others frequently.",
+      "My child has trouble celebrating success because they focus on what went wrong.",
+      "My child avoids trying new things to protect their self-esteem."
+    ]
+  },
+  {
+    id: 'learning',
+    title: 'Section 7: Learning Style & Cognitive Preferences',
+    description: 'Identifies preferred modalities for input.',
+    questions: [
+      "My child learns best by touching, moving, or physically interacting with materials.",
+      "My child learns best when information is visual (charts, drawings, videos).",
+      "My child learns best when information is spoken or discussed.",
+      "My child gets bored with slow-paced teaching or rigid instruction."
+    ]
+  }
+];
+
+const SCALE = [
+  { value: 0, label: 'Never' },
+  { value: 1, label: 'Rarely' },
+  { value: 2, label: 'Sometimes' },
+  { value: 3, label: 'Often' },
+  { value: 4, label: 'Almost Always' }
+];
+
+export default function GiftedAssessmentApp() {
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [showResults, setShowResults] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const topRef = useRef(null);
+
+  const currentSection = SECTIONS[currentSectionIndex];
+
+  // Helper to generate a unique ID for each question across sections
+  const getQuestionId = (sectionIndex, questionIndex) => `${sectionIndex}-${questionIndex}`;
+
+  const handleOptionSelect = (sectionIndex, questionIndex, value) => {
+    setAnswers(prev => ({
+      ...prev,
+      [getQuestionId(sectionIndex, questionIndex)]: value
+    }));
+  };
+
+  const calculateSectionScore = (sectionIndex) => {
+    const section = SECTIONS[sectionIndex];
+    let score = 0;
+    let maxScore = section.questions.length * 4;
+    let answeredCount = 0;
+
+    section.questions.forEach((_, qIndex) => {
+      const val = answers[getQuestionId(sectionIndex, qIndex)];
+      if (val !== undefined) {
+        score += val;
+        answeredCount++;
+      }
+    });
+
+    return { score, maxScore, percentage: maxScore > 0 ? Math.round((score / maxScore) * 100) : 0, answeredCount, totalQuestions: section.questions.length };
+  };
+
+  const isSectionComplete = (sectionIndex) => {
+    const section = SECTIONS[sectionIndex];
+    return section.questions.every((_, qIdx) => answers[getQuestionId(sectionIndex, qIdx)] !== undefined);
+  };
+
+  const handleNext = () => {
+    if (currentSectionIndex < SECTIONS.length - 1) {
+      setCurrentSectionIndex(prev => prev + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setShowResults(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentSectionIndex > 0) {
+      setCurrentSectionIndex(prev => prev - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const generateReport = () => {
+    let report = "GIFTED CHILD DEVELOPMENT ASSESSMENT REPORT\n";
+    report += "========================================\n\n";
+    
+    SECTIONS.forEach((section, idx) => {
+      const stats = calculateSectionScore(idx);
+      report += `${section.title}\n`;
+      report += `Score: ${stats.score} / ${stats.maxScore} (${stats.percentage}%)\n`;
+      
+      // Add simple interpretation string based on percentage
+      let intensity = "Low";
+      if (stats.percentage > 75) intensity = "Very High";
+      else if (stats.percentage > 50) intensity = "High";
+      else if (stats.percentage > 25) intensity = "Moderate";
+      
+      report += `Intensity/Frequency: ${intensity}\n\n`;
+    });
+
+    report += "RAW DATA (JSON Format for AI Analysis):\n";
+    report += JSON.stringify(answers);
+    
+    return report;
+  };
+
+  const copyToClipboard = () => {
+    const report = generateReport();
+    navigator.clipboard.writeText(report);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  if (showResults) {
+    return (
+      <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800">
+        <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
+          <div className="bg-indigo-600 p-6 text-white text-center">
+            <BarChart3 className="w-12 h-12 mx-auto mb-4" />
+            <h1 className="text-3xl font-bold mb-2">Assessment Results</h1>
+            <p className="opacity-90">Analysis of 7 developmental domains</p>
+          </div>
+
+          <div className="p-6 md:p-8 space-y-8">
+            {SECTIONS.map((section, idx) => {
+              const stats = calculateSectionScore(idx);
+              const isHigh = stats.percentage >= 60;
+              
+              return (
+                <div key={section.id} className="border-b border-slate-100 pb-6 last:border-0">
+                  <div className="flex justify-between items-end mb-2">
+                    <h3 className="text-lg font-bold text-slate-800">{section.title}</h3>
+                    <span className={`font-mono font-bold ${isHigh ? 'text-red-500' : 'text-slate-500'}`}>
+                      {stats.score}/{stats.maxScore}
+                    </span>
+                  </div>
+                  
+                  {/* Progress Bar */}
+                  <div className="w-full bg-slate-200 rounded-full h-3 mb-2">
+                    <div 
+                      className={`h-3 rounded-full transition-all duration-500 ${
+                        stats.percentage > 75 ? 'bg-red-500' : 
+                        stats.percentage > 50 ? 'bg-orange-400' : 
+                        stats.percentage > 25 ? 'bg-yellow-400' : 'bg-green-400'
+                      }`}
+                      style={{ width: `${stats.percentage}%` }}
+                    ></div>
+                  </div>
+                  <p className="text-sm text-slate-500">{section.description}</p>
+                </div>
+              );
+            })}
+
+            <div className="bg-slate-100 p-6 rounded-xl mt-8">
+              <h3 className="font-bold text-slate-700 mb-3 flex items-center">
+                <AlertCircle className="w-5 h-5 mr-2" />
+                Next Steps
+              </h3>
+              <p className="text-sm text-slate-600 mb-4">
+                These results are ready to be analyzed by your coaching system. 
+                Click below to copy the structured data.
+              </p>
+              
+              <button
+                onClick={copyToClipboard}
+                className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium flex items-center justify-center transition-colors"
+              >
+                {copied ? (
+                  <>
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    Copied to Clipboard!
+                  </>
+                ) : (
+                  <>
+                    <ClipboardCopy className="w-5 h-5 mr-2" />
+                    Copy Results for AI Coach
+                  </>
+                )}
+              </button>
+            </div>
+
+            <button 
+              onClick={() => {
+                setShowResults(false);
+                setCurrentSectionIndex(0);
+                setAnswers({});
+                window.scrollTo(0,0);
+              }}
+              className="w-full py-3 text-slate-500 hover:text-slate-700 flex items-center justify-center"
+            >
+              <RotateCcw className="w-4 h-4 mr-2" />
+              Start Over
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800" ref={topRef}>
+      <div className="max-w-3xl mx-auto">
+        
+        {/* Header */}
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Gifted Child Assessment</h1>
+          <p className="text-slate-500">Executive Function, Sensory, & Emotional Interpretation</p>
+        </div>
+
+        {/* Progress Indicator */}
+        <div className="mb-6 flex justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider">
+          <span>Section {currentSectionIndex + 1} of {SECTIONS.length}</span>
+          <span>{Math.round(((currentSectionIndex) / SECTIONS.length) * 100)}% Complete</span>
+        </div>
+        <div className="w-full bg-slate-200 rounded-full h-2 mb-8">
+          <div 
+            className="bg-indigo-600 h-2 rounded-full transition-all duration-300" 
+            style={{ width: `${((currentSectionIndex) / SECTIONS.length) * 100}%` }}
+          ></div>
+        </div>
+
+        {/* Card */}
+        <div className="bg-white shadow-lg rounded-2xl overflow-hidden mb-8">
+          <div className="bg-indigo-50 p-6 border-b border-indigo-100">
+            <h2 className="text-xl font-bold text-indigo-900 mb-1">{currentSection.title}</h2>
+            <p className="text-indigo-700 text-sm">{currentSection.description}</p>
+          </div>
+
+          <div className="p-6 md:p-8 space-y-8">
+            {currentSection.questions.map((q, qIdx) => {
+              const questionId = getQuestionId(currentSectionIndex, qIdx);
+              const currentValue = answers[questionId];
+
+              return (
+                <div key={qIdx} className="space-y-3">
+                  <p className="font-medium text-slate-800 text-lg leading-relaxed">{q}</p>
+                  
+                  <div className="grid grid-cols-5 gap-2 md:gap-4 pt-2">
+                    {SCALE.map((s) => (
+                      <button
+                        key={s.value}
+                        onClick={() => handleOptionSelect(currentSectionIndex, qIdx, s.value)}
+                        className={`
+                          flex flex-col items-center justify-center p-2 rounded-lg transition-all duration-200 border-2
+                          ${currentValue === s.value 
+                            ? 'border-indigo-600 bg-indigo-50 text-indigo-700 shadow-md transform scale-105' 
+                            : 'border-slate-100 hover:border-slate-300 hover:bg-slate-50 text-slate-400'
+                          }
+                        `}
+                      >
+                        <span className={`text-xl font-bold mb-1 ${currentValue === s.value ? 'text-indigo-600' : 'text-slate-300'}`}>
+                          {s.value}
+                        </span>
+                        <span className="text-[10px] uppercase font-bold tracking-wider hidden md:block">
+                          {s.label}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                  <div className="flex justify-between md:hidden text-xs text-slate-400 px-1">
+                    <span>Never</span>
+                    <span>Always</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Navigation Footer */}
+          <div className="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+            <button
+              onClick={handlePrev}
+              disabled={currentSectionIndex === 0}
+              className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
+                currentSectionIndex === 0 
+                  ? 'text-slate-300 cursor-not-allowed' 
+                  : 'text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              <ChevronLeft className="w-5 h-5 mr-1" />
+              Back
+            </button>
+
+            <button
+              onClick={handleNext}
+              disabled={!isSectionComplete(currentSectionIndex)}
+              className={`flex items-center px-6 py-3 rounded-lg font-bold shadow-lg transition-all transform ${
+                isSectionComplete(currentSectionIndex)
+                  ? 'bg-indigo-600 hover:bg-indigo-700 text-white hover:-translate-y-1'
+                  : 'bg-slate-300 text-slate-500 cursor-not-allowed'
+              }`}
+            >
+              {currentSectionIndex === SECTIONS.length - 1 ? 'Finish Assessment' : 'Next Section'}
+              <ChevronRight className="w-5 h-5 ml-1" />
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
