@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Restraint Collapse: Why They Are Angels at School and Monsters at Home</title>
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+      :root {
+         /* Backgrounds */
+         --bg-cream: #FDFBF7;
+         --bg-white: #FFFFFF;
+
+         /* Colors */
+         --color-terracotta: #E07A5F;
+         --color-sage: #81B29A;
+         --text-charcoal: #3D405B;
+         --text-dark: #2A2C35;
+         --color-gold: #F2CC8F;
+
+         /* UI */
+         --radius: 12px;
+         --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+         /* Typography */
+         --font-heading: 'Merriweather', serif;
+         --font-body: 'Inter', sans-serif;
+
+         /* Spacing */
+         --section-padding: 80px;
+         --max-text-width: 700px;
+         --line-height: 1.6;
+      }
+
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: var(--font-body);
+         background-color: var(--bg-cream);
+         color: var(--text-charcoal);
+         line-height: var(--line-height);
+         font-size: 18px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+         font-family: var(--font-heading);
+         color: var(--text-dark);
+         line-height: 1.3;
+      }
+
+      .container {
+         width: 100%;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 24px;
+      }
+
+      section {
+         padding: var(--section-padding) 0;
+      }
+
+      /* Article Layout */
+      .article-layout {
+         display: flex;
+         gap: 60px;
+         max-width: 1400px;
+         margin: 0 auto;
+         padding: 40px 24px;
+      }
+
+      .article-content {
+         flex: 1;
+         max-width: 800px;
+      }
+
+      .article-sidebar {
+         width: 300px;
+         flex-shrink: 0;
+      }
+
+      /* Breadcrumbs */
+      .breadcrumbs {
+         margin-bottom: 30px;
+         font-size: 0.9rem;
+      }
+
+      .breadcrumbs a {
+         color: var(--color-terracotta);
+         text-decoration: none;
+      }
+
+      .breadcrumbs span {
+         color: var(--text-charcoal);
+         opacity: 0.7;
+      }
+
+      /* Article Header */
+      .article-header {
+         max-width: 800px;
+         margin: 0 auto 60px;
+      }
+
+      .article-header h1 {
+         font-size: 2.5rem;
+         margin-bottom: 30px;
+         line-height: 1.2;
+      }
+
+      .author-byline {
+         display: flex;
+         align-items: center;
+         gap: 15px;
+      }
+
+      .author-photo {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-gold) 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-weight: bold;
+      }
+
+      .author-info {
+         font-size: 0.9rem;
+      }
+
+      .author-name {
+         font-weight: 600;
+         margin-bottom: 5px;
+      }
+
+      .publish-date {
+         color: var(--text-charcoal);
+         opacity: 0.7;
+      }
+
+      /* Key Takeaways */
+      .key-takeaways {
+         background-color: rgba(129, 178, 154, 0.1);
+         border-radius: var(--radius);
+         padding: 30px;
+         margin-bottom: 50px;
+      }
+
+      .key-takeaways h2 {
+         color: var(--color-sage);
+         font-size: 1.5rem;
+         margin-bottom: 20px;
+      }
+
+      .key-takeaways ul {
+         padding-left: 20px;
+      }
+
+      .key-takeaways li {
+         margin-bottom: 15px;
+      }
+
+      /* Highlight Box */
+      .highlight-box {
+         background-color: var(--bg-cream);
+         border-left: 4px solid var(--color-terracotta);
+         padding: 25px 30px;
+         margin: 40px 0;
+         border-radius: 0 var(--radius) var(--radius) 0;
+      }
+
+      .highlight-box h3 {
+         margin-bottom: 15px;
+         color: var(--color-terracotta);
+      }
+
+      /* Article Content */
+      .article-body {
+         line-height: 1.7;
+      }
+
+      .article-body p {
+         margin-bottom: 30px;
+      }
+
+      .article-body h2 {
+         font-size: 1.8rem;
+         margin: 50px 0 30px;
+         padding-bottom: 15px;
+         border-bottom: 2px solid rgba(224, 122, 95, 0.3);
+      }
+
+      .article-body h3 {
+         font-size: 1.4rem;
+         margin: 40px 0 20px;
+      }
+
+      .article-body ul,
+      .article-body ol {
+         margin: 30px 0;
+         padding-left: 30px;
+      }
+
+      .article-body li {
+         margin-bottom: 15px;
+      }
+
+      /* Sidebar */
+      .sidebar-widget {
+         background: var(--bg-white);
+         border-radius: var(--radius);
+         padding: 30px;
+         box-shadow: var(--shadow);
+         position: sticky;
+         top: 30px;
+      }
+
+      .sidebar-widget h3 {
+         font-size: 1.3rem;
+         margin-bottom: 20px;
+         text-align: center;
+      }
+
+      .btn {
+         display: block;
+         width: 100%;
+         padding: 16px;
+         background-color: var(--color-terracotta);
+         color: white;
+         border-radius: var(--radius);
+         text-decoration: none;
+         font-weight: 600;
+         transition: all 0.3s ease;
+         border: none;
+         cursor: pointer;
+         font-size: 1rem;
+         text-align: center;
+      }
+
+      .btn:hover {
+         background-color: #d36547;
+         transform: translateY(-2px);
+         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Read Next Section */
+      .read-next {
+         background-color: var(--bg-white);
+         padding: var(--section-padding) 0;
+         margin-top: 80px;
+      }
+
+      .read-next h2 {
+         text-align: center;
+         font-size: 2rem;
+         margin-bottom: 50px;
+      }
+
+      .read-next-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+         gap: 40px;
+         max-width: 900px;
+         margin: 0 auto;
+      }
+
+      .read-next-card {
+         background: var(--bg-white);
+         border-radius: var(--radius);
+         padding: 30px;
+         box-shadow: var(--shadow);
+         transition: all 0.3s ease;
+         text-decoration: none;
+         color: inherit;
+      }
+
+      .read-next-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .read-next-card:hover h3 {
+         color: var(--color-terracotta);
+      }
+
+      .read-next-card h3 {
+         font-size: 1.4rem;
+         margin-bottom: 15px;
+         transition: color 0.3s ease;
+      }
+
+      .read-next-card p {
+         color: var(--text-charcoal);
+         opacity: 0.8;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+         .article-layout {
+            flex-direction: column;
+            gap: 40px;
+         }
+
+         .article-sidebar {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+         }
+      }
+
+      @media (max-width: 768px) {
+         .article-header h1 {
+            font-size: 2rem;
+         }
+
+         body {
+            font-size: 16px;
+         }
+
+         .article-layout {
+            padding: 20px;
+         }
+      }
+
+      @media (max-width: 480px) {
+         .article-header h1 {
+            font-size: 1.75rem;
+         }
+
+         .highlight-box {
+            padding: 20px;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="article-layout">
+      <div class="article-content">
+         <!-- Breadcrumbs -->
+         <div class="breadcrumbs">
+            <a href="#">Home</a> <span>/</span>
+            <a href="#">Behavioral Insights</a> <span>/</span>
+            <span>Restraint Collapse</span>
+         </div>
+
+         <!-- Article Header -->
+         <header class="article-header">
+            <h1>Restraint Collapse: Why They Are Angels at School and Monsters at Home</h1>
+            <div class="author-byline">
+               <div class="author-photo">JD</div>
+               <div class="author-info">
+                  <div class="author-name">Jane Doe</div>
+                  <div class="publish-date">Published June 5, 2023</div>
+               </div>
+            </div>
+         </header>
+
+         <!-- Key Takeaways -->
+         <div class="key-takeaways">
+            <h2>TL;DR</h2>
+            <ul>
+               <li>"After school restraint collapse" is a neurological phenomenon, not behavioral defiance</li>
+               <li>Children use executive function resources to maintain composure at school, leaving none for home</li>
+               <li>This pattern indicates your child's self-regulation system is working hard, not failing</li>
+               <li>Understanding this phenomenon helps parents respond with empathy instead of frustration</li>
+            </ul>
+         </div>
+
+         <!-- Article Content -->
+         <div class="article-body">
+            <p>Your phone buzzes with a text from the teacher: "Johnny had a wonderful day! So engaged and helpful during group work." You smile, feeling proud—until you pick him up and witness a complete personality transformation. Within minutes of getting in the car, he's screaming about the seatbelt, refusing to put his backpack away, and having a meltdown over snack choices.</p>
+
+            <p>This scenario plays out in households worldwide, leaving parents confused and exhausted. How can the same child be a model student at school and a tornado of emotion at home? The answer lies in a phenomenon psychologists call "restraint collapse"—and it's actually a compliment to your parenting, not a criticism.</p>
+
+            <div class="highlight-box">
+               <h3>What Is Restraint Collapse?</h3>
+               <p>Restraint collapse occurs when individuals exhaust their self-regulation resources maintaining composure in demanding environments, leading to emotional and behavioral dysregulation once they're in a "safe" space where they can finally let their guard down.</p>
+            </div>
+
+            <h2>The Science Behind the Switch</h2>
+            <p>Executive function—the brain's management system—requires significant mental energy to operate. Throughout the school day, your child unconsciously expends enormous effort to:</p>
+
+            <ul>
+               <li>Suppress impulsive reactions to frustrating situations</li>
+               <li>Maintain appropriate volume and tone of voice</li>
+               <li>Follow social expectations and classroom rules</li>
+               <li>Manage sensory input from fluorescent lights, noise, and crowds</li>
+               <li>Navigate peer interactions and social hierarchies</li>
+               <li>Transition between activities and demands</li>
+            </ul>
+
+            <p>For neurotypical children, this effort is largely automatic. For gifted and twice-exceptional children, it's often a conscious, exhausting battle. Their heightened sensitivity amplifies every stimulus, making self-regulation even more demanding.</p>
+
+            <h3>The Home Paradox</h3>
+            <p>Home represents psychological safety for your child. Unlike school, where they must perform and comply, home is where they can authentically express their emotions and vulnerabilities. This safety paradox explains why meltdowns often occur after school:</p>
+
+            <div class="highlight-box">
+               <h3>The Emotional Equation</h3>
+               <p>School Self-Regulation + Home Safety = Release of Suppressed Emotions</p>
+            </div>
+
+            <h2>Why This Is Actually Good News</h2>
+            <p>Contrary to what frustrated parents might believe, restraint collapse signals that your child:</p>
+
+            <ol>
+               <li><strong>Possesses intact emotional awareness:</strong> They recognize and feel their emotions deeply</li>
+               <li><strong>Has developed social skills:</strong> They understand appropriate behavior in public settings</li>
+               <li><strong>Feels secure with you:</strong> They trust you enough to show their authentic selves</li>
+               <li><strong>Maintains cognitive control:</strong> They can regulate behavior in demanding environments</li>
+            </ol>
+
+            <p>This pattern demonstrates emotional intelligence and resilience—qualities to celebrate, not punish.</p>
+
+            <h3>Recognizing the Signs</h3>
+            <p>Restraint collapse follows predictable patterns:</p>
+
+            <ul>
+               <li>Explosive reactions to minor frustrations immediately after school</li>
+               <li>Extreme fatigue or shutdown behaviors</li>
+               <li>Increased sensitivity to sensory stimuli (sounds, textures, lights)</li>
+               <li>Regression to younger behaviors (baby talk, tantrums)</li>
+               <li>Difficulty with routine transitions</li>
+            </ul>
+
+            <div class="highlight-box">
+               <h3>Research Insight</h3>
+               <p>Studies show that children with high emotional intelligence often experience more intense restraint collapse because they're acutely aware of social expectations and feel pressure to meet them.</p>
+            </div>
+
+            <h2>Strategies for Supporting Your Child</h2>
+            <p>Understanding restraint collapse transforms your response from "What's wrong with you?" to "How can I help you?" Here are evidence-based approaches:</p>
+
+            <h3>1. Create Transition Rituals</h3>
+            <p>Build decompression time between school and home demands:</p>
+
+            <ul>
+               <li>Allow 15-30 minutes of unstructured downtime</li>
+               <li>Offer sensory comfort items (weighted blanket, fidget toy)</li>
+               <li>Create a "feelings check-in" routine</li>
+            </ul>
+
+            <h3>2. Reframe Your Perspective</h3>
+            <p>Instead of viewing explosive emotions as misbehavior, recognize them as communication:</p>
+
+            <ul>
+               <li>"I notice you're feeling overwhelmed. Let's figure out what you need."</li>
+               <li>"It sounds like school was really hard today. How can I support you?"</li>
+               <li>"Your big feelings tell me you're safe enough to be honest about how you feel."</li>
+            </ul>
+
+            <h3>3. Build Regulation Resources</h3>
+            <p>Help your child replenish their self-regulation reserves:</p>
+
+            <ul>
+               <li>Ensure adequate sleep and nutrition</li>
+               <li>Teach breathing and mindfulness techniques</li>
+               <li>Create a calm-down kit with preferred comfort items</li>
+               <li>Establish predictable routines that reduce decision fatigue</li>
+            </ul>
+
+            <h2>The Long-Term View</h2>
+            <p>Restraint collapse typically diminishes as children develop stronger executive function skills and learn more sophisticated emotional regulation strategies. However, periods of increased stress—such as school transitions, social challenges, or family changes—may temporarily intensify these patterns.</p>
+
+            <p>Your role isn't to eliminate restraint collapse but to create conditions where your child can process emotions safely and develop sustainable coping strategies.</p>
+
+            <div class="highlight-box">
+               <h3>Parenting Perspective Shift</h3>
+               <p>Next time you witness a post-school explosion, remind yourself: "My child maintained composure for 6+ hours in a challenging environment. Their emotional release shows they trust our relationship and possess healthy emotional awareness."</p>
+            </div>
+
+            <h2>When to Seek Additional Support</h2>
+            <p>While restraint collapse is normal, certain patterns warrant professional consultation:</p>
+
+            <ul>
+               <li>Episodes last longer than 2-3 hours consistently</li>
+               <li>Your child expresses self-harm or harm to others</li>
+               <li>School performance significantly declines</li>
+               <li>Family functioning is severely disrupted</li>
+            </ul>
+
+            <p>In these cases, consider consulting with a pediatrician, child psychologist, or occupational therapist who specializes in sensory processing and executive function.</p>
+
+            <h2>The Bottom Line</h2>
+            <p>Restraint collapse reflects your child's remarkable ability to navigate complex social environments while managing intense internal experiences. Rather than indicating poor behavior or weak character, it demonstrates emotional authenticity and trust in your relationship.</p>
+
+            <p>Your child isn't switching personalities—they're releasing the enormous effort required to be "good" all day. Responding with empathy and structure, rather than punishment, builds resilience and strengthens your connection. Remember: their emotional intensity is often proportional to their capacity for love, creativity, and deep thinking.</p>
+
+            <p>In a world that rewards conformity, your child's authenticity—even when it's messy—is a gift worth nurturing.</p>
+         </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="article-sidebar">
+         <div class="sidebar-widget">
+            <h3>Is your child 2e?</h3>
+            <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
+            <button class="btn">Take the Free Quiz</button>
+         </div>
+      </div>
+   </div>
+
+   <!-- Read Next Section -->
+   <section class="read-next">
+      <div class="container">
+         <h2>Read Next</h2>
+         <div class="read-next-grid">
+            <a href="#" class="read-next-card">
+               <h3>The Black Hole Backpack</h3>
+               <p>A 3-step system to stop losing homework and essential items forever.</p>
+            </a>
+            <a href="#" class="read-next-card">
+               <h3>Laziness vs. Dysfunction</h3>
+               <p>How to tell if they won't do it, or can't do it.</p>
+            </a>
+         </div>
+      </div>
+   </section>
+</body>
+
+</html>
