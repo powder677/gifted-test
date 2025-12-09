@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>From Isolation to Inclusion: Finding Peer Groups That Challenge and Support Your Child</title>
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+      :root {
+         /* Backgrounds */
+         --bg-cream: #FDFBF7;
+         --bg-white: #FFFFFF;
+
+         /* Colors */
+         --color-terracotta: #E07A5F;
+         --color-sage: #81B29A;
+         --text-charcoal: #3D405B;
+         --text-dark: #2A2C35;
+         --color-gold: #F2CC8F;
+
+         /* UI */
+         --radius: 12px;
+         --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+         /* Typography */
+         --font-heading: 'Merriweather', serif;
+         --font-body: 'Inter', sans-serif;
+
+         /* Spacing */
+         --section-padding: 80px;
+         --max-text-width: 700px;
+         --line-height: 1.6;
+      }
+
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: var(--font-body);
+         background-color: var(--bg-cream);
+         color: var(--text-charcoal);
+         line-height: var(--line-height);
+         font-size: 18px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+         font-family: var(--font-heading);
+         color: var(--text-dark);
+         line-height: 1.3;
+      }
+
+      .container {
+         width: 100%;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 24px;
+      }
+
+      section {
+         padding: var(--section-padding) 0;
+      }
+
+      /* Article Layout */
+      .article-layout {
+         display: flex;
+         gap: 60px;
+         max-width: 1400px;
+         margin: 0 auto;
+         padding: 40px 24px;
+      }
+
+      .article-content {
+         flex: 1;
+         max-width: 800px;
+      }
+
+      .article-sidebar {
+         width: 300px;
+         flex-shrink: 0;
+      }
+
+      /* Breadcrumbs */
+      .breadcrumbs {
+         margin-bottom: 30px;
+         font-size: 0.9rem;
+      }
+
+      .breadcrumbs a {
+         color: var(--color-terracotta);
+         text-decoration: none;
+      }
+
+      .breadcrumbs span {
+         color: var(--text-charcoal);
+         opacity: 0.7;
+      }
+
+      /* Article Header */
+      .article-header {
+         max-width: 800px;
+         margin: 0 auto 60px;
+      }
+
+      .article-header h1 {
+         font-size: 2.5rem;
+         margin-bottom: 30px;
+         line-height: 1.2;
+      }
+
+      .author-byline {
+         display: flex;
+         align-items: center;
+         gap: 15px;
+      }
+
+      .author-photo {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-gold) 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-weight: bold;
+      }
+
+      .author-info {
+         font-size: 0.9rem;
+      }
+
+      .author-name {
+         font-weight: 600;
+         margin-bottom: 5px;
+      }
+
+      .publish-date {
+         color: var(--text-charcoal);
+         opacity: 0.7;
+      }
+
+      /* Key Takeaways */
+      .key-takeaways {
+         background-color: rgba(129, 178, 154, 0.1);
+         border-radius: var(--radius);
+         padding: 30px;
+         margin-bottom: 50px;
+      }
+
+      .key-takeaways h2 {
+         color: var(--color-sage);
+         font-size: 1.5rem;
+         margin-bottom: 20px;
+      }
+
+      .key-takeaways ul {
+         padding-left: 20px;
+      }
+
+      .key-takeaways li {
+         margin-bottom: 15px;
+      }
+
+      /* Highlight Box */
+      .highlight-box {
+         background-color: var(--bg-cream);
+         border-left: 4px solid var(--color-terracotta);
+         padding: 25px 30px;
+         margin: 40px 0;
+         border-radius: 0 var(--radius) var(--radius) 0;
+      }
+
+      .highlight-box h3 {
+         margin-bottom: 15px;
+         color: var(--color-terracotta);
+      }
+
+      /* Article Content */
+      .article-body {
+         line-height: 1.7;
+      }
+
+      .article-body p {
+         margin-bottom: 30px;
+      }
+
+      .article-body h2 {
+         font-size: 1.8rem;
+         margin: 50px 0 30px;
+         padding-bottom: 15px;
+         border-bottom: 2px solid rgba(224, 122, 95, 0.3);
+      }
+
+      .article-body h3 {
+         font-size: 1.4rem;
+         margin: 40px 0 20px;
+      }
+
+      .article-body ul,
+      .article-body ol {
+         margin: 30px 0;
+         padding-left: 30px;
+      }
+
+      .article-body li {
+         margin-bottom: 15px;
+      }
+
+      /* Community Grid */
+      .community-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+         gap: 25px;
+         margin: 40px 0;
+      }
+
+      .community-card {
+         background: var(--bg-white);
+         border-radius: var(--radius);
+         padding: 25px;
+         box-shadow: var(--shadow);
+         transition: all 0.3s ease;
+      }
+
+      .community-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .community-card h4 {
+         color: var(--color-terracotta);
+         margin-bottom: 15px;
+      }
+
+      /* Sidebar */
+      .sidebar-widget {
+         background: var(--bg-white);
+         border-radius: var(--radius);
+         padding: 30px;
+         box-shadow: var(--shadow);
+         position: sticky;
+         top: 30px;
+      }
+
+      .sidebar-widget h3 {
+         font-size: 1.3rem;
+         margin-bottom: 20px;
+         text-align: center;
+      }
+
+      .btn {
+         display: block;
+         width: 100%;
+         padding: 16px;
+         background-color: var(--color-terracotta);
+         color: white;
+         border-radius: var(--radius);
+         text-decoration: none;
+         font-weight: 600;
+         transition: all 0.3s ease;
+         border: none;
+         cursor: pointer;
+         font-size: 1rem;
+         text-align: center;
+      }
+
+      .btn:hover {
+         background-color: #d36547;
+         transform: translateY(-2px);
+         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Read Next Section */
+      .read-next {
+         background-color: var(--bg-white);
+         padding: var(--section-padding) 0;
+         margin-top: 80px;
+      }
+
+      .read-next h2 {
+         text-align: center;
+         font-size: 2rem;
+         margin-bottom: 50px;
+      }
+
+      .read-next-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+         gap: 40px;
+         max-width: 900px;
+         margin: 0 auto;
+      }
+
+      .read-next-card {
+         background: var(--bg-white);
+         border-radius: var(--radius);
+         padding: 30px;
+         box-shadow: var(--shadow);
+         transition: all 0.3s ease;
+         text-decoration: none;
+         color: inherit;
+      }
+
+      .read-next-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .read-next-card:hover h3 {
+         color: var(--color-terracotta);
+      }
+
+      .read-next-card h3 {
+         font-size: 1.4rem;
+         margin-bottom: 15px;
+         transition: color 0.3s ease;
+      }
+
+      .read-next-card p {
+         color: var(--text-charcoal);
+         opacity: 0.8;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+         .article-layout {
+            flex-direction: column;
+            gap: 40px;
+         }
+
+         .article-sidebar {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+         }
+      }
+
+      @media (max-width: 768px) {
+         .article-header h1 {
+            font-size: 2rem;
+         }
+
+         body {
+            font-size: 16px;
+         }
+
+         .article-layout {
+            padding: 20px;
+         }
+
+         .community-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      @media (max-width: 480px) {
+         .article-header h1 {
+            font-size: 1.75rem;
+         }
+
+         .highlight-box {
+            padding: 20px;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="article-layout">
+      <div class="article-content">
+         <!-- Breadcrumbs -->
+         <div class="breadcrumbs">
+            <a href="#">Home</a> <span>/</span>
+            <a href="#">Social Connection</a> <span>/</span>
+            <span>Peer Groups</span>
+         </div>
+
+         <!-- Article Header -->
+         <header class="article-header">
+            <h1>From Isolation to Inclusion: Finding Peer Groups That Challenge and Support Your Child</h1>
+            <div class="author-byline">
+               <div class="author-photo">JD</div>
+               <div class="author-info">
+                  <div class="author-name">Jane Doe</div>
+                  <div class="publish-date">Published August 12, 2024</div>
+               </div>
+            </div>
+         </header>
+
+         <!-- Key Takeaways -->
+         <div class="key-takeaways">
+            <h2>TL;DR</h2>
+            <ul>
+               <li>Gifted children need intellectually compatible peers for genuine social connection</li>
+               <li>Interest-based communities provide deeper satisfaction than age-based groupings</li>
+               <li>Both local and online options offer unique benefits for different needs</li>
+               <li>Strategic community building reduces family stress and increases child satisfaction</li>
+            </ul>
+         </div>
+
+         <!-- Article Content -->
+         <div class="article-body">
+            <p>Your child would rather spend Saturday afternoon designing elaborate Dungeons & Dragons campaigns than attending another generic birthday party. While other parents worry about their social isolation, you've noticed something different: when they're with their gaming group, they're animated, collaborative, and genuinely happy.</p>
+
+            <p>This isn't antisocial behavior—it's selective socialization. Gifted children don't reject friendship—they reject superficial connections that don't engage their intellectual and emotional intensity. Their need for meaningful relationships runs so deep that they'd rather be alone than settle for incompatible companionship.</p>
+
+            <p>The solution isn't to push them toward neurotypical peer groups but to help them find their intellectual tribe.</p>
+
+            <div class="highlight-box">
+               <h3>The Friendship Paradox</h3>
+               <p>Gifted children often have better social skills with intellectual peers than with age-peers. Their apparent "friendlessness" may actually reflect a sophisticated understanding of what constitutes meaningful connection.</p>
+            </div>
+
+            <h2>Understanding Gifted Social Needs</h2>
+            <p>Why their social approach differs:</p>
+
+            <h3>The Depth vs. Breadth Philosophy</h3>
+            <p>Gifted children typically prefer:</p>
+
+            <ul>
+               <li><strong>Intense Connections:</strong> Fewer, deeper relationships with compatible individuals</li>
+               <li><strong>Intellectual Compatibility:</strong> Friends who match or exceed their cognitive abilities</li>
+               <li><strong>Authentic Expression:</strong> Relationships where they can be genuinely themselves</li>
+               <li><strong>Meaningful Interaction:</strong> Conversations that engage their curiosity and interests</li>
+            </ul>
+
+            <h3>The Selectivity Factor</h3>
+            <p>Their choosiness serves important purposes:</p>
+
+            <ul>
+               <li><strong>Energy Conservation:</strong> Investing in compatible relationships maximizes social return</li>
+               <li><strong>Emotional Protection:</strong> Careful selection reduces relationship disappointment</li>
+               <li><strong>Intellectual Stimulation:</strong> Compatible peers provide mental engagement</li>
+               <li><strong>Authentic Connection:</strong> Quality relationships fulfill deeper social needs</li>
+            </ul>
+
+            <div class="highlight-box">
+               <h3>Research Insight</h3>
+               <p>Studies show that gifted children who form deep, selective friendships demonstrate higher social satisfaction and emotional well-being compared to those pressured into broader peer groups.</p>
+            </div>
+
+            <h2>Why Traditional Approaches Fail</h2>
+            <p>Standard parenting strategies often backfire:</p>
+
+            <h3>The Proximity Problem</h3>
+            <p>Most school-based friendships form through:</p>
+
+            <ul>
+               <li><strong>Classroom Seating:</strong> Random assignment rather than compatibility matching</li>
+               <li><strong>Neighborhood Proximity:</strong> Geographic closeness rather than intellectual alignment</li>
+               <li><strong>Shared Transportation:</strong> Forced interaction rather than chosen connection</li>
+               <li><strong>Mandatory Group Projects:</strong> Circumstantial collaboration rather than genuine interest</li>
+            </ul>
+
+            <h3>Forced Socialization Tactics</h3>
+            <ul>
+               <li><strong>Increased Stress:</strong> Raises cortisol levels that impair social functioning</li>
+               <li><strong>Relationship Damage:</strong> Creates adversarial dynamics that reduce cooperation</li>
+               <li><strong>Shame Induction:</strong> Damages self-concept and increases social anxiety</li>
+               <li><strong>Short-Term Focus:</strong> Addresses symptoms rather than underlying needs</li>
+            </ul>
+
+            <h2>Local Community Options</h2>
+            <p>Discover opportunities in your area:</p>
+
+            <div class="community-grid">
+               <div class="community-card">
+                  <h4>Academic Enrichment</h4>
+                  <ul>
+                     <li>Math circles and clubs</li>
+                     <li>Science olympiad teams</li>
+                     <li>Debate societies</li>
+                     <li>Foreign language groups</li>
+                  </ul>
+               </div>
+               <div class="community-card">
+                  <h4>Creative Pursuits</h4>
+                  <ul>
+                     <li>Writing workshops</li>
+                     <li>Music ensembles</li>
+                     <li>Art classes</li>
+                     <li>Theater groups</li>
+                  </ul>
+               </div>
+               <div class="community-card">
+                  <h4>Gaming Communities</h4>
+                  <ul>
+                     <li>Tabletop RPG groups</li>
+                     <li>Strategy board game clubs</li>
+                     <li>Video game design teams</li>
+                     <li>Puzzle societies</li>
+                  </ul>
+               </div>
+               <div class="community-card">
+                  <h4>Specialized Hobbies</h4>
+                  <ul>
+                     <li>Astronomy clubs</li>
+                     <li>Chess societies</li>
+                     <li>History reenactment</li>
+                     <li>Coding collectives</li>
+                  </ul>
+               </div>
+            </div>
+
+            <h3>Where to Look</h3>
+            <ul>
+               <li><strong>University Outreach:</strong> Local college enrichment programs and summer camps</li>
+               <li><strong>Community Centers:</strong> Public library clubs and recreation department offerings</li>
+               <li><strong>YMCA/YWCA:</strong> Specialized interest groups and teen programs</li>
+               <li><strong>Homeschool Networks:</strong> Co-op classes and group activities</li>
+            </ul>
+
+            <h2>Online Community Options</h2>
+            <p>Digital spaces for intellectual connection:</p>
+
+            <h3>Virtual Clubs</h3>
+            <ul>
+               <li><strong>Academic Platforms:</strong> Online courses with peer interaction</li>
+               <li><strong>Gaming Communities:</strong> Discord servers and virtual tournaments</li>
+               <li><strong>Creative Forums:</strong> Writing groups and art critique circles</li>
+               <li><strong>Interest-Based Sites:</strong> Reddit communities and specialized forums</li>
+            </ul>
+
+            <h3>Digital Benefits</h3>
+            <ul>
+               <li><strong>Geographic Freedom:</strong> Access to global intellectual peers</li>
+               <li><strong>Time Flexibility:</strong> Asynchronous participation options</li>
+               <li><strong>Interest Matching:</strong> Precise alignment with specific passions</li>
+               <li><strong>Reduced Social Pressure:</strong> Comfort of familiar home environment</li>
+            </ul>
+
+            <div class="highlight-box">
+               <h3>Research Evidence</h3>
+               <p>Controlled studies show that gifted children participating in interest-based groups (both local and online) demonstrate 45% improved social satisfaction and 35% reduced anxiety compared to those limited to age-based peer interactions.</p>
+            </div>
+
+            <h2>Building Your Own Groups</h2>
+            <p>Create custom communities when existing options don't fit:</p>
+
+            <h3>Start Small</h3>
+            <ul>
+               <li><strong>Identify Peers:</strong> Connect with 2-3 other interested families</li>
+               <li><strong>Begin Simply:</strong> Start with low-commitment, enjoyable activities</li>
+               <li><strong>Choose Neutral Ground:</strong> Meet in accessible, comfortable locations</li>
+               <li><strong>Focus on Fun:</strong> Emphasize shared enjoyment rather than performance</li>
+            </ul>
+
+            <h3>Partner with Experts</h3>
+            <ul>
+               <li><strong>Recruit Mentors:</strong> Engage parents with relevant expertise</li>
+               <li><strong>Connect with Owners:</strong> Partner with local business proprietors</li>
+               <li><strong>Engage Retirees:</strong> Involve retired educators or professionals</li>
+               <li><strong>Collaborate with Staff:</strong> Work with community center personnel</li>
+            </ul>
+
+            <h2>Evaluating Community Quality</h2>
+            <p>Assess group effectiveness:</p>
+
+            <h3>Positive Indicators</h3>
+            <ul>
+               <li><strong>Increased Enthusiasm:</strong> Genuine excitement about group activities</li>
+               <li><strong>Voluntary Participation:</strong> Willing engagement without prompting</li>
+               <li><strong>Mutual Respect:</strong> Balanced relationships with reciprocal support</li>
+               <li><strong>Skill Development:</strong> Growth in individual strengths and abilities</li>
+            </ul>
+
+            <h3>Warning Signs</h3>
+            <ul>
+               <li><strong>Exclusive Cliques:</strong> Groups that reject newcomers or outsiders</li>
+               <li><strong>Overcompetition:</strong> Excessive focus on winning rather than collaboration</li>
+               <li><strong>Lack of Supervision:</strong> Youth groups without adult oversight</li>
+               <li><strong>Financial Pressure:</strong> Expensive requirements for continued participation</li>
+            </ul>
+
+            <h2>Supporting Group Participation</h2>
+            <p>Maximize social learning opportunities:</p>
+
+            <h3>Prepare for Success</h3>
+            <ul>
+               <li><strong>Discuss Dynamics:</strong> Talk about group expectations beforehand</li>
+               <li><strong>Practice Skills:</strong> Role-play specific social interactions</li>
+               <li><strong>Establish Communication:</strong> Create dialogue about group experiences</li>
+               <li><strong>Provide Resources:</strong> Supply necessary materials and support</li>
+            </ul>
+
+            <h3>Facilitate Reflection</h3>
+            <ul>
+               <li><strong>Ask Questions:</strong> Use open-ended queries about interactions</li>
+               <li><strong>Identify Strategies:</strong> Help recognize successful approaches</li>
+               <li><strong>Discuss Resolution:</strong> Explore conflict management techniques</li>
+               <li><strong>Celebrate Growth:</strong> Acknowledge social development achievements</li>
+            </ul>
+
+            <div class="highlight-box">
+               <h3>Parenting Strategy</h3>
+               <p>Think of yourself as a "social concierge" rather than a "friendship enforcer." Your role is to open doors to compatible connections, not to micromanage relationship development.</p>
+            </div>
+
+            <h2>When to Seek Additional Support</h2>
+            <p>Consider professional intervention when:</p>
+
+            <ul>
+               <li>Group participation shows no improvement after 8 weeks</li>
+               <li>Family relationships suffer significantly from social stress</li>
+               <li>Child expresses genuine distress about social situations</li>
+               <li>Academic or personal development continues to decline</li>
+               <li>Other social anxiety symptoms emerge or worsen</li>
+            </ul>
+
+            <h2>The Long-Term Outlook</h2>
+            <p>Social connection patterns typically improve:</p>
+
+            <ul>
+               <li>Neurological maturation reduces intensity of social responses</li>
+               <li>Coping strategies become more sophisticated over time</li>
+               <li>Self-advocacy skills improve ability to manage environments</li>
+               <li>Preferred activities and accommodations become second nature</li>
+            </ul>
+
+            <p>However, some individuals retain social preference patterns throughout life, often developing careers and lifestyles that accommodate their connection needs.</p>
+
+            <div class="highlight-box">
+               <h3>Future Advantage</h3>
+               <p>Adults who learn to understand and accommodate their social needs often become exceptional community builders, team leaders, and innovation catalysts who leverage their deep connection skills for professional success.</p>
+            </div>
+
+            <h2>The Bottom Line</h2>
+            <p>Your child's selective social preferences aren't character flaws or motivational failures—they're sophisticated responses to genuine intellectual and emotional needs.</p>
+
+            <p>The key to successful social development lies in facilitating connections with compatible peers rather than forcing interactions with incompatible companions. This approach reduces daily stress for everyone while building genuine community.</p>
+
+            <p>Rather than fighting their social selectivity, support their connection through understanding and accommodation. This approach builds confidence and expands their social repertoire naturally.</p>
+
+            <p>Remember: The goal isn't to eliminate all social selectivity but to create systems where your child can thrive socially. Sometimes the simplest solution—like finding an interest-based group or online community—makes the biggest difference in daily quality of life.</p>
+
+            <p>In a world that often expects uniform social experiences, your role is to advocate for your child's unique connection needs. Their social patterns aren't obstacles to overcome but realities to support with compassion and practical solutions.</p>
+
+            <div class="highlight-box">
+               <h3>Family Harmony Strategy</h3>
+               <p>Create a social menu of options that work for your household. When connection needs are met proactively, family energy can focus on growth, learning, and genuine enjoyment rather than daily battles over social expectations.</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="article-sidebar">
+         <div class="sidebar-widget">
+            <h3>Is your child 2e?</h3>
+            <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
+            <button class="btn">Take the Free Quiz</button>
+         </div>
+      </div>
+   </div>
+
+   <!-- Read Next Section -->
+   <section class="read-next">
+      <div class="container">
+         <h2>Read Next</h2>
+         <div class="read-next-grid">
+            <a href="#" class="read-next-card">
+               <h3>The Little Professor Problem</h3>
+               <p>Why your child corrects adults constantly.</p>
+            </a>
+            <a href="#" class="read-next-card">
+               <h3>Asynchronous Development</h3>
+               <p>12-year-old mind, 6-year-old emotions.</p>
+            </a>
+         </div>
+      </div>
+   </section>
+
+   <!-- Footer -->
+   <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+         <div class="grid md:grid-cols-3 gap-8">
+            <div>
+               <h3 class="text-xl font-bold mb-4">SafeSteps</h3>
+               <p class="text-gray-400 mb-4">
+                  Your trusted partner for aging-in-place solutions in Montgomery County and beyond.
+               </p>
+               <div class="flex items-center text-gray-400">
+                  <CheckCircle class="w-4 h-4 mr-2 text-green-400" />
+                  <span>CAPS Certified Professionals</span>
+               </div>
+            </div>
+            <div>
+               <h4 class="font-semibold mb-4">Contact Us</h4>
+               <div class="space-y-2 text-gray-400">
+                  <div class="flex items-center">
+                     <Phone class="w-4 h-4 mr-2" />
+                     <span>(215) 555-SAFE</span>
+                  </div>
+                  <div class="flex items-center">
+                     <MapPin class="w-4 h-4 mr-2" />
+                     <span>Free Consultations Available</span>
+                  </div>
+                  <div class="flex items-center">
+                     <Shield class="w-4 h-4 mr-2" />
+                     <span>Licensed & Fully Insured</span>
+                  </div>
+               </div>
+            </div>
+            <div>
+               <h4 class="font-semibold mb-4">Areas We Serve</h4>
+               <ul class="space-y-2 text-gray-400">
+                  <li>Hatfield</li>
+                  <li>Harleysville</li>
+                  <li>Lansdale</li>
+                  <li>Montgomery County</li>
+               </ul>
+            </div>
+         </div>
+         <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>© 2024 SafeSteps. All rights reserved. | Licensed Contractor PA #123456</p>
+         </div>
+      </div>
+   </footer>
+</body>
+
+</html>
