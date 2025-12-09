@@ -90,7 +90,13 @@
 
 <body>
    <div id="navigation-placeholder"></div>
-
+<script src="navigation.js"></script> <script>
+fetch('navigation.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
    <div class="container">
       <h1 style="text-align: center; margin-bottom: 10px; font-family: 'Merriweather', serif;">Get in Touch</h1>
       <p style="text-align: center; margin-bottom: 40px;">Have a question about the assessments? We're here to help.</p>
