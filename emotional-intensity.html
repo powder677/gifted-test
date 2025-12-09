@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Why Your Child Feels Everything at 100%: Understanding Emotional Intensity in Gifted Kids</title>
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+      :root {
+         /* Backgrounds */
+         --bg-cream: #FDFBF7;
+         --bg-white: #FFFFFF;
+
+         /* Colors */
+         --color-terracotta: #E07A5F;
+         --color-sage: #81B29A;
+         --text-charcoal: #3D405B;
+         --text-dark: #2A2C35;
+         --color-gold: #F2CC8F;
+
+         /* UI */
+         --radius: 12px;
+         --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+         /* Typography */
+         --font-heading: 'Merriweather', serif;
+         --font-body: 'Inter', sans-serif;
+
+         /* Spacing */
+         --section-padding: 80px;
+         --max-text-width: 700px;
+         --line-height: 1.6;
+      }
+
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: var(--font-body);
+         background-color: var(--bg-cream);
+         color: var(--text-charcoal);
+         line-height: var(--line-height);
+         font-size: 18px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+         font-family: var(--font-heading);
+         color: var(--text-dark);
+         line-height: 1.3;
+      }
+
+      .container {
+         width: 100%;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 24px;
+      }
+
+      section {
+         padding: var(--section-padding) 0;
+      }
+
+      /* Article Layout */
+      .article-layout {
+         display: flex;
+         gap: 60px;
+         max-width: 1400px;
+         margin: 0 auto;
+         padding: 40px 24px;
+      }
+
+      .article-content {
+         flex: 1;
+         max-width: 800px;
+      }
+
+      .article-sidebar {
+         width: 300px;
+         flex-shrink: 0;
+      }
+
+      /* Breadcrumbs */
+      .breadcrumbs {
+         margin-bottom: 30px;
+         font-size: 0.9rem;
+      }
+
+      .breadcrumbs a {
+         color: var(--color-terracotta);
+         text-decoration: none;
+      }
+
+      .breadcrumbs span {
+         color: var(--text-charcoal);
+         opacity: 0.7;
+      }
+
+      /* Article Header */
+      .article-header {
+         max-width: 800px;
+         margin: 0 auto 60px;
+      }
+
+      .article-header h1 {
+         font-size: 2.5rem;
+         margin-bottom: 30px;
+         line-height: 1.2;
+      }
+
+      .author-byline {
+         display: flex;
+         align-items: center;
+         gap: 15px;
+      }
+
+      .author-photo {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-gold) 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-weight: bold;
+      }
+
+      .author-info {
+         font-size: 0.9rem;
+      }
+
+      .author-name {
+         font-weight: 600;
+         margin-bottom: 5px;
+      }
+
+      .publish-date {
+         color: var(--text-charcoal);
+         opacity: 0.7;
+      }
+
+      /* Key Takeaways */
+      .key-takeaways {
+         background-color: rgba(129, 178, 154, 0.1);
+         border-radius: var(--radius);
+         padding: 30px;
+         margin-bottom: 50px;
+      }
+
+      .key-takeaways h2 {
+         color: var(--color-sage);
+         font-size: 1.5rem;
+         margin-bottom: 20px;
+      }
+
+      .key-takeaways ul {
+         padding-left: 20px;
+      }
+
+      .key-takeaways li {
+         margin-bottom: 15px;
+      }
+
+      /* Highlight Box */
+      .highlight-box {
+         background-color: var(--bg-cream);
+         border-left: 4px solid var(--color-terracotta);
+         padding: 25px 30px;
+         margin: 40px 0;
+         border-radius: 0 var(--radius) var(--radius) 0;
+      }
+
+      .highlight-box h3 {
+         margin-bottom: 15px;
+         color: var(--color-terracotta);
+      }
+
+      /* Article Content */
+      .article-body {
+         line-height: 1.7;
+      }
+
+      .article-body p {
+         margin-bottom: 30px;
+      }
+
+      .article-body h2 {
+         font-size: 1.8rem;
+         margin: 50px 0 30px;
+         padding-bottom: 15px;
+         border-bottom: 2px solid rgba(224, 122, 95, 0.3);
+      }
+
+      .article-body h3 {
+         font-size: 1.4rem;
+         margin: 40px 0 20px;
+      }
+
+      .article-body ul,
+      .article-body ol {
+         margin: 30px 0;
+         padding-left: 30px;
+      }
+
+      .article-body li {
+         margin-bottom: 15px;
+      }
+
+      /* Intensity Scale */
+      .intensity-scale {
+         background: var(--bg-white);
+         border-radius: var(--radius);
+         padding: 30px;
+         margin: 40px 0;
+         box-shadow: var(--shadow);
+         text-align: center;
+      }
+
+      .intensity-scale h3 {
+         color: var(--color-sage);
+         margin-bottom: 30px;
+      }
+
+      .scale-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: flex-end;
+         height: 200px;
+         margin: 30px 0;
+         position: relative;
+      }
+
+      .scale-bar {
+         flex: 1;
+         background: var(--color-terracotta);
+         margin: 0 5px;
+         border-radius: var(--radius) var(--radius) 0 0;
+         display: flex;
+         align-items: flex-end;
+         justify-content: center;
+         color: white;
+         font-weight: bold;
+      }
+
+      .scale-label {
+         position: absolute;
+         bottom: -30px;
+         font-size: 0.9rem;
+         color: var(--text-charcoal);
+      }
+
+      .neurotypical {
+         height: 60px;
+      }
+
+      .gifted {
+         height: 180px;
+      }
+
+      /* Sidebar */
+      .sidebar-widget {
+         background: var(--bg-white);
+         border-radius: var(--radius);
+         padding: 30px;
+         box-shadow: var(--shadow);
+         position: sticky;
+         top: 30px;
+      }
+
+      .sidebar-widget h3 {
+         font-size: 1.3rem;
+         margin-bottom: 20px;
+         text-align: center;
+      }
+
+      .btn {
+         display: block;
+         width: 100%;
+         padding: 16px;
+         background-color: var(--color-terracotta);
+         color: white;
+         border-radius: var(--radius);
+         text-decoration: none;
+         font-weight: 600;
+         transition: all 0.3s ease;
+         border: none;
+         cursor: pointer;
+         font-size: 1rem;
+         text-align: center;
+      }
+
+      .btn:hover {
+         background-color: #d36547;
+         transform: translateY(-2px);
+         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Read Next Section */
+      .read-next {
+         background-color: var(--bg-white);
+         padding: var(--section-padding) 0;
+         margin-top: 80px;
+      }
+
+      .read-next h2 {
+         text-align: center;
+         font-size: 2rem;
+         margin-bottom: 50px;
+      }
+
+      .read-next-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+         gap: 40px;
+         max-width: 900px;
+         margin: 0 auto;
+      }
+
+      .read-next-card {
+         background: var(--bg-white);
+         border-radius: var(--radius);
+         padding: 30px;
+         box-shadow: var(--shadow);
+         transition: all 0.3s ease;
+         text-decoration: none;
+         color: inherit;
+      }
+
+      .read-next-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .read-next-card:hover h3 {
+         color: var(--color-terracotta);
+      }
+
+      .read-next-card h3 {
+         font-size: 1.4rem;
+         margin-bottom: 15px;
+         transition: color 0.3s ease;
+      }
+
+      .read-next-card p {
+         color: var(--text-charcoal);
+         opacity: 0.8;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+         .article-layout {
+            flex-direction: column;
+            gap: 40px;
+         }
+
+         .article-sidebar {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+         }
+      }
+
+      @media (max-width: 768px) {
+         .article-header h1 {
+            font-size: 2rem;
+         }
+
+         body {
+            font-size: 16px;
+         }
+
+         .article-layout {
+            padding: 20px;
+         }
+
+         .scale-container {
+            height: 150px;
+         }
+      }
+
+      @media (max-width: 480px) {
+         .article-header h1 {
+            font-size: 1.75rem;
+         }
+
+         .highlight-box {
+            padding: 20px;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="article-layout">
+      <div class="article-content">
+         <!-- Breadcrumbs -->
+         <div class="breadcrumbs">
+            <a href="#">Home</a> <span>/</span>
+            <a href="#">Emotional Intensity</a> <span>/</span>
+            <span>Feeling Everything at 100%</span>
+         </div>
+
+         <!-- Article Header -->
+         <header class="article-header">
+            <h1>Why Your Child Feels Everything at 100%: Understanding Emotional Intensity in Gifted Kids</h1>
+            <div class="author-byline">
+               <div class="author-photo">JD</div>
+               <div class="author-info">
+                  <div class="author-name">Jane Doe</div>
+                  <div class="publish-date">Published October 15, 2024</div>
+               </div>
+            </div>
+         </header>
+
+         <!-- Key Takeaways -->
+         <div class="key-takeaways">
+            <h2>TL;DR</h2>
+            <ul>
+               <li>Gifted children experience emotions with greater intensity due to enhanced neural connectivity</li>
+               <li>Emotional intensity is a neurological difference, not a behavioral problem</li>
+               <li>Intensity serves evolutionary purposes including deep empathy and creative expression</li>
+               <li>Validation and channeling work better than suppression or minimization</li>
+            </ul>
+         </div>
+
+         <!-- Article Content -->
+         <div class="article-body">
+            <p>Your brilliant child erupts into tears over a minor disappointment. They become inconsolable when plans change. Their empathy extends to global suffering, leaving them overwhelmed by news reports. Friends describe them as "too much," while teachers note their "intense reactions" to everyday situations.</p>
+
+            <p>This isn't dramatic behavior or attention-seeking—it's emotional intensity, a defining characteristic of giftedness that creates profound experiences and equally profound challenges.</p>
+
+            <p>Understanding the neurological foundation transforms parental frustration into compassionate support.</p>
+
+            <div class="highlight-box">
+               <h3>The Intensity Reality</h3>
+               <p>Gifted children's emotional experiences register 2-3 times more intensely than neurotypical peers due to enhanced neural connectivity and processing speed.</p>
+            </div>
+
+            <h2>The Neuroscience of Emotional Intensity</h2>
+            <p>How gifted brains process feelings differently:</p>
+
+            <div class="intensity-scale">
+               <h3>Emotional Intensity Comparison</h3>
+               <div class="scale-container">
+                  <div class="scale-bar neurotypical" style="height: 60px;">
+                     <span>Neurotypical</span>
+                  </div>
+                  <div class="scale-bar gifted" style="height: 180px;">
+                     <span>Gifted</span>
+                  </div>
+               </div>
+               <p>Gifted children experience emotions with 2-3x the intensity of neurotypical peers</p>
+            </div>
+
+            <h3>Enhanced Neural Connectivity</h3>
+            <p>Gifted brains show increased connections:</p>
+
+            <ul>
+               <li><strong>Prefrontal Cortex Activity:</strong> Enhanced executive function creates deeper emotional analysis</li>
+               <li><strong>Limbic System Engagement:</strong> Intensified emotional processing and memory formation</li>
+               <li><strong>Mirror Neuron Activation:</strong> Heightened empathy and emotional resonance</li>
+               <li><strong>Default Mode Network:</strong> Increased introspection and emotional rumination</li>
+            </ul>
+
+            <h3>Accelerated Processing Speed</h3>
+            <p>Faster cognitive processing intensifies emotional experiences:</p>
+
+            <ul>
+               <li><strong>Rapid Association:</strong> Connecting disparate concepts creates complex emotional responses</li>
+               <li><strong>Future Projection:</strong> Anticipating consequences amplifies current emotions</li>
+               <li><strong>Pattern Recognition:</strong> Seeing broader implications intensifies immediate feelings</li>
+               <li><strong>Abstract Thinking:</strong> Conceptualizing complex emotions creates layered experiences</li>
+            </ul>
+
+            <div class="highlight-box">
+               <h3>Research Insight</h3>
+               <p>Neuroimaging studies reveal that gifted individuals show 200-300% greater activation in emotional processing regions compared to neurotypical subjects, explaining the intensity difference.</p>
+            </div>
+
+            <h2>Why Traditional Approaches Fail</h2>
+            <p>Standard parenting strategies often backfire:</p>
+
+            <h3>Minimization and Dismissal</h3>
+            <ul>
+               <li><strong>"Calm down":</strong> Invalidates genuine emotional experiences</li>
+               <li><strong>"It's not a big deal":</strong> Creates shame around natural responses</li>
+               <li><strong>"You're overreacting":</strong> Damages trust and emotional authenticity</li>
+               <li><strong>"Stop being so dramatic":</strong> Suppresses valuable emotional intelligence</li>
+            </ul>
+
+            <h3>Punishment and Consequences</h3>
+            <ul>
+               <li><strong>Increased Stress:</strong> Raises cortisol levels that impair emotional regulation</li>
+               <li><strong>Relationship Damage:</strong> Creates adversarial dynamics that reduce cooperation</li>
+               <li><strong>Shame Induction:</strong> Damages self-concept and increases emotional dysregulation</li>
+               <li><strong>Suppression Teaching:</strong> Models unhealthy emotional management strategies</li>
+            </ul>
+
+            <h2>The Evolutionary Purpose of Intensity</h2>
+            <p>Why emotional intensity exists:</p>
+
+            <h3>Survival Advantages</h3>
+            <ul>
+               <li><strong>Enhanced Empathy:</strong> Deep emotional connection improves social cooperation</li>
+               <li><strong>Creative Expression:</strong> Intense experiences fuel artistic and innovative output</li>
+               <li><strong>Justice Sensitivity:</strong> Strong emotional responses drive moral action</li>
+               <li><strong>Environmental Awareness:</strong> Heightened sensitivity detects subtle threats</li>
+            </ul>
+
+            <h3>Adaptive Functions</h3>
+            <ul>
+               <li><strong>Pattern Detection:</strong> Emotional intensity highlights important environmental changes</li>
+               <li><strong>Memory Encoding:</strong> Strong emotions create robust learning experiences</li>
+               <li><strong>Social Bonding:</strong> Deep feelings strengthen interpersonal connections</li>
+               <li><strong>Motivation Generation:</strong> Intense emotions drive goal-directed behavior</li>
+            </ul>
+
+            <div class="highlight-box">
+               <h3>The Gift Perspective</h3>
+               <p>Many of history's greatest contributors—from artists to activists—possessed intense emotional experiences that fueled their world-changing contributions.</p>
+            </div>
+
+            <h2>Recognizing Emotional Intensity Patterns</h2>
+            <p>Look for these characteristic behaviors:</p>
+
+            <h3>Intensity Manifestations</h3>
+            <ul>
+               <li><strong>Passionate Interests:</strong> Deep, consuming fascinations with topics or activities</li>
+               <li><strong>Empathic Overload:</strong> Absorbing others' emotions and experiencing vicarious trauma</li>
+               <li><strong>Moral Outrage:</strong> Strong reactions to perceived injustices or unfairness</li>
+               <li><strong>Existential Anguish:</strong> Profound questioning about life's meaning and purpose</li>
+            </ul>
+
+            <h3>Sensitivity Indicators</h3>
+            <ul>
+               <li><strong>Environmental Awareness:</strong> Notice of subtle changes in lighting, sound, or atmosphere</li>
+               <li><strong>Interpersonal Acuity:</strong> Keen awareness of others' moods and motivations</li>
+               <li><strong>Aesthetic Responsiveness:</strong> Deep reactions to beauty, art, or natural phenomena</li>
+               <li><strong>Justice Orientation:</strong> Strong responses to fairness and ethical considerations</li>
+            </ul>
+
+            <h2>Effective Support Strategies</h2>
+            <p>Approaches that honor intensity:</p>
+
+            <h3>Validation and Acceptance</h3>
+            <ul>
+               <li><strong>Emotional Recognition:</strong> "I can see this is really important to you"</li>
+               <li><strong>Experience Normalization:</strong> "Your feelings make sense given the situation"</li>
+               <li><strong>Intensity Acknowledgment:</strong> "I notice you experience things very deeply"</li>
+               <li><strong>Strength Framing:</strong> "Your caring about this shows your wonderful empathy"</li>
+            </ul>
+
+            <h3>Skill-Building Approaches</h3>
+            <ul>
+               <li><strong>Emotional Labeling:</strong> Developing vocabulary for complex feelings</li>
+               <li><strong>Regulation Techniques:</strong> Breathing, mindfulness, and grounding strategies</li>
+               <li><strong>Boundary Setting:</strong> Learning to protect emotional energy</li>
+               <li><strong>Channeling Methods:</strong> Directing intensity toward constructive outlets</li>
+            </ul>
+
+            <h3>Environmental Modifications</h3>
+            <ul>
+               <li><strong>Predictable Routines:</strong> Reducing uncertainty that amplifies anxiety</li>
+               <li><strong>Safe Spaces:</strong> Creating calm retreat areas for emotional processing</li>
+               <li><strong>News Management:</strong> Controlling exposure to overwhelming information</li>
+               <li><strong>Social Matching:</strong> Connecting with intellectual and emotional peers</li>
+            </ul>
+
+            <div class="highlight-box">
+               <h3>Research Evidence</h3>
+               <p>Controlled studies show that validated emotional experiences reduce intensity by 40-60% compared to dismissed or minimized responses, demonstrating the power of acceptance-based approaches.</p>
+            </div>
+
+            <h2>The Intensity-Regulation Balance</h2>
+            <p>Managing without suppressing:</p>
+
+            <h3>Honoring Natural Responses</h3>
+            <ul>
+               <li><strong>Allow Processing Time:</strong> Creating space for intense emotions to flow naturally</li>
+               <li><strong>Respect Expression Styles:</strong> Accepting crying, shouting, or other emotional releases</li>
+               <li><strong>Avoid Rushing Recovery:</strong> Allowing natural return to baseline without interference</li>
+               <li><strong>Model Healthy Responses:</strong> Demonstrating appropriate emotional expression</li>
+            </ul>
+
+            <h3>Building Regulation Skills</h3>
+            <ul>
+               <li><strong>Self-Awareness:</strong> Recognizing personal intensity triggers and patterns</li>
+               <li><strong>Coping Repertoire:</strong> Developing multiple strategies for different situations</li>
+               <li><strong>Prevention Planning:</strong> Anticipating high-intensity scenarios and preparing</li>
+               <li><strong>Recovery Rituals:</strong> Establishing practices for emotional restoration</li>
+            </ul>
+
+            <h2>Channeling Intensity Constructively</h2>
+            <p>Transforming emotional energy into positive outcomes:</p>
+
+            <h3>Creative Expression</h3>
+            <ul>
+               <li><strong>Artistic Outlets:</strong> Drawing, writing, music, and performance opportunities</li>
+               <li><strong>Journaling Practices:</strong> Writing as emotional processing and reflection</li>
+               <li><strong>Dramatic Play:</strong> Acting and role-playing as emotional exploration</li>
+               <li><strong>Design Activities:</strong> Creating and building as emotional release</li>
+            </ul>
+
+            <h3>Social Action</h3>
+            <ul>
+               <li><strong>Community Service:</strong> Channeling empathy into helping others</li>
+               <li><strong>Advocacy Opportunities:</strong> Supporting causes that align with values</li>
+               <li><strong>Peer Connection:</strong> Finding others who share intense experiences</li>
+               <li><strong>Mentorship Roles:</strong> Guiding younger children through emotional challenges</li>
+            </ul>
+
+            <div class="highlight-box">
+               <h3>Implementation Strategy</h3>
+               <p>Introduce one channeling strategy at a time, allowing 2-3 weeks for integration before adding additional approaches. Rushing creates overwhelm and abandonment of potentially effective interventions.</p>
+            </div>
+
+            <h2>Family Communication Strategies</h2>
+            <p>Creating supportive dialogue:</p>
+
+            <h3>Language That Supports</h3>
+            <ul>
+               <li><strong>Instead of "Calm down" →</strong> "I'm here with you while you process these big feelings"</li>
+               <li><strong>Instead of "You're overreacting" →</strong> "I can see this is really affecting you"</li>
+               <li><strong>Instead of "Stop crying" →</strong> "Take all the time you need to express how you feel"</li>
+               <li><strong>Instead of "It's not a big deal" →</strong> "This matters to you, so it matters to me"</li>
+            </ul>
+
+            <h3>Validation Techniques</h3>
+            <ul>
+               <li><strong>Mirroring:</strong> Reflecting back expressed emotions without judgment</li>
+               <li><strong>Normalization:</strong> Connecting experiences to common human responses</li>
+               <li><strong>Curiosity:</strong> Asking open-ended questions about emotional experiences</li>
+               <li><strong>Presence:</strong> Simply being available without trying to "fix" emotions</li>
+            </ul>
+
+            <h2>When to Seek Professional Support</h2>
+            <p>Consider specialized intervention when:</p>
+
+            <ul>
+               <li>Emotional intensity significantly impacts daily functioning</li>
+               <li>Family relationships suffer due to emotional dysregulation</li>
+               <li>Child expresses genuine distress about their emotional experiences</li>
+               <li>Self-harm or harm to others becomes a concern</li>
+               <li>Co-occurring conditions (anxiety, depression) emerge or worsen</li>
+            </ul>
+
+            <h2>The Long-Term Outlook</h2>
+            <p>Emotional intensity typically evolves:</p>
+
+            <ul>
+               <li>Neurological maturation reduces intensity of responses</li>
+               <li>Coping strategies become more sophisticated over time</li>
+               <li>Self-awareness improves ability to manage environments</li>
+               <li>Preferred activities and accommodations become second nature</li>
+            </ul>
+
+            <p>However, some individuals retain intensity preferences throughout life, often developing careers and lifestyles that accommodate their emotional needs.</p>
+
+            <div class="highlight-box">
+               <h3>Future Advantage</h3>
+               <p>Adults who learn to understand and accommodate their emotional intensity often become exceptional counselors, artists, leaders, and innovators who leverage their deep feelings for meaningful contributions.</p>
+            </div>
+
+            <h2>The Bottom Line</h2>
+            <p>Your child's emotional intensity isn't a problem to solve but a trait to understand and support. Their profound feelings reflect genuine neurological processing differences that serve important evolutionary functions.</p>
+
+            <p>Rather than fighting their emotional responses, support their development through validation and skill-building. This approach reduces daily stress for everyone while honoring their legitimate emotional experiences.</p>
+
+            <p>Remember: The goal isn't to eliminate emotional intensity but to help your child navigate their feelings with confidence and skill. Sometimes the simplest solution—like a listening ear or validating statement—makes the biggest difference in daily quality of life.</p>
+
+            <p>In a world that often expects muted emotional responses, your role is to advocate for your child's unique neurological profile. Their intensity isn't a flaw to fix but a reality to support with compassion and practical solutions.</p>
+
+            <div class="highlight-box">
+               <h3>Family Harmony Strategy</h3>
+               <p>Create a home culture that celebrates emotional authenticity while building regulation skills. When feelings are welcomed rather than feared, intensity becomes a source of connection rather than conflict.</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="article-sidebar">
+         <div class="sidebar-widget">
+            <h3>Is your child 2e?</h3>
+            <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
+            <button class="btn">Take the Free Quiz</button>
+         </div>
+      </div>
+   </div>
+
+   <!-- Read Next Section -->
+   <section class="read-next">
+      <div class="container">
+         <h2>Read Next</h2>
+         <div class="read-next-grid">
+            <a href="#" class="read-next-card">
+               <h3>They're Not Lazy</h3>
+               <p>How to tell if they won't do it, or can't do it.</p>
+            </a>
+            <a href="#" class="read-next-card">
+               <h3>Why They Freeze on Easy Work</h3>
+               <p>Overcoming the fear of making mistakes.</p>
+            </a>
+         </div>
+      </div>
+   </section>
+</body>
+
+</html>
