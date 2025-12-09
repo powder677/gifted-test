@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>About Us | Gifted Insights</title>
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <style>
+      :root {
+         --cream: #FDFBF7;
+         --terracotta: #E07A5F;
+         --sage: #81B29A;
+         --charcoal: #3D405B;
+         --radius: 12px;
+      }
+
+      body {
+         font-family: 'Inter', sans-serif;
+         background-color: var(--cream);
+         color: var(--charcoal);
+         margin: 0;
+         line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+         font-family: 'Merriweather', serif;
+         color: #2A2C35;
+      }
+
+      .container {
+         max-width: 800px;
+         margin: 0 auto;
+         padding: 80px 24px;
+      }
+
+      .story-block {
+         background: white;
+         padding: 40px;
+         border-radius: var(--radius);
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+         margin-bottom: 40px;
+      }
+
+      .highlight {
+         color: var(--terracotta);
+         font-weight: bold;
+      }
+
+      .signature {
+         font-family: 'Playfair Display', serif;
+         font-size: 1.5rem;
+         color: var(--sage);
+         margin-top: 30px;
+      }
+
+      .values-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 30px;
+         margin-top: 60px;
+      }
+
+      .value-card {
+         padding: 20px;
+         border-left: 4px solid var(--sage);
+         background: rgba(129, 178, 154, 0.1);
+      }
+
+      @media (max-width: 768px) {
+         .values-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div id="navigation-placeholder"></div>
+
+   <div class="container">
+      <h1 style="font-size: 3rem; margin-bottom: 20px; text-align: center;">We believe your child isn't broken.</h1>
+      <p style="font-size: 1.25rem; text-align: center; margin-bottom: 60px; opacity: 0.8;">They are just wired differently. And standard parenting advice wasn't written for their wiring.</p>
+
+      <div class="story-block">
+         <h2>The "Smart but Stuck" Paradox</h2>
+         <p>You know the feeling. You're sitting in a parent-teacher conference, hearing for the tenth time: <em>"He's so smart, if he would just apply himself."</em></p>
+         <p>Or maybe you're at home, watching your brilliant 10-year-old—who can explain astrophysics—melt down because their socks feel "wrong."</p>
+         <p>It feels like a contradiction. How can a child be so advanced in some areas and struggle so much in others?</p>
+         <p><span class="highlight">This is Asynchronous Development.</span> And it's the heartbeat of everything we do here.</p>
+         <p>We realized that most parenting advice assumes a linear path. Gifted and 2e (Twice-Exceptional) kids don't follow lines. They follow loops, leaps, and sometimes, they freeze entirely.</p>
+         <div class="signature">- The Gifted Insights Team</div>
+      </div>
+
+      <div class="values-grid">
+         <div class="value-card">
+            <h3>Neuroscience, Not Nagging</h3>
+            <p>We don't believe in "trying harder." We believe in building scaffolds for Executive Function so success becomes automatic.</p>
+         </div>
+         <div class="value-card">
+            <h3>Connection Over Compliance</h3>
+            <p>A regulated child can learn. A dysregulated child is in survival mode. We prioritize emotional safety first.</p>
+         </div>
+         <div class="value-card">
+            <h3>Practical Tools</h3>
+            <p>No fluff. We provide scripts, checklists, and frameworks you can use at the dinner table tonight.</p>
+         </div>
+         <div class="value-card">
+            <h3>Celebrating Intensity</h3>
+            <p>Your child's intensity is their superpower. We help you channel that fire without letting it burn the house down.</p>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      fetch('navigation.html').then(r => r.text()).then(d => document.getElementById('navigation-placeholder').innerHTML = d);
+   </script>
+</body>
+
+</html>

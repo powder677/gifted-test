@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Contact Us | Gifted Insights</title>
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+   <style>
+      :root {
+         --cream: #FDFBF7;
+         --terracotta: #E07A5F;
+         --charcoal: #3D405B;
+         --radius: 12px;
+      }
+
+      body {
+         font-family: 'Inter', sans-serif;
+         background-color: var(--cream);
+         color: var(--charcoal);
+         margin: 0;
+      }
+
+      .container {
+         max-width: 600px;
+         margin: 0 auto;
+         padding: 80px 24px;
+      }
+
+      .form-group {
+         margin-bottom: 20px;
+      }
+
+      label {
+         display: block;
+         margin-bottom: 8px;
+         font-weight: 600;
+      }
+
+      input,
+      textarea {
+         width: 100%;
+         padding: 12px;
+         border: 1px solid #ddd;
+         border-radius: 8px;
+         font-family: inherit;
+      }
+
+      textarea {
+         height: 150px;
+         resize: vertical;
+      }
+
+      .btn {
+         background-color: var(--terracotta);
+         color: white;
+         border: none;
+         padding: 16px 32px;
+         border-radius: var(--radius);
+         font-weight: 600;
+         cursor: pointer;
+         width: 100%;
+         font-size: 1rem;
+      }
+
+      .btn:hover {
+         background-color: #d36547;
+      }
+
+      .faq-box {
+         margin-top: 60px;
+         background: white;
+         padding: 30px;
+         border-radius: var(--radius);
+      }
+
+      .faq-item {
+         margin-bottom: 20px;
+         border-bottom: 1px solid #eee;
+         padding-bottom: 20px;
+      }
+
+      .faq-q {
+         font-weight: bold;
+         margin-bottom: 5px;
+         color: var(--terracotta);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="navigation-placeholder"></div>
+
+   <div class="container">
+      <h1 style="text-align: center; margin-bottom: 10px; font-family: 'Merriweather', serif;">Get in Touch</h1>
+      <p style="text-align: center; margin-bottom: 40px;">Have a question about the assessments? We're here to help.</p>
+
+      <form style="background: white; padding: 40px; border-radius: var(--radius); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+         <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+         </div>
+         <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+         </div>
+         <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="How can we help?">
