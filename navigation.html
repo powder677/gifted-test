@@ -1,58 +1,295 @@
-<div class="nav-container">
-    <div class="container nav-inner">
-        <a href="index.html" class="logo">Gifted Insights</a>
+<!-- Navigation Component - Include this in your HTML pages -->
+<!-- 
+    Usage: Add this to your HTML file where you want the navigation to appear:
+    <div id="navigation"></div>
+    
+    Then include the navigation.js script at the bottom of your page:
+    <script src="navigation.js"></script>
+-->
 
-        <nav class="desktop-menu">
-            <div class="dropdown">
-                <span class="dropdown-trigger">Browse by Struggle ▾</span>
-                <div class="dropdown-content">
-                    <a href="executive-function.html" class="dropdown-item">
-                        <span class="item-title">🧠 Focus & Organization</span>
-                        <span class="item-desc">Messy backpacks, homework battles, and "laziness."</span>
-                    </a>
-                    <a href="emotional-regulation.html" class="dropdown-item">
-                        <span class="item-title">💖 Meltdowns & Anxiety</span>
-                        <span class="item-desc">Perfectionism, big feelings, and worry.</span>
-                    </a>
-                    <a href="sensory-processing.html" class="dropdown-item">
-                        <span class="item-title">👕 Sensory & Clothing</span>
-                        <span class="item-desc">Socks, loud noises, and picky eating.</span>
-                    </a>
-                    <a href="social-connection.html" class="dropdown-item">
-                        <span class="item-title">🤝 Friends & Social</span>
-                        <span class="item-desc">Feeling lonely, bossy, or misunderstood.</span>
-                    </a>
-                </div>
+<style>
+    /* Navigation Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    
+    .nav-container {
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .nav-link {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::before {
+        width: 100%;
+    }
+    
+    .dropdown {
+        transform-origin: top;
+        animation: dropIn 0.3s ease-out;
+    }
+    
+    @keyframes dropIn {
+        from {
+            opacity: 0;
+            transform: scaleY(0.8) translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: scaleY(1) translateY(0);
+        }
+    }
+    
+    .nav-gradient {
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+    }
+    
+    .mobile-menu {
+        transform-origin: top right;
+    }
+    
+    .mobile-menu.open {
+        animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    /* Tailwind-like utility classes for navigation */
+    .nav-max-w-7xl { max-width: 80rem; }
+    .nav-mx-auto { margin-left: auto; margin-right: auto; }
+    .nav-px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .nav-h-16 { height: 4rem; }
+    .nav-flex { display: flex; }
+    .nav-justify-between { justify-content: space-between; }
+    .nav-items-center { align-items: center; }
+    .nav-space-x-8 > * + * { margin-left: 2rem; }
+    .nav-hidden { display: none; }
+    .nav-block { display: block; }
+    .nav-relative { position: relative; }
+    .nav-absolute { position: absolute; }
+    .nav-top-full { top: 100%; }
+    .nav-left-0 { left: 0; }
+    .nav-mt-2 { margin-top: 0.5rem; }
+    .nav-w-64 { width: 16rem; }
+    .nav-bg-white { background-color: white; }
+    .nav-rounded-lg { border-radius: 0.5rem; }
+    .nav-shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    .nav-py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .nav-px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .nav-text-gray-700 { color: #374151; }
+    .nav-font-medium { font-weight: 500; }
+    .nav-transition-colors { transition: color 0.15s ease; }
+    .nav-text-2xl { font-size: 1.5rem; }
+    .nav-font-bold { font-weight: 700; }
+    
+    @media (min-width: 768px) {
+        .nav-md-flex { display: flex; }
+        .nav-md-hidden { display: none; }
+    }
+</style>
+
+<nav class="nav-gradient nav-container">
+    <div class="nav-max-w-7xl nav-mx-auto nav-px-4">
+        <div class="nav-flex nav-justify-between nav-items-center nav-h-16">
+            <!-- Logo/Brand -->
+            <div class="nav-flex nav-items-center">
+                <span class="nav-text-2xl nav-font-bold" style="background: linear-gradient(to right, #9333ea, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Brilliant Minds 🌟
+                </span>
             </div>
 
-            <a href="resources.html" class="nav-link">Library</a>
-            <a href="about.html" class="nav-link">Our Story</a>
-            <a href="contact.html" class="nav-link">Contact</a>
+            <!-- Desktop Navigation -->
+            <div class="nav-hidden nav-md-flex nav-items-center nav-space-x-8">
+                <a href="./gifted-assessment-tool.html" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors">
+                    Parent Assessment
+                </a>
+                <a href="./child-self-assessment.html" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors">
+                    Child Assessment
+                </a>
+                
+                <!-- Blog Dropdown -->
+                <div class="nav-relative">
+                    <button onclick="toggleBlogDropdown()" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors nav-flex nav-items-center">
+                        <span>Blog</span>
+                        <svg id="blog-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.25rem; transition: transform 0.3s;">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <div id="blog-dropdown" class="dropdown nav-absolute nav-top-full nav-left-0 nav-mt-2 nav-w-64 nav-bg-white nav-rounded-lg nav-shadow-lg nav-py-2" style="display: none;">
+                        <a href="#" class="nav-block nav-px-4 nav-py-2 nav-text-gray-700 nav-transition-colors" style="text-decoration: none;">
+                            <span style="margin-right: 0.5rem;">🧠</span>
+                            Understanding Giftedness
+                        </a>
+                        <a href="#" class="nav-block nav-px-4 nav-py-2 nav-text-gray-700 nav-transition-colors" style="text-decoration: none;">
+                            <span style="margin-right: 0.5rem;">🎯</span>
+                            Executive Function
+                        </a>
+                        <a href="#" class="nav-block nav-px-4 nav-py-2 nav-text-gray-700 nav-transition-colors" style="text-decoration: none;">
+                            <span style="margin-right: 0.5rem;">💜</span>
+                            Emotional Intensity
+                        </a>
+                        <a href="#" class="nav-block nav-px-4 nav-py-2 nav-text-gray-700 nav-transition-colors" style="text-decoration: none;">
+                            <span style="margin-right: 0.5rem;">📚</span>
+                            Learning Strategies
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="#" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors" style="opacity: 0.5; cursor: not-allowed;">
+                    Quiz (Coming Soon)
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button onclick="toggleMobileMenu()" class="nav-md-hidden nav-text-gray-700" style="background: none; border: none; cursor: pointer;">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"/>
+                    <line x1="4" x2="20" y1="6" y2="6"/>
+                    <line x1="4" x2="20" y1="18" y2="18"/>
+                </svg>
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                    <line x1="18" x2="6" y1="6" y2="18"/>
+                    <line x1="6" x2="18" y1="6" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="mobile-menu nav-md-hidden nav-bg-white nav-shadow-lg" style="display: none;">
+        <div class="nav-px-4" style="padding-top: 0.5rem; padding-bottom: 0.75rem;">
+            <a href="./gifted-assessment-tool.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">
+                Parent Assessment
+            </a>
+            <a href="./child-self-assessment.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">
+                Child Assessment
+            </a>
             
-            <a href="quiz.html" class="btn-nav">Take Quiz</a>
-        </nav>
-
-        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars"></i>
+            <div style="border-top: 1px solid #e5e7eb; margin: 0.5rem 0;"></div>
+            <div class="nav-px-3" style="padding: 0.25rem 0; font-size: 0.875rem; font-weight: 600; color: #6b7280;">Blog Categories</div>
+            
+            <a href="#" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">
+                <span style="margin-right: 0.5rem;">🧠</span>
+                Understanding Giftedness
+            </a>
+            <a href="#" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">
+                <span style="margin-right: 0.5rem;">🎯</span>
+                Executive Function
+            </a>
+            <a href="#" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">
+                <span style="margin-right: 0.5rem;">💜</span>
+                Emotional Intensity
+            </a>
+            <a href="#" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">
+                <span style="margin-right: 0.5rem;">📚</span>
+                Learning Strategies
+            </a>
+            
+            <div style="border-top: 1px solid #e5e7eb; margin: 0.5rem 0;"></div>
+            <a href="#" class="nav-block nav-px-3 nav-py-2 nav-rounded-md" style="text-decoration: none; color: #9ca3af;">
+                Quiz (Coming Soon)
+            </a>
         </div>
     </div>
+</nav>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <span class="logo">Gifted Insights</span>
-            <span class="close-btn" onclick="toggleMobileMenu()">✕</span>
-        </div>
-        <div class="mobile-links">
-            <div class="mobile-label">I need help with...</div>
-            <a href="executive-function.html">Focus & Organization</a>
-            <a href="emotional-regulation.html">Meltdowns & Anxiety</a>
-            <a href="sensory-processing.html">Sensory Issues</a>
-            <a href="social-connection.html">Social Skills</a>
-            <hr>
-            <a href="resources.html">Resource Library</a>
-            <a href="parent-assessment.html">Shop Parent Guides ($29)</a>
-            <a href="contact.html">Contact</a>
-            <a href="quiz.html" class="mobile-cta">Take the Quiz</a>
-        </div>
-    </div>
-</div>
+<script>
+    let mobileMenuOpen = false;
+    let blogDropdownOpen = false;
+
+    function toggleMobileMenu() {
+        mobileMenuOpen = !mobileMenuOpen;
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenuOpen) {
+            menu.style.display = 'block';
+            menu.classList.add('open');
+            menuIcon.style.display = 'none';
+            closeIcon.style.display = 'block';
+        } else {
+            menu.style.display = 'none';
+            menu.classList.remove('open');
+            menuIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+        }
+    }
+
+    function toggleBlogDropdown() {
+        blogDropdownOpen = !blogDropdownOpen;
+        const dropdown = document.getElementById('blog-dropdown');
+        const chevron = document.getElementById('blog-chevron');
+        
+        if (blogDropdownOpen) {
+            dropdown.style.display = 'block';
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            dropdown.style.display = 'none';
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('blog-dropdown');
+        const button = event.target.closest('button');
+        
+        if (!button || !button.onclick || button.onclick.toString().indexOf('toggleBlogDropdown') === -1) {
+            if (blogDropdownOpen) {
+                blogDropdownOpen = false;
+                dropdown.style.display = 'none';
+                document.getElementById('blog-chevron').style.transform = 'rotate(0deg)';
+            }
+        }
+    });
+
+    // Add hover effects
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.color = '#9333ea';
+        });
+        link.addEventListener('mouseleave', function() {
+            this.style.color = '#374151';
+        });
+    });
+
+    document.querySelectorAll('a').forEach(link => {
+        if (!link.classList.contains('nav-link')) {
+            link.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(147, 51, 234, 0.1)';
+                this.style.color = '#9333ea';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'transparent';
+                this.style.color = '#374151';
+            });
+        }
+    });
+</script>
