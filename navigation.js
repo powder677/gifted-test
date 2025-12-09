@@ -1,14 +1,13 @@
 // navigation.js
-let mobileMenuOpen = false;
-let blogDropdownOpen = false;
-
 function toggleMobileMenu() {
-    mobileMenuOpen = !mobileMenuOpen;
     const menu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
     const closeIcon = document.getElementById('close-icon');
     
-    if (mobileMenuOpen) {
+    // Check if menu is currently hidden or shown
+    const isHidden = menu.style.display === 'none' || menu.style.display === '';
+    
+    if (isHidden) {
         menu.style.display = 'block';
         menu.classList.add('open');
         menuIcon.style.display = 'none';
@@ -22,11 +21,12 @@ function toggleMobileMenu() {
 }
 
 function toggleBlogDropdown() {
-    blogDropdownOpen = !blogDropdownOpen;
     const dropdown = document.getElementById('blog-dropdown');
     const chevron = document.getElementById('blog-chevron');
     
-    if (blogDropdownOpen) {
+    const isHidden = dropdown.style.display === 'none' || dropdown.style.display === '';
+    
+    if (isHidden) {
         dropdown.style.display = 'block';
         chevron.style.transform = 'rotate(180deg)';
     } else {
@@ -39,13 +39,11 @@ function toggleBlogDropdown() {
 document.addEventListener('click', function(event) {
     const dropdown = document.getElementById('blog-dropdown');
     const button = event.target.closest('button');
+    const chevron = document.getElementById('blog-chevron');
     
-    if (!button || !button.onclick || button.onclick.toString().indexOf('toggleBlogDropdown') === -1) {
-        if (blogDropdownOpen) {
-            blogDropdownOpen = false;
-            if(dropdown) dropdown.style.display = 'none';
-            const chevron = document.getElementById('blog-chevron');
-            if(chevron) chevron.style.transform = 'rotate(0deg)';
-        }
+    // If we clicked outside the button, and the dropdown exists
+    if (dropdown && (!button || button.getAttribute('onclick') !== 'toggleBlogDropdown()')) {
+        dropdown.style.display = 'none';
+        if(chevron) chevron.style.transform = 'rotate(0deg)';
     }
 });
