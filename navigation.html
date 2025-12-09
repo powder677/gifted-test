@@ -1,263 +1,38 @@
-<div class="nav-container">
-    <div class="container nav-inner">
-        <a href="index.html" class="logo">
-            Gifted Insights
-        </a>
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="nav-logo">Gifted Insights</a>
 
-        <nav class="desktop-menu">
-            <div class="dropdown">
-                <span class="dropdown-trigger">Browse by Struggle ▾</span>
-                <div class="dropdown-content">
-                    <a href="executive-function.html" class="dropdown-item">
-                        <span class="item-title">🧠 Focus & Organization</span>
-                        <span class="item-desc">Messy backpacks, homework battles, and "laziness."</span>
-                    </a>
-                    <a href="emotional-regulation.html" class="dropdown-item">
-                        <span class="item-title">💖 Meltdowns & Anxiety</span>
-                        <span class="item-desc">Perfectionism, big feelings, and worry.</span>
-                    </a>
-                    <a href="sensory-processing.html" class="dropdown-item">
-                        <span class="item-title">👕 Sensory & Clothing</span>
-                        <span class="item-desc">Socks, loud noises, and picky eating.</span>
-                    </a>
-                    <a href="social-connection.html" class="dropdown-item">
-                        <span class="item-title">🤝 Friends & Social</span>
-                        <span class="item-desc">Feeling lonely, bossy, or misunderstood.</span>
-                    </a>
-                </div>
-            </div>
-
-            <a href="about.html" class="nav-link">Our Story</a>
-            <a href="parent-assessment.html" class="nav-link">Shop Guides</a>
+        <ul class="nav-menu">
             
-            <a href="quiz.html" class="btn-nav">Take the Free Quiz</a>
-        </nav>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-trigger">The 4 Patterns ▾</a>
+                <div class="dropdown-content">
+                    <a href="executive-function.html">🧠 Executive Function</a>
+                    <a href="emotional-regulation.html">💖 Emotional Regulation</a>
+                    <a href="sensory-processing.html">👕 Sensory Processing</a>
+                    <a href="social-connection.html">👥 Social Connection</a>
+                </div>
+            </li>
 
-        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars"></i>
+            <li class="nav-item"><a href="about.html" class="nav-link">Our Story</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            
+            <li class="nav-item"><a href="quiz.html" class="btn btn-small btn-secondary">Take Quiz</a></li>
+            <li class="nav-item"><a href="parent-assessment.html" class="btn btn-small btn-primary">Shop Guides ($29)</a></li>
+        </ul>
+
+        <div class="mobile-toggle" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
         </div>
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <span class="logo">Gifted Insights</span>
-            <span class="close-btn" onclick="toggleMobileMenu()">✕</span>
-        </div>
-        <div class="mobile-links">
-            <div class="mobile-label">I need help with...</div>
-            <a href="executive-function.html">Focus & Organization</a>
-            <a href="emotional-regulation.html">Meltdowns & Anxiety</a>
-            <a href="sensory-processing.html">Sensory Issues</a>
-            <a href="social-connection.html">Social Skills</a>
-            <hr>
-            <a href="parent-assessment.html">Shop Parent Guides ($29)</a>
-            <a href="about.html">About Us</a>
-            <a href="quiz.html" class="mobile-cta">Take the Quiz</a>
-        </div>
+        <a href="executive-function.html">Executive Function</a>
+        <a href="emotional-regulation.html">Emotional Regulation</a>
+        <a href="sensory-processing.html">Sensory Processing</a>
+        <a href="social-connection.html">Social Connection</a>
+        <hr>
+        <a href="quiz.html">Take Free Quiz</a>
+        <a href="parent-assessment.html">Get the Guide</a>
     </div>
-</div>
-
-<style>
-    /* CSS Variables */
-    :root {
-        --nav-cream: #FDFBF7;
-        --nav-text: #3D405B;
-        --nav-accent: #E07A5F;
-        --nav-sage: #81B29A;
-    }
-
-    /* Base Styles */
-    .nav-container {
-        background-color: #FFFFFF;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        font-family: 'Inter', sans-serif;
-    }
-
-    .nav-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 80px;
-    }
-
-    .logo {
-        font-family: 'Playfair Display', serif;
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--nav-text);
-        text-decoration: none;
-    }
-
-    /* Desktop Menu */
-    .desktop-menu {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-    }
-
-    .nav-link, .dropdown-trigger {
-        text-decoration: none;
-        color: var(--nav-text);
-        font-weight: 500;
-        cursor: pointer;
-        font-size: 16px;
-        transition: color 0.2s;
-    }
-
-    .nav-link:hover, .dropdown-trigger:hover {
-        color: var(--nav-accent);
-    }
-
-    .btn-nav {
-        background-color: var(--nav-accent);
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: transform 0.2s, background-color 0.2s;
-    }
-
-    .btn-nav:hover {
-        background-color: #d36547;
-        transform: translateY(-2px);
-    }
-
-    /* Dropdown Styling */
-    .dropdown {
-        position: relative;
-        padding: 20px 0; /* Extends hover area */
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: -50%; /* Center align roughly */
-        background: white;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        border-radius: 12px;
-        padding: 15px;
-        width: 320px;
-        flex-direction: column;
-        gap: 5px;
-        border-top: 4px solid var(--nav-sage);
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: flex;
-    }
-
-    .dropdown-item {
-        text-decoration: none;
-        padding: 12px;
-        border-radius: 8px;
-        transition: background 0.2s;
-    }
-
-    .dropdown-item:hover {
-        background-color: #F7F9F8;
-    }
-
-    .item-title {
-        display: block;
-        font-weight: 700;
-        color: var(--nav-text);
-        margin-bottom: 4px;
-    }
-
-    .item-desc {
-        display: block;
-        font-size: 13px;
-        color: #666;
-        line-height: 1.4;
-    }
-
-    /* Mobile Menu Styles */
-    .mobile-menu-btn {
-        display: none;
-        cursor: pointer;
-        font-size: 24px;
-        color: var(--nav-text);
-    }
-
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: white;
-        transition: right 0.3s ease-in-out;
-        z-index: 1001;
-        padding: 24px;
-    }
-
-    .mobile-menu.active {
-        right: 0;
-    }
-
-    .mobile-menu-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 40px;
-    }
-
-    .close-btn {
-        font-size: 28px;
-        cursor: pointer;
-    }
-
-    .mobile-links {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .mobile-links a {
-        text-decoration: none;
-        color: var(--nav-text);
-        font-size: 18px;
-        font-weight: 500;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 15px;
-    }
-
-    .mobile-label {
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #999;
-        margin-bottom: 10px;
-    }
-
-    .mobile-cta {
-        background-color: var(--nav-accent);
-        color: white !important;
-        text-align: center;
-        border: none !important;
-        border-radius: 8px;
-        padding: 15px !important;
-        margin-top: 20px;
-    }
-
-    @media (max-width: 900px) {
-        .desktop-menu { display: none; }
-        .mobile-menu-btn { display: block; }
-    }
-</style>
-
-<script>
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobileMenu');
-        menu.classList.toggle('active');
-    }
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</nav>
