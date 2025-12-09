@@ -343,6 +343,14 @@
 </head>
 
 <body>
+<div id="navigation-placeholder"></div>
+<script>
+fetch('navigation.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
    <div class="article-layout">
       <div class="article-content">
          <!-- Breadcrumbs -->

@@ -313,6 +313,14 @@
 </head>
 
 <body>
+<div id="navigation-placeholder"></div>
+<script>
+fetch('navigation.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
    <!-- Header Section -->
    <section class="header-section">
       <div class="container">

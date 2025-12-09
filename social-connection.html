@@ -232,7 +232,15 @@
    </style>
 </head>
 
-<body>
+<b<body>
+<div id="navigation-placeholder"></div>
+<script>
+fetch('navigation.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>ody>
    <!-- Hero Section -->
    <section class="hero">
       <div class="container">

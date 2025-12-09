@@ -342,7 +342,15 @@
    </style>
 </head>
 
-<body>
+<b<body>
+<div id="navigation-placeholder"></div>
+<script>
+fetch('navigation.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>ody>
    <div class="article-layout">
       <div class="article-content">
          <!-- Breadcrumbs -->
