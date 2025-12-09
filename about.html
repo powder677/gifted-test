@@ -4,119 +4,378 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>About Us | Gifted Insights</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <title>About Us | Supporting Gifted & 2e Children</title>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300&display=swap" rel="stylesheet">
    <style>
-      :root {
-         --cream: #FDFBF7;
-         --terracotta: #E07A5F;
-         --sage: #81B29A;
-         --charcoal: #3D405B;
-         --radius: 12px;
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
       }
 
       body {
          font-family: 'Inter', sans-serif;
-         background-color: var(--cream);
-         color: var(--charcoal);
-         margin: 0;
          line-height: 1.6;
-      }
-
-      h1,
-      h2,
-      h3 {
-         font-family: 'Merriweather', serif;
-         color: #2A2C35;
+         color: #1a1a1a;
+         background: #ffffff;
       }
 
       .container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      .hero {
+         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+         color: white;
+         padding: 80px 0;
+         text-align: center;
+      }
+
+      .hero h1 {
+         font-size: 3rem;
+         font-weight: 700;
+         margin-bottom: 1rem;
+         line-height: 1.2;
+      }
+
+      .hero p {
+         font-size: 1.25rem;
+         opacity: 0.9;
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      .story-section {
+         padding: 80px 0;
+         background: #fafafa;
+      }
+
+      .story-content {
          max-width: 800px;
          margin: 0 auto;
-         padding: 80px 24px;
+         font-size: 1.125rem;
+         color: #333;
       }
 
-      .story-block {
+      .story-content p {
+         margin-bottom: 1.5rem;
+      }
+
+      .quote-block {
+         background: white;
+         border-left: 4px solid #667eea;
+         padding: 30px;
+         margin: 40px 0;
+         font-style: italic;
+         font-family: 'Merriweather', serif;
+         font-size: 1.25rem;
+         color: #555;
+         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .mission-section {
+         background: #667eea;
+         color: white;
+         padding: 60px 0;
+         text-align: center;
+      }
+
+      .mission-section h2 {
+         font-size: 2.5rem;
+         margin-bottom: 1rem;
+      }
+
+      .mission-section p {
+         font-size: 1.25rem;
+         max-width: 800px;
+         margin: 0 auto;
+         opacity: 0.95;
+      }
+
+      .team-section {
+         padding: 80px 0;
+      }
+
+      .team-section h2 {
+         text-align: center;
+         font-size: 2.5rem;
+         margin-bottom: 3rem;
+         color: #333;
+      }
+
+      .team-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+         gap: 40px;
+         margin-top: 40px;
+      }
+
+      .team-member {
          background: white;
          padding: 40px;
-         border-radius: var(--radius);
-         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-         margin-bottom: 40px;
+         border-radius: 12px;
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      .highlight {
-         color: var(--terracotta);
-         font-weight: bold;
+      .team-member:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
       }
 
-      .signature {
-         font-family: 'Playfair Display', serif;
+      .team-avatar {
+         width: 80px;
+         height: 80px;
+         border-radius: 50%;
+         margin-bottom: 20px;
+         font-weight: 600;
          font-size: 1.5rem;
-         color: var(--sage);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+      }
+
+      .avatar-rachel {
+         background: #667eea;
+      }
+
+      .avatar-evan {
+         background: #f093fb;
+      }
+
+      .avatar-avery {
+         background: #4facfe;
+      }
+
+      .team-member h3 {
+         font-size: 1.5rem;
+         margin-bottom: 0.5rem;
+         color: #333;
+      }
+
+      .team-member .role {
+         color: #666;
+         margin-bottom: 1rem;
+         font-weight: 500;
+      }
+
+      .team-member p {
+         color: #555;
+         line-height: 1.8;
+      }
+
+      .services-section {
+         padding: 80px 0;
+         background: #f8f9fa;
+      }
+
+      .services-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+         gap: 30px;
+         margin-top: 40px;
+      }
+
+      .service-card {
+         background: white;
+         padding: 30px;
+         border-radius: 8px;
+         text-align: center;
+         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+      }
+
+      .service-card h3 {
+         color: #333;
+         margin-bottom: 1rem;
+      }
+
+      .cta-section {
+         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+         color: white;
+         padding: 80px 0;
+         text-align: center;
+      }
+
+      .cta-section h2 {
+         font-size: 2.5rem;
+         margin-bottom: 1.5rem;
+      }
+
+      .cta-buttons {
+         display: flex;
+         gap: 20px;
+         justify-content: center;
+         flex-wrap: wrap;
          margin-top: 30px;
       }
 
-      .values-grid {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 30px;
-         margin-top: 60px;
+      .btn {
+         padding: 15px 30px;
+         border-radius: 8px;
+         text-decoration: none;
+         font-weight: 600;
+         transition: all 0.3s ease;
+         display: inline-block;
       }
 
-      .value-card {
-         padding: 20px;
-         border-left: 4px solid var(--sage);
-         background: rgba(129, 178, 154, 0.1);
+      .btn-primary {
+         background: white;
+         color: #667eea;
+      }
+
+      .btn-primary:hover {
+         background: #f8f9fa;
+         transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+         background: transparent;
+         color: white;
+         border: 2px solid white;
+      }
+
+      .btn-secondary:hover {
+         background: white;
+         color: #667eea;
       }
 
       @media (max-width: 768px) {
-         .values-grid {
+         .hero h1 {
+            font-size: 2rem;
+         }
+
+         .team-grid {
             grid-template-columns: 1fr;
+         }
+
+         .cta-buttons {
+            flex-direction: column;
+            align-items: center;
          }
       }
    </style>
 </head>
 
 <body>
-   <div id="navigation-placeholder"></div>
-
-   <div class="container">
-      <h1 style="font-size: 3rem; margin-bottom: 20px; text-align: center;">We believe your child isn't broken.</h1>
-      <p style="font-size: 1.25rem; text-align: center; margin-bottom: 60px; opacity: 0.8;">They are just wired differently. And standard parenting advice wasn't written for their wiring.</p>
-
-      <div class="story-block">
-         <h2>The "Smart but Stuck" Paradox</h2>
-         <p>You know the feeling. You're sitting in a parent-teacher conference, hearing for the tenth time: <em>"He's so smart, if he would just apply himself."</em></p>
-         <p>Or maybe you're at home, watching your brilliant 10-year-old—who can explain astrophysics—melt down because their socks feel "wrong."</p>
-         <p>It feels like a contradiction. How can a child be so advanced in some areas and struggle so much in others?</p>
-         <p><span class="highlight">This is Asynchronous Development.</span> And it's the heartbeat of everything we do here.</p>
-         <p>We realized that most parenting advice assumes a linear path. Gifted and 2e (Twice-Exceptional) kids don't follow lines. They follow loops, leaps, and sometimes, they freeze entirely.</p>
-         <div class="signature">- The Gifted Insights Team</div>
+   <!-- Hero Section -->
+   <section class="hero">
+      <div class="container">
+         <h1>Every Gifted Child Has a Story</h1>
+         <p>Ours began in a quiet corner—and became a movement to ensure no exceptional child is misunderstood again.</p>
       </div>
+   </section>
 
-      <div class="values-grid">
-         <div class="value-card">
-            <h3>Neuroscience, Not Nagging</h3>
-            <p>We don't believe in "trying harder." We believe in building scaffolds for Executive Function so success becomes automatic.</p>
-         </div>
-         <div class="value-card">
-            <h3>Connection Over Compliance</h3>
-            <p>A regulated child can learn. A dysregulated child is in survival mode. We prioritize emotional safety first.</p>
-         </div>
-         <div class="value-card">
-            <h3>Practical Tools</h3>
-            <p>No fluff. We provide scripts, checklists, and frameworks you can use at the dinner table tonight.</p>
-         </div>
-         <div class="value-card">
-            <h3>Celebrating Intensity</h3>
-            <p>Your child's intensity is their superpower. We help you channel that fire without letting it burn the house down.</p>
+   <!-- Story Section -->
+   <section class="story-section">
+      <div class="container">
+         <div class="story-content">
+            <p>Rachel Whitcomb never planned to revolutionize how we support gifted children. But watching her brilliant daughter slowly dim in a second-grade classroom changed everything.</p>
+
+            <p>The teacher meant well. When Rachel's twice-exceptional daughter finished assignments early, asked complex questions, or needed to move while thinking, she was sent to the quiet corner. Not as punishment—but because the system didn't know what else to do with a mind that moved too fast and a body that needed to keep up.</p>
+
+            <div class="quote-block">
+               "She can't handle more," the teacher explained with genuine concern. "She needs less."
+            </div>
+
+            <p>For Rachel, who'd grown up as the "smart but struggling" kid with undiagnosed learning differences, those words hit like a thunderbolt. She saw her own painful school years reflected in her daughter's experience—the same misunderstandings, the same diminished expectations, the same slow erosion of self-worth.</p>
+
+            <p>But this time would be different.</p>
+
+            <p>Rachel dove deep into research, connected with specialists, and discovered a truth that changed everything: These children don't need less. They need different.</p>
+
+            <p>She assembled a team of professionals who understood that a child could be years ahead intellectually while struggling with basic tasks, could see patterns others missed while missing social cues others caught, could create masterpieces while unable to organize a backpack.</p>
+
+            <p>Together, they built what Rachel wished had existed when she was young—and what thousands of families desperately need today.</p>
          </div>
       </div>
-   </div>
+   </section>
 
-   <script>
-      fetch('navigation.html').then(r => r.text()).then(d => document.getElementById('navigation-placeholder').innerHTML = d);
-   </script>
+   <!-- Mission Section -->
+   <section class="mission-section">
+      <div class="container">
+         <h2>Our Mission</h2>
+         <p>We ensure no gifted or twice-exceptional child is misunderstood, mislabeled, or pushed aside. Every child deserves support that matches their unique wiring—not a one-size-fits-all solution that leaves them behind.</p>
+      </div>
+   </section>
+
+   <!-- Team Section -->
+   <section class="team-section">
+      <div class="container">
+         <h2>Meet Your Advocates</h2>
+
+         <div class="team-grid">
+            <!-- Rachel -->
+            <div class="team-member">
+               <div class="team-avatar avatar-rachel">RW</div>
+               <h3>Rachel Whitcomb</h3>
+               <p class="role">Founder & Parent Advocate</p>
+               <p>Rachel transforms personal experience into powerful advocacy. As both a formerly misunderstood gifted child and a fierce parent advocate, she guides families through the complex journey of raising exceptional children with practical strategies and deep empathy.</p>
+            </div>
+
+            <!-- Evan -->
+            <div class="team-member">
+               <div class="team-avatar avatar-evan">EC</div>
+               <h3>Evan Calder</h3>
+               <p class="role">Learning Architect</p>
+               <p>With 15+ years translating between gifted minds and traditional systems, Evan helps children understand their own thinking patterns. He transforms overthinking into analysis, perfectionism into excellence, and confusion into clarity through metacognitive strategies that actually work.</p>
+            </div>
+
+            <!-- Avery -->
+            <div class="team-member">
+               <div class="team-avatar avatar-avery">AS</div>
+               <h3>Avery Sage</h3>
+               <p class="role">Emotional Intelligence Specialist</p>
+               <p>Avery sees beyond "behavior problems" to understand what children are really communicating. With 12+ years of clinical experience, they create practical tools that transform emotional intensity from a liability into a strength, building homes where sensitive children can thrive.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Services Section -->
+   <section class="services-section">
+      <div class="container">
+         <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">How We Help</h2>
+         <p style="text-align: center; font-size: 1.125rem; color: #666; max-width: 600px; margin: 0 auto 40px;">Transform understanding into action with tools designed for your unique child</p>
+
+         <div class="services-grid">
+            <div class="service-card">
+               <h3>Comprehensive Assessments</h3>
+               <p>Discover your child's complete profile—cognitive gifts, learning style, emotional patterns, and hidden challenges.</p>
+            </div>
+
+            <div class="service-card">
+               <h3>Personalized Strategies</h3>
+               <p>Receive custom learning packets that turn your child's unique traits into academic and social strengths.</p>
+            </div>
+
+            <div class="service-card">
+               <h3>Parent Resources</h3>
+               <p>Access practical guides for advocacy, daily challenges, and maintaining your own emotional balance.</p>
+            </div>
+
+            <div class="service-card">
+               <h3>Community Support</h3>
+               <p>Connect with families who understand the unique joys and challenges of raising exceptional children.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- CTA Section -->
+   <section class="cta-section">
+      <div class="container">
+         <h2>Your Child's Brilliance Is Waiting to Shine</h2>
+         <p style="font-size: 1.25rem; margin-bottom: 30px;">Take the first step toward understanding and supporting your exceptional child.</p>
+
+         <div class="cta-buttons">
+            <a href="/assessment" class="btn btn-primary">Start Our Free Assessment</a>
+            <a href="/resources" class="btn btn-secondary">Explore Resources</a>
+         </div>
+      </div>
+   </section>
 </body>
 
 </html>
