@@ -1,38 +1,58 @@
-<nav class="navbar">
-    <div class="container nav-container">
-        <a href="index.html" class="nav-logo">Gifted Insights</a>
+<div class="nav-container">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo">Gifted Insights</a>
 
-        <ul class="nav-menu">
-            
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-trigger">The 4 Patterns ▾</a>
+        <nav class="desktop-menu">
+            <div class="dropdown">
+                <span class="dropdown-trigger">Browse by Struggle ▾</span>
                 <div class="dropdown-content">
-                    <a href="executive-function.html">🧠 Executive Function</a>
-                    <a href="emotional-regulation.html">💖 Emotional Regulation</a>
-                    <a href="sensory-processing.html">👕 Sensory Processing</a>
-                    <a href="social-connection.html">👥 Social Connection</a>
+                    <a href="executive-function.html" class="dropdown-item">
+                        <span class="item-title">🧠 Focus & Organization</span>
+                        <span class="item-desc">Messy backpacks, homework battles, and "laziness."</span>
+                    </a>
+                    <a href="emotional-regulation.html" class="dropdown-item">
+                        <span class="item-title">💖 Meltdowns & Anxiety</span>
+                        <span class="item-desc">Perfectionism, big feelings, and worry.</span>
+                    </a>
+                    <a href="sensory-processing.html" class="dropdown-item">
+                        <span class="item-title">👕 Sensory & Clothing</span>
+                        <span class="item-desc">Socks, loud noises, and picky eating.</span>
+                    </a>
+                    <a href="social-connection.html" class="dropdown-item">
+                        <span class="item-title">🤝 Friends & Social</span>
+                        <span class="item-desc">Feeling lonely, bossy, or misunderstood.</span>
+                    </a>
                 </div>
-            </li>
+            </div>
 
-            <li class="nav-item"><a href="about.html" class="nav-link">Our Story</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <a href="resources.html" class="nav-link">Library</a>
+            <a href="about.html" class="nav-link">Our Story</a>
+            <a href="contact.html" class="nav-link">Contact</a>
             
-            <li class="nav-item"><a href="quiz.html" class="btn btn-small btn-secondary">Take Quiz</a></li>
-            <li class="nav-item"><a href="parent-assessment.html" class="btn btn-small btn-primary">Shop Guides ($29)</a></li>
-        </ul>
+            <a href="quiz.html" class="btn-nav">Take Quiz</a>
+        </nav>
 
-        <div class="mobile-toggle" onclick="toggleMobileMenu()">
-            <span></span><span></span><span></span>
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
         </div>
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
-        <a href="executive-function.html">Executive Function</a>
-        <a href="emotional-regulation.html">Emotional Regulation</a>
-        <a href="sensory-processing.html">Sensory Processing</a>
-        <a href="social-connection.html">Social Connection</a>
-        <hr>
-        <a href="quiz.html">Take Free Quiz</a>
-        <a href="parent-assessment.html">Get the Guide</a>
+        <div class="mobile-menu-header">
+            <span class="logo">Gifted Insights</span>
+            <span class="close-btn" onclick="toggleMobileMenu()">✕</span>
+        </div>
+        <div class="mobile-links">
+            <div class="mobile-label">I need help with...</div>
+            <a href="executive-function.html">Focus & Organization</a>
+            <a href="emotional-regulation.html">Meltdowns & Anxiety</a>
+            <a href="sensory-processing.html">Sensory Issues</a>
+            <a href="social-connection.html">Social Skills</a>
+            <hr>
+            <a href="resources.html">Resource Library</a>
+            <a href="parent-assessment.html">Shop Parent Guides ($29)</a>
+            <a href="contact.html">Contact</a>
+            <a href="quiz.html" class="mobile-cta">Take the Quiz</a>
+        </div>
     </div>
-</nav>
+</div>
