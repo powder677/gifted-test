@@ -1,208 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <title>Gifted Child Assessment Tool</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Gifted Child Assessment Tool</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-   <script src="https://cdn.tailwindcss.com"></script>
-
-   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-
-   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-   <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
-
-      body {
-         font-family: 'Poppins', sans-serif;
-      }
-
-      /* Navigation styles */
-      .nav-link {
-         position: relative;
-         overflow: hidden;
-      }
-
-      .nav-link::before {
-         content: '';
-         position: absolute;
-         bottom: 0;
-         left: 0;
-         width: 0;
-         height: 2px;
-         background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
-         transition: width 0.3s ease;
-      }
-
-      .nav-link:hover::before {
-         width: 100%;
-      }
-
-      .dropdown {
-         transform-origin: top;
-         animation: dropIn 0.3s ease-out;
-      }
-
-      @keyframes dropIn {
-         from {
-            opacity: 0;
-            transform: scaleY(0.8) translateY(-10px);
-         }
-
-         to {
-            opacity: 1;
-            transform: scaleY(1) translateY(0);
-         }
-      }
-
-      .nav-gradient {
-         background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
-         backdrop-filter: blur(10px);
-         border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-      }
-
-      .mobile-menu {
-         transform-origin: top right;
-      }
-
-      .mobile-menu.open {
-         animation: slideIn 0.3s ease-out;
-      }
-
-      @keyframes slideIn {
-         from {
-            opacity: 0;
-            transform: translateX(100%);
-         }
-
-         to {
-            opacity: 1;
-            transform: translateX(0);
-         }
-      }
-   </style>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-
 <body class="bg-slate-50">
 
-   <div id="root"></div>
+    <div id="root"></div>
 
-   <script type="text/babel">
-      // --- SETUP: Destructure Hooks ---
+    <script type="text/babel">
+        // --- SETUP: Destructure Hooks ---
         const { useState, useRef } = React;
-
-        // Navigation Component
-        const Navigation = () => {
-            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-            const [blogDropdownOpen, setBlogDropdownOpen] = useState(false);
-
-            const blogCategories = [
-                { name: 'Understanding Giftedness', emoji: '🧠' },
-                { name: 'Executive Function', emoji: '🎯' },
-                { name: 'Emotional Intensity', emoji: '💜' },
-                { name: 'Learning Strategies', emoji: '📚' }
-            ];
-
-            return (
-                <nav className="nav-gradient sticky top-0 z-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex justify-between items-center h-16">
-                            {/* Logo/Brand */}
-                            <div className="flex items-center">
-                                <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                                    Brilliant Minds 🌟
-                                </span>
-                            </div>
-
-                            {/* Desktop Navigation */}
-                            <div className="hidden md:flex items-center space-x-8">
-                                <a href="/gifted-assessment-tool.html" className="nav-link text-gray-700 hover:text-purple-600 font-medium transition-colors">
-                                    Parent Assessment
-                                </a>
-                                <a href="/child-self-assessment.html" className="nav-link text-gray-700 hover:text-purple-600 font-medium transition-colors">
-                                    Child Assessment
-                                </a>
-                                
-                                {/* Blog Dropdown */}
-                                <div className="relative">
-                                    <button 
-                                        onClick={() => setBlogDropdownOpen(!blogDropdownOpen)}
-                                        className="nav-link text-gray-700 hover:text-purple-600 font-medium transition-colors flex items-center space-x-1"
-                                    >
-                                        <span>Blog</span>
-                                        <ChevronDown className={`w-4 h-4 transition-transform ${blogDropdownOpen ? 'rotate-180' : ''}`} />
-                                    </button>
-                                    
-                                    {blogDropdownOpen && (
-                                        <div className="dropdown absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg py-2">
-                                            {blogCategories.map(cat => (
-                                                <a 
-                                                    key={cat.name}
-                                                    href="#" 
-                                                    className="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
-                                                >
-                                                    <span className="mr-2">{cat.emoji}</span>
-                                                    {cat.name}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                                
-                                <a href="#" className="nav-link text-gray-700 hover:text-purple-600 font-medium transition-colors opacity-50 cursor-not-allowed">
-                                    Quiz (Coming Soon)
-                                </a>
-                            </div>
-
-                            {/* Mobile menu button */}
-                            <button
-                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                className="md:hidden text-gray-700"
-                            >
-                                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Mobile Navigation */}
-                    {mobileMenuOpen && (
-                        <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''} md:hidden bg-white shadow-lg`}>
-                            <div className="px-4 pt-2 pb-3 space-y-1">
-                                <a href="/gifted-assessment-tool.html" className="block px-3 py-2 text-gray-700 hover:bg-purple-50 rounded-md">
-                                    Parent Assessment
-                                </a>
-                                <a href="/child-self-assessment.html" className="block px-3 py-2 text-gray-700 hover:bg-purple-50 rounded-md">
-                                    Child Assessment
-                                </a>
-                                
-                                <div className="border-t border-gray-100 my-2"></div>
-                                <div className="px-3 py-1 text-sm font-semibold text-gray-500">Blog Categories</div>
-                                
-                                {blogCategories.map(cat => (
-                                    <a 
-                                        key={cat.name}
-                                        href="#" 
-                                        className="block px-3 py-2 text-gray-700 hover:bg-purple-50 rounded-md"
-                                    >
-                                        <span className="mr-2">{cat.emoji}</span>
-                                        {cat.name}
-                                    </a>
-                                ))}
-                                
-                                <div className="border-t border-gray-100 my-2"></div>
-                                <a href="#" className="block px-3 py-2 text-gray-400 rounded-md">
-                                    Quiz (Coming Soon)
-                                </a>
-                            </div>
-                        </div>
-                    )}
-                </nav>
-            );
-        };
 
         // --- SETUP: Define Icons manually (replacing lucide-react imports) ---
         const IconWrapper = ({ children, className, ...props }) => (
@@ -238,15 +59,6 @@
         );
         const AlertCircle = (props) => (
             <IconWrapper {...props}><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></IconWrapper>
-        );
-        const Menu = (props) => (
-            <IconWrapper {...props}><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></IconWrapper>
-        );
-        const X = (props) => (
-            <IconWrapper {...props}><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></IconWrapper>
-        );
-        const ChevronDown = (props) => (
-            <IconWrapper {...props}><path d="m6 9 6 6 6-6"/></IconWrapper>
         );
 
         // --- DATA CONSTANTS ---
@@ -451,9 +263,24 @@
           if (showResults) {
             return (
               <>
-                <Navigation />
-                <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800">
-                  <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
+                {/* Navigation */}
+                <div className="fixed top-0 left-0 right-0 z-50 bg-indigo-900 shadow-lg">
+                  <nav className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                    <a href="index.html" className="text-white font-bold text-xl flex items-center">
+                      <span className="mr-2">🚀</span>
+                      MISSION CONTROL
+                    </a>
+                    <div className="hidden md:flex space-x-4">
+                      <a href="index.html" className="text-white hover:text-yellow-300 transition">HOME</a>
+                      <a href="gifted-assessment-tool.html" className="text-white hover:text-yellow-300 transition font-bold">PARENT ASSESSMENT</a>
+                      <a href="child-self-assessment.html" className="text-white hover:text-yellow-300 transition">CHILD ASSESSMENT</a>
+                      <a href="mission-control-preview.html" className="text-white hover:text-yellow-300 transition">PREVIEW PACKET</a>
+                    </div>
+                  </nav>
+                </div>
+                
+                <div className="min-h-screen bg-slate-50 p-4 md:p-8 pt-20 font-sans text-slate-800">
+                <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
                   <div className="bg-indigo-600 p-6 text-white text-center">
                     <BarChart3 className="w-12 h-12 mx-auto mb-4" />
                     <h1 className="text-3xl font-bold mb-2">Assessment Results</h1>
@@ -539,8 +366,23 @@
 
           return (
             <>
-              <Navigation />
-              <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800" ref={topRef}>
+              {/* Navigation */}
+              <div className="fixed top-0 left-0 right-0 z-50 bg-indigo-900 shadow-lg">
+                <nav className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                  <a href="index.html" className="text-white font-bold text-xl flex items-center">
+                    <span className="mr-2">🚀</span>
+                    MISSION CONTROL
+                  </a>
+                  <div className="hidden md:flex space-x-4">
+                    <a href="index.html" className="text-white hover:text-yellow-300 transition">HOME</a>
+                    <a href="gifted-assessment-tool.html" className="text-white hover:text-yellow-300 transition font-bold">PARENT ASSESSMENT</a>
+                    <a href="child-self-assessment.html" className="text-white hover:text-yellow-300 transition">CHILD ASSESSMENT</a>
+                    <a href="mission-control-preview.html" className="text-white hover:text-yellow-300 transition">PREVIEW PACKET</a>
+                  </div>
+                </nav>
+              </div>
+              
+              <div className="min-h-screen bg-slate-50 p-4 md:p-8 pt-20 font-sans text-slate-800" ref={topRef}>
               <div className="max-w-3xl mx-auto">
                 
                 {/* Header */}
@@ -648,5 +490,4 @@
         root.render(<GiftedAssessmentApp />);
     </script>
 </body>
-
 </html>
