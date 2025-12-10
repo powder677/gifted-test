@@ -1,49 +1,157 @@
-// navigation.js
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
+<style>
+    /* Navigation Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
     
-    // Check if menu is currently hidden or shown
-    const isHidden = menu.style.display === 'none' || menu.style.display === '';
+    .nav-container { font-family: 'Poppins', sans-serif; }
     
-    if (isHidden) {
-        menu.style.display = 'block';
-        menu.classList.add('open');
-        menuIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
-    } else {
-        menu.style.display = 'none';
-        menu.classList.remove('open');
-        menuIcon.style.display = 'block';
-        closeIcon.style.display = 'none';
+    .nav-link { position: relative; overflow: hidden; text-decoration: none; }
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; width: 0; height: 2px;
+        background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+        transition: width 0.3s ease;
     }
-}
+    .nav-link:hover::before { width: 100%; }
+    
+    .dropdown { transform-origin: top; animation: dropIn 0.3s ease-out; }
+    @keyframes dropIn {
+        from { opacity: 0; transform: scaleY(0.8) translateY(-10px); }
+        to { opacity: 1; transform: scaleY(1) translateY(0); }
+    }
+    
+    .nav-gradient {
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        position: sticky; top: 0; z-index: 50;
+    }
+    
+    .mobile-menu { transform-origin: top right; }
+    .mobile-menu.open { animation: slideIn 0.3s ease-out; }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(100%); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    /* Utility classes */
+    .nav-max-w-7xl { max-width: 80rem; }
+    .nav-mx-auto { margin-left: auto; margin-right: auto; }
+    .nav-px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .nav-h-16 { height: 4rem; }
+    .nav-flex { display: flex; }
+    .nav-justify-between { justify-content: space-between; }
+    .nav-items-center { align-items: center; }
+    .nav-space-x-6 > * + * { margin-left: 1.5rem; }
+    .nav-hidden { display: none; }
+    .nav-block { display: block; }
+    .nav-relative { position: relative; }
+    .nav-absolute { position: absolute; }
+    .nav-top-full { top: 100%; }
+    .nav-left-0 { left: 0; }
+    .nav-mt-2 { margin-top: 0.5rem; }
+    .nav-w-64 { width: 16rem; }
+    .nav-bg-white { background-color: white; }
+    .nav-rounded-lg { border-radius: 0.5rem; }
+    .nav-shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    .nav-py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .nav-px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .nav-text-gray-700 { color: #374151; }
+    .nav-font-medium { font-weight: 500; }
+    .nav-transition-colors { transition: color 0.15s ease; }
+    .nav-text-2xl { font-size: 1.5rem; }
+    .nav-font-bold { font-weight: 700; }
+    
+    @media (min-width: 900px) {
+        .nav-md-flex { display: flex; }
+        .nav-md-hidden { display: none; }
+    }
+</style>
 
-function toggleBlogDropdown() {
-    const dropdown = document.getElementById('blog-dropdown');
-    const chevron = document.getElementById('blog-chevron');
-    
-    const isHidden = dropdown.style.display === 'none' || dropdown.style.display === '';
-    
-    if (isHidden) {
-        dropdown.style.display = 'block';
-        chevron.style.transform = 'rotate(180deg)';
-    } else {
-        dropdown.style.display = 'none';
-        chevron.style.transform = 'rotate(0deg)';
-    }
-}
+<nav class="nav-gradient nav-container">
+    <div class="nav-max-w-7xl nav-mx-auto nav-px-4">
+        <div class="nav-flex nav-justify-between nav-items-center nav-h-16">
+            <div class="nav-flex nav-items-center">
+                <a href="index.html" style="text-decoration: none;">
+                    <span class="nav-text-2xl nav-font-bold" style="background: linear-gradient(to right, #9333ea, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        Brilliant Minds 🌟
+                    </span>
+                </a>
+            </div>
 
-// Close dropdown when clicking outside
-document.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('blog-dropdown');
-    const button = event.target.closest('button');
-    const chevron = document.getElementById('blog-chevron');
-    
-    // If we clicked outside the button, and the dropdown exists
-    if (dropdown && (!button || button.getAttribute('onclick') !== 'toggleBlogDropdown()')) {
-        dropdown.style.display = 'none';
-        if(chevron) chevron.style.transform = 'rotate(0deg)';
-    }
-});
+            <div class="nav-hidden nav-md-flex nav-items-center nav-space-x-6">
+                <a href="about.html" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors">
+                    Our Story
+                </a>
+                <a href="gifted-assessment-tool.html" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors">
+                    Parent Assessment
+                </a>
+                <a href="child-self-assessment.html" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors">
+                    Child Assessment
+                </a>
+                
+                <div class="nav-relative">
+                    <button onclick="toggleBlogDropdown()" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors nav-flex nav-items-center" style="background:none; border:none; cursor:pointer;">
+                        <span>Blog</span>
+                        <svg id="blog-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.25rem; transition: transform 0.3s;">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <div id="blog-dropdown" class="dropdown nav-absolute nav-top-full nav-left-0 nav-mt-2 nav-w-64 nav-bg-white nav-rounded-lg nav-shadow-lg nav-py-2" style="display: none;">
+                        <a href="asynchronous-development.html" class="nav-block nav-px-4 nav-py-2 nav-text-gray-700 nav-transition-colors" style="text-decoration: none;">
+                            <span style="margin-right: 0.5rem;">🧠</span> Understanding Giftedness
+                        </a>
+                        <a href="executive-function.html" class="nav-block nav-px-4 nav-py-2 nav-text-gray-700 nav-transition-colors" style="text-decoration: none;">
+                            <span style="margin-right: 0.5rem;">🎯</span> Executive Function
+                        </a>
+                        <a href="emotional-regulation.html" class="nav-block nav-px-4 nav-py-2 nav-text-gray-700 nav-transition-colors" style="text-decoration: none;">
+                            <span style="margin-right: 0.5rem;">💜</span> Emotional Intensity
+                        </a>
+                        <a href="sensory-processing.html" class="nav-block nav-px-4 nav-py-2 nav-text-gray-700 nav-transition-colors" style="text-decoration: none;">
+                            <span style="margin-right: 0.5rem;">🔊</span> Sensory & Physical
+                        </a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors">
+                    Contact
+                </a>
+                
+                <a href="quiz.html" class="nav-link nav-text-gray-700 nav-font-medium nav-transition-colors">
+                    Quiz
+                </a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="nav-md-hidden nav-text-gray-700" style="background: none; border: none; cursor: pointer;">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"/>
+                    <line x1="4" x2="20" y1="6" y2="6"/>
+                    <line x1="4" x2="20" y1="18" y2="18"/>
+                </svg>
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                    <line x1="18" x2="6" y1="6" y2="18"/>
+                    <line x1="6" x2="18" y1="6" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu nav-md-hidden nav-bg-white nav-shadow-lg" style="display: none;">
+        <div class="nav-px-4" style="padding-top: 0.5rem; padding-bottom: 0.75rem;">
+            <a href="about.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">Our Story</a>
+            <a href="gifted-assessment-tool.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">Parent Assessment</a>
+            <a href="child-self-assessment.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">Child Assessment</a>
+            <a href="contact.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">Contact</a>
+            <a href="quiz.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">Quiz</a>
+            
+            <div style="border-top: 1px solid #e5e7eb; margin: 0.5rem 0;"></div>
+            <div class="nav-px-3" style="padding: 0.25rem 0; font-size: 0.875rem; font-weight: 600; color: #6b7280;">Blog Categories</div>
+            
+            <a href="asynchronous-development.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">🧠 Understanding Giftedness</a>
+            <a href="executive-function.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">🎯 Executive Function</a>
+            <a href="emotional-regulation.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">💜 Emotional Intensity</a>
+            <a href="sensory-processing.html" class="nav-block nav-px-3 nav-py-2 nav-text-gray-700 nav-rounded-md" style="text-decoration: none;">🔊 Sensory & Physical</a>
+        </div>
+    </div>
+</nav>
