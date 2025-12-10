@@ -44,7 +44,7 @@
          background-color: var(--bg-cream);
          color: var(--text-charcoal);
          line-height: var(--line-height);
-         font-size: 18px;
+         font-size: 18px; /* Restored to original size */
       }
 
       h1,
@@ -175,6 +175,8 @@
          padding: 25px 30px;
          margin: 40px 0;
          border-radius: 0 var(--radius) var(--radius) 0;
+         background: white; /* Added white bg for better contrast */
+         box-shadow: var(--shadow);
       }
 
       .highlight-box h3 {
@@ -343,24 +345,23 @@
 </head>
 
 <body>
-<div id="navigation-placeholder"></div>
-<script>
-fetch('navigation.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
+   <div id="navigation-placeholder"></div>
+   <script>
+      fetch('navigation.html')
+         .then(response => response.text())
+         .then(data => {
+            document.getElementById('navigation-placeholder').innerHTML = data;
+         });
+   </script>
+
    <div class="article-layout">
       <div class="article-content">
-         <!-- Breadcrumbs -->
          <div class="breadcrumbs">
             <a href="#">Home</a> <span>/</span>
             <a href="#">Development</a> <span>/</span>
             <span>Asynchronous Development</span>
          </div>
 
-         <!-- Article Header -->
          <header class="article-header">
             <h1>Asynchronous Development: 12-Year-Old Mind, 6-Year-Old Emotions</h1>
             <div class="author-byline">
@@ -372,7 +373,6 @@ fetch('navigation.html')
             </div>
          </header>
 
-         <!-- Key Takeaways -->
          <div class="key-takeaways">
             <h2>TL;DR</h2>
             <ul>
@@ -383,7 +383,6 @@ fetch('navigation.html')
             </ul>
          </div>
 
-         <!-- Article Content -->
          <div class="article-body">
             <p>Your 8-year-old explains the principles of quantum entanglement with the precision of a physicist, yet melts down over a broken crayon. Your teenager designs complex video games but can't resolve a playground dispute without adult intervention. Your child reads at a college level but struggles to tie their shoes independently.</p>
 
@@ -611,26 +610,24 @@ fetch('navigation.html')
          </div>
       </div>
 
-      <!-- Sidebar -->
       <div class="article-sidebar">
          <div class="sidebar-widget">
             <h3>Is your child 2e?</h3>
             <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
-            <button class="btn">Take the Free Quiz</button>
+            <button class="btn" onclick="window.location.href='quiz.html'">Take the Free Quiz</button>
          </div>
       </div>
    </div>
 
-   <!-- Read Next Section -->
    <section class="read-next">
       <div class="container">
          <h2>Read Next</h2>
          <div class="read-next-grid">
-            <a href="#" class="read-next-card">
+            <a href="perfectionism-trap.html" class="read-next-card">
                <h3>The Perfectionism Trap</h3>
                <p>Helping kids who cry over a 98%.</p>
             </a>
-            <a href="#" class="read-next-card">
+            <a href="laziness-vs-dysfunction.html" class="read-next-card">
                <h3>Laziness vs. Dysfunction</h3>
                <p>How to tell if they won't do it, or can't do it.</p>
             </a>
