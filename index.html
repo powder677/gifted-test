@@ -3,56 +3,552 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brilliant Minds - Assessments for Gifted Children</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mission Control Center - Assessment Portal</title>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
-        body { font-family: 'Poppins', sans-serif; }
-        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0f0f23;
+            --accent: #00ff41;
+            --secondary: #ff006e;
+            --tertiary: #3a86ff;
+            --warning: #ffbe0b;
+            --bg-grid: rgba(0, 255, 65, 0.03);
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--primary);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--bg-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Navigation Bar */
+        .nav-container {
+            position: relative;
+            z-index: 1000;
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--accent);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent), var(--tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo::before {
+            content: "🚀";
+            font-size: 2rem;
+            -webkit-text-fill-color: initial;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::before {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-title span {
+            display: inline-block;
+            animation: glitch 3s infinite;
+            position: relative;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { 
+                text-shadow: 
+                    0.05em 0 0 var(--secondary),
+                    -0.05em -0.025em 0 var(--tertiary),
+                    0.025em 0.05em 0 var(--warning);
+            }
+            14% {
+                text-shadow: 
+                    0.05em 0 0 var(--secondary),
+                    -0.05em -0.025em 0 var(--tertiary),
+                    0.025em 0.05em 0 var(--warning);
+            }
+            15% {
+                text-shadow: 
+                    -0.05em -0.025em 0 var(--secondary),
+                    0.025em 0.025em 0 var(--tertiary),
+                    -0.05em -0.05em 0 var(--warning);
+            }
+            49% {
+                text-shadow: 
+                    -0.05em -0.025em 0 var(--secondary),
+                    0.025em 0.025em 0 var(--tertiary),
+                    -0.05em -0.05em 0 var(--warning);
+            }
+            50% {
+                text-shadow: 
+                    0.025em 0.05em 0 var(--secondary),
+                    0.05em 0 0 var(--tertiary),
+                    0 -0.05em 0 var(--warning);
+            }
+            99% {
+                text-shadow: 
+                    0.025em 0.05em 0 var(--secondary),
+                    0.05em 0 0 var(--tertiary),
+                    0 -0.05em 0 var(--warning);
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(0, 255, 65, 0.1));
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            z-index: 0;
+        }
+        
+        .card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 
+                0 20px 40px rgba(0, 255, 65, 0.2),
+                0 0 0 1px var(--accent),
+                inset 0 0 60px rgba(0, 255, 65, 0.05);
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px currentColor);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .card:nth-child(1) .card-icon { 
+            animation-delay: 0s; 
+            color: var(--accent);
+        }
+        
+        .card:nth-child(2) .card-icon { 
+            animation-delay: 0.5s; 
+            color: var(--secondary);
+        }
+        
+        .card:nth-child(3) .card-icon { 
+            animation-delay: 1s; 
+            color: var(--tertiary);
+        }
+        
+        .card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        .card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Feature Badges */
+        .feature-strip {
+            background: rgba(0, 255, 65, 0.05);
+            border-top: 1px solid rgba(0, 255, 65, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+            padding: 3rem 0;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-strip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            animation: sweep 8s linear infinite;
+        }
+        
+        @keyframes sweep {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-shadow: 0 0 30px currentColor;
+        }
+        
+        .feature-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Floating elements */
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border: 2px solid rgba(0, 255, 65, 0.2);
+            background: rgba(0, 255, 65, 0.02);
+            animation: float-shape 20s infinite linear;
+        }
+        
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            transform: rotate(45deg);
+            animation-duration: 25s;
+        }
+        
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            top: 70%;
+            right: 15%;
+            border-radius: 50%;
+            animation-duration: 30s;
+        }
+        
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            left: 80%;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-duration: 22s;
+        }
+        
+        @keyframes float-shape {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .features {
+                gap: 2rem;
+            }
+        }
+        
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
     </style>
 </head>
-<body class="bg-gray-50">
-
-    <div id="navigation-placeholder"></div>
-
-    <div class="hero-gradient text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">Understanding Your Brilliant Mind</h1>
-            <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-                Comprehensive assessments designed to help understand and support gifted and twice-exceptional children
-            </p>
+<body>
+    <!-- Grid Background -->
+    <div class="grid-bg"></div>
+    
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav>
+            <a href="index.html" class="logo">MISSION CONTROL</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="gifted-assessment-tool.html" class="nav-link">PARENT ASSESSMENT</a>
+                <a href="child-self-assessment.html" class="nav-link">CHILD ASSESSMENT</a>
+                <a href="mission-control-preview.html" class="nav-link">PREVIEW PACKET</a>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">
+                <span>ASSESSMENT</span> <span>PORTAL</span>
+            </h1>
+            <p class="hero-subtitle">EXECUTIVE FUNCTION & GIFTEDNESS EVALUATION SYSTEM</p>
+        </section>
+        
+        <!-- Cards Grid -->
+        <div class="cards-grid">
+            <!-- Parent Assessment Card -->
+            <a href="gifted-assessment-tool.html" class="card">
+                <div class="card-content">
+                    <div class="card-icon">📊</div>
+                    <h3>Parent Assessment Tool</h3>
+                    <p>Comprehensive evaluation for parents to assess their child's executive function, sensory regulation, and emotional needs. Generate detailed reports and actionable insights.</p>
+                    <span class="card-tag">45 QUESTIONS</span>
+                    <span class="card-tag">AGE 6-18</span>
+                </div>
+            </a>
+            
+            <!-- Child Self-Assessment Card -->
+            <a href="child-self-assessment.html" class="card">
+                <div class="card-content">
+                    <div class="card-icon">🌟</div>
+                    <h3>Child Self-Assessment</h3>
+                    <p>Interactive, child-friendly journey to help young minds understand their amazing brains. Features fun animations and age-appropriate questions.</p>
+                    <span class="card-tag">8 SECTIONS</span>
+                    <span class="card-tag">AGE 8-14</span>
+                </div>
+            </a>
+            
+            <!-- Mission Control Preview Card -->
+            <a href="mission-control-preview.html" class="card">
+                <div class="card-content">
+                    <div class="card-icon">🚀</div>
+                    <h3>Mission Control Packet</h3>
+                    <p>Preview our 15-page Executive Function Space Academy training packet. Complete 5-day program with activities, worksheets, and parent guidance.</p>
+                    <span class="card-tag">15 PAGES</span>
+                    <span class="card-tag">5-DAY PROGRAM</span>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Feature Strip -->
+        <div class="feature-strip">
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-number pulse">3</div>
+                    <div class="feature-label">Assessment Tools</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-number pulse">15+</div>
+                    <div class="feature-label">Page Resources</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-number pulse">100%</div>
+                    <div class="feature-label">Science-Based</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-number pulse">8-18</div>
+                    <div class="feature-label">Age Range</div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">Choose Your Assessment</h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-            <div class="bg-white rounded-2xl shadow-xl card-hover p-8">
-                <div class="bg-indigo-500 text-white p-4 rounded-lg -mt-12 mb-6 text-center font-bold text-xl">Parent Assessment</div>
-                <p class="text-gray-600 mb-6">A comprehensive evaluation of executive function and sensory regulation.</p>
-                <a href="gifted-assessment-tool.html" class="block w-full text-center bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700">Start Parent Assessment</a>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow-xl card-hover p-8">
-                <div class="bg-pink-500 text-white p-4 rounded-lg -mt-12 mb-6 text-center font-bold text-xl">Child Self-Assessment</div>
-                <p class="text-gray-600 mb-6">A fun, interactive journey for children to discover their unique brain.</p>
-                <a href="child-self-assessment.html" class="block w-full text-center bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600">Start Child Assessment</a>
-            </div>
-        </div>
-    </div>
-
-    <script src="navigation.js"></script> 
-    <script>
-        fetch('navigation.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navigation-placeholder').innerHTML = data;
-            });
-    </script>
 </body>
 </html>
