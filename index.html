@@ -9,11 +9,11 @@
 <body>
     
     <div id="navigation-placeholder"></div>
-<script>
-    fetch('navigation.html').then(response => response.text()).then(data => {
-        document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
+    <script>
+        fetch('navigation.html').then(response => response.text()).then(data => {
+            document.getElementById('navigation-placeholder').innerHTML = data;
+        });
+    </script>
 
     <main>
         <section id="hero" class="container" style="text-align: center; padding: 80px 20px;">
@@ -23,7 +23,7 @@
             <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.3rem; color: #555;">
                 Empowering suburban parents with **professional, research-based** tools to build essential executive function skills. Clean, sophisticated, and inviting.
             </p>
-            <div style="display: flex; justify-content: center; gap: 20px;">
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                 <a href="mission-control-preview.html" class="btn-primary">
                     <i class="fas fa-file-pdf"></i> Explore Our Training Packet
                 </a>
@@ -39,17 +39,17 @@
                 <div style="display: flex; gap: 30px; text-align: center; flex-wrap: wrap; justify-content: center;">
                     <div class="premium-card" style="flex: 1; min-width: 250px; background-color: white; padding: 25px;">
                         <i class="fas fa-balance-scale" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.4rem;">Science-Backed</h3>
+                        <h3 style="font-size: 1.4rem; font-family: var(--font-header);">Science-Backed</h3>
                         <p style="font-size: 1rem; color: #555;">Strategies grounded in cognitive science and child psychology.</p>
                     </div>
                     <div class="premium-card" style="flex: 1; min-width: 250px; background-color: white; padding: 25px;">
                         <i class="fas fa-hand-holding-heart" style="font-size: 2rem; color: var(--color-accent); margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.4rem;">Warm & Polished</h3>
+                        <h3 style="font-size: 1.4rem; font-family: var(--font-header);">Warm & Polished</h3>
                         <p style="font-size: 1rem; color: #555;">A design aesthetic that feels supportive, not clinical.</p>
                     </div>
                     <div class="premium-card" style="flex: 1; min-width: 250px; background-color: white; padding: 25px;">
                         <i class="fas fa-mobile-alt" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.4rem;">Effortless Mobile Use</h3>
+                        <h3 style="font-size: 1.4rem; font-family: var(--font-header);">Effortless Mobile Use</h3>
                         <p style="font-size: 1rem; color: #555;">Designed to look perfect whether on a desktop or phone.</p>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <h2 style="margin-bottom: 40px; font-size: 2rem;">What Suburban Moms Are Saying</h2>
                 <div class="premium-card" style="background-color: white;">
                     <i class="fas fa-quote-left" style="font-size: 1.5rem; color: var(--color-accent); margin-bottom: 20px;"></i>
-                    <blockquote style="font-style: italic; font-size: 1.25rem; line-height: 1.7; color: #444;">
+                    <blockquote style="font-style: italic; font-size: 1.25rem; line-height: 1.7; color: #444; font-family: var(--font-header);">
                         "The Mission Control Packet finally gave me the elegant, structured tools I needed. It feels premium and professional—exactly what I want for my child's education. The design is so clean and inviting!"
                     </blockquote>
                     <p style="font-weight: 600; color: var(--color-primary); margin-top: 20px;">&mdash; Sarah L., Mom of Two, Westchester, NY</p>
@@ -70,12 +70,12 @@
         </section>
         
         <section id="contact" style="background-color: var(--color-secondary);">
-            <div class="container" style="max-width: 600px; text-align: center; padding: 40px;">
+            <div class="container" style="max-width: 600px; text-align: center; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--box-shadow-subtle);">
                 <h3 style="margin-bottom: 20px; font-size: 1.8rem;">Ready for Clarity and Calm?</h3>
                 <p style="font-size: 1.1rem; margin-bottom: 30px; color: #555;">Join our community for expert tips and exclusive insights delivered weekly.</p>
                 
                 <form action="#" style="display: flex; flex-direction: column; gap: 15px;">
-                    <input type="email" placeholder="Enter your best email address" required style="padding: 14px; border: 1px solid #ccc; border-radius: var(--border-radius); font-family: var(--font-body);">
+                    <input type="email" placeholder="Enter your best email address" required style="padding: 14px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: var(--border-radius); font-family: var(--font-body);">
                     <button type="submit" class="btn-primary">Subscribe Now for Weekly Tips</button>
                 </form>
             </div>
