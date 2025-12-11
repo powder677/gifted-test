@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Mission Control Packet Preview - Your Child's User Manual</title>
+   <link rel="stylesheet" href="styles.css">
+   <style>
+      /* Overrides for local elements to use new CSS variables */
+      .hero-image {
+         background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%) !important;
+         box-shadow: var(--box-shadow-hover) !important;
+      }
+      .solution-image {
+         background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%) !important;
+      }
+      .sticky-btn {
+         background-color: var(--color-primary);
+      }
+      .sticky-btn:hover {
+         background-color: #6a8373;
+      }
+      .testimonial::before {
+         color: var(--color-accent);
+      }
+      .card-icon {
+         color: var(--color-primary);
+      }
+      .card-icon i {
+         font-size: 2rem;
+      }
+   </style>
+</head>
+
+<body>
+    <div id="navigation-placeholder"></div>
+    <script>
+        fetch('navigation.html').then(response => response.text()).then(data => {
+            document.getElementById('navigation-placeholder').innerHTML = data;
+        });
+    </script>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>The User Manual Your Child Didn't Come With.</h1>
+                        <p>A 12-page actionable guide for Deep Processors and Sensitive Kids—download your exclusive preview now!</p>
+                        <a href="checkout.html" class="btn btn-primary">Get Instant Access - $129</a>
+                    </div>
+                    <div class="hero-image">
+                        THE MISSION CONTROL PACKET<br>
+                        12-Page Digital Guide
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="problem" style="background-color: var(--color-background);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tired of the drama?</h2>
+                    <p>Stop guessing and start understanding with science-backed insights.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card premium-card">
+                        <div class="card-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3>Morning Battles</h3>
+                        <p>End the daily struggle to get everyone dressed and out the door on time.</p>
+                    </div>
+                    <div class="card premium-card">
+                        <div class="card-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Homework Meltdowns</h3>
+                        <p>Create a calm, productive homework environment that actually works.</p>
+                    </div>
+                    <div class="card premium-card">
+                        <div class="card-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h3>Bedtime Anxiety</h3>
+                        <p>Help your child wind down and sleep peacefully without endless negotiations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution" style="background-color: var(--color-secondary);">
+            <div class="container">
+                <div class="solution-item">
+                    <div class="solution-image">
+                        THE SCIENCE BEHIND<br>
+                        YOUR CHILD'S BRAIN
+                    </div>
+                    <div class="solution-text">
+                        <h3>The "Why" - Neuroscience explained simply.</h3>
+                        <p>Understand exactly what's happening in your child's developing brain. Learn why they think differently, feel more deeply, and experience the world in unique ways.</p>
+                    </div>
+                </div>
+
+                <div class="solution-item">
+                    <div class="solution-image">
+                        6-WEEK ACTION PLAN<br>
+                        WITH WEEKLY GOALS
+                    </div>
+                    <div class="solution-text">
+                        <h3>The 6-Week Action Plan.</h3>
+                        <p>A structured roadmap to implement positive changes in your home. Each week focuses on a specific area: routines, communication, emotional regulation, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-proof">
+            </section>
+    </main>
+
+    <div class="sticky-bar">
+      <div class="sticky-content">
+         <div class="sticky-text" style="color: var(--color-secondary);">Get the Full Packet & Assessment</div>
+         <a href="checkout.html" class="sticky-btn">Buy Now - $129</a>
+      </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html').then(response => response.text()).then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
