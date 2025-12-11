@@ -1,3 +1,136 @@
+<style>
+    /*
+     * NAVIGATION STYLES
+     * Applies premium aesthetic using project variables and sticky behavior.
+     */
+    :root {
+        /* Assuming these are globally defined, redefined here for safety/context */
+        --bg-cream: #FDFBF7;
+        --color-sage: #81B29A;
+        --color-terracotta: #E07A5F;
+        --text-dark: #2A2C35;
+        --color-gold: #F2CC8F;
+        --radius: 12px;
+        --font-heading: 'Merriweather', serif;
+        --font-body: 'Inter', sans-serif;
+    }
+
+    .navbar {
+        background-color: var(--bg-cream); /* Cream background */
+        border-bottom: 2px solid rgba(129, 178, 154, 0.2); /* Soft Sage/Light Border */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        font-family: var(--font-body);
+    }
+
+    .navbar-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo a {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        text-decoration: none;
+    }
+
+    .desktop-nav .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .desktop-nav .nav-links a {
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 5px 0;
+        transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    .desktop-nav .nav-links a:hover {
+        color: var(--color-terracotta);
+        border-bottom: 2px solid var(--color-gold); /* Gold accent on hover */
+    }
+
+    /* Accent Link Styling */
+    .desktop-nav .nav-links a[data-download-fix],
+    .mobile-nav-links a[data-download-fix] {
+        color: var(--color-terracotta) !important; 
+        font-weight: 700;
+        border: 2px solid var(--color-terracotta);
+        padding: 8px 15px;
+        border-radius: var(--radius);
+        transition: all 0.3s ease;
+    }
+
+    .desktop-nav .nav-links a[data-download-fix]:hover,
+    .mobile-nav-links a[data-download-fix]:hover {
+        background-color: var(--color-terracotta);
+        color: white !important;
+        border-bottom: none;
+    }
+
+    /* Mobile Menu Styles */
+    .menu-toggle {
+        display: none; /* Hidden on desktop */
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-dark);
+        padding: 0;
+    }
+
+    .mobile-nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: var(--bg-white); /* Lighter background for dropdown */
+        position: absolute;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    .mobile-nav-links.active {
+        display: flex;
+    }
+
+    .mobile-nav-links a {
+        padding: 15px 24px;
+        text-decoration: none;
+        color: var(--text-dark);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-nav-links a:hover {
+        background-color: rgba(129, 178, 154, 0.1); /* Light Sage hover */
+        color: var(--color-sage);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+        .desktop-nav {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
 <header class="navbar">
     <div class="navbar-container">
         <div class="logo">
@@ -10,7 +143,7 @@
                 <li><a href="gifted-assessment-tool.html">Parent Assessment</a></li>
                 <li><a href="child-self-assessment.html">Child Assessment</a></li>
                 <li><a href="resources.html">Resources</a></li>
-                <li><a href="#" data-download-fix style="color: var(--color-accent); font-weight: 700;">Download Packet</a></li> 
+                <li><a href="#" data-download-fix>Download Packet</a></li>
             </ul>
         </nav>
 
@@ -26,7 +159,7 @@
     <a href="gifted-assessment-tool.html">Parent Assessment</a>
     <a href="child-self-assessment.html">Child Assessment</a>
     <a href="resources.html">Resources</a>
-    <a href="#" data-download-fix style="color: var(--color-accent); font-weight: 700;">Download Packet</a>
+    <a href="#" data-download-fix>Download Packet</a>
 </nav>
 
 <script>
