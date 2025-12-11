@@ -1,131 +1,52 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-    
-    /* Navigation Styles */
-    .nav-wrapper {
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 27, 75, 0.95) 100%);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        height: 70px;
-    }
-
-    .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .nav-logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: white;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .nav-logo span {
-        background: linear-gradient(to right, #00ff41, #3a86ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-    }
-
-    .nav-link {
-        color: #e2e8f0;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.95rem;
-        transition: color 0.3s ease;
-        position: relative;
-    }
-
-    .nav-link:hover {
-        color: #00ff41;
-    }
-
-    /* Mobile Menu Button */
-    .mobile-toggle {
-        display: none;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #0f172a;
-        padding: 20px;
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
-        z-index: 999;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .mobile-menu.active {
-        transform: translateY(0);
-    }
-
-    .mobile-link {
-        display: block;
-        color: white;
-        text-decoration: none;
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        font-size: 1.1rem;
-    }
-
-    @media (max-width: 768px) {
-        .nav-links { display: none; }
-        .mobile-toggle { display: block; }
-    }
-</style>
-
-<div class="nav-wrapper">
-    <div class="nav-container">
-        <a href="index.html" class="nav-logo">
-            🚀 <span>MISSION CONTROL</span>
-        </a>
-        
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">HOME</a>
-            <a href="gifted-assessment-tool.html" class="nav-link">PARENT ASSESSMENT</a>
-            <a href="child-self-assessment.html" class="nav-link">CHILD ASSESSMENT</a>
-            <a href="mission-control-preview.html" class="nav-link">PREVIEW PACKET</a>
-            <a href="resources.html" class="nav-link">RESOURCES</a>
+<header class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <a href="index.html">Mission Control Center</a>
         </div>
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mission-control-preview.html">Training Preview</a></li>
+                <li><a href="gifted-assessment-tool.html">Parent Assessment</a></li>
+                <li><a href="child-self-assessment.html">Child Assessment</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="#" data-download-fix style="color: var(--color-accent); font-weight: 700;">Download Packet</a></li> 
+            </ul>
+        </nav>
 
-        <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
             ☰
         </button>
     </div>
-</div>
+</header>
 
-<div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="mobile-link">HOME</a>
-    <a href="gifted-assessment-tool.html" class="mobile-link">PARENT ASSESSMENT</a>
-    <a href="child-self-assessment.html" class="mobile-link">CHILD ASSESSMENT</a>
-    <a href="mission-control-preview.html" class="mobile-link">PREVIEW PACKET</a>
-    <a href="resources.html" class="mobile-link">RESOURCES</a>
-</div>
+<nav class="mobile-nav-links" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="mission-control-preview.html">Training Preview</a>
+    <a href="gifted-assessment-tool.html">Parent Assessment</a>
+    <a href="child-self-assessment.html">Child Assessment</a>
+    <a href="resources.html">Resources</a>
+    <a href="#" data-download-fix style="color: var(--color-accent); font-weight: 700;">Download Packet</a>
+</nav>
+
+<script>
+    // Note: The main logic for this menu is in script.js, but this fetcher is needed 
+    // for local development if the user is fetching navigation.html separately.
+    function initNav() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuToggle = document.getElementById('menuToggle');
+        
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                menuToggle.innerHTML = mobileMenu.classList.contains('active') ? '✖' : '☰';
+            });
+        }
+    }
+    // Only run if the DOM is already loaded (i.e., when fetch injects it)
+    if (document.readyState !== 'loading') {
+        initNav();
+    } else {
+        document.addEventListener('DOMContentLoaded', initNav);
+    }
+</script>
