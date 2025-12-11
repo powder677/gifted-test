@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Gifted Child Assessment Tool</title>
+    <title>Gifted Child Assessment Tool - Parent Report</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -12,7 +12,8 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link rel="stylesheet" href="styles.css"> <style>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
         /* Define custom colors and fonts for Tailwind and clean up body styles */
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap');
 
@@ -26,33 +27,40 @@
         .font-header { font-family: 'Playfair Display', serif; }
 
         /* Custom Colors for utility classes (approximating new theme with Tailwind scale) */
-        .bg-custom-cream { background-color: #FAF7F0; }
+        .bg-custom-cream { background-color: #FAF7F0; } /* Warm Cream */
         .text-custom-charcoal { color: #2F2F2F; }
-        .bg-custom-sage-light { background-color: #f2f5f3; }
-        .border-custom-sage { border-color: #7C9885; }
-        .bg-custom-sage { background-color: #7C9885; }
-        .text-custom-sage { color: #7C9885; }
-        .bg-custom-gold { background-color: #D4AF37; }
+        .bg-custom-sage-light { background-color: #f2f5f3; } /* Lightest Sage */
+        .border-custom-sage { border-color: #7C9885; } /* Sage */
+        .bg-custom-sage { background-color: #7C9885; } /* Sage */
+        .text-custom-sage { color: #7C9885; } /* Sage */
+        .bg-custom-gold { background-color: #D4AF37; } /* Gold */
         .border-custom-gold { border-color: #D4AF37; }
         .text-custom-gold { color: #D4AF37; }
-        .text-custom-red { color: #D4A5A5; } /* Using Dusty Rose as a secondary accent/error */
+        .text-custom-red { color: #D4A5A5; } /* Dusty Rose (error/high intensity color) */
+        
+        /* Ensures React button colors adhere to the new primary/secondary buttons */
+        .bg-custom-sage { background-color: var(--color-primary) !important; }
+        .hover\:bg-custom-gold:hover { background-color: var(--color-accent) !important; }
     </style>
 </head>
 <body class="bg-slate-50">
     
-   <div id="navigation-placeholder"></div>
-<script>
-    fetch('navigation.html').then(response => response.text()).then(data => {
-        document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
-        // Use Fetch to inject components above/below React root
-        fetch('navigation.html').then(response => response.text()).then(data => {
-            document.getElementById('navigation-placeholder').innerHTML = data;
-        });
-        fetch('footer.html').then(response => response.text()).then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        });
+    <div id="navigation-placeholder"></div>
+    <div id="root"></div> 
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Use Fetch to inject components and prevent race conditions with React mounting
+        function loadComponents() {
+            fetch('navigation.html').then(response => response.text()).then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
+            });
+            fetch('footer.html').then(response => response.text()).then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+        }
+        document.addEventListener('DOMContentLoaded', loadComponents);
     </script>
     <script src="script.js"></script>
 
@@ -61,7 +69,6 @@
         const { useState, useRef } = React;
 
         // --- SETUP: Define Icons manually (replacing lucide-react imports) ---
-        // (Icons wrapper remains the same)
         const IconWrapper = ({ children, className, ...props }) => (
             <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -97,7 +104,7 @@
             <IconWrapper {...props}><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></IconWrapper>
         );
 
-        // --- DATA CONSTANTS (SECTIONS and SCALE remain the same) ---
+        // --- DATA CONSTANTS ---
         const SECTIONS = [
           {
             id: 'ef',
@@ -426,11 +433,16 @@
                                 onClick={() => handleOptionSelect(currentSectionIndex, qIdx, s.value)}
                                 className={`
                                   flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-200 border-2
+                                  transform hover:scale-105
                                   ${currentValue === s.value 
-                                    ? 'border-custom-gold bg-custom-cream text-custom-charcoal shadow-md transform scale-105' 
+                                    ? 'border-custom-gold bg-custom-cream text-custom-charcoal shadow-md scale-105' 
                                     : 'border-slate-100 hover:border-custom-sage-light hover:bg-slate-50 text-slate-400'
                                   }
                                 `}
+                                style={{ 
+                                  'borderColor': currentValue === s.value ? 'var(--color-accent)' : '#e2e8f0',
+                                  'backgroundColor': currentValue === s.value ? 'var(--color-secondary)' : 'var(--color-background)',
+                                }}
                               >
                                 <span className={`text-xl font-bold mb-1 ${currentValue === s.value ? 'text-custom-sage' : 'text-slate-300'}`}>
                                   {s.value}
@@ -460,6 +472,10 @@
                           ? 'text-slate-400 cursor-not-allowed' 
                           : 'text-custom-charcoal hover:bg-custom-sage-light'
                       }`}
+                      style={{ 
+                        backgroundColor: currentSectionIndex === 0 ? 'var(--color-secondary)' : 'var(--color-background)', 
+                        color: currentSectionIndex === 0 ? 'var(--color-text)' : 'var(--color-text)' 
+                      }}
                     >
                       <ChevronLeft className="w-5 h-5 mr-1" />
                       Back
@@ -473,6 +489,10 @@
                           ? 'bg-custom-sage hover:bg-custom-gold text-white hover:-translate-y-1'
                           : 'bg-slate-300 text-slate-500 cursor-not-allowed'
                       }`}
+                      style={{ 
+                          backgroundColor: isSectionComplete(currentSectionIndex) ? 'var(--color-primary)' : '#e2e8f0', 
+                          color: isSectionComplete(currentSectionIndex) ? 'var(--color-background)' : 'var(--color-text)'
+                      }}
                     >
                       {currentSectionIndex === SECTIONS.length - 1 ? 'Finish Assessment' : 'Next Section'}
                       <ChevronRight className="w-5 h-5 ml-1" />
