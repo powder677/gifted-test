@@ -2,375 +2,154 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>The Parent Deep Assessment</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link rel="stylesheet" href="styles.css">
-   <style>
-      :root {
-         --cream: #FDFBF7;
-         --white: #FFFFFF;
-         --terracotta: #E07A5F;
-         --sage: #81B29A;
-         --charcoal: #3D405B;
-         --gold: #F2CC8F;
-         --light-grey: #F4F4F4;
-         --radius: 10px;
-         --shadow: 0 4px 12px rgba(61, 64, 91, 0.08);
-         --shadow-hover: 0 6px 16px rgba(61, 64, 91, 0.12);
-      }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Parent Deep Assessment - Full Package Preview</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /*
+        * Local Overrides to map old component structure to new global CSS variables
+        */
 
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
+        /* Apply global body styles (padding-top for fixed header) */
+        body {
+            padding-top: 80px;
+        }
 
-      body {
-         font-family: 'Inter', sans-serif;
-         background-color: var(--cream);
-         color: var(--charcoal);
-         line-height: 1.6;
-      }
+        /* Hero Content Styling */
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 0;
+        }
+        
+        .hero-text h1 {
+            font-family: var(--font-header);
+            font-size: 2.75rem;
+            line-height: 1.2;
+        }
+        
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--color-text);
+        }
 
-      h1,
-      h2,
-      h3,
-      h4 {
-         font-family: 'Merriweather', serif;
-         font-weight: 700;
-         line-height: 1.3;
-      }
-
-      .container {
-         width: 100%;
-         max-width: 1200px;
-         margin: 0 auto;
-         padding: 0 24px;
-      }
-
-      /* Hero Section */
-      .hero {
-         padding: 80px 0;
-      }
-
-      .hero-content {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 60px;
-         align-items: center;
-      }
-
-      .hero-text h1 {
-         font-size: 2.75rem;
-         margin-bottom: 20px;
-         line-height: 1.2;
-      }
-
-      .hero-text p {
-         font-size: 1.25rem;
-         margin-bottom: 30px;
-         color: var(--charcoal);
-         opacity: 0.9;
-      }
-
-      .btn {
-         display: inline-block;
-         padding: 18px 36px;
-         border-radius: var(--radius);
-         font-weight: 600;
-         text-decoration: none;
-         transition: all 0.3s ease;
-         font-size: 1.125rem;
-         cursor: pointer;
-         border: none;
-      }
-
-      .btn-primary {
-         background-color: var(--terracotta);
-         color: white;
-         box-shadow: var(--shadow);
-      }
-
-      .btn-primary:hover {
-         background-color: #d36547;
-         transform: translateY(-2px);
-         box-shadow: var(--shadow-hover);
-      }
-
-      .hero-image {
-         background: linear-gradient(135deg, var(--sage) 0%, var(--gold) 100%);
-         border-radius: var(--radius);
-         height: 400px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         font-weight: bold;
-         font-size: 1.25rem;
-         text-align: center;
-         padding: 30px;
-         box-shadow: var(--shadow);
-      }
-
-      /* Problem Section */
-      .problem {
-         background-color: var(--light-grey);
-         padding: 80px 0;
-      }
-
-      .section-header {
-         text-align: center;
-         margin-bottom: 60px;
-      }
-
-      .section-header h2 {
-         font-size: 2.5rem;
-         margin-bottom: 20px;
-      }
-
-      .cards-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-         gap: 32px;
-      }
-
-      .card {
-         background: var(--white);
-         border-radius: var(--radius);
-         padding: 40px 32px;
-         text-align: center;
-         box-shadow: var(--shadow);
-         transition: all 0.3s ease;
-      }
-
-      .card:hover {
-         transform: translateY(-5px);
-         box-shadow: var(--shadow-hover);
-      }
-
-      .card-icon {
-         width: 80px;
-         height: 80px;
-         margin: 0 auto 24px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         border-radius: 50%;
-         background: var(--cream);
-         font-size: 2rem;
-         color: var(--terracotta);
-      }
-
-      .card h3 {
-         font-size: 1.5rem;
-         margin-bottom: 16px;
-      }
-
-      /* Solution Section */
-      .solution {
-         padding: 80px 0;
-      }
-
-      .solution-item {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 60px;
-         align-items: center;
-         margin-bottom: 100px;
-      }
-
-      .solution-item:nth-child(even) {
-         direction: rtl;
-      }
-
-      .solution-item:nth-child(even)>div {
-         direction: ltr;
-      }
-
-      .solution-image {
-         background: linear-gradient(135deg, var(--gold) 0%, var(--sage) 100%);
-         border-radius: var(--radius);
-         height: 350px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         font-weight: bold;
-         font-size: 1.125rem;
-         text-align: center;
-         padding: 30px;
-         box-shadow: var(--shadow);
-      }
-
-      .solution-text h3 {
-         font-size: 2rem;
-         margin-bottom: 20px;
-      }
-
-      .solution-text p {
-         font-size: 1.125rem;
-         margin-bottom: 20px;
-         color: var(--charcoal);
-      }
-
-      /* Social Proof */
-      .social-proof {
-         background-color: var(--light-grey);
-         padding: 80px 0;
-      }
-
-      .testimonials-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-         gap: 32px;
-      }
-
-      .testimonial {
-         background: var(--white);
-         border-radius: var(--radius);
-         padding: 30px;
-         position: relative;
-         box-shadow: var(--shadow);
-      }
-
-      .testimonial::before {
-         content: "" ";
- font-family: 'Playfair Display', serif;
-         font-size: 4rem;
-         position: absolute;
-         top: -20px;
-         left: 20px;
-         color: var(--gold);
-         opacity: 0.3;
-      }
-
-      .testimonial-text {
-         font-style: italic;
-         margin-bottom: 20px;
-         position: relative;
-         z-index: 1;
-      }
-
-      .testimonial-author {
-         font-weight: 600;
-         color: var(--charcoal);
-      }
-
-      /* Sticky Bottom Bar */
-      .sticky-bar {
-         display: none;
-         position: fixed;
-         bottom: 0;
-         left: 0;
-         right: 0;
-         background: var(--charcoal);
-         color: white;
-         padding: 15px 20px;
-         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-         z-index: 1000;
-      }
-
-      .sticky-content {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         max-width: 1200px;
-         margin: 0 auto;
-      }
-
-      .sticky-text {
-         font-weight: 600;
-         font-size: 1.125rem;
-      }
-
-      .sticky-btn {
-         background-color: var(--terracotta);
-         color: white;
-         border: none;
-         padding: 12px 24px;
-         border-radius: var(--radius);
-         font-weight: 600;
-         font-size: 1rem;
-         cursor: pointer;
-         transition: background-color 0.3s ease;
-      }
-
-      .sticky-btn:hover {
-         background-color: #d36547;
-      }
-
-      /* Responsive */
-      @media (max-width: 992px) {
-
-         .hero-content,
-         .solution-item {
-            grid-template-columns: 1fr;
-         }
-
-         .hero-image,
-         .solution-image {
-            height: 300px;
-         }
-
-         .solution-item {
-            margin-bottom: 60px;
-         }
-
-         .solution-item:nth-child(even) {
-            direction: ltr;
-         }
-      }
-
-      @media (max-width: 768px) {
-         .hero {
-            padding: 60px 0;
-         }
-
-         .hero-text h1 {
-            font-size: 2.25rem;
-         }
-
-         .hero-text p {
-            font-size: 1.125rem;
-         }
-
-         .section-header h2 {
-            font-size: 2rem;
-         }
-
-         .solution-text h3 {
-            font-size: 1.75rem;
-         }
-
-         .sticky-bar {
-            display: block;
-         }
-      }
-
-      @media (max-width: 480px) {
-         .container {
-            padding: 0 16px;
-         }
-
-         .hero-text h1 {
-            font-size: 1.875rem;
-         }
-
-         .btn {
-            padding: 16px 24px;
-            font-size: 1rem;
-         }
-
-         .sticky-content {
-            flex-direction: column;
-            gap: 10px;
+        /* Hero Image/Visual - New Sage/Gold Gradient */
+        .hero-image {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%) !important;
+            border-radius: var(--border-radius);
+            height: 400px;
+            color: var(--color-background);
+            font-weight: bold;
+            font-size: 1.25rem;
             text-align: center;
-         }
-      }
-   </style>
+            padding: 30px;
+            box-shadow: var(--box-shadow-subtle);
+            font-family: var(--font-header);
+        }
+
+        /* Problem Section (Light Grey -> Off-White/Cream) */
+        .problem {
+            background-color: var(--color-background); 
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-family: var(--font-header);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--color-secondary); /* Cream background */
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .card-icon {
+            background: var(--color-background); /* Off-White circle */
+            color: var(--color-primary); /* Sage Green icon */
+        }
+        
+        /* Solution Section Styling */
+        .solution {
+            background-color: var(--color-secondary); /* Alternating section color */
+        }
+
+        .solution-item:nth-child(even) {
+            direction: ltr; /* Ensure standard left-to-right flow for content presentation on this key page */
+            flex-direction: row;
+        }
+        
+        .solution-image {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%) !important; /* Gold/Sage Gradient */
+            color: var(--color-background);
+            font-family: var(--font-header);
+            box-shadow: var(--box-shadow-subtle);
+        }
+
+        .solution-text h3 {
+            font-size: 2rem;
+            font-family: var(--font-header);
+        }
+
+        .solution-text p {
+            color: var(--color-text);
+        }
+
+        /* Social Proof/Testimonials */
+        .social-proof {
+            background-color: var(--color-background);
+        }
+        
+        .testimonial {
+            background: var(--color-secondary); /* Cream testimonial cards */
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+        }
+        
+        .testimonial::before {
+            content: "“"; /* Using actual quote mark */
+            font-family: var(--font-header);
+            color: var(--color-accent); /* Gold quote */
+            opacity: 0.8;
+        }
+
+        /* Sticky Bottom Bar (Mobile Fix) */
+        .sticky-bar {
+            background: var(--color-text);
+        }
+        
+        .sticky-content {
+            color: var(--color-background);
+        }
+
+        .sticky-btn {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+        }
+        
+        .sticky-btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-text);
+        }
+        
+        @media (max-width: 992px) {
+             .solution-item {
+                 grid-template-columns: 1fr;
+                 direction: ltr; /* Ensure stack order is logical */
+             }
+             .solution-item:nth-child(even) {
+                 direction: ltr;
+             }
+        }
+    </style>
 </head>
 
 <body>
@@ -380,128 +159,131 @@
         document.getElementById('navigation-placeholder').innerHTML = data;
     });
 </script>
-   <!-- Hero Section -->
-   <section class="hero">
-      <div class="container">
-         <div class="hero-content">
-            <div class="hero-text">
-               <h1>The User Manual Your Child Didn't Come With.</h1>
-               <p>A 12-page actionable guide for Deep Processors and Sensitive Kids.</p>
-               <button class="btn btn-primary">Get Instant Access - $29</button>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>The User Manual Your Child Didn't Come With.</h1>
+                    <p>A 12-page actionable guide for Deep Processors and Sensitive Kids.</p>
+                    <a href="checkout.html" class="btn btn-primary">Get Instant Access - $129</a>
+                </div>
+                <div class="hero-image">
+                    THE PARENT DEEP ASSESSMENT<br>
+                    12-Page Digital Guide
+                </div>
             </div>
-            <div class="hero-image">
-               THE PARENT DEEP ASSESSMENT<br>
-               12-Page Digital Guide
-            </div>
-         </div>
-      </div>
-   </section>
+        </div>
+    </section>
 
-   <!-- Problem Section -->
-   <section class="problem">
-      <div class="container">
-         <div class="section-header">
-            <h2>Tired of the drama?</h2>
-            <p>Stop guessing and start understanding with science-backed insights.</p>
-         </div>
-         <div class="cards-grid">
-            <div class="card">
-               <div class="card-icon">
-                  <i class="fas fa-sun"></i>
-               </div>
-               <h3>Morning Battles</h3>
-               <p>End the daily struggle to get everyone dressed and out the door on time.</p>
+    <section class="problem">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tired of the drama?</h2>
+                <p>Stop guessing and start understanding with science-backed insights.</p>
             </div>
-            <div class="card">
-               <div class="card-icon">
-                  <i class="fas fa-book-open"></i>
-               </div>
-               <h3>Homework Meltdowns</h3>
-               <p>Create a calm, productive homework environment that actually works.</p>
+            <div class="cards-grid">
+                <div class="card premium-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Morning Battles</h3>
+                    <p>End the daily struggle to get everyone dressed and out the door on time.</p>
+                </div>
+                <div class="card premium-card">
+                    <div class="card-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Homework Meltdowns</h3>
+                    <p>Create a calm, productive homework environment that actually works.</p>
+                </div>
+                <div class="card premium-card">
+                    <div class="card-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Bedtime Anxiety</h3>
+                    <p>Help your child wind down and sleep peacefully without endless negotiations.</p>
+                </div>
             </div>
-            <div class="card">
-               <div class="card-icon">
-                  <i class="fas fa-moon"></i>
-               </div>
-               <h3>Bedtime Anxiety</h3>
-               <p>Help your child wind down and sleep peacefully without endless negotiations.</p>
-            </div>
-         </div>
-      </div>
-   </section>
+        </div>
+    </section>
 
-   <!-- Solution Section -->
-   <section class="solution">
-      <div class="container">
-         <div class="solution-item">
-            <div class="solution-image">
-               THE SCIENCE BEHIND<br>
-               YOUR CHILD'S BRAIN
+    <section class="solution">
+        <div class="container">
+            <div class="solution-item">
+                <div class="solution-image">
+                    THE SCIENCE BEHIND<br>
+                    YOUR CHILD'S BRAIN
+                </div>
+                <div class="solution-text">
+                    <h3>The "Why" - Neuroscience explained simply.</h3>
+                    <p>Understand exactly what's happening in your child's developing brain. Learn why they think differently, feel more deeply, and experience the world in unique ways.</p>
+                    <p>Our guide breaks down complex neuroscience into digestible insights you can use immediately to connect with and support your child.</p>
+                </div>
             </div>
-            <div class="solution-text">
-               <h3>The "Why" - Neuroscience explained simply.</h3>
-               <p>Understand exactly what's happening in your child's developing brain. Learn why they think differently, feel more deeply, and experience the world in unique ways.</p>
-               <p>Our guide breaks down complex neuroscience into digestible insights you can use immediately to connect with and support your child.</p>
-            </div>
-         </div>
 
-         <div class="solution-item">
-            <div class="solution-image">
-               READY-TO-USE<br>
-               CONVERSATION SCRIPTS
+            <div class="solution-item">
+                <div class="solution-image">
+                    READY-TO-USE<br>
+                    CONVERSATION SCRIPTS
+                </div>
+                <div class="solution-text">
+                    <h3>Scripts - Exactly what to say when they spiral.</h3>
+                    <p>Get proven phrases and approaches for those challenging moments when your child becomes overwhelmed, anxious, or emotionally dysregulated.</p>
+                    <p>No more scrambling for words. Our scripts give you the exact language to de-escalate situations and reconnect with your child.</p>
+                </div>
             </div>
-            <div class="solution-text">
-               <h3>Scripts - Exactly what to say when they spiral.</h3>
-               <p>Get proven phrases and approaches for those challenging moments when your child becomes overwhelmed, anxious, or emotionally dysregulated.</p>
-               <p>No more scrambling for words. Our scripts give you the exact language to de-escalate situations and reconnect with your child.</p>
-            </div>
-         </div>
 
-         <div class="solution-item">
-            <div class="solution-image">
-               6-WEEK ACTION PLAN<br>
-               WITH WEEKLY GOALS
+            <div class="solution-item">
+                <div class="solution-image">
+                    6-WEEK ACTION PLAN<br>
+                    WITH WEEKLY GOALS
+                </div>
+                <div class="solution-text">
+                    <h3>The 6-Week Action Plan.</h3>
+                    <p>A structured roadmap to implement positive changes in your home. Each week focuses on a specific area: routines, communication, emotional regulation, and more.</p>
+                    <p>With clear objectives, practical exercises, and progress tracking, you'll see measurable improvements in your family dynamic.</p>
+                </div>
             </div>
-            <div class="solution-text">
-               <h3>The 6-Week Action Plan.</h3>
-               <p>A structured roadmap to implement positive changes in your home. Each week focuses on a specific area: routines, communication, emotional regulation, and more.</p>
-               <p>With clear objectives, practical exercises, and progress tracking, you'll see measurable improvements in your family dynamic.</p>
-            </div>
-         </div>
-      </div>
-   </section>
+        </div>
+    </section>
 
-   <!-- Social Proof -->
-   <section class="social-proof">
-      <div class="container">
-         <div class="section-header">
-            <h2>Trusted by Thousands of Parents</h2>
-            <p>Join families who've transformed their parenting journey.</p>
-         </div>
-         <div class="testimonials-grid">
-            <div class="testimonial">
-               <p class="testimonial-text">This guide completely changed how I understand my daughter. The scripts alone have saved our family from daily meltdowns. Worth every penny!</p>
-               <p class="testimonial-author">- Sarah M., Mother of Two</p>
+    <section class="social-proof">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted by Thousands of Parents</h2>
+                <p>Join families who've transformed their parenting journey.</p>
             </div>
-            <div class="testimonial">
-               <p class="testimonial-text">Finally, someone gets it! The neuroscience section helped my husband and I finally understand WHY our son thinks the way he does. Game changer.</p>
-               <p class="testimonial-author">- Michael T., Father of Three</p>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">This guide completely changed how I understand my daughter. The scripts alone have saved our family from daily meltdowns. Worth every penny!</p>
+                    <p class="testimonial-author">- Sarah M., Mother of Two</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">Finally, someone gets it! The neuroscience section helped my husband and I finally understand WHY our son thinks the way he does. Game changer.</p>
+                    <p class="testimonial-author">- Michael T., Father of Three</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">I've read countless parenting books, but this is the first that actually speaks to gifted and sensitive kids. The 6-week plan is pure gold.</p>
+                    <p class="testimonial-author">- Jennifer R., Educator & Mom</p>
+                </div>
             </div>
-            <div class="testimonial">
-               <p class="testimonial-text">I've read countless parenting books, but this is the first that actually speaks to gifted and sensitive kids. The 6-week plan is pure gold.</p>
-               <p class="testimonial-author">- Jennifer R., Educator & Mom</p>
-            </div>
-         </div>
-      </div>
-   </section>
+        </div>
+    </section>
 
-   <!-- Sticky Bottom Bar (Mobile Only) -->
-   <div class="sticky-bar">
-      <div class="sticky-content">
-         <div class="sticky-text">Get the Assessment</div>
-         <button class="sticky-btn">Buy Now - $29</button>
-      </div>
-   </div>
+    <div class="sticky-bar">
+        <div class="sticky-content">
+            <div class="sticky-text" style="color: var(--color-background);">Get the Assessment</div>
+            <a href="checkout.html" class="sticky-btn">Buy Now - $129</a>
+        </div>
+    </div>
+    
+<div id="footer-placeholder"></div>
+<script>
+    fetch('footer.html').then(response => response.text()).then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+<script src="script.js"></script>
 </body>
 
 </html>
