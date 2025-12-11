@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Mission Control Center - Credible Child Support</title>
-    <link rel="stylesheet" href="styles.css"> <style>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
         /*
         * Injected styles to override old colors and blend with new theme variables.
         * Most core styling is now handled by styles.css.
@@ -61,20 +62,25 @@
             padding: 40px;
         }
 
-        /* Avatar Colors: New Brand Palette */
-        .avatar-rachel {
-            background: var(--color-primary); /* Sage */
+        /* --- NEW: IMAGE STYLES FOR HEADSHOTS --- */
+        /* This handles the circular crop and sizing for the new photos */
+        img.team-avatar {
+            width: 150px;           
+            height: 150px;          
+            border-radius: 50%;     
+            object-fit: cover;      /* Prevents distortion */
+            margin-bottom: 20px;    
+            border: 4px solid white; /* Clean border around the photo */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .avatar-evan {
-            background: var(--color-accent); /* Gold */
-            color: var(--color-text);
-        }
-        .avatar-avery {
-            background: #D4A5A5; /* Dusty Rose */
-        }
+
         .team-member h3 {
             font-family: var(--font-header);
             color: var(--color-text);
+            margin-top: 10px;
         }
         .team-member .role {
             color: var(--color-primary);
@@ -176,21 +182,21 @@
 
                 <div class="team-grid">
                     <div class="team-member">
-                        <div class="team-avatar avatar-rachel">RW</div>
+                        <img src="images/rachel-whitcomb.jpg" alt="Rachel Whitcomb" class="team-avatar">
                         <h3>Rachel Whitcomb</h3>
                         <p class="role">Founder & Parent Advocate</p>
                         <p>Rachel transforms personal experience into powerful advocacy. As both a formerly misunderstood gifted child and a fierce parent advocate, she guides families through the complex journey of raising exceptional children with practical strategies and deep empathy.</p>
                     </div>
 
                     <div class="team-member">
-                        <div class="team-avatar avatar-evan">EC</div>
+                        <img src="images/evan-calder.jpg" alt="Evan Calder" class="team-avatar">
                         <h3>Evan Calder</h3>
                         <p class="role">Learning Architect</p>
                         <p>With 15+ years translating between gifted minds and traditional systems, Evan helps children understand their own thinking patterns. He transforms overthinking into analysis, perfectionism into excellence, and confusion into clarity through metacognitive strategies that actually work.</p>
                     </div>
 
                     <div class="team-member">
-                        <div class="team-avatar avatar-avery">AS</div>
+                        <img src="images/avery-sage.jpg" alt="Avery Sage" class="team-avatar">
                         <h3>Avery Sage</h3>
                         <p class="role">Emotional Intelligence Specialist</p>
                         <p>Avery sees beyond "behavior problems" to understand what children are really communicating. With 12+ years of clinical experience, they create practical tools that transform emotional intensity from a liability into a strength, building homes where sensitive children can thrive.</p>
