@@ -2,315 +2,135 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Your Child's Profile Results</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link rel="stylesheet" href="styles.css">
-   <style>
-      :root {
-         --cream: #FDFBF7;
-         --white: #FFFFFF;
-         --terracotta: #E07A5F;
-         --sage: #81B29A;
-         --charcoal: #3D405B;
-         --gold: #F2CC8F;
-         --radius: 10px;
-         --shadow: 0 4px 12px rgba(61, 64, 91, 0.08);
-         --shadow-hover: 0 6px 16px rgba(61, 64, 91, 0.12);
-      }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restraint Collapse: Why They Are Angels at School and Monsters at Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /*
+        * Local Overrides to ensure the article structure blends perfectly.
+        * All colors and fonts are pulled from the global styles.css.
+        */
 
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
+        /* Article Layout adjustments for padding consistency */
+        .article-layout {
+            display: flex;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
 
-      body {
-         font-family: 'Inter', sans-serif;
-         background-color: var(--cream);
-         color: var(--charcoal);
-         line-height: 1.6;
-      }
+        /* Breadcrumbs - Mapped to Dusty Rose (New Accent role) */
+        .breadcrumbs a {
+            color: #D4A5A5;
+            text-decoration: none;
+        }
 
-      h1,
-      h2,
-      h3,
-      h4 {
-         font-family: 'Merriweather', serif;
-         font-weight: 700;
-         line-height: 1.3;
-      }
+        /* Author Photo - Mapped to new brand gradient */
+        .author-photo {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        }
 
-      .container {
-         width: 100%;
-         max-width: 1200px;
-         margin: 0 auto;
-         padding: 0 24px;
-      }
+        /* Key Takeaways - Uses transparent Sage blend (new primary) on cream background */
+        .key-takeaways {
+            background-color: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            border: 1px solid rgba(124, 152, 133, 0.2);
+            padding: 30px;
+            margin-bottom: 50px;
+        }
 
-      /* Header Section */
-      .header-section {
-         padding: 100px 0;
-         text-align: center;
-         background-color: var(--gold);
-         background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 20%),
-            radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 20%);
-      }
+        .key-takeaways h2 {
+            color: var(--color-primary);
+        }
 
-      .header-section h1 {
-         font-size: 3rem;
-         margin-bottom: 20px;
-         color: var(--charcoal);
-      }
+        /* Highlight Box - Uses Dusty Rose and Cream/Off-White for premium callouts */
+        .highlight-box {
+            background-color: var(--color-secondary);
+            border-left: 4px solid #D4A5A5; /* Dusty Rose */
+            box-shadow: var(--box-shadow-subtle);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 25px 30px;
+        }
 
-      .header-section p {
-         font-size: 1.25rem;
-         max-width: 700px;
-         margin: 0 auto;
-         color: var(--charcoal);
-         opacity: 0.9;
-      }
+        .highlight-box h3 {
+            color: #D4A5A5; /* Dusty Rose */
+        }
 
-      /* Section */
-      section {
-         padding: 80px 0;
-      }
+        /* Article body h2 separator fix */
+        .article-body h2 {
+            border-bottom: 2px solid rgba(124, 152, 133, 0.3); /* Soft Sage separator */
+        }
 
-      .section-header {
-         text-align: center;
-         margin-bottom: 60px;
-      }
+        /* Blueprint Steps - Primary Thematic Component */
+        .blueprint-steps {
+            background: var(--color-secondary); /* Cream Background */
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: var(--box-shadow-subtle);
+        }
 
-      .section-header h2 {
-         font-size: 2.5rem;
-         margin-bottom: 20px;
-      }
+        .blueprint-steps h3 {
+            color: var(--color-primary); /* Sage Green */
+            font-family: var(--font-header);
+            text-align: center;
+        }
 
-      /* Analysis Section */
-      .analysis-container {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-         gap: 40px;
-         margin-bottom: 60px;
-      }
+        .step-card {
+            background: var(--color-background); /* Off-White card base */
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
 
-      .analysis-column {
-         background: var(--white);
-         border-radius: var(--radius);
-         padding: 40px;
-         box-shadow: var(--shadow);
-      }
+        .step-number {
+            background: #D4A5A5; /* Dusty Rose */
+            color: var(--color-background); /* Off-White text */
+            border-radius: 50%;
+        }
 
-      .analysis-column h3 {
-         font-size: 1.75rem;
-         margin-bottom: 30px;
-         padding-bottom: 20px;
-         border-bottom: 2px solid var(--sage);
-      }
+        /* Sidebar Widget - Uses Cream background and soft shadows */
+        .sidebar-widget {
+            background: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            position: sticky;
+            top: 100px; /* Adjusted to clear sticky navbar + spacing */
+        }
 
-      .analysis-column.strengths h3 {
-         border-color: var(--sage);
-         color: var(--sage);
-      }
+        /* Button Fix (Ensures adherence to global button style) */
+        .btn {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: var(--font-body);
+        }
 
-      .analysis-column.struggles h3 {
-         border-color: var(--terracotta);
-         color: var(--terracotta);
-      }
+        /* Read Next Card Styling */
+        .read-next-card {
+            background: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+        }
 
-      .analysis-list {
-         list-style: none;
-      }
+        .read-next-card:hover h3 {
+            color: var(--color-primary);
+        }
 
-      .analysis-item {
-         margin-bottom: 20px;
-         padding-left: 30px;
-         position: relative;
-      }
-
-      .analysis-item::before {
-         font-family: "Font Awesome 6 Free";
-         font-weight: 900;
-         position: absolute;
-         left: 0;
-         top: 4px;
-         font-size: 1.2rem;
-      }
-
-      .strengths .analysis-item::before {
-         content: "\f00c";
-         color: var(--sage);
-      }
-
-      .struggles .analysis-item::before {
-         content: "\f071";
-         color: var(--terracotta);
-      }
-
-      /* Upsell Section */
-      .upsell-section {
-         background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
-         border-radius: var(--radius);
-         padding: 60px;
-         box-shadow: var(--shadow);
-         text-align: center;
-         margin: 60px 0;
-         position: relative;
-         overflow: hidden;
-      }
-
-      .upsell-section::before {
-         content: "";
-         position: absolute;
-         top: -50px;
-         right: -50px;
-         width: 200px;
-         height: 200px;
-         border-radius: 50%;
-         background: var(--gold);
-         opacity: 0.1;
-      }
-
-      .upsell-section h2 {
-         font-size: 2.5rem;
-         margin-bottom: 20px;
-         color: var(--charcoal);
-      }
-
-      .upsell-section p {
-         font-size: 1.25rem;
-         max-width: 700px;
-         margin: 0 auto 40px;
-         color: var(--charcoal);
-      }
-
-      .product-mockup {
-         width: 200px;
-         height: 260px;
-         margin: 40px auto;
-         background: linear-gradient(135deg, var(--sage) 0%, var(--gold) 100%);
-         border-radius: 8px;
-         position: relative;
-         box-shadow: var(--shadow-hover);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         font-weight: bold;
-         font-size: 1.1rem;
-         text-align: center;
-         padding: 20px;
-      }
-
-      .product-mockup::before {
-         content: "";
-         position: absolute;
-         top: 10px;
-         left: 10px;
-         right: 10px;
-         bottom: 10px;
-         border: 2px dashed rgba(255, 255, 255, 0.5);
-         border-radius: 4px;
-      }
-
-      .price {
-         font-size: 3rem;
-         font-weight: 700;
-         color: var(--charcoal);
-         margin: 30px 0;
-      }
-
-      .btn {
-         display: inline-block;
-         padding: 18px 40px;
-         border-radius: var(--radius);
-         font-weight: 600;
-         text-decoration: none;
-         transition: all 0.3s ease;
-         font-size: 1.125rem;
-         cursor: pointer;
-         border: none;
-         margin-bottom: 20px;
-      }
-
-      .btn-primary {
-         background-color: var(--terracotta);
-         color: white;
-         box-shadow: var(--shadow);
-         animation: pulse 2s infinite;
-      }
-
-      @keyframes pulse {
-         0% {
-            transform: scale(1);
-         }
-
-         50% {
-            transform: scale(1.03);
-         }
-
-         100% {
-            transform: scale(1);
-         }
-      }
-
-      .btn-primary:hover {
-         background-color: #d36547;
-         transform: translateY(-2px);
-         box-shadow: var(--shadow-hover);
-         animation: none;
-      }
-
-      .guarantee {
-         color: var(--sage);
-         font-weight: 500;
-         font-size: 1rem;
-         margin-top: 15px;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-         .header-section {
-            padding: 60px 0;
-         }
-
-         .header-section h1 {
-            font-size: 2.25rem;
-         }
-
-         .header-section p {
-            font-size: 1.125rem;
-         }
-
-         .analysis-container {
-            grid-template-columns: 1fr;
-         }
-
-         .upsell-section {
-            padding: 40px 20px;
-         }
-
-         .upsell-section h2 {
-            font-size: 2rem;
-         }
-      }
-
-      @media (max-width: 480px) {
-         .container {
-            padding: 0 16px;
-         }
-
-         .analysis-column {
-            padding: 30px 20px;
-         }
-
-         .price {
-            font-size: 2.5rem;
-         }
-      }
-   </style>
+        @media (min-width: 1024px) {
+            .article-sidebar {
+                width: 300px;
+                flex-shrink: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -320,63 +140,196 @@
         document.getElementById('navigation-placeholder').innerHTML = data;
     });
 </script>
-   <!-- Header Section -->
-   <section class="header-section">
-      <div class="container">
-         <h1>Your child is a Deep Thinker.</h1>
-         <p>A distinct cognitive profile characterized by analytical thinking, perfectionism, and intense curiosity.</p>
-      </div>
-   </section>
-
-   <!-- Analysis Section -->
-   <section>
-      <div class="container">
-         <div class="analysis-container">
-            <div class="analysis-column strengths">
-               <h3>Core Strengths</h3>
-               <ul class="analysis-list">
-                  <li class="analysis-item">Exceptional problem-solving abilities with attention to detail</li>
-                  <li class="analysis-item">Strong analytical skills and logical reasoning</li>
-                  <li class="analysis-item">High standards lead to quality work and achievements</li>
-                  <li class="analysis-item">Deep curiosity drives continuous learning</li>
-                  <li class="analysis-item">Excellent memory and retention of complex information</li>
-                  <li class="analysis-item">Methodical approach to tasks and projects</li>
-               </ul>
-            </div>
-            <div class="analysis-column struggles">
-               <h3>Hidden Struggles</h3>
-               <ul class="analysis-list">
-                  <li class="analysis-item">Perfectionism can lead to procrastination or avoidance</li>
-                  <li class="analysis-item">Overthinking simple decisions causes stress</li>
-                  <li class="analysis-item">Fear of failure may limit willingness to try new things</li>
-                  <li class="analysis-item">Difficulty relaxing due to constant mental activity</li>
-                  <li class="analysis-item">May become overwhelmed by too many options or stimuli</li>
-                  <li class="analysis-item">Tendency to be self-critical and doubt abilities</li>
-               </ul>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   <!-- Upsell Section -->
-   <section>
-      <div class="container">
-         <div class="upsell-section">
-            <h2>Stop guessing. Start guiding.</h2>
-            <p>This profile is just the surface. Get the full 12-page manual for your child's specific brain type.</p>
-
-            <div class="product-mockup">
-               THE DEEP THINKER<br>
-               Parent's Guide
+    <div class="article-layout">
+        <div class="article-content">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> <span>/</span>
+                <a href="emotional-regulation.html">Behavioral Insights</a> <span>/</span>
+                <span>Restraint Collapse</span>
             </div>
 
-            <div class="price">$29</div>
+            <header class="article-header">
+                <h1>Restraint Collapse: Why They Are Angels at School and Monsters at Home</h1>
+                <div class="author-byline">
+                    <div class="author-photo">JD</div>
+                    <div class="author-info">
+                        <div class="author-name">Jane Doe</div>
+                        <div class="publish-date">Published June 5, 2023</div>
+                    </div>
+                </div>
+            </header>
 
-            <button class="btn btn-primary">Get the Full Parent Assessment</button>
-            <p class="guarantee">100% Satisfaction Guarantee</p>
-         </div>
-      </div>
-   </section>
+            <div class="key-takeaways">
+                <h2>TL;DR</h2>
+                <ul>
+                    <li>"After school restraint collapse" is a neurological phenomenon, not behavioral defiance</li>
+                    <li>Children use executive function resources to maintain composure at school, leaving none for home</li>
+                    <li>This pattern indicates your child's self-regulation system is working hard, not failing</li>
+                    <li>Understanding this phenomenon helps parents respond with empathy instead of frustration</li>
+                </ul>
+            </div>
+
+            <div class="article-body">
+                <p>Your phone buzzes with a text from the teacher: "Johnny had a wonderful day! So engaged and helpful during group work." You smile, feeling proud—until you pick him up and witness a complete personality transformation. Within minutes of getting in the car, he's screaming about the seatbelt, refusing to put his backpack away, and having a meltdown over snack choices.</p>
+
+                <p>This scenario plays out in households worldwide, leaving parents confused and exhausted. How can the same child be a model student at school and a tornado of emotion at home? The answer lies in a phenomenon psychologists call "restraint collapse"—and it's actually a compliment to your parenting, not a criticism.</p>
+
+                <div class="highlight-box">
+                    <h3>What Is Restraint Collapse?</h3>
+                    <p>Restraint collapse occurs when individuals exhaust their self-regulation resources maintaining composure in demanding environments, leading to emotional and behavioral dysregulation once they're in a "safe" space where they can finally let their guard down.</p>
+                </div>
+
+                <h2>The Science Behind the Switch</h2>
+                <p>Executive function—the brain's management system—requires significant mental energy to operate. Throughout the school day, your child unconsciously expends enormous effort to:</p>
+
+                <ul>
+                    <li>Suppress impulsive reactions to frustrating situations</li>
+                    <li>Maintain appropriate volume and tone of voice</li>
+                    <li>Follow social expectations and classroom rules</li>
+                    <li>Manage sensory input from fluorescent lights, noise, and crowds</li>
+                    <li>Navigate peer interactions and social hierarchies</li>
+                    <li>Transition between activities and demands</li>
+                </ul>
+
+                <p>For neurotypical children, this effort is largely automatic. For gifted and twice-exceptional children, it's often a conscious, exhausting battle. Their heightened sensitivity amplifies every stimulus, making self-regulation even more demanding.</p>
+
+                <h3>The Home Paradox</h3>
+                <p>Home represents psychological safety for your child. Unlike school, where they must perform and comply, home is where they can authentically express their emotions and vulnerabilities. This safety paradox explains why meltdowns often occur after school:</p>
+
+                <div class="highlight-box">
+                    <h3>The Emotional Equation</h3>
+                    <p>School Self-Regulation + Home Safety = Release of Suppressed Emotions</p>
+                </div>
+
+                <h2>Why This Is Actually Good News</h2>
+                <p>Contrary to what frustrated parents might believe, restraint collapse signals that your child:</p>
+
+                <ol>
+                    <li><strong>Possesses intact emotional awareness:</strong> They recognize and feel their emotions deeply</li>
+                    <li><strong>Has developed social skills:</strong> They understand appropriate behavior in public settings</li>
+                    <li><strong>Feels secure with you:</strong> They trust you enough to show their authentic selves</li>
+                    <li><strong>Maintains cognitive control:</strong> They can regulate behavior in demanding environments</li>
+                </ol>
+
+                <p>This pattern demonstrates emotional intelligence and resilience—qualities to celebrate, not punish.</p>
+
+                <h3>Recognizing the Signs</h3>
+                <p>Restraint collapse follows predictable patterns:</p>
+
+                <ul>
+                    <li>Explosive reactions to minor frustrations immediately after school</li>
+                    <li>Extreme fatigue or shutdown behaviors</li>
+                    <li>Increased sensitivity to sensory stimuli (sounds, textures, lights)</li>
+                    <li>Regression to younger behaviors (baby talk, tantrums)</li>
+                    <li>Difficulty with routine transitions</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Research Insight</h3>
+                    <p>Studies show that children with high emotional intelligence often experience more intense restraint collapse because they're acutely aware of social expectations and feel pressure to meet them.</p>
+                </div>
+
+                <h2>Strategies for Supporting Your Child</h2>
+                <p>Understanding restraint collapse transforms your response from "What's wrong with you?" to "How can I help you?" Here are evidence-based approaches:</p>
+
+                <h3>1. Create Transition Rituals</h3>
+                <p>Build decompression time between school and home demands:</p>
+
+                <ul>
+                    <li>Allow 15-30 minutes of unstructured downtime</li>
+                    <li>Offer sensory comfort items (weighted blanket, fidget toy)</li>
+                    <li>Create a "feelings check-in" routine</li>
+                </ul>
+
+                <h3>2. Reframe Your Perspective</h3>
+                <p>Instead of viewing explosive emotions as misbehavior, recognize them as communication:</p>
+
+                <ul>
+                    <li>"I notice you're feeling overwhelmed. Let's figure out what you need."</li>
+                    <li>"It sounds like school was really hard today. How can I support you?"</li>
+                    <li>"Your big feelings tell me you're safe enough to be honest about how you feel."</li>
+                </ul>
+
+                <h3>3. Build Regulation Resources</h3>
+                <p>Help your child replenish their self-regulation reserves:</p>
+
+                <ul>
+                    <li>Ensure adequate sleep and nutrition</li>
+                    <li>Teach breathing and mindfulness techniques</li>
+                    <li>Create a calm-down kit with preferred comfort items</li>
+                    <li>Establish predictable routines that reduce decision fatigue</li>
+                </ul>
+
+                <h2>The Long-Term View</h2>
+                <p>Restraint collapse typically diminishes as children develop stronger executive function skills and learn more sophisticated emotional regulation strategies. However, periods of increased stress—such as school transitions, social challenges, or family changes—may temporarily intensify these patterns.</p>
+
+                <p>Your role isn't to eliminate restraint collapse but to create conditions where your child can process emotions safely and develop sustainable coping strategies.</p>
+
+                <div class="highlight-box">
+                    <h3>Parenting Perspective Shift</h3>
+                    <p>Next time you witness a post-school explosion, remind yourself: "My child maintained composure for 6+ hours in a challenging environment. Their emotional release shows they trust our relationship and possess healthy emotional awareness."</p>
+                </div>
+
+                <h2>When to Seek Additional Support</h2>
+                <p>While restraint collapse is normal, certain patterns warrant professional consultation:</p>
+
+                <ul>
+                    <li>Episodes last longer than 2-3 hours consistently</li>
+                    <li>Your child expresses self-harm or harm to others</li>
+                    <li>School performance significantly declines</li>
+                    <li>Family functioning is severely disrupted</li>
+                </ul>
+
+                <p>In these cases, consider consulting with a pediatrician, child psychologist, or occupational therapist who specializes in sensory processing and executive function.</p>
+
+                <h2>The Bottom Line</h2>
+                <p>Restraint collapse reflects your child's remarkable ability to navigate complex social environments while managing intense internal experiences. Rather than indicating poor behavior or weak character, it demonstrates emotional authenticity and trust in your relationship.</p>
+
+                <p>Your child isn't switching personalities—they're releasing the enormous effort required to be "good" all day. Responding with empathy and structure, rather than punishment, builds resilience and strengthens your connection. Remember: their emotional intensity is often proportional to their capacity for love, creativity, and deep thinking.</p>
+
+                <p>In a world that rewards conformity, your child's authenticity—even when it's messy—is a gift worth nurturing.</p>
+            </div>
+        </div>
+
+        <div class="article-sidebar">
+            <div class="sidebar-widget">
+                <h3>Is your child 2e?</h3>
+                <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
+                <a href="quiz.html" class="btn btn-primary" style="font-family: var(--font-body);">Take the Free Quiz</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="read-next">
+        <div class="container">
+            <h2>Read Next</h2>
+            <div class="read-next-grid">
+                <a href="black-hole-backpack.html" class="read-next-card premium-card">
+                    <h3>The Black Hole Backpack</h3>
+                    <p>A 3-step system to stop losing homework and essential items forever.</p>
+                </a>
+                <a href="laziness-vs-dysfunction.html" class="read-next-card premium-card">
+                    <h3>Laziness vs. Dysfunction</h3>
+                    <p>How to tell if they won't do it, or can't do it.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+<div id="navigation-placeholder"></div>
+<script>
+    fetch('navigation.html').then(response => response.text()).then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
+
+<div id="footer-placeholder"></div>
+<script>
+    fetch('footer.html').then(response => response.text()).then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+<script src="script.js"></script>
 </body>
 
 </html>
