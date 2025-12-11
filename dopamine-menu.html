@@ -2,756 +2,504 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>The Dopamine Menu: How to Jumpstart a Bored Brain</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="styles.css">
-   <style>
-      :root {
-         /* Backgrounds */
-         --bg-cream: #FDFBF7;
-         --bg-white: #FFFFFF;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dopamine Menu: How to Jumpstart a Bored Brain</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /*
+        * Local Overrides to ensure the article structure blends perfectly.
+        * All colors and fonts are pulled from the global styles.css.
+        */
 
-         /* Colors */
-         --color-terracotta: #E07A5F;
-         --color-sage: #81B29A;
-         --text-charcoal: #3D405B;
-         --text-dark: #2A2C35;
-         --color-gold: #F2CC8F;
-
-         /* UI */
-         --radius: 12px;
-         --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-
-         /* Typography */
-         --font-heading: 'Merriweather', serif;
-         --font-body: 'Inter', sans-serif;
-
-         /* Spacing */
-         --section-padding: 80px;
-         --max-text-width: 700px;
-         --line-height: 1.6;
-      }
-
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-
-      body {
-         font-family: var(--font-body);
-         background-color: var(--bg-cream);
-         color: var(--text-charcoal);
-         line-height: var(--line-height);
-         font-size: 18px;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4 {
-         font-family: var(--font-heading);
-         color: var(--text-dark);
-         line-height: 1.3;
-      }
-
-      .container {
-         width: 100%;
-         max-width: 1200px;
-         margin: 0 auto;
-         padding: 0 24px;
-      }
-
-      section {
-         padding: var(--section-padding) 0;
-      }
-
-      /* Article Layout */
-      .article-layout {
-         display: flex;
-         gap: 60px;
-         max-width: 1400px;
-         margin: 0 auto;
-         padding: 40px 24px;
-      }
-
-      .article-content {
-         flex: 1;
-         max-width: 800px;
-      }
-
-      .article-sidebar {
-         width: 300px;
-         flex-shrink: 0;
-      }
-
-      /* Breadcrumbs */
-      .breadcrumbs {
-         margin-bottom: 30px;
-         font-size: 0.9rem;
-      }
-
-      .breadcrumbs a {
-         color: var(--color-terracotta);
-         text-decoration: none;
-      }
-
-      .breadcrumbs span {
-         color: var(--text-charcoal);
-         opacity: 0.7;
-      }
-
-      /* Article Header */
-      .article-header {
-         max-width: 800px;
-         margin: 0 auto 60px;
-      }
-
-      .article-header h1 {
-         font-size: 2.5rem;
-         margin-bottom: 30px;
-         line-height: 1.2;
-      }
-
-      .author-byline {
-         display: flex;
-         align-items: center;
-         gap: 15px;
-      }
-
-      .author-photo {
-         width: 50px;
-         height: 50px;
-         border-radius: 50%;
-         background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-gold) 100%);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         font-weight: bold;
-      }
-
-      .author-info {
-         font-size: 0.9rem;
-      }
-
-      .author-name {
-         font-weight: 600;
-         margin-bottom: 5px;
-      }
-
-      .publish-date {
-         color: var(--text-charcoal);
-         opacity: 0.7;
-      }
-
-      /* Key Takeaways */
-      .key-takeaways {
-         background-color: rgba(129, 178, 154, 0.1);
-         border-radius: var(--radius);
-         padding: 30px;
-         margin-bottom: 50px;
-      }
-
-      .key-takeaways h2 {
-         color: var(--color-sage);
-         font-size: 1.5rem;
-         margin-bottom: 20px;
-      }
-
-      .key-takeaways ul {
-         padding-left: 20px;
-      }
-
-      .key-takeaways li {
-         margin-bottom: 15px;
-      }
-
-      /* Highlight Box */
-      .highlight-box {
-         background-color: var(--bg-cream);
-         border-left: 4px solid var(--color-terracotta);
-         padding: 25px 30px;
-         margin: 40px 0;
-         border-radius: 0 var(--radius) var(--radius) 0;
-      }
-
-      .highlight-box h3 {
-         margin-bottom: 15px;
-         color: var(--color-terracotta);
-      }
-
-      /* Article Content */
-      .article-body {
-         line-height: 1.7;
-      }
-
-      .article-body p {
-         margin-bottom: 30px;
-      }
-
-      .article-body h2 {
-         font-size: 1.8rem;
-         margin: 50px 0 30px;
-         padding-bottom: 15px;
-         border-bottom: 2px solid rgba(224, 122, 95, 0.3);
-      }
-
-      .article-body h3 {
-         font-size: 1.4rem;
-         margin: 40px 0 20px;
-      }
-
-      .article-body ul,
-      .article-body ol {
-         margin: 30px 0;
-         padding-left: 30px;
-      }
-
-      .article-body li {
-         margin-bottom: 15px;
-      }
-
-      /* Dopamine Menu */
-      .dopamine-menu {
-         background: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 30px;
-         margin: 40px 0;
-         box-shadow: var(--shadow);
-      }
-
-      .dopamine-menu h3 {
-         text-align: center;
-         color: var(--color-sage);
-         margin-bottom: 30px;
-      }
-
-      .menu-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-         gap: 20px;
-      }
-
-      .menu-item {
-         background: var(--bg-cream);
-         border-radius: var(--radius);
-         padding: 20px;
-         text-align: center;
-         transition: all 0.3s ease;
-      }
-
-      .menu-item:hover {
-         transform: translateY(-5px);
-         box-shadow: var(--shadow);
-      }
-
-      .menu-icon {
-         width: 60px;
-         height: 60px;
-         margin: 0 auto 15px;
-         background: var(--color-gold);
-         border-radius: 50%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: var(--text-dark);
-         font-size: 1.5rem;
-      }
-
-      .menu-item h4 {
-         margin-bottom: 10px;
-         color: var(--text-dark);
-      }
-
-      /* Sidebar */
-      .sidebar-widget {
-         background: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 30px;
-         box-shadow: var(--shadow);
-         position: sticky;
-         top: 30px;
-      }
-
-      .sidebar-widget h3 {
-         font-size: 1.3rem;
-         margin-bottom: 20px;
-         text-align: center;
-      }
-
-      .btn {
-         display: block;
-         width: 100%;
-         padding: 16px;
-         background-color: var(--color-terracotta);
-         color: white;
-         border-radius: var(--radius);
-         text-decoration: none;
-         font-weight: 600;
-         transition: all 0.3s ease;
-         border: none;
-         cursor: pointer;
-         font-size: 1rem;
-         text-align: center;
-      }
-
-      .btn:hover {
-         background-color: #d36547;
-         transform: translateY(-2px);
-         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Read Next Section */
-      .read-next {
-         background-color: var(--bg-white);
-         padding: var(--section-padding) 0;
-         margin-top: 80px;
-      }
-
-      .read-next h2 {
-         text-align: center;
-         font-size: 2rem;
-         margin-bottom: 50px;
-      }
-
-      .read-next-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-         gap: 40px;
-         max-width: 900px;
-         margin: 0 auto;
-      }
-
-      .read-next-card {
-         background: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 30px;
-         box-shadow: var(--shadow);
-         transition: all 0.3s ease;
-         text-decoration: none;
-         color: inherit;
-      }
-
-      .read-next-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      .read-next-card:hover h3 {
-         color: var(--color-terracotta);
-      }
-
-      .read-next-card h3 {
-         font-size: 1.4rem;
-         margin-bottom: 15px;
-         transition: color 0.3s ease;
-      }
-
-      .read-next-card p {
-         color: var(--text-charcoal);
-         opacity: 0.8;
-      }
-
-      /* Responsive */
-      @media (max-width: 1024px) {
-         .article-layout {
-            flex-direction: column;
-            gap: 40px;
-         }
-
-         .article-sidebar {
-            width: 100%;
-            max-width: 800px;
+        /* Article Layout adjustments for padding consistency */
+        .article-layout {
+            display: flex;
+            gap: 60px;
+            max-width: 1400px;
             margin: 0 auto;
-         }
-      }
+            padding: 40px 24px;
+        }
 
-      @media (max-width: 768px) {
-         .article-header h1 {
-            font-size: 2rem;
-         }
+        /* Breadcrumbs - Mapped to Dusty Rose (New Terracotta role) */
+        .breadcrumbs a {
+            color: #D4A5A5;
+            text-decoration: none;
+        }
 
-         body {
-            font-size: 16px;
-         }
+        /* Author Photo - Mapped to new brand gradient */
+        .author-photo {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        }
 
-         .article-layout {
-            padding: 20px;
-         }
+        /* Key Takeaways - Uses transparent Sage blend (new primary) on cream background */
+        .key-takeaways {
+            background-color: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            border: 1px solid rgba(124, 152, 133, 0.2);
+            padding: 30px;
+            margin-bottom: 50px;
+        }
 
-         .menu-grid {
-            grid-template-columns: 1fr;
-         }
-      }
+        .key-takeaways h2 {
+            color: var(--color-primary);
+        }
 
-      @media (max-width: 480px) {
-         .article-header h1 {
-            font-size: 1.75rem;
-         }
+        /* Highlight Box - Uses Dusty Rose and Cream/Off-White for premium callouts */
+        .highlight-box {
+            background-color: var(--color-secondary);
+            border-left: 4px solid #D4A5A5; /* Dusty Rose */
+            box-shadow: var(--box-shadow-subtle);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 25px 30px;
+        }
 
-         .highlight-box {
-            padding: 20px;
-         }
-      }
-   </style>
+        .highlight-box h3 {
+            color: #D4A5A5; /* Dusty Rose */
+        }
+
+        /* Article body h2 separator fix */
+        .article-body h2 {
+            border-bottom: 2px solid rgba(124, 152, 133, 0.3); /* Soft Sage separator */
+        }
+
+        /* Dopamine Menu Styling */
+        .dopamine-menu {
+            background: var(--color-secondary); /* Cream background */
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: var(--box-shadow-subtle);
+        }
+
+        .dopamine-menu h3 {
+            color: var(--color-primary); /* Sage Green */
+            font-family: var(--font-header);
+        }
+
+        .menu-item {
+            background: var(--color-background); /* Off-White item base */
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .menu-icon {
+            background: var(--color-accent); /* Gold Circle */
+            color: var(--color-text); /* Charcoal Text */
+        }
+        
+        .menu-item h4 {
+             font-family: var(--font-header);
+        }
+
+        /* Sidebar Widget - Uses Cream background and soft shadows */
+        .sidebar-widget {
+            background: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            position: sticky;
+            top: 100px; /* Adjusted to clear sticky navbar + spacing */
+        }
+
+        /* Button Fix (Ensures adherence to global button style) */
+        .btn {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: var(--font-body);
+        }
+
+        /* Read Next Card Styling */
+        .read-next-card {
+            background: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+        }
+
+        .read-next-card:hover h3 {
+            color: var(--color-primary);
+        }
+
+        @media (min-width: 1024px) {
+            .article-sidebar {
+                width: 300px;
+                flex-shrink: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
-   <div class="article-layout">
-      <div class="article-content">
-         <!-- Breadcrumbs -->
-         <div class="breadcrumbs">
-            <a href="#">Home</a> <span>/</span>
-            <a href="#">Motivation</a> <span>/</span>
-            <span>The Dopamine Menu</span>
-         </div>
-
-         <!-- Article Header -->
-         <header class="article-header">
-            <h1>The Dopamine Menu: How to Jumpstart a Bored Brain</h1>
-            <div class="author-byline">
-               <div class="author-photo">JD</div>
-               <div class="author-info">
-                  <div class="author-name">Jane Doe</div>
-                  <div class="publish-date">Published June 10, 2024</div>
-               </div>
-            </div>
-         </header>
-
-         <!-- Key Takeaways -->
-         <div class="key-takeaways">
-            <h2>TL;DR</h2>
-            <ul>
-               <li>"Lazy" gifted children aren't unmotivated—they're neurochemically under-stimulated</li>
-               <li>Dopamine drives engagement; understimulated brains crave intense input</li>
-               <li>Video games hijack dopamine pathways, making real-world tasks feel insufficient</li>
-               <li>Strategic dopamine scheduling can reboot motivation without screens</li>
-            </ul>
-         </div>
-
-         <!-- Article Content -->
-         <div class="article-body">
-            <p>Your child spends 8 hours a day gaming, yet claims boredom with homework, chores, and family activities. You've tried every motivational technique—rewards, consequences, inspirational speeches—yet nothing moves the needle on real-world engagement.</p>
-
-            <p>This isn't laziness or manipulation. This is dopamine dysregulation, where gifted brains accustomed to intense stimulation struggle to find satisfaction in everyday activities.</p>
-
-            <p>Understanding the neurochemistry transforms frustration into strategic intervention.</p>
-
-            <div class="highlight-box">
-               <h3>The Dopamine Paradox</h3>
-               <p>Gifted children's brains require more intense stimulation to trigger dopamine release. Video games provide this intensity artificially, making real-world activities feel comparatively boring.</p>
+<div id="navigation-placeholder"></div>
+<script>
+    fetch('navigation.html').then(response => response.text()).then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
+    <div class="article-layout">
+        <div class="article-content">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> <span>/</span>
+                <a href="executive-function.html">Motivation</a> <span>/</span>
+                <span>The Dopamine Menu</span>
             </div>
 
-            <h2>The Neuroscience of Boredom</h2>
-            <p>Understanding why understimulated brains gravitate to screens:</p>
+            <header class="article-header">
+                <h1>The Dopamine Menu: How to Jumpstart a Bored Brain</h1>
+                <div class="author-byline">
+                    <div class="author-photo">JD</div>
+                    <div class="author-info">
+                        <div class="author-name">Jane Doe</div>
+                        <div class="publish-date">Published June 10, 2024</div>
+                    </div>
+                </div>
+            </header>
 
-            <h3>Dopamine and Reward Prediction</h3>
-            <p>The brain's reward system operates on prediction:</p>
-
-            <ul>
-               <li><strong>Anticipation Phase:</strong> Dopamine spikes when expecting rewards</li>
-               <li><strong>Receipt Phase:</strong> Actual reward reception triggers secondary dopamine release</li>
-               <li><strong>Prediction Error:</strong> Unexpected rewards create strongest dopamine surges</li>
-               <li><strong>Habituation:</strong> Predictable rewards lose dopamine-triggering power</li>
-            </ul>
-
-            <h3>Gifted Brains and Intensity Needs</h3>
-            <p>Neurological differences create unique challenges:</p>
-
-            <ul>
-               <li><strong>Enhanced Processing:</strong> Gifted brains process information more rapidly and thoroughly</li>
-               <li><strong>Increased Threshold:</strong> Higher stimulation levels required for dopamine activation</li>
-               <li><strong>Pattern Recognition:</strong> Quick identification of predictable reward patterns</li>
-               <li><strong>Intensity Seeking:</strong> Natural gravitation toward stimulating experiences</li>
-            </ul>
-
-            <div class="highlight-box">
-               <h3>Research Insight</h3>
-               <p>Neuroimaging studies reveal that gifted individuals show heightened dopamine activity in reward-processing regions, explaining their need for more intense stimulation to achieve satisfaction.</p>
+            <div class="key-takeaways">
+                <h2>TL;DR</h2>
+                <ul>
+                    <li>"Lazy" gifted children aren't unmotivated—they're neurochemically under-stimulated</li>
+                    <li>Dopamine drives engagement; understimulated brains crave intense input</li>
+                    <li>Video games hijack dopamine pathways, making real-world tasks feel insufficient</li>
+                    <li>Strategic dopamine scheduling can reboot motivation without screens</li>
+                </ul>
             </div>
 
-            <h2>Why Screens Hijack Motivation</h2>
-            <p>Digital environments exploit neurological vulnerabilities:</p>
+            <div class="article-body">
+                <p>Your child spends 8 hours a day gaming, yet claims boredom with homework, chores, and family activities. You've tried every motivational technique—rewards, consequences, inspirational speeches—yet nothing moves the needle on real-world engagement.</p>
 
-            <h3>Variable Reward Schedules</h3>
-            <p>Gaming mechanics maximize dopamine release:</p>
+                <p>This isn't laziness or manipulation. This is dopamine dysregulation, where gifted brains accustomed to intense stimulation struggle to find satisfaction in everyday activities.</p>
 
-            <ul>
-               <li><strong>Random Reinforcement:</strong> Unpredictable reward timing creates maximum anticipation</li>
-               <li><strong>Progressive Difficulty:</strong> Escalating challenges maintain engagement</li>
-               <li><strong>Social Competition:</strong> Multiplayer elements add unpredictability</li>
-               <li><strong>Achievement Systems:</strong> Frequent small wins sustain dopamine levels</li>
-            </ul>
+                <p>Understanding the neurochemistry transforms frustration into strategic intervention.</p>
 
-            <h3>The Real-World Deficit</h3>
-            <p>Everyday activities fail to compete:</p>
+                <div class="highlight-box">
+                    <h3>The Dopamine Paradox</h3>
+                    <p>Gifted children's brains require more intense stimulation to trigger dopamine release. Video games provide this intensity artificially, making real-world activities feel comparatively boring.</p>
+                </div>
 
-            <ul>
-               <li><strong>Predictable Rewards:</strong> Chores and homework offer known outcomes</li>
-               <li><strong>Slow Progress:</strong> Academic advancement occurs gradually</li>
-               <li><strong>Solo Activities:</strong> Individual tasks lack social stimulation</li>
-               <li><strong>Delayed Gratification:</strong> Real-world rewards often distant or abstract</li>
-            </ul>
+                <h2>The Neuroscience of Boredom</h2>
+                <p>Understanding why understimulated brains gravitate to screens:</p>
 
-            <div class="dopamine-menu">
-               <h3>The Dopamine Menu</h3>
-               <div class="menu-grid">
-                  <div class="menu-item">
-                     <div class="menu-icon">🎮</div>
-                     <h4>Video Games</h4>
-                     <p>Intense, unpredictable rewards</p>
-                  </div>
-                  <div class="menu-item">
-                     <div class="menu-icon">📚</div>
-                     <h4>Learning</h4>
-                     <p>Intellectual challenges</p>
-                  </div>
-                  <div class="menu-item">
-                     <div class="menu-icon">🎨</div>
-                     <h4>Creativity</h4>
-                     <p>Self-directed projects</p>
-                  </div>
-                  <div class="menu-item">
-                     <div class="menu-icon">🏃</div>
-                     <h4>Movement</h4>
-                     <p>Physical challenges</p>
-                  </div>
-               </div>
+                <h3>Dopamine and Reward Prediction</h3>
+                <p>The brain's reward system operates on prediction:</p>
+
+                <ul>
+                    <li><strong>Anticipation Phase:</strong> Dopamine spikes when expecting rewards</li>
+                    <li><strong>Receipt Phase:</strong> Actual reward reception triggers secondary dopamine release</li>
+                    <li><strong>Prediction Error:</strong> Unexpected rewards create strongest dopamine surges</li>
+                    <li><strong>Habituation:</strong> Predictable rewards lose dopamine-triggering power</li>
+                </ul>
+
+                <h3>Gifted Brains and Intensity Needs</h3>
+                <p>Neurological differences create unique challenges:</p>
+
+                <ul>
+                    <li><strong>Enhanced Processing:</strong> Gifted brains process information more rapidly and thoroughly</li>
+                    <li><strong>Increased Threshold:</strong> Higher stimulation levels required for dopamine activation</li>
+                    <li><strong>Pattern Recognition:</strong> Quick identification of predictable reward patterns</li>
+                    <li><strong>Intensity Seeking:</strong> Natural gravitation toward stimulating experiences</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Research Insight</h3>
+                    <p>Neuroimaging studies reveal that gifted individuals show heightened dopamine activity in reward-processing regions, explaining their need for more intense stimulation to achieve satisfaction.</p>
+                </div>
+
+                <h2>Why Screens Hijack Motivation</h2>
+                <p>Digital environments exploit neurological vulnerabilities:</p>
+
+                <h3>Variable Reward Schedules</h3>
+                <p>Gaming mechanics maximize dopamine release:</p>
+
+                <ul>
+                    <li><strong>Random Reinforcement:</strong> Unpredictable reward timing creates maximum anticipation</li>
+                    <li><strong>Progressive Difficulty:</strong> Escalating challenges maintain engagement</li>
+                    <li><strong>Social Competition:</strong> Multiplayer elements add unpredictability</li>
+                    <li><strong>Achievement Systems:</strong> Frequent small wins sustain dopamine levels</li>
+                </ul>
+
+                <h3>The Real-World Deficit</h3>
+                <p>Everyday activities fail to compete:</p>
+
+                <ul>
+                    <li><strong>Predictable Rewards:</strong> Chores and homework offer known outcomes</li>
+                    <li><strong>Slow Progress:</strong> Academic advancement occurs gradually</li>
+                    <li><strong>Solo Activities:</strong> Individual tasks lack social stimulation</li>
+                    <li><strong>Delayed Gratification:</strong> Real-world rewards often distant or abstract</li>
+                </ul>
+
+                <div class="dopamine-menu">
+                    <h3>The Dopamine Menu</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-icon">🎮</div>
+                            <h4>Video Games</h4>
+                            <p>Intense, unpredictable rewards</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon">📚</div>
+                            <h4>Learning</h4>
+                            <p>Intellectual challenges</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon">🎨</div>
+                            <h4>Creativity</h4>
+                            <p>Self-directed projects</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon">🏃</div>
+                            <h4>Movement</h4>
+                            <p>Physical challenges</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>The Dopamine Reset Strategy</h2>
+                <p>Rebalance motivation through strategic stimulation:</p>
+
+                <h3>Immediate Intervention</h3>
+                <ul>
+                    <li><strong>Dopamine Fasting:</strong> Temporary reduction of intense stimulation</li>
+                    <li><strong>Environmental Reset:</strong> Removal of triggering stimuli</li>
+                    <li><strong>Routine Establishment:</strong> Predictable structure for stability</li>
+                    <li><strong>Alternative Engagement:</strong> Replacement activities with moderate intensity</li>
+                </ul>
+
+                <h3>Long-Term Restructuring</h3>
+                <ul>
+                    <li><strong>Scheduled Intensity:</strong> Planned high-engagement activities</li>
+                    <li><strong>Progressive Challenges:</strong> Gradually increasing difficulty levels</li>
+                    <li><strong>Social Integration:</strong> Collaborative high-intensity experiences</li>
+                    <li><strong>Self-Regulation Skills:</strong> Internal management of stimulation needs</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Implementation Timeline</h3>
+                    <p>Dopamine reset typically requires 2-4 weeks for initial stabilization, with full rebalancing occurring over 2-3 months of consistent intervention.</p>
+                </div>
+
+                <h2>Building the Real-World Dopamine Menu</h2>
+                <p>Create engaging alternatives to screens:</p>
+
+                <h3>Intellectual Stimulation</h3>
+                <ul>
+                    <li><strong>Complex Problem-Solving:</strong> Puzzles, strategy games, logic challenges</li>
+                    <li><strong>Research Projects:</strong> Self-directed investigation of passionate topics</li>
+                    <li><strong>Debate and Discussion:</strong> Intellectual sparring with peers or adults</li>
+                    <li><strong>Advanced Learning:</strong> Accelerated curriculum in areas of strength</li>
+                </ul>
+
+                <h3>Creative Expression</h3>
+                <ul>
+                    <li><strong>Artistic Creation:</strong> Visual arts, music composition, creative writing</li>
+                    <li><strong>Maker Activities:</strong> Engineering projects, crafts, DIY endeavors</li>
+                    <li><strong>Performance Opportunities:</strong> Drama, music, public speaking</li>
+                    <li><strong>Innovation Challenges:</strong> Invention, entrepreneurship, design thinking</li>
+                </ul>
+
+                <h3>Physical Challenges</h3>
+                <ul>
+                    <li><strong>Skill Sports:</strong> Rock climbing, martial arts, dance</li>
+                    <li><strong>Adventure Activities:</strong> Hiking, camping, outdoor challenges</li>
+                    <li><strong>Competitive Events:</strong> Tournaments, races, competitions</li>
+                    <li><strong>Extreme Sports:</strong> Skateboarding, skiing, parkour (with safety)</li>
+                </ul>
+
+                <h3>Social Intensity</h3>
+                <ul>
+                    <li><strong>Group Projects:</strong> Collaborative challenges with peers</li>
+                    <li><strong>Leadership Roles:</strong> Team captain, club president, mentor positions</li>
+                    <li><strong>Community Impact:</strong> Volunteering, activism, service projects</li>
+                    <li><strong>Competitive Teams:</strong> Academic teams, debate squads, gaming clans</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Parenting Strategy</h3>
+                    <p>Instead of asking "Why can't they just do their homework?" try "What real-world activities can provide the intensity and engagement they crave?" This shift transforms management into facilitation.</p>
+                </div>
+
+                <h2>Scheduling Dopamine Throughout the Day</h2>
+                <p>Create structured intensity patterns:</p>
+
+                <h3>Morning Peak</h3>
+                <ul>
+                    <li>High-energy physical activity or intense mental challenge</li>
+                    <li>Complex problem-solving or creative project initiation</li>
+                    <li>Social interaction with intellectual peers</li>
+                </ul>
+
+                <h3>Midday Maintenance</h3>
+                <ul>
+                    <li>Moderate-intensity activities with clear goals</li>
+                    <li>Skill-building exercises in areas of interest</li>
+                    <li>Social connection with supportive relationships</li>
+                </ul>
+
+                <h3>Evening Wind-Down</h3>
+                <ul>
+                    <li>Predictable, calming activities without screens</li>
+                    <li>Reflection and planning for tomorrow's challenges</li>
+                    <li>Gentle physical movement or quiet creative time</li>
+                </ul>
+
+                <h2>Why Traditional Motivation Techniques Fail</h2>
+                <p>Standard approaches miss the neurological root cause:</p>
+
+                <h3>Reward Systems</h3>
+                <ul>
+                    <li>External rewards feel insignificant compared to gaming intensity</li>
+                    <li>Predictable rewards quickly lose dopamine-triggering power</li>
+                    <li>Focus on compliance rather than internal motivation development</li>
+                    <li>Create dependency rather than self-regulation skills</li>
+                </ul>
+
+                <h3>Consequence-Based Motivation</h3>
+                <ul>
+                    <li>Punishment increases stress without addressing stimulation needs</li>
+                    <li>Negative associations further reduce real-world activity appeal</li>
+                    <li>Creates adversarial relationships that damage intrinsic motivation</li>
+                    <li>Ignores underlying neurological differences in reward processing</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Research Evidence</h3>
+                    <p>Controlled studies show that dopamine-based motivation strategies are 3x more effective than traditional reward/consequence approaches for gifted children with screen dependencies.</p>
+                </div>
+
+                <h2>Gradual Reintegration Protocol</h2>
+                <p>Safely reintroduce technology after reset:</p>
+
+                <h3>Phase 1: Foundation Building</h3>
+                <ul>
+                    <li>2 weeks minimum without intensive screen activities</li>
+                    <li>Daily schedule includes 3-4 high-intensity real-world activities</li>
+                    <li>Establish consistent sleep, exercise, and social routines</li>
+                    <li>Monitor mood and engagement levels daily</li>
+                </ul>
+
+                <h3>Phase 2: Controlled Introduction</h3>
+                <ul>
+                    <li>Begin with 30-60 minutes of structured screen time daily</li>
+                    <li>Choose activities with clear educational or social benefits</li>
+                    <li>Maintain real-world intensity activities as primary engagement</li>
+                    <li>Gradually increase screen time based on self-regulation demonstration</li>
+                </ul>
+
+                <h3>Phase 3: Balanced Integration</h3>
+                <ul>
+                    <li>Establish negotiated screen time with clear boundaries</li>
+                    <li>Prioritize real-world activities for primary satisfaction</li>
+                    <li>Teach self-monitoring and regulation skills</li>
+                    <li>Create sustainable long-term balance patterns</li>
+                </ul>
+
+                <h2>Family Implementation Strategies</h2>
+                <p>Create supportive environments for success:</p>
+
+                <h3>Environmental Design</h3>
+                <ul>
+                    <li>Remove easy-access screens from bedrooms and common areas</li>
+                    <li>Create dedicated spaces for high-intensity activities</li>
+                    <li>Establish visual cues for different activity zones</li>
+                    <li>Design predictable routines that include intense engagement</li>
+                </ul>
+
+                <h3>Communication Protocols</h3>
+                <ul>
+                    <li>Use collaborative language rather than directive commands</li>
+                    <li>Focus on feelings and needs rather than behaviors</li>
+                    <li>Create regular check-ins for adjustment and feedback</li>
+                    <li>Validate struggles while maintaining clear expectations</li>
+                </ul>
+
+                <h2>When to Seek Professional Support</h2>
+                <p>Consider specialized intervention when:</p>
+
+                <ul>
+                    <li>Screen dependency significantly impacts academic performance</li>
+                    <li>Family relationships suffer due to gaming conflicts</li>
+                    <li>Child expresses genuine desire to reduce screen time but cannot</li>
+                    <li>Sleep, nutrition, or physical health deteriorates</li>
+                    <li>Other addictive behaviors emerge or worsen</li>
+                </ul>
+
+                <h2>The Long-Term Outlook</h2>
+                <p>Dopamine regulation typically improves:</p>
+
+                <ul>
+                    <li>Neurological maturation reduces intensity needs over time</li>
+                    <li>Self-regulation skills become more sophisticated with practice</li>
+                    <li>Life experiences provide natural high-intensity opportunities</li>
+                    <li>Career paths often align with stimulation preferences</li>
+                </ul>
+
+                <p>However, some individuals retain intensity-seeking preferences throughout life, often developing careers and lifestyles that accommodate their stimulation needs.</p>
+
+                <div class="highlight-box">
+                    <h3>Future Advantage</h3>
+                    <p>Adults who learn to understand and accommodate their intensity needs often become exceptional entrepreneurs, innovators, and leaders who thrive on challenge and stimulation.</p>
+                </div>
+
+                <h2>The Bottom Line</h2>
+                <p>Your child's screen dependency isn't a character flaw or motivational failure—it's a neurological response to understimulation that responds beautifully to strategic intervention.</p>
+
+                <p>The Dopamine Menu approach works because it addresses the root cause rather than surface behaviors. By providing real-world activities that satisfy intensity needs, you create sustainable motivation without external manipulation.</p>
+
+                <p>Rather than fighting their stimulation cravings, support their neurological needs through understanding and accommodation. This approach reduces daily stress for everyone while building genuine internal motivation.</p>
+
+                <p>Remember: The goal isn't to eliminate intensity-seeking but to channel it toward productive, fulfilling activities. Sometimes the simplest solution—like a challenging puzzle or creative project—makes the biggest difference in daily quality of life.</p>
+
+                <p>In a world that often expects uniform stimulation preferences, your role is to advocate for your child's unique neurological profile. Their intensity needs aren't obstacles to overcome but realities to support with compassion and practical solutions.</p>
+
+                <div class="highlight-box">
+                    <h3>Family Harmony Strategy</h3>
+                    <p>Create a weekly dopamine menu that includes everyone's preferred high-intensity activities. When stimulation needs are met proactively, reactive screen battles become unnecessary.</p>
+                </div>
             </div>
+        </div>
 
-            <h2>The Dopamine Reset Strategy</h2>
-            <p>Rebalance motivation through strategic stimulation:</p>
-
-            <h3>Immediate Intervention</h3>
-            <ul>
-               <li><strong>Dopamine Fasting:</strong> Temporary reduction of intense stimulation</li>
-               <li><strong>Environmental Reset:</strong> Removal of triggering stimuli</li>
-               <li><strong>Routine Establishment:</strong> Predictable structure for stability</li>
-               <li><strong>Alternative Engagement:</strong> Replacement activities with moderate intensity</li>
-            </ul>
-
-            <h3>Long-Term Restructuring</h3>
-            <ul>
-               <li><strong>Scheduled Intensity:</strong> Planned high-engagement activities</li>
-               <li><strong>Progressive Challenges:</strong> Gradually increasing difficulty levels</li>
-               <li><strong>Social Integration:</strong> Collaborative high-intensity experiences</li>
-               <li><strong>Self-Regulation Skills:</strong> Internal management of stimulation needs</li>
-            </ul>
-
-            <div class="highlight-box">
-               <h3>Implementation Timeline</h3>
-               <p>Dopamine reset typically requires 2-4 weeks for initial stabilization, with full rebalancing occurring over 2-3 months of consistent intervention.</p>
+        <div class="article-sidebar">
+            <div class="sidebar-widget">
+                <h3>Is your child 2e?</h3>
+                <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
+                <a href="quiz.html" class="btn btn-primary" style="font-family: var(--font-body);">Take the Free Quiz</a>
             </div>
+        </div>
+    </div>
 
-            <h2>Building the Real-World Dopamine Menu</h2>
-            <p>Create engaging alternatives to screens:</p>
-
-            <h3>Intellectual Stimulation</h3>
-            <ul>
-               <li><strong>Complex Problem-Solving:</strong> Puzzles, strategy games, logic challenges</li>
-               <li><strong>Research Projects:</strong> Self-directed investigation of passionate topics</li>
-               <li><strong>Debate and Discussion:</strong> Intellectual sparring with peers or adults</li>
-               <li><strong>Advanced Learning:</strong> Accelerated curriculum in areas of strength</li>
-            </ul>
-
-            <h3>Creative Expression</h3>
-            <ul>
-               <li><strong>Artistic Creation:</strong> Visual arts, music composition, creative writing</li>
-               <li><strong>Maker Activities:</strong> Engineering projects, crafts, DIY endeavors</li>
-               <li><strong>Performance Opportunities:</strong> Drama, music, public speaking</li>
-               <li><strong>Innovation Challenges:</strong> Invention, entrepreneurship, design thinking</li>
-            </ul>
-
-            <h3>Physical Challenges</h3>
-            <ul>
-               <li><strong>Skill Sports:</strong> Rock climbing, martial arts, dance</li>
-               <li><strong>Adventure Activities:</strong> Hiking, camping, outdoor challenges</li>
-               <li><strong>Competitive Events:</strong> Tournaments, races, competitions</li>
-               <li><strong>Extreme Sports:</strong> Skateboarding, skiing, parkour (with safety)</li>
-            </ul>
-
-            <h3>Social Intensity</h3>
-            <ul>
-               <li><strong>Group Projects:</strong> Collaborative challenges with peers</li>
-               <li><strong>Leadership Roles:</strong> Team captain, club president, mentor positions</li>
-               <li><strong>Community Impact:</strong> Volunteering, activism, service projects</li>
-               <li><strong>Competitive Teams:</strong> Academic teams, debate squads, gaming clans</li>
-            </ul>
-
-            <div class="highlight-box">
-               <h3>Parenting Strategy</h3>
-               <p>Instead of asking "Why can't they just do their homework?" try "What real-world activities can provide the intensity and engagement they crave?" This shift transforms management into facilitation.</p>
+    <section class="read-next">
+        <div class="container">
+            <h2>Read Next</h2>
+            <div class="read-next-grid">
+                <a href="black-hole-backpack.html" class="read-next-card premium-card">
+                    <h3>The Black Hole Backpack</h3>
+                    <p>A 3-step system to stop losing homework forever.</p>
+                </a>
+                <a href="laziness-vs-dysfunction.html" class="read-next-card premium-card">
+                    <h3>Laziness vs. Dysfunction</h3>
+                    <p>How to tell if they won't do it, or can't do it.</p>
+                </a>
             </div>
+        </div>
+    </section>
 
-            <h2>Scheduling Dopamine Throughout the Day</h2>
-            <p>Create structured intensity patterns:</p>
-
-            <h3>Morning Peak</h3>
-            <ul>
-               <li>High-energy physical activity or intense mental challenge</li>
-               <li>Complex problem-solving or creative project initiation</li>
-               <li>Social interaction with intellectual peers</li>
-            </ul>
-
-            <h3>Midday Maintenance</h3>
-            <ul>
-               <li>Moderate-intensity activities with clear goals</li>
-               <li>Skill-building exercises in areas of interest</li>
-               <li>Social connection with supportive relationships</li>
-            </ul>
-
-            <h3>Evening Wind-Down</h3>
-            <ul>
-               <li>Predictable, calming activities without screens</li>
-               <li>Reflection and planning for tomorrow's challenges</li>
-               <li>Gentle physical movement or quiet creative time</li>
-            </ul>
-
-            <h2>Why Traditional Motivation Techniques Fail</h2>
-            <p>Standard approaches miss the neurological root cause:</p>
-
-            <h3>Reward Systems</h3>
-            <ul>
-               <li>External rewards feel insignificant compared to gaming intensity</li>
-               <li>Predictable rewards quickly lose dopamine-triggering power</li>
-               <li>Focus on compliance rather than internal motivation development</li>
-               <li>Create dependency rather than self-regulation skills</li>
-            </ul>
-
-            <h3>Consequence-Based Motivation</h3>
-            <ul>
-               <li>Punishment increases stress without addressing stimulation needs</li>
-               <li>Negative associations further reduce real-world activity appeal</li>
-               <li>Creates adversarial relationships that damage intrinsic motivation</li>
-               <li>Ignores underlying neurological differences in reward processing</li>
-            </ul>
-
-            <div class="highlight-box">
-               <h3>Research Evidence</h3>
-               <p>Controlled studies show that dopamine-based motivation strategies are 3x more effective than traditional reward/consequence approaches for gifted children with screen dependencies.</p>
-            </div>
-
-            <h2>Gradual Reintegration Protocol</h2>
-            <p>Safely reintroduce technology after reset:</p>
-
-            <h3>Phase 1: Foundation Building</h3>
-            <ul>
-               <li>2 weeks minimum without intensive screen activities</li>
-               <li>Daily schedule includes 3-4 high-intensity real-world activities</li>
-               <li>Establish consistent sleep, exercise, and social routines</li>
-               <li>Monitor mood and engagement levels daily</li>
-            </ul>
-
-            <h3>Phase 2: Controlled Introduction</h3>
-            <ul>
-               <li>Begin with 30-60 minutes of structured screen time daily</li>
-               <li>Choose activities with clear educational or social benefits</li>
-               <li>Maintain real-world intensity activities as primary engagement</li>
-               <li>Gradually increase screen time based on self-regulation demonstration</li>
-            </ul>
-
-            <h3>Phase 3: Balanced Integration</h3>
-            <ul>
-               <li>Establish negotiated screen time with clear boundaries</li>
-               <li>Prioritize real-world activities for primary satisfaction</li>
-               <li>Teach self-monitoring and regulation skills</li>
-               <li>Create sustainable long-term balance patterns</li>
-            </ul>
-
-            <h2>Family Implementation Strategies</h2>
-            <p>Create supportive environments for success:</p>
-
-            <h3>Environmental Design</h3>
-            <ul>
-               <li>Remove easy-access screens from bedrooms and common areas</li>
-               <li>Create dedicated spaces for high-intensity activities</li>
-               <li>Establish visual cues for different activity zones</li>
-               <li>Design predictable routines that include intense engagement</li>
-            </ul>
-
-            <h3>Communication Protocols</h3>
-            <ul>
-               <li>Use collaborative language rather than directive commands</li>
-               <li>Focus on feelings and needs rather than behaviors</li>
-               <li>Create regular check-ins for adjustment and feedback</li>
-               <li>Validate struggles while maintaining clear expectations</li>
-            </ul>
-
-            <h2>When to Seek Professional Support</h2>
-            <p>Consider specialized intervention when:</p>
-
-            <ul>
-               <li>Screen dependency significantly impacts academic performance</li>
-               <li>Family relationships suffer due to gaming conflicts</li>
-               <li>Child expresses genuine desire to reduce screen time but cannot</li>
-               <li>Sleep, nutrition, or physical health deteriorates</li>
-               <li>Other addictive behaviors emerge or worsen</li>
-            </ul>
-
-            <h2>The Long-Term Outlook</h2>
-            <p>Dopamine regulation typically improves:</p>
-
-            <ul>
-               <li>Neurological maturation reduces intensity needs over time</li>
-               <li>Self-regulation skills become more sophisticated with practice</li>
-               <li>Life experiences provide natural high-intensity opportunities</li>
-               <li>Career paths often align with stimulation preferences</li>
-            </ul>
-
-            <p>However, some individuals retain intensity-seeking preferences throughout life, often developing careers and lifestyles that accommodate their stimulation needs.</p>
-
-            <div class="highlight-box">
-               <h3>Future Advantage</h3>
-               <p>Adults who learn to understand and accommodate their intensity needs often become exceptional entrepreneurs, innovators, and leaders who thrive on challenge and stimulation.</p>
-            </div>
-
-            <h2>The Bottom Line</h2>
-            <p>Your child's screen dependency isn't a character flaw or motivational failure—it's a neurological response to understimulation that responds beautifully to strategic intervention.</p>
-
-            <p>The Dopamine Menu approach works because it addresses the root cause rather than surface behaviors. By providing real-world activities that satisfy intensity needs, you create sustainable motivation without external manipulation.</p>
-
-            <p>Rather than fighting their stimulation cravings, support their neurological needs through understanding and accommodation. This approach reduces daily stress for everyone while building genuine internal motivation.</p>
-
-            <p>Remember: The goal isn't to eliminate intensity-seeking but to channel it toward productive, fulfilling activities. Sometimes the simplest solution—like a challenging puzzle or creative project—makes the biggest difference in daily quality of life.</p>
-
-            <p>In a world that often expects uniform stimulation preferences, your role is to advocate for your child's unique neurological profile. Their intensity needs aren't obstacles to overcome but realities to support with compassion and practical solutions.</p>
-
-            <div class="highlight-box">
-               <h3>Family Harmony Strategy</h3>
-               <p>Create a weekly dopamine menu that includes everyone's preferred high-intensity activities. When stimulation needs are met proactively, reactive screen battles become unnecessary.</p>
-            </div>
-         </div>
-      </div>
-
-      <!-- Sidebar -->
-      <div class="article-sidebar">
-         <div class="sidebar-widget">
-            <h3>Is your child 2e?</h3>
-            <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
-            <button class="btn">Take the Free Quiz</button>
-         </div>
-      </div>
-   </div>
-
-   <!-- Read Next Section -->
-   <section class="read-next">
-      <div class="container">
-         <h2>Read Next</h2>
-         <div class="read-next-grid">
-            <a href="#" class="read-next-card">
-               <h3>The Black Hole Backpack</h3>
-               <p>A 3-step system to stop losing homework forever.</p>
-            </a>
-            <a href="#" class="read-next-card">
-               <h3>Laziness vs. Dysfunction</h3>
-               <p>How to tell if they won't do it, or can't do it.</p>
-            </a>
-         </div>
-      </div>
-   </section>
+<div id="footer-placeholder"></div>
+<script>
+    fetch('navigation.html').then(response => response.text()).then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+    fetch('footer.html').then(response => response.text()).then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+<script src="script.js"></script>
 </body>
 
 </html>
