@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* NEW COLOR DEFINITIONS FOR TAILWIND */
+        /* NEW COLOR DEFINITIONS FOR TAILWIND (Allows React components to access the new theme) */
         :root {
             --sage: #7C9885;
             --cream: #FAF7F0;
@@ -69,15 +69,16 @@
 </head>
 <body>
     <div id="navigation-placeholder"></div>
-<script>
-    fetch('navigation.html').then(response => response.text()).then(data => {
-        document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
-        // Use Fetch to inject components above/below React root
+    <script>
         fetch('navigation.html').then(response => response.text()).then(data => {
             document.getElementById('navigation-placeholder').innerHTML = data;
         });
+    </script>
+    
+    <div id="root"></div> 
+
+    <div id="footer-placeholder"></div>
+    <script>
         fetch('footer.html').then(response => response.text()).then(data => {
             document.getElementById('footer-placeholder').innerHTML = data;
         });
@@ -99,8 +100,6 @@
             'executive': '🧭',
             'learning': '📚'
         };
-
-        // ... (SECTIONS data remains the same) ...
 
         const SECTIONS = [
             {
@@ -336,7 +335,7 @@
                                     className="btn-primary" // Use new CSS class
                                     style={{ padding: '15px 40px', fontSize: '1.2rem' }}
                                 >
-                                    Let's Begin! <i class="fas fa-rocket"></i>
+                                    Let's Begin! <i class="fas fa-arrow-right"></i>
                                 </button>
                             </div>
                         </div>
@@ -361,7 +360,7 @@
                                     {SECTIONS.map((section, idx) => {
                                         const stats = calculateSectionScore(idx);
                                         const intensity = stats.percentage > 66 ? 'High' : 
-                                                        stats.percentage > 33 ? 'Moderate' : 'Low';
+                                                            stats.percentage > 33 ? 'Moderate' : 'Low';
                                         
                                         const intensityColor = stats.percentage > 66 ? 'text-red-500' : stats.percentage > 33 ? 'text-orange-500' : 'text-green-500';
 
@@ -439,7 +438,7 @@
                                 <div
                                     key={section.id}
                                     className={`text-xl transition-all duration-300 progress-star ${
-                                        idx < currentSectionIndex ? 'filled' : ''
+                                        idx < currentSectionIndex ? '✦ filled' : ''
                                     }`}
                                     title={section.title}
                                 >
