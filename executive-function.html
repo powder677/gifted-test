@@ -4,147 +4,37 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Executive Function Hub | Gifted Child Authority</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <title>Executive Function Hub | Mission Control Center - Organization Strategies</title>
    <link rel="stylesheet" href="styles.css">
    <style>
-      :root {
-         /* Backgrounds */
-         --bg-cream: #FDFBF7;
-         --bg-white: #FFFFFF;
-
-         /* Colors */
-         --color-terracotta: #E07A5F;
-         --color-sage: #81B29A;
-         --text-charcoal: #3D405B;
-         --text-dark: #2A2C35;
-         --color-gold: #F2CC8F;
-
-         /* UI */
-         --radius: 12px;
-         --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-
-         /* Typography */
-         --font-heading: 'Merriweather', serif;
-         --font-body: 'Inter', sans-serif;
-
-         /* Spacing */
-         --section-padding: 80px;
-         --max-text-width: 700px;
-         --line-height: 1.6;
-      }
-
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-
-      body {
-         font-family: var(--font-body);
-         background-color: var(--bg-cream);
-         color: var(--text-charcoal);
-         line-height: var(--line-height);
-      }
-
-      h1,
-      h2,
-      h3,
-      h4 {
-         font-family: var(--font-heading);
-         color: var(--text-dark);
-         line-height: 1.3;
-      }
-
-      .container {
-         width: 100%;
-         max-width: 1200px;
-         margin: 0 auto;
-         padding: 0 24px;
-      }
-
-      section {
-         padding: var(--section-padding) 0;
-      }
-
-      /* Hero Section */
-      .hero {
-         background-color: var(--bg-cream);
-         text-align: center;
-      }
-
-      .hero-content {
-         max-width: var(--max-text-width);
-         margin: 0 auto;
-      }
-
-      .hero h1 {
-         font-size: 3rem;
-         margin-bottom: 24px;
-      }
-
-      .hero p {
-         font-size: 1.25rem;
-         margin-bottom: 40px;
-         color: var(--text-charcoal);
-      }
-
+      /*
+      * Local Overrides to ensure the hub structure blends perfectly with the new theme.
+      */
+      
+      /* Hero Section Visual */
       .hero-visual {
-         width: 200px;
-         height: 200px;
-         margin: 0 auto 40px;
-         background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-sage) 100%);
-         border-radius: 50%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         font-size: 4rem;
+         background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+         box-shadow: var(--box-shadow-subtle);
+         border-radius: var(--border-radius);
       }
-
-      /* Empathy Block */
+      
+      /* Empathy Block (Styled as premium-card in styles.css) */
       .empathy-block {
-         background-color: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 60px 40px;
-         box-shadow: var(--shadow);
+         background-color: var(--color-secondary);
+         border-radius: var(--border-radius);
+         box-shadow: var(--box-shadow-subtle);
+         padding: 40px;
          text-align: center;
-      }
-
-      .empathy-block p {
-         max-width: var(--max-text-width);
-         margin: 0 auto;
+         /* Use global font sizes */
          font-size: 1.125rem;
          line-height: 1.7;
       }
 
-      /* Articles Grid */
-      .articles-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-         gap: 32px;
-      }
-
-      .article-card {
-         background: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 32px;
-         box-shadow: var(--shadow);
-         transition: all 0.3s ease;
-         height: 100%;
-         display: flex;
-         flex-direction: column;
-      }
-
-      .article-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      }
-
+      /* Article Tag Styling */
       .article-tag {
          display: inline-block;
-         background-color: var(--color-gold);
-         color: var(--text-dark);
+         background-color: var(--color-accent); /* Gold */
+         color: var(--color-text); /* Charcoal Text */
          padding: 6px 12px;
          border-radius: 20px;
          font-size: 0.875rem;
@@ -152,81 +42,73 @@
          margin-bottom: 16px;
       }
 
+      /* Article Card Styling applied to the anchor tag */
+      .article-card {
+         background: var(--color-background); /* Off-white card base */
+         border-radius: var(--border-radius);
+         box-shadow: var(--box-shadow-subtle);
+         padding: 32px;
+         transition: all 0.3s ease;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         text-decoration: none;
+         color: inherit;
+      }
+
+      .article-card:hover {
+         transform: translateY(-5px);
+         box-shadow: var(--box-shadow-hover);
+      }
+      
       .article-card h3 {
+         font-family: var(--font-header);
          font-size: 1.5rem;
          margin-bottom: 16px;
          transition: color 0.3s ease;
       }
 
       .article-card:hover h3 {
-         color: var(--color-terracotta);
+         color: var(--color-primary); /* Sage Green on hover */
       }
-
-      .article-excerpt {
-         color: var(--text-charcoal);
-         margin-top: auto;
+      
+      /* Articles Grid */
+      .articles-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+         gap: 32px;
       }
-
-      /* CTA Section */
+      
+      /* CTA Section Styling */
       .cta-section {
-         background-color: var(--color-sage);
+         background-color: var(--color-primary); /* Sage Green CTA */
+         color: var(--color-secondary); /* Cream Text */
          text-align: center;
-         color: white;
       }
-
+      
       .cta-section h2 {
-         color: white;
-         margin-bottom: 24px;
+         color: var(--color-secondary); /* Cream Heading */
+         font-family: var(--font-header);
       }
 
-      .btn {
-         display: inline-block;
-         padding: 16px 32px;
-         background-color: var(--color-terracotta);
-         color: white;
-         border-radius: var(--radius);
-         text-decoration: none;
-         font-weight: 600;
-         transition: all 0.3s ease;
-         border: none;
-         cursor: pointer;
-         font-size: 1rem;
+      /* CTA Button overrides (use secondary button style on primary background) */
+      .cta-section .btn {
+         background-color: var(--color-accent); /* Gold Button */
+         color: var(--color-text); /* Charcoal Text */
+         font-weight: 700;
+         font-family: var(--font-body);
       }
 
-      .btn:hover {
-         background-color: #d36547;
-         transform: translateY(-2px);
-         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      .cta-section .btn:hover {
+         background-color: #c19f2f;
       }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-         .hero h1 {
-            font-size: 2.25rem;
-         }
-
-         .hero p {
-            font-size: 1.125rem;
-         }
-
-         .empathy-block {
-            padding: 40px 24px;
-         }
-
-         .article-card {
-            padding: 24px;
-         }
-      }
-
+      
+      /* Responsive Hero Visual */
       @media (max-width: 480px) {
-         .hero h1 {
-            font-size: 1.875rem;
-         }
-
          .hero-visual {
-            width: 150px;
-            height: 150px;
-            font-size: 3rem;
+             width: 150px;
+             height: 150px;
+             font-size: 3rem;
          }
       }
    </style>
@@ -239,7 +121,6 @@
         document.getElementById('navigation-placeholder').innerHTML = data;
     });
 </script>
-   <!-- Hero Section -->
    <section class="hero">
       <div class="container">
          <div class="hero-content">
@@ -250,7 +131,6 @@
       </div>
    </section>
 
-   <!-- Empathy Block -->
    <section>
       <div class="container">
          <div class="empathy-block">
@@ -259,68 +139,62 @@
       </div>
    </section>
 
-   <!-- Articles Grid -->
    <section>
       <div class="container">
          <div class="articles-grid">
-   <a href="cant-vs-wont.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Start Here</span>
-         <h3>They're Not Lazy</h3>
-         <p class="article-excerpt">How to tell the difference between "can't" and "won't."</p>
-      </div>
-   </a>
+            <a href="cant-vs-wont.html" class="article-card">
+               <span class="article-tag">Start Here</span>
+               <h3>They're Not Lazy</h3>
+               <p class="article-excerpt">How to tell the difference between "can't" and "won't."</p>
+            </a>
 
-   <a href="smart-child-lost-shoes.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Insight</span>
-         <h3>Why Smart Kids Lose Shoes</h3>
-         <p class="article-excerpt">The surprising link between high IQ and executive function gaps.</p>
-      </div>
-   </a>
+            <a href="smart-child-lost-shoes.html" class="article-card">
+               <span class="article-tag">Insight</span>
+               <h3>Why Smart Kids Lose Shoes</h3>
+               <p class="article-excerpt">The surprising link between high IQ and executive function gaps.</p>
+            </a>
 
-   <a href="laziness-vs-dysfunction.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Deep Dive</span>
-         <h3>Laziness vs. Dysfunction</h3>
-         <p class="article-excerpt">The neurological reality behind "unmotivated" behavior.</p>
-      </div>
-   </a>
+            <a href="laziness-vs-dysfunction.html" class="article-card">
+               <span class="article-tag">Deep Dive</span>
+               <h3>Laziness vs. Dysfunction</h3>
+               <p class="article-excerpt">The neurological reality behind "unmotivated" behavior.</p>
+            </a>
 
-   <a href="black-hole-backpack.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Organization</span>
-         <h3>The Black Hole Backpack</h3>
-         <p class="article-excerpt">A 3-step system to stop losing homework forever.</p>
-      </div>
-   </a>
+            <a href="black-hole-backpack.html" class="article-card">
+               <span class="article-tag">Organization</span>
+               <h3>The Black Hole Backpack</h3>
+               <p class="article-excerpt">A 3-step system to stop losing homework forever.</p>
+            </a>
 
-   <a href="dopamine-menu.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Motivation</span>
-         <h3>The Dopamine Menu</h3>
-         <p class="article-excerpt">Jumpstart a bored brain without using screens.</p>
-      </div>
-   </a>
+            <a href="dopamine-menu.html" class="article-card">
+               <span class="article-tag">Motivation</span>
+               <h3>The Dopamine Menu</h3>
+               <p class="article-excerpt">Jumpstart a bored brain without using screens.</p>
+            </a>
 
-   <a href="freeze-on-easy-work.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Perfectionism</span>
-         <h3>Why They Freeze on Easy Work</h3>
-         <p class="article-excerpt">Overcoming the fear of making mistakes.</p>
-      </div>
-   </a>
-</div>
+            <a href="freeze-on-easy-work.html" class="article-card">
+               <span class="article-tag">Perfectionism</span>
+               <h3>Why They Freeze on Easy Work</h3>
+               <p class="article-excerpt">Overcoming the fear of making mistakes.</p>
+            </a>
+         </div>
       </div>
    </section>
 
-   <!-- CTA Section -->
    <section class="cta-section">
       <div class="container">
          <h2>Don't know where to start?</h2>
-         <button class="btn">Take the Free 2-Minute Patterns Quiz</button>
+         <a href="quiz.html" class="btn">Take the Free 2-Minute Patterns Quiz</a>
       </div>
    </section>
+
+<div id="footer-placeholder"></div>
+<script>
+    fetch('footer.html').then(response => response.text()).then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+<script src="script.js"></script>
 </body>
 
 </html>
