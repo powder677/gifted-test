@@ -12,20 +12,56 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="styles.css"> <style>
+        /* Define custom colors and fonts for Tailwind and clean up body styles */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap');
 
-    <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { 
+            font-family: 'Lato', sans-serif; 
+            background: #FAFAFA; /* Off-white */
+            color: #2F2F2F; /* Charcoal */
+            padding-top: 80px; /* Space for fixed header */
+        }
+
+        .font-header { font-family: 'Playfair Display', serif; }
+
+        /* Custom Colors for utility classes (approximating new theme with Tailwind scale) */
+        .bg-custom-cream { background-color: #FAF7F0; }
+        .text-custom-charcoal { color: #2F2F2F; }
+        .bg-custom-sage-light { background-color: #f2f5f3; }
+        .border-custom-sage { border-color: #7C9885; }
+        .bg-custom-sage { background-color: #7C9885; }
+        .text-custom-sage { color: #7C9885; }
+        .bg-custom-gold { background-color: #D4AF37; }
+        .border-custom-gold { border-color: #D4AF37; }
+        .text-custom-gold { color: #D4AF37; }
+        .text-custom-red { color: #D4A5A5; } /* Using Dusty Rose as a secondary accent/error */
     </style>
 </head>
 <body class="bg-slate-50">
+    
+    <div id="navigation-placeholder"></div>
+    <div id="root"></div> 
 
-    <div id="root"></div>
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Use Fetch to inject components above/below React root
+        fetch('navigation.html').then(response => response.text()).then(data => {
+            document.getElementById('navigation-placeholder').innerHTML = data;
+        });
+        fetch('footer.html').then(response => response.text()).then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+    </script>
+    <script src="script.js"></script>
 
     <script type="text/babel">
         // --- SETUP: Destructure Hooks ---
         const { useState, useRef } = React;
 
         // --- SETUP: Define Icons manually (replacing lucide-react imports) ---
+        // (Icons wrapper remains the same)
         const IconWrapper = ({ children, className, ...props }) => (
             <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -61,7 +97,7 @@
             <IconWrapper {...props}><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></IconWrapper>
         );
 
-        // --- DATA CONSTANTS ---
+        // --- DATA CONSTANTS (SECTIONS and SCALE remain the same) ---
         const SECTIONS = [
           {
             id: 'ef',
@@ -262,27 +298,10 @@
 
           if (showResults) {
             return (
-              <>
-                {/* Navigation */}
-                <div className="fixed top-0 left-0 right-0 z-50 bg-indigo-900 shadow-lg">
-                  <nav className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-                    <a href="index.html" className="text-white font-bold text-xl flex items-center">
-                      <span className="mr-2">🚀</span>
-                      MISSION CONTROL
-                    </a>
-                    <div className="hidden md:flex space-x-4">
-                      <a href="index.html" className="text-white hover:text-yellow-300 transition">HOME</a>
-                      <a href="gifted-assessment-tool.html" className="text-white hover:text-yellow-300 transition font-bold">PARENT ASSESSMENT</a>
-                      <a href="child-self-assessment.html" className="text-white hover:text-yellow-300 transition">CHILD ASSESSMENT</a>
-                      <a href="mission-control-preview.html" className="text-white hover:text-yellow-300 transition">PREVIEW PACKET</a>
-                    </div>
-                  </nav>
-                </div>
-                
-                <div className="min-h-screen bg-slate-50 p-4 md:p-8 pt-20 font-sans text-slate-800">
-                <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
-                  <div className="bg-indigo-600 p-6 text-white text-center">
-                    <BarChart3 className="w-12 h-12 mx-auto mb-4" />
+              <div className="min-h-screen bg-slate-50 p-4 md:p-8 pt-20 font-sans text-slate-800">
+                <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden" style={{ border: '1px solid #FAF7F0' }}>
+                  <div className="bg-custom-sage p-6 text-white text-center">
+                    <BarChart3 className="w-12 h-12 mx-auto mb-4 bg-custom-gold p-2 rounded-full" />
                     <h1 className="text-3xl font-bold mb-2">Assessment Results</h1>
                     <p className="opacity-90">Analysis of 7 developmental domains</p>
                   </div>
@@ -293,23 +312,22 @@
                       const isHigh = stats.percentage >= 60;
                       
                       return (
-                        <div key={section.id} className="border-b border-slate-100 pb-6 last:border-0">
+                        <div key={section.id} className="border-b border-custom-sage-light pb-6 last:border-0">
                           <div className="flex justify-between items-end mb-2">
-                            <h3 className="text-lg font-bold text-slate-800">{section.title}</h3>
-                            <span className={`font-mono font-bold ${isHigh ? 'text-red-500' : 'text-slate-500'}`}>
+                            <h3 className="text-lg font-bold text-custom-charcoal">{section.title}</h3>
+                            <span className={`font-mono font-bold ${isHigh ? 'text-custom-red' : 'text-custom-sage'}`}>
                               {stats.score}/{stats.maxScore}
                             </span>
                           </div>
                           
                           {/* Progress Bar */}
-                          <div className="w-full bg-slate-200 rounded-full h-3 mb-2">
+                          <div className="w-full bg-custom-cream rounded-full h-3 mb-2">
                             <div 
-                              className={`h-3 rounded-full transition-all duration-500 ${
-                                stats.percentage > 75 ? 'bg-red-500' : 
-                                stats.percentage > 50 ? 'bg-orange-400' : 
-                                stats.percentage > 25 ? 'bg-yellow-400' : 'bg-green-400'
-                              }`}
-                              style={{ width: `${stats.percentage}%` }}
+                              className={`h-3 rounded-full transition-all duration-500`}
+                              style={{ 
+                                width: `${stats.percentage}%`, 
+                                backgroundColor: stats.percentage > 60 ? '#D4A5A5' : '#7C9885' 
+                              }}
                             ></div>
                           </div>
                           <p className="text-sm text-slate-500">{section.description}</p>
@@ -317,8 +335,8 @@
                       );
                     })}
 
-                    <div className="bg-slate-100 p-6 rounded-xl mt-8">
-                      <h3 className="font-bold text-slate-700 mb-3 flex items-center">
+                    <div className="bg-custom-sage-light p-6 rounded-xl mt-8">
+                      <h3 className="font-bold text-custom-sage mb-3 flex items-center">
                         <AlertCircle className="w-5 h-5 mr-2" />
                         Next Steps
                       </h3>
@@ -329,7 +347,7 @@
                       
                       <button
                         onClick={copyToClipboard}
-                        className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium flex items-center justify-center transition-colors"
+                        className="w-full py-3 px-4 bg-custom-sage hover:bg-custom-gold text-white rounded-lg font-medium flex items-center justify-center transition-colors shadow-md"
                       >
                         {copied ? (
                           <>
@@ -352,7 +370,7 @@
                         setAnswers({});
                         window.scrollTo(0,0);
                       }}
-                      className="w-full py-3 text-slate-500 hover:text-slate-700 flex items-center justify-center"
+                      className="w-full py-3 text-slate-500 hover:text-custom-sage flex items-center justify-center"
                     >
                       <RotateCcw className="w-4 h-4 mr-2" />
                       Start Over
@@ -360,34 +378,16 @@
                   </div>
                 </div>
               </div>
-              </>
             );
           }
 
           return (
-            <>
-              {/* Navigation */}
-              <div className="fixed top-0 left-0 right-0 z-50 bg-indigo-900 shadow-lg">
-                <nav className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-                  <a href="index.html" className="text-white font-bold text-xl flex items-center">
-                    <span className="mr-2">🚀</span>
-                    MISSION CONTROL
-                  </a>
-                  <div className="hidden md:flex space-x-4">
-                    <a href="index.html" className="text-white hover:text-yellow-300 transition">HOME</a>
-                    <a href="gifted-assessment-tool.html" className="text-white hover:text-yellow-300 transition font-bold">PARENT ASSESSMENT</a>
-                    <a href="child-self-assessment.html" className="text-white hover:text-yellow-300 transition">CHILD ASSESSMENT</a>
-                    <a href="mission-control-preview.html" className="text-white hover:text-yellow-300 transition">PREVIEW PACKET</a>
-                  </div>
-                </nav>
-              </div>
-              
               <div className="min-h-screen bg-slate-50 p-4 md:p-8 pt-20 font-sans text-slate-800" ref={topRef}>
               <div className="max-w-3xl mx-auto">
                 
                 {/* Header */}
                 <div className="mb-8 text-center">
-                  <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Gifted Child Assessment</h1>
+                  <h1 className="text-2xl md:text-3xl font-bold text-custom-charcoal font-header">Parent Assessment Tool</h1>
                   <p className="text-slate-500">Executive Function, Sensory, & Emotional Interpretation</p>
                 </div>
 
@@ -396,18 +396,18 @@
                   <span>Section {currentSectionIndex + 1} of {SECTIONS.length}</span>
                   <span>{Math.round(((currentSectionIndex) / SECTIONS.length) * 100)}% Complete</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2 mb-8">
+                <div className="w-full bg-custom-cream rounded-full h-2 mb-8">
                   <div 
-                    className="bg-indigo-600 h-2 rounded-full transition-all duration-300" 
+                    className="bg-custom-sage h-2 rounded-full transition-all duration-300" 
                     style={{ width: `${((currentSectionIndex) / SECTIONS.length) * 100}%` }}
                   ></div>
                 </div>
 
                 {/* Card */}
-                <div className="bg-white shadow-lg rounded-2xl overflow-hidden mb-8">
-                  <div className="bg-indigo-50 p-6 border-b border-indigo-100">
-                    <h2 className="text-xl font-bold text-indigo-900 mb-1">{currentSection.title}</h2>
-                    <p className="text-indigo-700 text-sm">{currentSection.description}</p>
+                <div className="bg-white shadow-lg rounded-2xl overflow-hidden mb-8" style={{ border: '1px solid #FAF7F0' }}>
+                  <div className="bg-custom-sage-light p-6 border-b border-custom-sage-light">
+                    <h2 className="text-xl font-bold text-custom-sage font-header">{currentSection.title}</h2>
+                    <p className="text-custom-charcoal text-sm">{currentSection.description}</p>
                   </div>
 
                   <div className="p-6 md:p-8 space-y-8">
@@ -417,7 +417,7 @@
 
                       return (
                         <div key={qIdx} className="space-y-3">
-                          <p className="font-medium text-slate-800 text-lg leading-relaxed">{q}</p>
+                          <p className="font-medium text-custom-charcoal text-lg leading-relaxed font-body">{q}</p>
                           
                           <div className="grid grid-cols-5 gap-2 md:gap-4 pt-2">
                             {SCALE.map((s) => (
@@ -425,14 +425,14 @@
                                 key={s.value}
                                 onClick={() => handleOptionSelect(currentSectionIndex, qIdx, s.value)}
                                 className={`
-                                  flex flex-col items-center justify-center p-2 rounded-lg transition-all duration-200 border-2
+                                  flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-200 border-2
                                   ${currentValue === s.value 
-                                    ? 'border-indigo-600 bg-indigo-50 text-indigo-700 shadow-md transform scale-105' 
-                                    : 'border-slate-100 hover:border-slate-300 hover:bg-slate-50 text-slate-400'
+                                    ? 'border-custom-gold bg-custom-cream text-custom-charcoal shadow-md transform scale-105' 
+                                    : 'border-slate-100 hover:border-custom-sage-light hover:bg-slate-50 text-slate-400'
                                   }
                                 `}
                               >
-                                <span className={`text-xl font-bold mb-1 ${currentValue === s.value ? 'text-indigo-600' : 'text-slate-300'}`}>
+                                <span className={`text-xl font-bold mb-1 ${currentValue === s.value ? 'text-custom-sage' : 'text-slate-300'}`}>
                                   {s.value}
                                 </span>
                                 <span className="text-[10px] uppercase font-bold tracking-wider hidden md:block">
@@ -451,14 +451,14 @@
                   </div>
 
                   {/* Navigation Footer */}
-                  <div className="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                  <div className="p-6 bg-custom-cream border-t border-custom-sage-light flex justify-between items-center">
                     <button
                       onClick={handlePrev}
                       disabled={currentSectionIndex === 0}
                       className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
                         currentSectionIndex === 0 
-                          ? 'text-slate-300 cursor-not-allowed' 
-                          : 'text-slate-600 hover:bg-slate-200'
+                          ? 'text-slate-400 cursor-not-allowed' 
+                          : 'text-custom-charcoal hover:bg-custom-sage-light'
                       }`}
                     >
                       <ChevronLeft className="w-5 h-5 mr-1" />
@@ -470,7 +470,7 @@
                       disabled={!isSectionComplete(currentSectionIndex)}
                       className={`flex items-center px-6 py-3 rounded-lg font-bold shadow-lg transition-all transform ${
                         isSectionComplete(currentSectionIndex)
-                          ? 'bg-indigo-600 hover:bg-indigo-700 text-white hover:-translate-y-1'
+                          ? 'bg-custom-sage hover:bg-custom-gold text-white hover:-translate-y-1'
                           : 'bg-slate-300 text-slate-500 cursor-not-allowed'
                       }`}
                     >
@@ -482,7 +482,6 @@
 
               </div>
             </div>
-            </>
           );
         }
 
