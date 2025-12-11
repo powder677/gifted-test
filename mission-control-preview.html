@@ -7,133 +7,270 @@
    <title>Mission Control Packet Preview - Your Child's User Manual</title>
    <link rel="stylesheet" href="styles.css">
    <style>
-      /* Overrides for local elements to use new CSS variables */
+      /*
+      * Local Overrides to ensure the landing page components use new CSS variables and styles.
+      * NOTE: We are replacing space themes with elegant, professional design.
+      */
+
+      /* Hero Content Styling */
+      .hero-content {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 40px;
+         padding: 60px 0;
+      }
+
+      .hero-text {
+         max-width: 50%;
+      }
+
       .hero-image {
          background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%) !important;
          box-shadow: var(--box-shadow-hover) !important;
+         padding: 40px;
+         border-radius: var(--border-radius);
+         color: var(--color-background);
+         font-family: var(--font-header);
+         font-size: 1.5rem;
+         text-align: center;
+         line-height: 1.4;
+         flex-shrink: 0;
+         width: 300px;
+         height: 300px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         border: 2px solid var(--color-secondary);
       }
-      .solution-image {
-         background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%) !important;
+
+      /* Buttons inherit from styles.css */
+
+      /* Problem Cards Styling */
+      .section-header {
+         text-align: center;
+         margin-bottom: 50px;
       }
-      .sticky-btn {
-         background-color: var(--color-primary);
+      
+      .cards-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+         gap: 30px;
       }
-      .sticky-btn:hover {
-         background-color: #6a8373;
+
+      .card {
+         text-align: center;
+         padding: 30px;
+         background-color: white;
       }
-      .testimonial::before {
-         color: var(--color-accent);
-      }
+      
       .card-icon {
          color: var(--color-primary);
+         margin-bottom: 15px;
       }
       .card-icon i {
-         font-size: 2rem;
+         font-size: 2.5rem;
       }
+
+      /* Solution Blocks (alternating layout) */
+      .solution-item {
+         display: flex;
+         align-items: center;
+         gap: 40px;
+         margin-bottom: 60px;
+      }
+      
+      .solution-item:nth-child(even) {
+         flex-direction: row-reverse;
+      }
+      
+      .solution-image {
+         background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%) !important;
+         padding: 40px;
+         border-radius: var(--border-radius);
+         color: var(--color-background);
+         font-family: var(--font-header);
+         text-align: center;
+         min-width: 250px;
+         height: 250px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         box-shadow: var(--box-shadow-subtle);
+      }
+
+      /* Sticky CTA Bar */
+      .sticky-bar {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         width: 100%;
+         background-color: var(--color-text); /* Charcoal background */
+         box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+         z-index: 990;
+         padding: 10px 0;
+      }
+
+      .sticky-content {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .sticky-btn {
+         background-color: var(--color-primary);
+         color: var(--color-background);
+         padding: 10px 25px;
+         border-radius: var(--border-radius);
+         text-decoration: none;
+         font-weight: 700;
+         transition: all 0.3s ease;
+      }
+
+      .sticky-btn:hover {
+         background-color: var(--color-accent); /* Gold hover */
+         color: var(--color-text);
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+         .hero-content, .solution-item {
+            flex-direction: column;
+            text-align: center;
+         }
+         .hero-text, .solution-item > div {
+             max-width: 100%;
+         }
+         .hero-image, .solution-image {
+             width: 100%;
+             margin-top: 20px;
+         }
+         .solution-item:nth-child(even) {
+             flex-direction: column; /* Resetting reverse order on mobile */
+         }
+         .sticky-content {
+             flex-direction: column;
+             gap: 8px;
+         }
+         .sticky-text {
+             font-size: 0.9rem;
+         }
+         .sticky-btn {
+             width: 100%;
+             text-align: center;
+         }
+      }
+
    </style>
 </head>
 
 <body>
-    <div id="navigation-placeholder"></div>
+   <div id="navigation-placeholder"></div>
 <script>
-    fetch('navigation.html').then(response => response.text()).then(data => {
-        document.getElementById('navigation-placeholder').innerHTML = data;
-    });
+   fetch('navigation.html').then(response => response.text()).then(data => {
+      document.getElementById('navigation-placeholder').innerHTML = data;
+   });
 </script>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>The User Manual Your Child Didn't Come With.</h1>
-                        <p>A 12-page actionable guide for Deep Processors and Sensitive Kids—download your exclusive preview now!</p>
-                        <a href="checkout.html" class="btn btn-primary">Get Instant Access - $129</a>
-                    </div>
-                    <div class="hero-image">
-                        THE MISSION CONTROL PACKET<br>
-                        12-Page Digital Guide
-                    </div>
-                </div>
+   <main>
+      <section class="hero">
+         <div class="container">
+            <div class="hero-content">
+               <div class="hero-text">
+                  <h1>The User Manual Your Child Didn't Come With.</h1>
+                  <p>A 12-page actionable guide for Deep Processors and Sensitive Kids—download your exclusive preview now!</p>
+                  <a href="checkout.html" class="btn-primary">Get Instant Access - $129</a>
+               </div>
+               <div class="hero-image">
+                  THE MISSION CONTROL PACKET<br>
+                  12-Page Digital Guide
+               </div>
             </div>
-        </section>
+         </div>
+      </section>
 
-        <section class="problem" style="background-color: var(--color-background);">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Tired of the drama?</h2>
-                    <p>Stop guessing and start understanding with science-backed insights.</p>
-                </div>
-                <div class="cards-grid">
-                    <div class="card premium-card">
-                        <div class="card-icon">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <h3>Morning Battles</h3>
-                        <p>End the daily struggle to get everyone dressed and out the door on time.</p>
-                    </div>
-                    <div class="card premium-card">
-                        <div class="card-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <h3>Homework Meltdowns</h3>
-                        <p>Create a calm, productive homework environment that actually works.</p>
-                    </div>
-                    <div class="card premium-card">
-                        <div class="card-icon">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                        <h3>Bedtime Anxiety</h3>
-                        <p>Help your child wind down and sleep peacefully without endless negotiations.</p>
-                    </div>
-                </div>
+      <section class="problem" style="background-color: var(--color-background);">
+         <div class="container">
+            <div class="section-header">
+               <h2 style="font-family: var(--font-header);">Tired of the drama?</h2>
+               <p>Stop guessing and start understanding with science-backed insights.</p>
             </div>
-        </section>
-
-        <section class="solution" style="background-color: var(--color-secondary);">
-            <div class="container">
-                <div class="solution-item">
-                    <div class="solution-image">
-                        THE SCIENCE BEHIND<br>
-                        YOUR CHILD'S BRAIN
-                    </div>
-                    <div class="solution-text">
-                        <h3>The "Why" - Neuroscience explained simply.</h3>
-                        <p>Understand exactly what's happening in your child's developing brain. Learn why they think differently, feel more deeply, and experience the world in unique ways.</p>
-                    </div>
-                </div>
-
-                <div class="solution-item">
-                    <div class="solution-image">
-                        6-WEEK ACTION PLAN<br>
-                        WITH WEEKLY GOALS
-                    </div>
-                    <div class="solution-text">
-                        <h3>The 6-Week Action Plan.</h3>
-                        <p>A structured roadmap to implement positive changes in your home. Each week focuses on a specific area: routines, communication, emotional regulation, and more.</p>
-                    </div>
-                </div>
+            <div class="cards-grid">
+               <div class="card premium-card">
+                  <div class="card-icon">
+                     <i class="fas fa-sun"></i>
+                  </div>
+                  <h3 style="font-family: var(--font-header);">Morning Battles</h3>
+                  <p>End the daily struggle to get everyone dressed and out the door on time.</p>
+               </div>
+               <div class="card premium-card">
+                  <div class="card-icon">
+                     <i class="fas fa-book-open"></i>
+                  </div>
+                  <h3 style="font-family: var(--font-header);">Homework Meltdowns</h3>
+                  <p>Create a calm, productive homework environment that actually works.</p>
+               </div>
+               <div class="card premium-card">
+                  <div class="card-icon">
+                     <i class="fas fa-moon"></i>
+                  </div>
+                  <h3 style="font-family: var(--font-header);">Bedtime Anxiety</h3>
+                  <p>Help your child wind down and sleep peacefully without endless negotiations.</p>
+               </div>
             </div>
-        </section>
+         </div>
+      </section>
 
-        <section class="social-proof">
-            </section>
-    </main>
+      <section class="solution" style="background-color: var(--color-secondary);">
+         <div class="container">
+            <div class="solution-item">
+               <div class="solution-image">
+                  THE SCIENCE BEHIND<br>
+                  YOUR CHILD'S BRAIN
+               </div>
+               <div class="solution-text">
+                  <h3 style="font-family: var(--font-header);">The "Why" - Neuroscience explained simply.</h3>
+                  <p>Understand exactly what's happening in your child's developing brain. Learn why they think differently, feel more deeply, and experience the world in unique ways.</p>
+               </div>
+            </div>
 
-    <div class="sticky-bar">
+            <div class="solution-item">
+               <div class="solution-image">
+                  6-WEEK ACTION PLAN<br>
+                  WITH WEEKLY GOALS
+               </div>
+               <div class="solution-text">
+                  <h3 style="font-family: var(--font-header);">The 6-Week Action Plan.</h3>
+                  <p>A structured roadmap to implement positive changes in your home. Each week focuses on a specific area: routines, communication, emotional regulation, and more.</p>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="social-proof">
+         <div class="container">
+            <h2 style="text-align: center; font-family: var(--font-header);">Trusted by Parents Like You</h2>
+         </div>
+      </section>
+   </main>
+
+   <div class="sticky-bar">
       <div class="sticky-content">
          <div class="sticky-text" style="color: var(--color-secondary);">Get the Full Packet & Assessment</div>
          <a href="checkout.html" class="sticky-btn">Buy Now - $129</a>
       </div>
-    </div>
+   </div>
 
-    <div id="footer-placeholder"></div>
-    <script>
-        fetch('footer.html').then(response => response.text()).then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        });
-    </script>
-    
-    <script src="script.js"></script>
+   <div id="footer-placeholder"></div>
+<script>
+   fetch('footer.html').then(response => response.text()).then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+   });
+</script>
+   
+<script src="script.js"></script>
 </body>
 </html>
