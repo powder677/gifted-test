@@ -2,345 +2,107 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Introvert or Isolated? Knowing When to Step In</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="styles.css">
-   <style>
-      :root {
-         /* Backgrounds */
-         --bg-cream: #FDFBF7;
-         --bg-white: #FFFFFF;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introvert or Isolated? Knowing When to Step In</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /*
+        * Local Overrides to ensure the article structure blends perfectly.
+        * All colors and fonts are pulled from the global styles.css.
+        */
 
-         /* Colors */
-         --color-terracotta: #E07A5F;
-         --color-sage: #81B29A;
-         --text-charcoal: #3D405B;
-         --text-dark: #2A2C35;
-         --color-gold: #F2CC8F;
-
-         /* UI */
-         --radius: 12px;
-         --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-
-         /* Typography */
-         --font-heading: 'Merriweather', serif;
-         --font-body: 'Inter', sans-serif;
-
-         /* Spacing */
-         --section-padding: 80px;
-         --max-text-width: 700px;
-         --line-height: 1.6;
-      }
-
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-
-      body {
-         font-family: var(--font-body);
-         background-color: var(--bg-cream);
-         color: var(--text-charcoal);
-         line-height: var(--line-height);
-         font-size: 18px;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4 {
-         font-family: var(--font-heading);
-         color: var(--text-dark);
-         line-height: 1.3;
-      }
-
-      .container {
-         width: 100%;
-         max-width: 1200px;
-         margin: 0 auto;
-         padding: 0 24px;
-      }
-
-      section {
-         padding: var(--section-padding) 0;
-      }
-
-      /* Article Layout */
-      .article-layout {
-         display: flex;
-         gap: 60px;
-         max-width: 1400px;
-         margin: 0 auto;
-         padding: 40px 24px;
-      }
-
-      .article-content {
-         flex: 1;
-         max-width: 800px;
-      }
-
-      .article-sidebar {
-         width: 300px;
-         flex-shrink: 0;
-      }
-
-      /* Breadcrumbs */
-      .breadcrumbs {
-         margin-bottom: 30px;
-         font-size: 0.9rem;
-      }
-
-      .breadcrumbs a {
-         color: var(--color-terracotta);
-         text-decoration: none;
-      }
-
-      .breadcrumbs span {
-         color: var(--text-charcoal);
-         opacity: 0.7;
-      }
-
-      /* Article Header */
-      .article-header {
-         max-width: 800px;
-         margin: 0 auto 60px;
-      }
-
-      .article-header h1 {
-         font-size: 2.5rem;
-         margin-bottom: 30px;
-         line-height: 1.2;
-      }
-
-      .author-byline {
-         display: flex;
-         align-items: center;
-         gap: 15px;
-      }
-
-      .author-photo {
-         width: 50px;
-         height: 50px;
-         border-radius: 50%;
-         background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-gold) 100%);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         font-weight: bold;
-      }
-
-      .author-info {
-         font-size: 0.9rem;
-      }
-
-      .author-name {
-         font-weight: 600;
-         margin-bottom: 5px;
-      }
-
-      .publish-date {
-         color: var(--text-charcoal);
-         opacity: 0.7;
-      }
-
-      /* Key Takeaways */
-      .key-takeaways {
-         background-color: rgba(129, 178, 154, 0.1);
-         border-radius: var(--radius);
-         padding: 30px;
-         margin-bottom: 50px;
-      }
-
-      .key-takeaways h2 {
-         color: var(--color-sage);
-         font-size: 1.5rem;
-         margin-bottom: 20px;
-      }
-
-      .key-takeaways ul {
-         padding-left: 20px;
-      }
-
-      .key-takeaways li {
-         margin-bottom: 15px;
-      }
-
-      /* Highlight Box */
-      .highlight-box {
-         background-color: var(--bg-cream);
-         border-left: 4px solid var(--color-terracotta);
-         padding: 25px 30px;
-         margin: 40px 0;
-         border-radius: 0 var(--radius) var(--radius) 0;
-      }
-
-      .highlight-box h3 {
-         margin-bottom: 15px;
-         color: var(--color-terracotta);
-      }
-
-      /* Article Content */
-      .article-body {
-         line-height: 1.7;
-      }
-
-      .article-body p {
-         margin-bottom: 30px;
-      }
-
-      .article-body h2 {
-         font-size: 1.8rem;
-         margin: 50px 0 30px;
-         padding-bottom: 15px;
-         border-bottom: 2px solid rgba(224, 122, 95, 0.3);
-      }
-
-      .article-body h3 {
-         font-size: 1.4rem;
-         margin: 40px 0 20px;
-      }
-
-      .article-body ul,
-      .article-body ol {
-         margin: 30px 0;
-         padding-left: 30px;
-      }
-
-      .article-body li {
-         margin-bottom: 15px;
-      }
-
-      /* Sidebar */
-      .sidebar-widget {
-         background: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 30px;
-         box-shadow: var(--shadow);
-         position: sticky;
-         top: 30px;
-      }
-
-      .sidebar-widget h3 {
-         font-size: 1.3rem;
-         margin-bottom: 20px;
-         text-align: center;
-      }
-
-      .btn {
-         display: block;
-         width: 100%;
-         padding: 16px;
-         background-color: var(--color-terracotta);
-         color: white;
-         border-radius: var(--radius);
-         text-decoration: none;
-         font-weight: 600;
-         transition: all 0.3s ease;
-         border: none;
-         cursor: pointer;
-         font-size: 1rem;
-         text-align: center;
-      }
-
-      .btn:hover {
-         background-color: #d36547;
-         transform: translateY(-2px);
-         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Read Next Section */
-      .read-next {
-         background-color: var(--bg-white);
-         padding: var(--section-padding) 0;
-         margin-top: 80px;
-      }
-
-      .read-next h2 {
-         text-align: center;
-         font-size: 2rem;
-         margin-bottom: 50px;
-      }
-
-      .read-next-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-         gap: 40px;
-         max-width: 900px;
-         margin: 0 auto;
-      }
-
-      .read-next-card {
-         background: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 30px;
-         box-shadow: var(--shadow);
-         transition: all 0.3s ease;
-         text-decoration: none;
-         color: inherit;
-      }
-
-      .read-next-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      .read-next-card:hover h3 {
-         color: var(--color-terracotta);
-      }
-
-      .read-next-card h3 {
-         font-size: 1.4rem;
-         margin-bottom: 15px;
-         transition: color 0.3s ease;
-      }
-
-      .read-next-card p {
-         color: var(--text-charcoal);
-         opacity: 0.8;
-      }
-
-      /* Responsive */
-      @media (max-width: 1024px) {
-         .article-layout {
-            flex-direction: column;
-            gap: 40px;
-         }
-
-         .article-sidebar {
-            width: 100%;
-            max-width: 800px;
+        /* Article Layout adjustments for padding consistency */
+        .article-layout {
+            display: flex;
+            gap: 60px;
+            max-width: 1400px;
             margin: 0 auto;
-         }
-      }
+            padding: 40px 24px;
+        }
 
-      @media (max-width: 768px) {
-         .article-header h1 {
-            font-size: 2rem;
-         }
+        /* Breadcrumbs - Mapped to Dusty Rose (New Terracotta role) */
+        .breadcrumbs a {
+            color: #D4A5A5;
+            text-decoration: none;
+        }
 
-         body {
-            font-size: 16px;
-         }
+        /* Author Photo - Mapped to new brand gradient */
+        .author-photo {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        }
 
-         .article-layout {
-            padding: 20px;
-         }
-      }
+        /* Key Takeaways - Uses transparent Sage blend (new primary) on cream background */
+        .key-takeaways {
+            background-color: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            border: 1px solid rgba(124, 152, 133, 0.2);
+            padding: 30px;
+            margin-bottom: 50px;
+        }
 
-      @media (max-width: 480px) {
-         .article-header h1 {
-            font-size: 1.75rem;
-         }
+        .key-takeaways h2 {
+            color: var(--color-primary);
+        }
 
-         .highlight-box {
-            padding: 20px;
-         }
-      }
-   </style>
+        /* Highlight Box - Uses Dusty Rose and Cream/Off-White for premium callouts */
+        .highlight-box {
+            background-color: var(--color-secondary);
+            border-left: 4px solid #D4A5A5; /* Dusty Rose */
+            box-shadow: var(--box-shadow-subtle);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 25px 30px;
+        }
+
+        .highlight-box h3 {
+            color: #D4A5A5; /* Dusty Rose */
+        }
+
+        /* Article body h2 separator fix */
+        .article-body h2 {
+            border-bottom: 2px solid rgba(124, 152, 133, 0.3); /* Soft Sage separator */
+        }
+
+        /* Sidebar Widget - Uses Cream background and soft shadows */
+        .sidebar-widget {
+            background: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            position: sticky;
+            top: 100px; /* Adjusted to clear sticky navbar + spacing */
+        }
+
+        /* Button Fix (Ensures adherence to global button style) */
+        .btn {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: var(--font-body);
+        }
+
+        /* Read Next Card Styling */
+        .read-next-card {
+            background: var(--color-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-subtle);
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .read-next-card:hover h3 {
+            color: var(--color-primary);
+        }
+
+        @media (min-width: 1024px) {
+            .article-sidebar {
+                width: 300px;
+                flex-shrink: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -350,280 +112,282 @@
         document.getElementById('navigation-placeholder').innerHTML = data;
     });
 </script>
-   <div class="article-layout">
-      <div class="article-content">
-         <!-- Breadcrumbs -->
-         <div class="breadcrumbs">
-            <a href="#">Home</a> <span>/</span>
-            <a href="#">Social Development</a> <span>/</span>
-            <span>Introvert or Isolated</span>
-         </div>
-
-         <!-- Article Header -->
-         <header class="article-header">
-            <h1>Introvert or Isolated? Knowing When to Step In</h1>
-            <div class="author-byline">
-               <div class="author-photo">JD</div>
-               <div class="author-info">
-                  <div class="author-name">Jane Doe</div>
-                  <div class="publish-date">Published November 20, 2023</div>
-               </div>
-            </div>
-         </header>
-
-         <!-- Key Takeaways -->
-         <div class="key-takeaways">
-            <h2>TL;DR</h2>
-            <ul>
-               <li>Solitude preference differs fundamentally from social isolation</li>
-               <li>Gifted children often need more alone time to process intense experiences</li>
-               <li>Warning signs of isolation include persistent sadness and withdrawal from all activities</li>
-               <li>Honoring introversion while fostering connection requires nuanced parenting approaches</li>
-            </ul>
-         </div>
-
-         <!-- Article Content -->
-         <div class="article-body">
-            <p>You notice your child spending hours alone in their room, declining playdate invitations, and seeming content with books and solitary pursuits. Concerned friends ask, "Is everything okay? They seem so isolated." But your child insists they're happy, protesting any attempts to force social interaction.</p>
-
-            <p>This scenario plays out in thousands of households, leaving parents trapped between respecting their child's preferences and worrying about their social development. The question isn't whether solitude-seeking is normal—it's distinguishing healthy introversion from concerning isolation.</p>
-
-            <p>For gifted children, this distinction becomes even more critical, as their intense inner worlds often require extensive processing time that neurotypical peers don't understand or appreciate.</p>
-
-            <div class="highlight-box">
-               <h3>The Solitude Spectrum</h3>
-               <p>Introversion exists on a spectrum from healthy preference for alone time to concerning social withdrawal. Understanding where your child falls requires looking beyond surface behaviors to underlying emotional states.</p>
+    <div class="article-layout">
+        <div class="article-content">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> <span>/</span>
+                <a href="social-connection.html">Social Development</a> <span>/</span>
+                <span>Introvert or Isolated</span>
             </div>
 
-            <h2>Healthy Solitude vs. Problematic Isolation</h2>
-            <p>Distinguishing between beneficial alone time and concerning isolation requires examining both behavior and emotional well-being:</p>
+            <header class="article-header">
+                <h1>Introvert or Isolated? Knowing When to Step In</h1>
+                <div class="author-byline">
+                    <div class="author-photo">JD</div>
+                    <div class="author-info">
+                        <div class="author-name">Jane Doe</div>
+                        <div class="publish-date">Published November 20, 2023</div>
+                    </div>
+                </div>
+            </header>
 
-            <h3>Characteristics of Healthy Solitude</h3>
-            <ul>
-               <li><strong>Choice-based:</strong> Child actively chooses alone time rather than avoiding social opportunities</li>
-               <li><strong>Recharging:</strong> Solitude restores energy and promotes well-being</li>
-               <li><strong>Productive:</strong> Time alone involves meaningful activities (reading, creating, thinking)</li>
-               <li><strong>Flexible:</strong> Child engages socially when genuinely interested or when relationships feel worthwhile</li>
-               <li><strong>Content:</strong> Overall mood remains positive; child expresses satisfaction with their social balance</li>
-            </ul>
-
-            <h3>Signs of Concerning Isolation</h3>
-            <ul>
-               <li><strong>Withdrawal:</strong> Child avoids social situations they previously enjoyed</li>
-               <li><strong>Distress:</strong> Persistent sadness, anxiety, or irritability related to social interactions</li>
-               <li><strong>Loss of Interest:</strong> Decline in activities, hobbies, or pursuits that once brought joy</li>
-               <li><strong>Forced Solitude:</strong> Child isolates even when presented with appealing social opportunities</li>
-               <li><strong>Academic Impact:</strong> Social withdrawal affects school performance or participation</li>
-            </ul>
-
-            <div class="highlight-box">
-               <h3>Research Insight</h3>
-               <p>Studies show that gifted children often require 50-75% more alone time than neurotypical peers to process intense experiences and maintain emotional equilibrium, making solitude preference developmentally normal.</p>
+            <div class="key-takeaways">
+                <h2>TL;DR</h2>
+                <ul>
+                    <li>Solitude preference differs fundamentally from social isolation</li>
+                    <li>Gifted children often need more alone time to process intense experiences</li>
+                    <li>Warning signs of isolation include persistent sadness and withdrawal from all activities</li>
+                    <li>Honoring introversion while fostering connection requires nuanced parenting approaches</li>
+                </ul>
             </div>
 
-            <h2>Why Gifted Children Seek Solitude</h2>
-            <p>Several factors contribute to gifted children's preference for alone time:</p>
+            <div class="article-body">
+                <p>You notice your child spending hours alone in their room, declining playdate invitations, and seeming content with books and solitary pursuits. Concerned friends ask, "Is everything okay? They seem so isolated." But your child insists they're happy, protesting any attempts to force social interaction.</p>
 
-            <h3>Intensity Processing</h3>
-            <p>Gifted children experience the world with greater intensity:</p>
+                <p>This scenario plays out in thousands of households, leaving parents trapped between respecting their child's preferences and worrying about their social development. The question isn't whether solitude-seeking is normal—it's distinguishing healthy introversion from concerning isolation.</p>
 
-            <ul>
-               <li>Emotions feel more powerful and require longer to process</li>
-               <li>Sensory input overwhelms more easily</li>
-               <li>Complex thoughts need quiet space to develop fully</li>
-               <li>Social interactions drain energy more quickly</li>
-            </ul>
+                <p>For gifted children, this distinction becomes even more critical, as their intense inner worlds often require extensive processing time that neurotypical peers don't understand or appreciate.</p>
 
-            <h3>Asynchronous Development</h3>
-            <p>Mismatched development creates social challenges:</p>
+                <div class="highlight-box">
+                    <h3>The Solitude Spectrum</h3>
+                    <p>Introversion exists on a spectrum from healthy preference for alone time to concerning social withdrawal. Understanding where your child falls requires looking beyond surface behaviors to underlying emotional states.</p>
+                </div>
 
-            <ul>
-               <li>Intellectual peers may not share emotional interests</li>
-               <li>Age-peers may not understand advanced thinking patterns</li>
-               <li>Social skills may lag behind cognitive abilities</li>
-               <li>Values and interests differ significantly from typical peers</li>
-            </ul>
+                <h2>Healthy Solitude vs. Problematic Isolation</h2>
+                <p>Distinguishing between beneficial alone time and concerning isolation requires examining both behavior and emotional well-being:</p>
 
-            <h3>Need for Authentic Connection</h3>
-            <p>Gifted children often prefer fewer, deeper relationships:</p>
+                <h3>Characteristics of Healthy Solitude</h3>
+                <ul>
+                    <li><strong>Choice-based:</strong> Child actively chooses alone time rather than avoiding social opportunities</li>
+                    <li><strong>Recharging:</strong> Solitude restores energy and promotes well-being</li>
+                    <li><strong>Productive:</strong> Time alone involves meaningful activities (reading, creating, thinking)</li>
+                    <li><strong>Flexible:</strong> Child engages socially when genuinely interested or when relationships feel worthwhile</li>
+                    <li><strong>Content:</strong> Overall mood remains positive; child expresses satisfaction with their social balance</li>
+                </ul>
 
-            <ul>
-               <li>Reject superficial social interactions</li>
-               <li>Seek intellectual and emotional compatibility</li>
-               <li>Value quality over quantity in friendships</li>
-               <li>Feel misunderstood by neurotypical peers</li>
-            </ul>
+                <h3>Signs of Concerning Isolation</h3>
+                <ul>
+                    <li><strong>Withdrawal:</strong> Child avoids social situations they previously enjoyed</li>
+                    <li><strong>Distress:</strong> Persistent sadness, anxiety, or irritability related to social interactions</li>
+                    <li><strong>Loss of Interest:</strong> Decline in activities, hobbies, or pursuits that once brought joy</li>
+                    <li><strong>Forced Solitude:</strong> Child isolates even when presented with appealing social opportunities</li>
+                    <li><strong>Academic Impact:</strong> Social withdrawal affects school performance or participation</li>
+                </ul>
 
-            <h2>When to Intervene: Red Flags to Watch For</h2>
-            <p>Monitor for these warning signs that indicate intervention may be needed:</p>
+                <div class="highlight-box">
+                    <h3>Research Insight</h3>
+                    <p>Studies show that gifted children often require 50-75% more alone time than neurotypical peers to process intense experiences and maintain emotional equilibrium, making solitude preference developmentally normal.</p>
+                </div>
 
-            <h3>Emotional Indicators</h3>
-            <ul>
-               <li>Persistent sadness or tearfulness</li>
-               <li>Increased anxiety or worry about social situations</li>
-               <li>Expressions of loneliness or feeling different</li>
-               <li>Decline in overall mood or energy levels</li>
-            </ul>
+                <h2>Why Gifted Children Seek Solitude</h2>
+                <p>Several factors contribute to gifted children's preference for alone time:</p>
 
-            <h3>Behavioral Changes</h3>
-            <ul>
-               <li>Sudden withdrawal from previously enjoyed activities</li>
-               <li>Declining academic performance or participation</li>
-               <li>Changes in sleep, appetite, or routine</li>
-               <li>Increased irritability or emotional volatility</li>
-            </ul>
+                <h3>Intensity Processing</h3>
+                <p>Gifted children experience the world with greater intensity:</p>
 
-            <h3>Social Withdrawal Patterns</h3>
-            <ul>
-               <li>Complete avoidance of all social opportunities</li>
-               <li>Loss of existing friendships without replacement</li>
-               <li>Refusal of family social activities</li>
-               <li>Expression of feeling hopeless about finding friends</li>
-            </ul>
+                <ul>
+                    <li>Emotions feel more powerful and require longer to process</li>
+                    <li>Sensory input overwhelms more easily</li>
+                    <li>Complex thoughts need quiet space to develop fully</li>
+                    <li>Social interactions drain energy more quickly</li>
+                </ul>
 
-            <div class="highlight-box">
-               <h3>Important Distinction</h3>
-               <p>Choice-based solitude differs from forced isolation. A child who says "I prefer to read" is different from one who says "Nobody likes me anyway." The former indicates preference; the latter suggests distress.</p>
+                <h3>Asynchronous Development</h3>
+                <p>Mismatched development creates social challenges:</p>
+
+                <ul>
+                    <li>Intellectual peers may not share emotional interests</li>
+                    <li>Age-peers may not understand advanced thinking patterns</li>
+                    <li>Social skills may lag behind cognitive abilities</li>
+                    <li>Values and interests differ significantly from typical peers</li>
+                </ul>
+
+                <h3>Need for Authentic Connection</h3>
+                <p>Gifted children often prefer fewer, deeper relationships:</p>
+
+                <ul>
+                    <li>Reject superficial social interactions</li>
+                    <li>Seek intellectual and emotional compatibility</li>
+                    <li>Value quality over quantity in friendships</li>
+                    <li>Feel misunderstood by neurotypical peers</li>
+                </ul>
+
+                <h2>When to Intervene: Red Flags to Watch For</h2>
+                <p>Monitor for these warning signs that indicate intervention may be needed:</p>
+
+                <h3>Emotional Indicators</h3>
+                <ul>
+                    <li>Persistent sadness or tearfulness</li>
+                    <li>Increased anxiety or worry about social situations</li>
+                    <li>Expressions of loneliness or feeling different</li>
+                    <li>Decline in overall mood or energy levels</li>
+                </ul>
+
+                <h3>Behavioral Changes</h3>
+                <ul>
+                    <li>Sudden withdrawal from previously enjoyed activities</li>
+                    <li>Declining academic performance or participation</li>
+                    <li>Changes in sleep, appetite, or routine</li>
+                    <li>Increased irritability or emotional volatility</li>
+                </ul>
+
+                <h3>Social Withdrawal Patterns</h3>
+                <ul>
+                    <li>Complete avoidance of all social opportunities</li>
+                    <li>Loss of existing friendships without replacement</li>
+                    <li>Refusal of family social activities</li>
+                    <li>Expression of feeling hopeless about finding friends</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Important Distinction</h3>
+                    <p>Choice-based solitude differs from forced isolation. A child who says "I prefer to read" is different from one who says "Nobody likes me anyway." The former indicates preference; the latter suggests distress.</p>
+                </div>
+
+                <h2>Strategies for Supporting Your Child</h2>
+                <p>Balance honoring introversion with fostering connection:</p>
+
+                <h3>Honor Their Needs</h3>
+                <p>Respect your child's preference for alone time:</p>
+
+                <ul>
+                    <li>Create dedicated quiet spaces in your home</li>
+                    <li>Don't pressure social participation</li>
+                    <li>Validate their need for processing time</li>
+                    <li>Model respect for individual differences</li>
+                </ul>
+
+                <h3>Create Quality Opportunities</h3>
+                <p>Facilitate meaningful connections rather than generic socialization:</p>
+
+                <ul>
+                    <li>Seek out intellectual peers through enrichment programs</li>
+                    <li>Arrange one-on-one activities rather than group settings</li>
+                    <li>Find communities aligned with specific interests</li>
+                    <li>Connect with other gifted families</li>
+                </ul>
+
+                <h3>Open Communication</h3>
+                <p>Maintain dialogue about social experiences:</p>
+
+                <ul>
+                    <li>Ask open-ended questions about friendships and connections</li>
+                    <li>Listen without judgment to their social concerns</li>
+                    <li>Share your own experiences with introversion</li>
+                    <li>Discuss the difference between solitude and loneliness</li>
+                </ul>
+
+                <h2>Building Bridges Without Pushing</h2>
+                <p>Support social connection while respecting boundaries:</p>
+
+                <h3>Gradual Exposure</h3>
+                <p>Introduce social opportunities gradually:</p>
+
+                <ul>
+                    <li>Start with low-pressure, interest-based activities</li>
+                    <li>Allow your child to opt out without consequence</li>
+                    <li>Focus on shared activities rather than forced conversation</li>
+                    <li>Respect their energy levels and processing needs</li>
+                </ul>
+
+                <h3>Alternative Connection Methods</h3>
+                <p>Explore different ways to foster relationships:</p>
+
+                <ul>
+                    <li>Online communities for gifted children</li>
+                    <li>Correspondence with pen pals</li>
+                    <li>Mentorship opportunities</li>
+                    <li>Family gatherings with understanding relatives</li>
+                </ul>
+
+                <h3>Strength-Based Approach</h3>
+                <p>Highlight your child's social strengths:</p>
+
+                <ul>
+                    <li>Acknowledge their deep loyalty in existing relationships</li>
+                    <li>Recognize their empathy and emotional intelligence</li>
+                    <li>Value their ability to form intense, meaningful bonds</li>
+                    <li>Appreciate their selective friendship standards</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Parenting Perspective</h3>
+                    <p>Remember: Your child's preference for solitude may be their superpower. Many of history's greatest contributors were introverts who used alone time for groundbreaking work.</p>
+                </div>
+
+                <h2>When to Seek Professional Support</h2>
+                <p>Consider professional guidance if:</p>
+
+                <ul>
+                    <li>Solitude preference masks depression or anxiety</li>
+                    <li>Isolation significantly impacts daily functioning</li>
+                    <li>Child expresses suicidal thoughts or self-harm</li>
+                    <li>Family relationships suffer due to withdrawal</li>
+                    <li>Academic performance declines due to social issues</li>
+                </ul>
+
+                <h2>The Long-Term View</h2>
+                <p>Many gifted children who prefer solitude find their tribe in time:</p>
+
+                <ul>
+                    <li>College often brings intellectual peers for the first time</li>
+                    <li>Professional environments may better suit their thinking styles</li>
+                    <li>Mature friendships often prioritize depth over breadth</li>
+                    <li>Online communities provide global connection opportunities</li>
+                </ul>
+
+                <p>The goal isn't to transform introverts into extroverts but to help them find fulfilling ways to connect that honor their natural preferences while meeting their social needs.</p>
+
+                <div class="highlight-box">
+                    <h3>Future Outlook</h3>
+                    <p>Research indicates that gifted introverts often become exceptional leaders, creators, and innovators—roles that value deep thinking and selective collaboration over constant social engagement.</p>
+                </div>
+
+                <h2>The Bottom Line</h2>
+                <p>Your child's preference for solitude isn't a problem to solve but a trait to understand and support. The key lies in distinguishing between healthy introversion—which provides essential processing time and creative space—and concerning isolation that signals distress.</p>
+
+                <p>Trust your child's self-knowledge while remaining vigilant for signs of genuine unhappiness. Create opportunities for meaningful connection without forcing participation. Honor their need for alone time while gently encouraging relationships that feel authentic and worthwhile.</p>
+
+                <p>Remember: Some of the world's most influential thinkers, artists, and innovators were introverts who thrived through selective, deep connections rather than broad social networks. Your child's preference for solitude may be the very quality that enables their future contributions to the world.</p>
+
+                <p>The question isn't whether they should be more social—it's how to help them find the right kind of social connection for their unique temperament and abilities.</p>
+
+                <p>In a culture that often equates popularity with success, your role is to help your child understand that meaningful relationships with a few compatible people often create more fulfillment than superficial connections with many.</p>
             </div>
+        </div>
 
-            <h2>Strategies for Supporting Your Child</h2>
-            <p>Balance honoring introversion with fostering connection:</p>
-
-            <h3>Honor Their Needs</h3>
-            <p>Respect your child's preference for alone time:</p>
-
-            <ul>
-               <li>Create dedicated quiet spaces in your home</li>
-               <li>Don't pressure social participation</li>
-               <li>Validate their need for processing time</li>
-               <li>Model respect for individual differences</li>
-            </ul>
-
-            <h3>Create Quality Opportunities</h3>
-            <p>Facilitate meaningful connections rather than generic socialization:</p>
-
-            <ul>
-               <li>Seek out intellectual peers through enrichment programs</li>
-               <li>Arrange one-on-one activities rather than group settings</li>
-               <li>Find communities aligned with specific interests</li>
-               <li>Connect with other gifted families</li>
-            </ul>
-
-            <h3>Open Communication</h3>
-            <p>Maintain dialogue about social experiences:</p>
-
-            <ul>
-               <li>Ask open-ended questions about friendships and connections</li>
-               <li>Listen without judgment to their social concerns</li>
-               <li>Share your own experiences with introversion</li>
-               <li>Discuss the difference between solitude and loneliness</li>
-            </ul>
-
-            <h2>Building Bridges Without Pushing</h2>
-            <p>Support social connection while respecting boundaries:</p>
-
-            <h3>Gradual Exposure</h3>
-            <p>Introduce social opportunities gradually:</p>
-
-            <ul>
-               <li>Start with low-pressure, interest-based activities</li>
-               <li>Allow your child to opt out without consequence</li>
-               <li>Focus on shared activities rather than forced conversation</li>
-               <li>Respect their energy levels and processing needs</li>
-            </ul>
-
-            <h3>Alternative Connection Methods</h3>
-            <p>Explore different ways to foster relationships:</p>
-
-            <ul>
-               <li>Online communities for gifted children</li>
-               <li>Correspondence with pen pals</li>
-               <li>Mentorship opportunities</li>
-               <li>Family gatherings with understanding relatives</li>
-            </ul>
-
-            <h3>Strength-Based Approach</h3>
-            <p>Highlight your child's social strengths:</p>
-
-            <ul>
-               <li>Acknowledge their deep loyalty in existing relationships</li>
-               <li>Recognize their empathy and emotional intelligence</li>
-               <li>Value their ability to form intense, meaningful bonds</li>
-               <li>Appreciate their selective friendship standards</li>
-            </ul>
-
-            <div class="highlight-box">
-               <h3>Parenting Perspective</h3>
-               <p>Remember: Your child's preference for solitude may be their superpower. Many of history's greatest contributors were introverts who used alone time for groundbreaking work.</p>
+        <div class="article-sidebar">
+            <div class="sidebar-widget">
+                <h3>Is your child 2e?</h3>
+                <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
+                <a href="quiz.html" class="btn btn-primary" style="font-family: var(--font-body);">Take the Free Quiz</a>
             </div>
+        </div>
+    </div>
 
-            <h2>When to Seek Professional Support</h2>
-            <p>Consider professional guidance when:</p>
-
-            <ul>
-               <li>Solitude preference masks depression or anxiety</li>
-               <li>Isolation significantly impacts daily functioning</li>
-               <li>Child expresses suicidal thoughts or self-harm</li>
-               <li>Family relationships suffer due to withdrawal</li>
-               <li>Academic performance declines due to social issues</li>
-            </ul>
-
-            <h2>The Long-Term View</h2>
-            <p>Many gifted children who prefer solitude find their tribe in time:</p>
-
-            <ul>
-               <li>College often brings intellectual peers for the first time</li>
-               <li>Professional environments may better suit their thinking styles</li>
-               <li>Mature friendships often prioritize depth over breadth</li>
-               <li>Online communities provide global connection opportunities</li>
-            </ul>
-
-            <p>The goal isn't to transform introverts into extroverts but to help them find fulfilling ways to connect that honor their natural preferences while meeting their social needs.</p>
-
-            <div class="highlight-box">
-               <h3>Future Outlook</h3>
-               <p>Research indicates that gifted introverts often become exceptional leaders, creators, and innovators—roles that value deep thinking and selective collaboration over constant social engagement.</p>
+    <section class="read-next">
+        <div class="container">
+            <h2>Read Next</h2>
+            <div class="read-next-grid">
+                <a href="social-connection.html" class="read-next-card premium-card">
+                    <h3>The Friendship Formula</h3>
+                    <p>How to help gifted children build meaningful connections.</p>
+                </a>
+                <a href="asynchronous-development.html" class="read-next-card premium-card">
+                    <h3>Asynchronous Development</h3>
+                    <p>12-year-old mind, 6-year-old emotions.</p>
+                </a>
             </div>
+        </div>
+    </section>
 
-            <h2>The Bottom Line</h2>
-            <p>Your child's preference for solitude isn't a problem to solve but a trait to understand and support. The key lies in distinguishing between healthy introversion—which provides essential processing time and creative space—and concerning isolation that signals distress.</p>
-
-            <p>Trust your child's self-knowledge while remaining vigilant for signs of genuine unhappiness. Create opportunities for meaningful connection without forcing participation. Honor their need for alone time while gently encouraging relationships that feel authentic and worthwhile.</p>
-
-            <p>Remember: Some of the world's most influential thinkers, artists, and innovators were introverts who thrived through selective, deep connections rather than broad social networks. Your child's preference for solitude may be the very quality that enables their future contributions to the world.</p>
-
-            <p>The question isn't whether they should be more social—it's how to help them find the right kind of social connection for their unique temperament and abilities.</p>
-
-            <p>In a culture that often equates popularity with success, your role is to help your child understand that meaningful relationships with a few compatible people often create more fulfillment than superficial connections with many.</p>
-         </div>
-      </div>
-
-      <!-- Sidebar -->
-      <div class="article-sidebar">
-         <div class="sidebar-widget">
-            <h3>Is your child 2e?</h3>
-            <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
-            <button class="btn">Take the Free Quiz</button>
-         </div>
-      </div>
-   </div>
-
-   <!-- Read Next Section -->
-   <section class="read-next">
-      <div class="container">
-         <h2>Read Next</h2>
-         <div class="read-next-grid">
-            <a href="#" class="read-next-card">
-               <h3>The Friendship Formula</h3>
-               <p>How to help gifted children build meaningful connections.</p>
-            </a>
-            <a href="#" class="read-next-card">
-               <h3>Asynchronous Development</h3>
-               <p>12-year-old mind, 6-year-old emotions.</p>
-            </a>
-         </div>
-      </div>
-   </section>
+<div id="footer-placeholder"></div>
+<script>
+    fetch('footer.html').then(response => response.text()).then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+<script src="script.js"></script>
 </body>
 
 </html>
