@@ -2,333 +2,334 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Sensory & Physical Hub | Gifted Child Authority</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="styles.css">
-   <style>
-      :root {
-         /* Backgrounds */
-         --bg-cream: #FDFBF7;
-         --bg-white: #FFFFFF;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensory & Physical Hub | Gifted Child Authority</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            /* Backgrounds */
+            --bg-cream: #FDFBF7;
+            --bg-white: #FFFFFF;
 
-         /* Colors */
-         --color-terracotta: #E07A5F;
-         --color-sage: #81B29A;
-         --text-charcoal: #3D405B;
-         --text-dark: #2A2C35;
-         --color-gold: #F2CC8F;
+            /* Colors */
+            --color-terracotta: #E07A5F;
+            --color-sage: #81B29A;
+            --text-charcoal: #3D405B;
+            --text-dark: #2A2C35;
+            --color-gold: #F2CC8F;
 
-         /* UI */
-         --radius: 12px;
-         --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            /* UI */
+            --radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 
-         /* Typography */
-         --font-heading: 'Merriweather', serif;
-         --font-body: 'Inter', sans-serif;
+            /* Typography */
+            --font-heading: 'Merriweather', serif;
+            --font-body: 'Inter', sans-serif;
 
-         /* Spacing */
-         --section-padding: 80px;
-         --max-text-width: 700px;
-         --line-height: 1.6;
-      }
+            /* Spacing */
+            --section-padding: 80px;
+            --max-text-width: 700px;
+            --line-height: 1.6;
+        }
 
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      body {
-         font-family: var(--font-body);
-         background-color: var(--bg-cream);
-         color: var(--text-charcoal);
-         line-height: var(--line-height);
-      }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            line-height: var(--line-height);
+        }
 
-      h1,
-      h2,
-      h3,
-      h4 {
-         font-family: var(--font-heading);
-         color: var(--text-dark);
-         line-height: 1.3;
-      }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
 
-      .container {
-         width: 100%;
-         max-width: 1200px;
-         margin: 0 auto;
-         padding: 0 24px;
-      }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-      section {
-         padding: var(--section-padding) 0;
-      }
+        section {
+            padding: var(--section-padding) 0;
+        }
 
-      /* Hero Section */
-      .hero {
-         background-color: var(--bg-cream);
-         text-align: center;
-      }
+        /* Hero Section */
+        .hero {
+            background-color: var(--bg-cream);
+            text-align: center;
+        }
 
-      .hero-content {
-         max-width: var(--max-text-width);
-         margin: 0 auto;
-      }
+        .hero-content {
+            max-width: var(--max-text-width);
+            margin: 0 auto;
+        }
 
-      .hero h1 {
-         font-size: 3rem;
-         margin-bottom: 24px;
-      }
-
-      .hero p {
-         font-size: 1.25rem;
-         margin-bottom: 40px;
-         color: var(--text-charcoal);
-      }
-
-      .hero-visual {
-         width: 200px;
-         height: 200px;
-         margin: 0 auto 40px;
-         background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-sage) 100%);
-         border-radius: 50%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         font-size: 4rem;
-      }
-
-      /* Empathy Block */
-      .empathy-block {
-         background-color: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 60px 40px;
-         box-shadow: var(--shadow);
-         text-align: center;
-      }
-
-      .empathy-block p {
-         max-width: var(--max-text-width);
-         margin: 0 auto;
-         font-size: 1.125rem;
-         line-height: 1.7;
-      }
-
-      /* Articles Grid */
-      .articles-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-         gap: 32px;
-      }
-
-      .article-card {
-         background: var(--bg-white);
-         border-radius: var(--radius);
-         padding: 32px;
-         box-shadow: var(--shadow);
-         transition: all 0.3s ease;
-         height: 100%;
-         display: flex;
-         flex-direction: column;
-      }
-
-      .article-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      .article-tag {
-         display: inline-block;
-         background-color: var(--color-gold);
-         color: var(--text-dark);
-         padding: 6px 12px;
-         border-radius: 20px;
-         font-size: 0.875rem;
-         font-weight: 600;
-         margin-bottom: 16px;
-      }
-
-      .article-card h3 {
-         font-size: 1.5rem;
-         margin-bottom: 16px;
-         transition: color 0.3s ease;
-      }
-
-      .article-card:hover h3 {
-         color: var(--color-terracotta);
-      }
-
-      .article-excerpt {
-         color: var(--text-charcoal);
-         margin-top: auto;
-      }
-
-      /* CTA Section */
-      .cta-section {
-         background-color: var(--color-sage);
-         text-align: center;
-         color: white;
-      }
-
-      .cta-section h2 {
-         color: white;
-         margin-bottom: 24px;
-      }
-
-      .btn {
-         display: inline-block;
-         padding: 16px 32px;
-         background-color: var(--color-terracotta);
-         color: white;
-         border-radius: var(--radius);
-         text-decoration: none;
-         font-weight: 600;
-         transition: all 0.3s ease;
-         border: none;
-         cursor: pointer;
-         font-size: 1rem;
-      }
-
-      .btn:hover {
-         background-color: #d36547;
-         transform: translateY(-2px);
-         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-         .hero h1 {
-            font-size: 2.25rem;
-         }
-
-         .hero p {
-            font-size: 1.125rem;
-         }
-
-         .empathy-block {
-            padding: 40px 24px;
-         }
-
-         .article-card {
-            padding: 24px;
-         }
-      }
-
-      @media (max-width: 480px) {
-         .hero h1 {
-            font-size: 1.875rem;
-         }
-
-         .hero-visual {
-            width: 150px;
-            height: 150px;
+        .hero h1 {
             font-size: 3rem;
-         }
-      }
-   </style>
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: var(--text-charcoal);
+        }
+
+        .hero-visual-container {
+            margin: 0 auto 40px;
+        }
+        
+        .hero-visual {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 10px;
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-sage) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        /* Empathy Block */
+        .empathy-block {
+            background-color: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .empathy-block p {
+            max-width: var(--max-text-width);
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .article-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none; /* Inherited by anchor tags */
+            color: inherit;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-tag {
+            display: inline-block;
+            background-color: var(--color-gold);
+            color: var(--text-dark);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .article-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .article-card:hover h3 {
+            color: var(--color-terracotta);
+        }
+
+        .article-excerpt {
+            color: var(--text-charcoal);
+            margin-top: auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--color-sage);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: var(--color-terracotta);
+            color: white;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #d36547;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .empathy-block {
+                padding: 40px 24px;
+            }
+
+            .article-card {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.875rem;
+            }
+
+            .hero-visual {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<div id="navigation-placeholder"></div>
-<script>
-    fetch('navigation.html').then(response => response.text()).then(data => {
-        document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
-   <!-- Hero Section -->
-   <section class="hero">
-      <div class="container">
-         <div class="hero-content">
-            <h1>When the world feels too loud.</h1>
-            <p>Managing sensory processing issues, picky eating, and physical sensitivities.</p>
-            <div class="hero-visual">🔊</div>
-         </div>
-      </div>
-   </section>
+    <div id="navigation-placeholder"></div>
+    <script>
+        fetch('navigation.html').then(response => response.text()).then(data => {
+            document.getElementById('navigation-placeholder').innerHTML = data;
+        });
+    </script>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>When the world feels too loud.</h1>
+                <p>Managing sensory processing issues, picky eating, and physical sensitivities.</p>
+                
+                <div class="hero-visual-container">
+                    <div class="hero-visual" aria-hidden="true">🔊</div>
+                    <span class="sr-only">Icon representing sound and sensory sensitivity.</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-   <!-- Empathy Block -->
-   <section>
-      <div class="container">
-         <div class="empathy-block">
-            <p>Your child's sensory experiences aren't dramatic—they're neurological. What feels normal to others can feel overwhelming or even painful to gifted children with heightened sensory processing. Their reactions aren't choices or manipulations; they're genuine responses to a world that bombards their nervous system with too much, too fast, too often.</p>
-         </div>
-      </div>
-   </section>
+    <section>
+        <div class="container">
+            <div class="empathy-block">
+                <p>Your child's sensory experiences aren't dramatic—they're neurological. What feels normal to others can feel overwhelming or even painful to gifted children with heightened sensory processing. Their reactions aren't choices or manipulations; they're genuine responses to a world that bombards their nervous system with too much, too fast, too often.</p>
+            </div>
+        </div>
+    </section>
 
-   <!-- Articles Grid -->
-   <section>
-      <div class="container">
-        <div class="articles-grid">
-   <a href="seekers-vs-avoiders.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Start Here</span>
-         <h3>Seekers vs. Avoiders</h3>
-         <p class="article-excerpt">Does your child crash into walls or hide under tables?</p>
-      </div>
-   </a>
+    <section>
+        <div class="container">
+            <div class="articles-grid">
+                <a href="seekers-vs-avoiders.html" class="article-card">
+                    <span class="article-tag">Start Here</span>
+                    <h3>Seekers vs. Avoiders</h3>
+                    <p class="article-excerpt">Does your child crash into walls or hide under tables?</p>
+                </a>
 
-   <a href="when-noise-hurts.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Auditory</span>
-         <h3>When Noise Hurts</h3>
-         <p class="article-excerpt">Helping your child survive loud spaces without a meltdown.</p>
-      </div>
-   </a>
+                <a href="when-noise-hurts.html" class="article-card">
+                    <span class="article-tag">Auditory</span>
+                    <h3>When Noise Hurts</h3>
+                    <p class="article-excerpt">Helping your child survive loud spaces without a meltdown.</p>
+                </a>
 
-   <a href="the-touch-factor.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Touch</span>
-         <h3>The Touch Factor</h3>
-         <p class="article-excerpt">Why hugs, haircuts, and handshakes can trigger overload.</p>
-      </div>
-   </a>
+                <a href="the-touch-factor.html" class="article-card">
+                    <span class="article-tag">Touch</span>
+                    <h3>The Touch Factor</h3>
+                    <p class="article-excerpt">Why hugs, haircuts, and handshakes can trigger overload.</p>
+                </a>
 
-   <a href="the-sock-war.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Clothing</span>
-         <h3>The Sock War</h3>
-         <p class="article-excerpt">Why seams feel like razor blades (and how to fix it).</p>
-      </div>
-   </a>
+                <a href="the-sock-war.html" class="article-card">
+                    <span class="article-tag">Clothing</span>
+                    <h3>The Sock War</h3>
+                    <p class="article-excerpt">Why seams feel like razor blades (and how to fix it).</p>
+                </a>
 
-   <a href="beige-diet.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Eating</span>
-         <h3>The 'Beige Diet'</h3>
-         <p class="article-excerpt">Dealing with sensory picky eating and texture aversion.</p>
-      </div>
-   </a>
+                <a href="beige-diet.html" class="article-card">
+                    <span class="article-tag">Eating</span>
+                    <h3>The 'Beige Diet'</h3>
+                    <p class="article-excerpt">Dealing with sensory picky eating and texture aversion.</p>
+                </a>
 
-   <a href="routine-rescue.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">Strategy</span>
-         <h3>Routine Rescue</h3>
-         <p class="article-excerpt">Using predictable schedules to calm a sensitive nervous system.</p>
-      </div>
-   </a>
+                <a href="routine-rescue.html" class="article-card">
+                    <span class="article-tag">Strategy</span>
+                    <h3>Routine Rescue</h3>
+                    <p class="article-excerpt">Using predictable schedules to calm a sensitive nervous system.</p>
+                </a>
 
-   <a href="classroom-sensory-solutions.html" style="text-decoration:none; color:inherit;">
-      <div class="article-card">
-         <span class="article-tag">School</span>
-         <h3>Classroom Solutions</h3>
-         <p class="article-excerpt">Advocating for accommodations that actually work.</p>
-      </div>
-   </a>
-</div>
-      </div>
-   </section>
+                <a href="classroom-sensory-solutions.html" class="article-card">
+                    <span class="article-tag">School</span>
+                    <h3>Classroom Solutions</h3>
+                    <p class="article-excerpt">Advocating for accommodations that actually work.</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
-   <!-- CTA Section -->
-   <section class="cta-section">
-      <div class="container">
-         <h2>Don't know where to start?</h2>
-         <button class="btn">Take the Free 2-Minute Patterns Quiz</button>
-      </div>
-   </section>
+    <section class="cta-section">
+        <div class="container">
+            <h2>Don't know where to start?</h2>
+            <a href="quiz.html" class="btn">Take the Free 2-Minute Patterns Quiz</a>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html').then(response => response.text()).then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
