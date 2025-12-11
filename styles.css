@@ -1,0 +1,291 @@
+/* styles.css - The new aesthetic foundation for Mission Control Center */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+:root {
+    /* --- 1. CORE SEMANTIC COLOR SCHEME (Used by Nav, Footer, Buttons) --- */
+    --color-primary: #7C9885; /* Soft Sage Green */
+    --color-secondary: #FAF7F0; /* Warm Cream - Used for Nav/Cards */
+    --color-accent: #D4AF37; /* Gold */
+    --color-text: #2F2F2F; /* Charcoal Gray */
+    --color-background: #FAFAFA; /* Off-White */
+    --color-shadow: rgba(0, 0, 0, 0.08);
+
+    /* --- 2. BACKWARD COMPATIBILITY VARIABLES (Ensures all article pages work) --- */
+    /* Mapping Descriptive names used in component files to new Semantic names */
+    --color-sage: var(--color-primary); 
+    --bg-cream: var(--color-secondary); 
+    --color-gold: var(--color-accent); 
+    --color-terracotta: #E07A5F; /* Preserving the separate Terracotta color where used */
+    --text-dark: var(--color-text);
+    --text-charcoal: var(--color-text);
+    --bg-white: var(--color-secondary); /* Often used as a white background */
+
+
+    /* --- 3. TYPOGRAPHY AND DESIGN ELEMENTS --- */
+    --font-header: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    --font-heading: var(--font-header); /* Backward Compatibility */
+
+    --border-radius: 10px;
+    --box-shadow-subtle: 0 4px 12px var(--color-shadow);
+    --box-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Base Styles & Typography Consistency */
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 80px; /* Space for fixed header */
+    transition: background-color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-header);
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 60px 0;
+    /* For fade-in animation */
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Navigation Bar Styling (Sticky, Mobile-Ready) --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-secondary); /* Warm Cream */
+    box-shadow: var(--box-shadow-subtle);
+    z-index: 1000;
+    height: 80px;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.logo a {
+    font-family: var(--font-header);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    padding: 25px 0;
+    transition: all 0.3s ease;
+    position: relative;
+    font-family: var(--font-body);
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Gold Accent Underline on Hover (Premium Feature) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--color-primary);
+}
+
+/* Mobile Menu Overlay */
+.mobile-nav-links {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    max-width: 300px;
+    background-color: var(--color-secondary);
+    box-shadow: var(--box-shadow-hover);
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 999;
+    border-radius: 0 0 0 var(--border-radius);
+}
+
+.mobile-nav-links.active {
+    display: flex;
+}
+
+.mobile-nav-links a {
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(124, 152, 133, 0.2);
+}
+
+/* --- Button Styling (Consistent, Rounded, Hover) --- */
+.btn-primary, .btn { /* Added .btn here for backwards compatibility */
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--color-primary);
+    color: var(--color-background); /* Cream/Off-white for contrast */
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover, .btn:hover {
+    background-color: #6a8373; /* Slightly darker sage */
+    box-shadow: var(--box-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary:hover {
+    background-color: #c19f2f; /* Slightly darker gold */
+    box-shadow: var(--box-shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* --- Footer Styling --- */
+footer {
+    background-color: var(--color-text); /* Charcoal Footer */
+    color: var(--color-background); /* Off-White Text */
+    padding: 40px 20px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+footer h4 {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+footer a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--color-accent);
+}
+
+/* Utility Class for seamless integration into existing page styles */
+.premium-card {
+    background: var(--color-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-subtle);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+/* Assessment Wrapper to contain React/Tailwind elements */
+.assessment-wrapper {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow-subtle);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    body {
+        padding-top: 70px; /* Adjust for smaller header on mobile */
+    }
+
+    .navbar {
+        height: 70px;
+    }
+
+    .mobile-nav-links {
+        top: 70px;
+        max-width: 100%;
+        border-radius: 0;
+    }
+    
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer .col-3 {
+        width: 100%;
+    }
+}
