@@ -69,11 +69,11 @@
 </head>
 <body>
     <div id="navigation-placeholder"></div>
-    <div id="root"></div> 
-
-    <div id="footer-placeholder"></div>
-
-    <script>
+<script>
+    fetch('navigation.html').then(response => response.text()).then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
         // Use Fetch to inject components above/below React root
         fetch('navigation.html').then(response => response.text()).then(data => {
             document.getElementById('navigation-placeholder').innerHTML = data;

@@ -234,10 +234,11 @@
 
 <body>
 <div id="navigation-placeholder"></div>
-
-<script src="navigation.js"></script> 
-
 <script>
+    fetch('navigation.html').then(response => response.text()).then(data => {
+        document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
 fetch('navigation.html')
     .then(response => response.text())
     .then(data => {
