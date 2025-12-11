@@ -2,178 +2,228 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Resources Library | Gifted Insights</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="styles.css">
-   <style>
-      :root {
-         --cream: #FDFBF7;
-         --terracotta: #E07A5F;
-         --sage: #81B29A;
-         --charcoal: #3D405B;
-         --radius: 12px;
-      }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources Library | Gifted Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Re-mapping internal variables to global project variables for consistency */
+        :root {
+            /* Backgrounds */
+            --bg-cream: #FDFBF7;
+            --bg-white: #FFFFFF;
+            /* Colors */
+            --color-terracotta: #E07A5F;
+            --color-sage: #81B29A;
+            --text-charcoal: #3D405B;
+            --text-dark: #2A2C35;
+            --color-gold: #F2CC8F; /* Added gold for tags/accents */
+            /* UI */
+            --radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            /* Typography */
+            --font-heading: 'Merriweather', serif;
+            --font-body: 'Inter', sans-serif;
+            /* Spacing */
+            --section-padding: 80px;
+        }
 
-      body {
-         font-family: 'Inter', sans-serif;
-         background-color: var(--cream);
-         color: var(--charcoal);
-         margin: 0;
-      }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            margin: 0;
+            line-height: 1.6;
+        }
 
-      .container {
-         max-width: 1000px;
-         margin: 0 auto;
-         padding: 60px 24px;
-      }
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--text-dark);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
 
-      h1 {
-         font-family: 'Merriweather', serif;
-         font-size: 2.5rem;
-         text-align: center;
-         margin-bottom: 10px;
-      }
+        /* Hero Styling */
+        .library-header {
+            padding: 40px 0;
+            background-color: var(--bg-cream);
+        }
 
-      .subtitle {
-         text-align: center;
-         font-size: 1.2rem;
-         margin-bottom: 60px;
-         opacity: 0.8;
-      }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--color-terracotta);
+        }
 
-      .library-section {
-         margin-bottom: 60px;
-      }
+        .subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
 
-      .section-title {
-         font-size: 1.8rem;
-         border-bottom: 2px solid var(--sage);
-         padding-bottom: 10px;
-         margin-bottom: 30px;
-         font-family: 'Merriweather', serif;
-      }
+        /* Section and Titles */
+        .library-section {
+            margin-bottom: 80px;
+            padding-top: 20px;
+        }
 
-      .resource-list {
-         display: grid;
-         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-         gap: 20px;
-      }
+        .section-title {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--color-sage); /* Sage separator */
+            color: var(--text-dark);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            font-family: var(--font-heading);
+        }
 
-      .resource-card {
-         background: white;
-         padding: 25px;
-         border-radius: var(--radius);
-         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-         transition: transform 0.2s;
-         text-decoration: none;
-         color: inherit;
-         display: block;
-      }
+        .resource-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
 
-      .resource-card:hover {
-         transform: translateY(-5px);
-         border-bottom: 3px solid var(--terracotta);
-      }
+        /* Card Styling (Pottery Barn aesthetic) */
+        .resource-card {
+            background: var(--bg-white);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--color-gold); /* Gold accent stripe */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-      .tag {
-         font-size: 0.8rem;
-         text-transform: uppercase;
-         letter-spacing: 1px;
-         color: #999;
-         margin-bottom: 10px;
-         display: block;
-      }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-terracotta);
+        }
 
-      .card-title {
-         font-weight: 700;
-         font-size: 1.2rem;
-         margin-bottom: 10px;
-         display: block;
-      }
+        .tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-sage); /* Sage tag color */
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 600;
+        }
 
-      .card-desc {
-         font-size: 0.95rem;
-         opacity: 0.8;
-      }
-   </style>
+        .card-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--text-dark);
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: auto; /* Pushes description up */
+        }
+    </style>
 </head>
 
 <body>
-   <div id="navigation-placeholder"></div>
+    <div id="navigation-placeholder"></div>
+    <script>
+        fetch('navigation.html').then(response => response.text()).then(data => {
+            document.getElementById('navigation-placeholder').innerHTML = data;
+        });
+    </script>
 
-   <div class="container">
-      <h1>Parenting Library</h1>
-      <p class="subtitle">Practical guides, scripts, and strategies for your unique child.</p>
+    <div class="library-header">
+        <div class="container">
+            <h1>Parenting Library</h1>
+            <p class="subtitle">Practical guides, scripts, and strategies for your unique child.</p>
+        </div>
+    </div>
 
-      <div class="library-section">
-         <h2 class="section-title">🧠 Executive Function & Focus</h2>
-         <div class="resource-list">
-            <a href="laziness-vs-dysfunction.html" class="resource-card">
-               <span class="tag">Start Here</span>
-               <span class="card-title">Laziness vs. Dysfunction</span>
-               <span class="card-desc">How to tell if they won't do it, or can't do it.</span>
-            </a>
-            <a href="black-hole-backpack.html" class="resource-card">
-               <span class="tag">Organization</span>
-               <span class="card-title">The Black Hole Backpack</span>
-               <span class="card-desc">A 3-step system to stop losing homework forever.</span>
-            </a>
-            <a href="dopamine-menu.html" class="resource-card">
-               <span class="tag">Motivation</span>
-               <span class="card-title">The Dopamine Menu</span>
-               <span class="card-desc">Jumpstart a bored brain without using screens.</span>
-            </a>
-         </div>
-      </div>
+    <div class="container" style="padding-top: 0;">
+        <div class="library-section">
+            <h2 class="section-title">🧠 Executive Function & Focus</h2>
+            <div class="resource-list">
+                <a href="laziness-vs-dysfunction.html" class="resource-card">
+                    <span class="tag">Start Here</span>
+                    <span class="card-title">Laziness vs. Dysfunction</span>
+                    <span class="card-desc">How to tell if they won't do it, or can't do it.</span>
+                </a>
+                <a href="black-hole-backpack.html" class="resource-card">
+                    <span class="tag">Organization</span>
+                    <span class="card-title">The Black Hole Backpack</span>
+                    <span class="card-desc">A 3-step system to stop losing homework forever.</span>
+                </a>
+                <a href="dopamine-menu.html" class="resource-card">
+                    <span class="tag">Motivation</span>
+                    <span class="card-title">The Dopamine Menu</span>
+                    <span class="card-desc">Jumpstart a bored brain without using screens.</span>
+                </a>
+            </div>
+        </div>
 
-      <div class="library-section">
-         <h2 class="section-title">💖 Emotional Regulation</h2>
-         <div class="resource-list">
-            <a href="de-escalation-script.html" class="resource-card">
-               <span class="tag">Meltdowns</span>
-               <span class="card-title">The De-Escalation Script</span>
-               <span class="card-desc">Exact phrases to stop the yelling and reconnect.</span>
-            </a>
-            <a href="restraint-collapse.html" class="resource-card">
-               <span class="tag">Behavior</span>
-               <span class="card-title">Restraint Collapse</span>
-               <span class="card-desc">Why they are angels at school and monsters at home.</span>
-            </a>
-            <a href="anxiety-intelligence.html" class="resource-card">
-               <span class="tag">Anxiety</span>
-               <span class="card-title">Anxiety or Intelligence?</span>
-               <span class="card-desc">When smart kids over-calculate risk.</span>
-            </a>
-         </div>
-      </div>
+        <div class="library-section">
+            <h2 class="section-title">💖 Emotional Regulation</h2>
+            <div class="resource-list">
+                <a href="de-escalation-script.html" class="resource-card">
+                    <span class="tag">Meltdowns</span>
+                    <span class="card-title">The De-Escalation Script</span>
+                    <span class="card-desc">Exact phrases to stop the yelling and reconnect.</span>
+                </a>
+                <a href="restraint-collapse.html" class="resource-card">
+                    <span class="tag">Behavior</span>
+                    <span class="card-title">Restraint Collapse</span>
+                    <span class="card-desc">Why they are angels at school and monsters at home.</span>
+                </a>
+                <a href="anxiety-intelligence.html" class="resource-card">
+                    <span class="tag">Anxiety</span>
+                    <span class="card-title">Anxiety or Intelligence?</span>
+                    <span class="card-desc">When smart kids over-calculate risk.</span>
+                </a>
+            </div>
+        </div>
 
-      <div class="library-section">
-         <h2 class="section-title">👕 Sensory & Physical</h2>
-         <div class="resource-list">
-            <a href="the-sock-war.html" class="resource-card">
-               <span class="tag">Clothing</span>
-               <span class="card-title">The Sock War</span>
-               <span class="card-desc">Why seams feel like razor blades to your child.</span>
-            </a>
-            <a href="beige-diet.html" class="resource-card">
-               <span class="tag">Eating</span>
-               <span class="card-title">The 'Beige Diet'</span>
-               <span class="card-desc">Dealing with sensory picky eating and textures.</span>
-            </a>
-            <a href="seekers-vs-avoiders.html" class="resource-card">
-               <span class="tag">Overview</span>
-               <span class="card-title">Seekers vs. Avoiders</span>
-               <span class="card-desc">Does your child crash into walls or hide under tables?</span>
-            </a>
-         </div>
-      </div>
-   </div>
+        <div class="library-section">
+            <h2 class="section-title">👕 Sensory & Physical</h2>
+            <div class="resource-list">
+                <a href="the-sock-war.html" class="resource-card">
+                    <span class="tag">Clothing</span>
+                    <span class="card-title">The Sock War</span>
+                    <span class="card-desc">Why seams feel like razor blades to your child.</span>
+                </a>
+                <a href="beige-diet.html" class="resource-card">
+                    <span class="tag">Eating</span>
+                    <span class="card-title">The 'Beige Diet'</span>
+                    <span class="card-desc">Dealing with sensory picky eating and textures.</span>
+                </a>
+                <a href="seekers-vs-avoiders.html" class="resource-card">
+                    <span class="tag">Overview</span>
+                    <span class="card-title">Seekers vs. Avoiders</span>
+                    <span class="card-desc">Does your child crash into walls or hide under tables?</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
-   <script>
-      fetch('navigation.html').then(r => r.text()).then(d => document.getElementById('navigation-placeholder').innerHTML = d);
-   </script>
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html').then(response => response.text()).then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
