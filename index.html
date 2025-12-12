@@ -5,284 +5,865 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigator Kids AI™ - The Operating System for Exceptional Children</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
 
     <style>
         /* --- VARIABLES --- */
         :root {
-            --color-primary: #1B365D;    /* Navy */
-            --color-secondary: #FFFFFF;  /* White */
-            --color-accent: #E9C46A;     /* Gold */
-            --color-highlight: #2A9D8F;  /* Teal */
-            --color-text: #2F2F2F;       /* Charcoal */
-            --color-background: #F4F6F8; /* Light Blue-Grey */
+            --color-primary: #1B365D;
+            --color-primary-dark: #132845;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
+            --color-highlight-dark: #238579;
+            --color-text: #2F2F2F;
+            --color-text-muted: #666666;
+            --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
             --border-radius: 8px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --transition: all 0.2s ease;
         }
 
         /* --- GLOBAL RESET --- */
-        * {
-            box-sizing: border-box; /* Crucial for preventing overflow */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        /* --- BUTTON STYLES (FIXED) --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-secondary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .container--narrow {
+            max-width: 800px;
+        }
+
+        /* --- BUTTON STYLES --- */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 24px; /* Slightly reduced padding */
+            padding: 14px 28px;
             border-radius: var(--border-radius);
             font-family: 'Inter', sans-serif;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1rem;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: var(--transition);
             gap: 10px;
-            line-height: 1.4; /* Allow multi-line text */
+            line-height: 1.4;
             border: none;
-            max-width: 100%; /* Prevent button from exceeding screen width */
             text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn i {
+            font-size: 0.9em;
         }
 
         .btn-primary {
-            background-color: var(--color-highlight); /* Teal */
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 6px rgba(42, 157, 143, 0.25);
+            background-color: var(--color-highlight);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
         }
 
         .btn-primary:hover {
-            background-color: #238579;
+            background-color: var(--color-highlight-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(42, 157, 143, 0.35);
+            box-shadow: 0 6px 16px rgba(42, 157, 143, 0.4);
         }
 
         .btn-secondary {
-            background-color: var(--color-primary); /* Navy */
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 6px rgba(27, 54, 93, 0.25);
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(27, 54, 93, 0.25);
         }
 
         .btn-secondary:hover {
-            background-color: #132845;
+            background-color: var(--color-primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(27, 54, 93, 0.35);
+            box-shadow: 0 6px 16px rgba(27, 54, 93, 0.35);
+        }
+
+        .btn-accent {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(233, 196, 106, 0.4);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--color-accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(233, 196, 106, 0.5);
+        }
+
+        .btn-large {
+            padding: 18px 36px;
+            font-size: 1.1rem;
         }
 
         /* --- NAVIGATION --- */
         .navbar {
             background-color: #FFFFFF;
-            border-bottom: 1px solid rgba(27, 54, 93, 0.1);
+            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(27, 54, 93, 0.05);
+            box-shadow: var(--shadow-sm);
         }
+
         .navbar-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 15px 20px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
+
         .logo a {
             font-family: 'Inter', sans-serif;
-            font-size: 1.3rem; /* Slightly smaller for mobile safety */
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--color-primary);
             text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
-        .logo i { color: var(--color-highlight); }
-        
+
+        .logo i {
+            color: var(--color-highlight);
+            font-size: 1.4rem;
+        }
+
+        .logo span {
+            color: var(--color-highlight);
+        }
+
         .desktop-nav .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 32px;
             margin: 0;
             padding: 0;
             align-items: center;
         }
-        .desktop-nav a {
+
+        .desktop-nav .nav-links a {
             text-decoration: none;
             color: var(--color-text);
             font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.2s ease;
+            transition: var(--transition);
+            position: relative;
         }
-        .desktop-nav a:hover { color: var(--color-highlight); }
-        
-        /* Nav specific button - Smaller to fit better */
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover {
+            color: var(--color-highlight);
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-highlight);
+            transition: width 0.2s ease;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after {
+            width: 100%;
+        }
+
         .nav-btn-primary {
             background-color: var(--color-highlight);
             color: white !important;
-            padding: 8px 16px; 
+            padding: 10px 20px;
             border-radius: 6px;
-            transition: all 0.2s ease;
+            transition: var(--transition);
             font-size: 0.9rem;
-            white-space: nowrap; 
-        }
-        .nav-btn-primary:hover {
-            background-color: #238579;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3);
         }
 
-        /* Mobile Menu */
-        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-primary); padding: 0; }
-        .mobile-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 1px solid #eee; }
-        .mobile-nav.active { display: flex; }
-        .mobile-nav a { padding: 15px 20px; border-bottom: 1px solid #eee; text-decoration: none; color: var(--color-primary); font-weight: 600; }
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
+        }
+
+        .nav-btn-primary::after {
+            display: none !important;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primary);
+            padding: 8px;
+            line-height: 1;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border-top: 1px solid #eee;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
+        .mobile-nav a:last-child {
+            background-color: var(--color-highlight);
+            color: white;
+            margin: 16px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .mobile-nav a:last-child:hover {
+            background-color: var(--color-highlight-dark);
+        }
 
         @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
+            .desktop-nav {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
         }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(180deg, var(--color-background) 0%, #FFFFFF 100%);
+            padding: 80px 24px 100px;
+            text-align: center;
+        }
+
+        .hero__eyebrow {
+            display: inline-block;
+            background: rgba(42, 157, 143, 0.1);
+            color: var(--color-highlight);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero__title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: var(--color-primary);
+            font-weight: 800;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero__title span {
+            color: var(--color-highlight);
+        }
+
+        .hero__subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .hero__cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero__note {
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .hero__note i {
+            color: var(--color-highlight);
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 60px 20px 80px;
+            }
+            .hero__cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero__cta-group .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* --- METHODOLOGY SECTION --- */
+        .methodology {
+            background-color: #FFFFFF;
+            padding: 100px 24px;
+        }
+
+        .methodology__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .methodology__title {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .methodology__subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .methodology__grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1000px) {
+            .methodology__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .methodology__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .methodology__grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+
+        .method-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f0f0f0;
+            transition: var(--transition);
+        }
+
+        .method-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .method-card--active {
+            border: 2px solid var(--color-highlight);
+            box-shadow: 0 4px 20px rgba(42, 157, 143, 0.15);
+        }
+
+        .method-card--active .method-card__title {
+            color: var(--color-highlight);
+        }
+
+        .method-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .method-card__step {
+            display: inline-block;
+            background: var(--color-background);
+            color: var(--color-text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .method-card--active .method-card__step {
+            background: rgba(42, 157, 143, 0.1);
+            color: var(--color-highlight);
+        }
+
+        .method-card__title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .method-card__desc {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* --- TESTIMONIAL SECTION --- */
+        .testimonial {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 100px 24px;
+        }
+
+        .testimonial__inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial__label {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .testimonial__card {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 48px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .testimonial__icon {
+            font-size: 2rem;
+            color: var(--color-highlight);
+            margin-bottom: 24px;
+        }
+
+        .testimonial__quote {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .testimonial__author {
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .testimonial__card {
+                padding: 32px 24px;
+            }
+            .testimonial__quote {
+                font-size: 1.15rem;
+            }
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background-color: var(--color-background);
+            padding: 100px 24px;
+        }
+
+        .cta-section__inner {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-section__title {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section__subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .cta-section__form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .cta-section__input {
+            padding: 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .cta-section__input:focus {
+            outline: none;
+            border-color: var(--color-highlight);
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+        }
+
+        .cta-section__form .btn {
+            width: 100%;
+        }
+
+        .cta-section__note {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 80px 24px 40px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .footer__brand h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .footer__brand p {
+            opacity: 0.75;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer__links h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .footer__links ul {
+            list-style: none;
+        }
+
+        .footer__links li {
+            margin-bottom: 12px;
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer__bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero__eyebrow,
+        .hero__title,
+        .hero__subtitle,
+        .hero__cta-group {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .hero__title { animation-delay: 0.1s; }
+        .hero__subtitle { animation-delay: 0.2s; }
+        .hero__cta-group { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <a href="index.html"><i class="fas fa-compass"></i> Navigator <span>Kids AI</span></a>
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
             </div>
             <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Knowledge Base</a></li>
-                    <li><a href="mission-control-preview.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Knowledge Base</a>
-            <a href="mission-control-preview.html">Get Emergency Reset Kit</a>
+            <a href="emergency-reset-kit-sales-page.html">Get Emergency Reset Kit</a>
         </nav>
     </header>
 
     <main>
-        <section id="hero" style="background: linear-gradient(135deg, #F4F6F8 0%, #FFFFFF 100%); padding: 80px 20px; text-align: center;">
+        <!-- Hero Section -->
+        <section class="hero">
             <div class="container">
-                <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin-bottom: 24px; color: var(--color-primary); font-family: 'Inter', sans-serif; font-weight: 800;">
-                    Your Child’s Brain Didn’t Come With a Manual.<br>
-                    <span style="color: var(--color-highlight);">Until Now.</span>
+                <div class="hero__eyebrow">For Parents of Exceptional Children</div>
+                <h1 class="hero__title">
+                    Your Child's Brain Didn't Come With a Manual.<br>
+                    <span>Until Now.</span>
                 </h1>
-                <p style="font-size: 1.2rem; max-width: 750px; margin: 0 auto 40px; color: var(--color-text); line-height: 1.6;">
-                    Stop fighting their operating system. Start working with it. Get the AI-powered roadmap to go from meltdowns to mission accomplished in minutes a day.
+                <p class="hero__subtitle">
+                    Stop fighting their operating system. Start working with it. Get the AI-powered roadmap to go from meltdowns to mission accomplished—in minutes a day.
                 </p>
                 
-                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    
-                    <a href="gifted-assessment-tool.html" class="btn btn-primary" style="background-color: var(--color-accent); color: var(--color-primary) !important;">
+                <div class="hero__cta-group">
+                    <a href="gifted-assessment-tool.html" class="btn btn-primary btn-large">
                         <i class="fas fa-microchip"></i> Start Free AI Assessment
                     </a>
-                    
-                    <a href="mission-control-preview.html" class="btn btn-secondary">
+                    <a href="emergency-reset-kit-sales-page.html" class="btn btn-secondary btn-large">
                         <i class="fas fa-kit-medical"></i> Get Emergency Reset Kit
                     </a>
-
                 </div>
+
+                <p class="hero__note">
+                    <i class="fas fa-shield-check"></i>
+                    Used by 500+ families • Science-backed strategies
+                </p>
             </div>
         </section>
 
-        <section id="methodology" style="background-color: #FFFFFF; padding: 80px 0;">
+        <!-- Methodology Section -->
+        <section class="methodology">
             <div class="container">
-                <div style="text-align: center; margin-bottom: 60px;">
-                    <h2 style="font-size: 2.2rem; margin-bottom: 15px; color: var(--color-primary); font-family: 'Inter', sans-serif;">The Navigator Method™</h2>
-                    <p style="font-size: 1.1rem; color: #666;">A data-driven framework to decode and optimize your child's behavior.</p>
+                <div class="methodology__header">
+                    <h2 class="methodology__title">The Navigator Method™</h2>
+                    <p class="methodology__subtitle">A 5-step framework to decode your child's unique operating system and build cooperation without conflict.</p>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
-                    <div class="premium-card" style="text-align: center; padding: 30px 20px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                        <div style="font-size: 2.5rem; margin-bottom: 20px;">🔍</div>
-                        <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-primary); font-family: 'Inter', sans-serif;">1. ASSESS</h3>
-                        <p style="font-size: 0.95rem; color: #555;">Decode the behavior using our AI diagnostic tools.</p>
+                <div class="methodology__grid">
+                    <div class="method-card">
+                        <div class="method-card__icon">🔍</div>
+                        <span class="method-card__step">Step 1</span>
+                        <h3 class="method-card__title">ASSESS</h3>
+                        <p class="method-card__desc">Discover your child's unique cognitive profile with our AI assessment.</p>
                     </div>
-                    <div class="premium-card" style="text-align: center; padding: 30px 20px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                        <div style="font-size: 2.5rem; margin-bottom: 20px;">🗺️</div>
-                        <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-primary); font-family: 'Inter', sans-serif;">2. MAP</h3>
-                        <p style="font-size: 0.95rem; color: #555;">Create a custom operational plan for your unique child.</p>
+                    <div class="method-card">
+                        <div class="method-card__icon">🗺️</div>
+                        <span class="method-card__step">Step 2</span>
+                        <h3 class="method-card__title">MAP</h3>
+                        <p class="method-card__desc">Get a personalized action plan matched to their specific needs.</p>
                     </div>
-                    <div class="premium-card" style="text-align: center; padding: 30px 20px; border: 2px solid var(--color-highlight); background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                        <div style="font-size: 2.5rem; margin-bottom: 20px;">🚀</div>
-                        <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-highlight); font-family: 'Inter', sans-serif;">3. LAUNCH</h3>
-                        <p style="font-size: 0.95rem; color: #555;">Deploy the Emergency Reset Kit for immediate stabilization.</p>
+                    <div class="method-card method-card--active">
+                        <div class="method-card__icon">🚀</div>
+                        <span class="method-card__step">Step 3</span>
+                        <h3 class="method-card__title">LAUNCH</h3>
+                        <p class="method-card__desc">Deploy the Emergency Reset Kit for immediate stabilization.</p>
                     </div>
-                    <div class="premium-card" style="text-align: center; padding: 30px 20px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                        <div style="font-size: 2.5rem; margin-bottom: 20px;">🔧</div>
-                        <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-primary); font-family: 'Inter', sans-serif;">4. ADJUST</h3>
-                        <p style="font-size: 0.95rem; color: #555;">Refine strategies based on real-world data and feedback.</p>
+                    <div class="method-card">
+                        <div class="method-card__icon">🔧</div>
+                        <span class="method-card__step">Step 4</span>
+                        <h3 class="method-card__title">ADJUST</h3>
+                        <p class="method-card__desc">Refine strategies based on real-world feedback and data.</p>
                     </div>
-                    <div class="premium-card" style="text-align: center; padding: 30px 20px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                        <div style="font-size: 2.5rem; margin-bottom: 20px;">📈</div>
-                        <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-primary); font-family: 'Inter', sans-serif;">5. EXPAND</h3>
-                        <p style="font-size: 0.95rem; color: #555;">Build long-term resilience and executive function skills.</p>
+                    <div class="method-card">
+                        <div class="method-card__icon">📈</div>
+                        <span class="method-card__step">Step 5</span>
+                        <h3 class="method-card__title">EXPAND</h3>
+                        <p class="method-card__desc">Build lasting executive function skills and independence.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="pilot-program" style="background-color: var(--color-primary); color: white; padding: 80px 0;">
-            <div class="container" style="max-width: 900px; text-align: center;">
-                <h2 style="color: var(--color-accent); margin-bottom: 40px; font-family: 'Inter', sans-serif;">Pilot Program Results</h2>
-                <div style="background-color: rgba(255,255,255,0.1); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
-                    <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--color-highlight); margin-bottom: 20px;"></i>
-                    <blockquote style="font-family: 'Inter', sans-serif; font-size: 1.4rem; line-height: 1.6; margin-bottom: 30px; font-style: italic;">
+        <!-- Testimonial Section -->
+        <section class="testimonial">
+            <div class="testimonial__inner">
+                <p class="testimonial__label">Pilot Program Results</p>
+                <div class="testimonial__card">
+                    <i class="fas fa-quote-left testimonial__icon"></i>
+                    <blockquote class="testimonial__quote">
                         "I finally understand my son's operating system. The Reset Kit stopped the morning screaming matches in just 3 days. It wasn't magic—it was just better data."
                     </blockquote>
-                    <p style="font-weight: 700; color: var(--color-accent); letter-spacing: 1px; font-family: 'Inter', sans-serif;">— SARAH L. // PILOT COHORT MEMBER</p>
+                    <p class="testimonial__author">— SARAH L. // PILOT COHORT MEMBER</p>
                 </div>
             </div>
         </section>
         
-        <section id="contact" style="background-color: #F4F6F8; padding: 80px 0;">
-            <div class="container" style="max-width: 600px; text-align: center;">
-                <h3 style="margin-bottom: 20px; font-size: 1.8rem; color: var(--color-primary); font-family: 'Inter', sans-serif;">Ready to Upgrade Your Parenting OS?</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 30px; color: #555;">Join the waitlist for our next cohort or start immediately with the Reset Kit.</p>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-section__inner">
+                <h3 class="cta-section__title">Ready to Upgrade Your Parenting OS?</h3>
+                <p class="cta-section__subtitle">Join the waitlist for our next cohort or start immediately with the Emergency Reset Kit.</p>
                 
-                <form action="#" style="display: flex; flex-direction: column; gap: 15px;">
-                    <input type="email" placeholder="Enter your email address" required style="padding: 16px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem;">
-                    <button type="submit" class="btn btn-primary">Get the Roadmap</button>
+                <form class="cta-section__form" action="#" method="POST">
+                    <input 
+                        type="email" 
+                        class="cta-section__input"
+                        placeholder="Enter your email address" 
+                        required
+                        aria-label="Email address"
+                    >
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get the Roadmap
+                    </button>
                 </form>
+                <p class="cta-section__note">No spam. Unsubscribe anytime. We respect your inbox.</p>
             </div>
         </section>
     </main>
 
-    <footer style="background-color: var(--color-primary); color: white; padding: 60px 0; font-size: 0.9rem;">
-        <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
-            <div class="col-3" style="flex: 1; min-width: 250px;">
-                <h4 style="color: var(--color-accent); margin-bottom: 15px; font-family: 'Inter', sans-serif;">Navigator Kids AI™</h4>
-                <p style="opacity: 0.8; line-height: 1.6;">
-                    Your child’s brain didn’t come with a manual. Until now. We provide data-driven tools and AI-powered roadmaps for raising exceptional children.
-                </p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>
+                        Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.
+                    </p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                        <li><a href="resources.html">Knowledge Base</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-3" style="flex: 1; min-width: 250px;">
-                <h4 style="color: var(--color-accent); margin-bottom: 15px; font-family: 'Inter', sans-serif;">System Links</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;"><a href="index.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Home</a></li>
-                    <li style="margin-bottom: 10px;"><a href="gifted-assessment-tool.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">AI Assessment</a></li>
-                    <li style="margin-bottom: 10px;"><a href="mission-control-preview.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Emergency Reset Kit</a></li>
-                    <li style="margin-bottom: 10px;"><a href="resources.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Knowledge Base</a></li>
-                </ul>
-            </div>
-            <div class="col-3" style="flex: 1; min-width: 250px;">
-                <h4 style="color: var(--color-accent); margin-bottom: 15px; font-family: 'Inter', sans-serif;">Legal</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Privacy Policy</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Terms of Service</a></li>
-                    <li><p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.5;">&copy; 2025 Navigator Kids AI. All Rights Reserved.</p></li>
-                </ul>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -290,8 +871,42 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
             menu.classList.toggle('active');
+            
+            // Toggle icon
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
         }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
+        });
     </script>
 </body>
 </html>
