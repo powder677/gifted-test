@@ -1,36 +1,38 @@
-/* styles.css - The new aesthetic foundation for Mission Control Center */
+/* styles.css - Navigator Kids AI™ Visual Identity */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap');
+/* 1. Updated Font Imports: Swapped Playfair for Inter (Modern/Tech) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lato:wght@400;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 :root {
-    /* --- 1. CORE SEMANTIC COLOR SCHEME (Used by Nav, Footer, Buttons) --- */
-    --color-primary: #7C9885; /* Soft Sage Green */
-    --color-secondary: #FAF7F0; /* Warm Cream - Used for Nav/Cards */
-    --color-accent: #D4AF37; /* Gold */
-    --color-text: #2F2F2F; /* Charcoal Gray */
-    --color-background: #FAFAFA; /* Off-White */
-    --color-shadow: rgba(0, 0, 0, 0.08);
+    /* --- 1. CORE NAVIGATOR AI PALETTE (Authority Tech) --- */
+    --color-primary: #1B365D;    /* Navy - Trust, Authority, Foundation */
+    --color-secondary: #FFFFFF;  /* White - Clean Tech Interface */
+    --color-accent: #E9C46A;     /* Gold - Achievement, Wins, Key Data */
+    --color-highlight: #2A9D8F;  /* Teal - Action, Progress, "Go" buttons */
+    --color-text: #2F2F2F;       /* Charcoal - High Readability */
+    --color-background: #F4F6F8; /* Light Blue-Grey - Modern SaaS Background */
+    --color-shadow: rgba(27, 54, 93, 0.12); /* Navy-tinted shadow */
 
-    /* --- 2. BACKWARD COMPATIBILITY VARIABLES (Ensures all article pages work) --- */
-    /* Mapping Descriptive names used in component files to new Semantic names */
+    /* --- 2. BACKWARD COMPATIBILITY VARIABLES --- */
+    /* Mapping old "Sage/Cream" variables to new "Navy/White" values so existing pages adapt automatically */
     --color-sage: var(--color-primary); 
     --bg-cream: var(--color-secondary); 
     --color-gold: var(--color-accent); 
-    --color-terracotta: #E07A5F; /* Preserving the separate Terracotta color where used */
+    --color-terracotta: var(--color-highlight); /* Mapping Terracotta to Teal for action items */
     --text-dark: var(--color-text);
     --text-charcoal: var(--color-text);
-    --bg-white: var(--color-secondary); /* Often used as a white background */
+    --bg-white: var(--color-secondary); 
 
 
     /* --- 3. TYPOGRAPHY AND DESIGN ELEMENTS --- */
-    --font-header: 'Playfair Display', serif;
-    --font-body: 'Lato', sans-serif;
-    --font-heading: var(--font-header); /* Backward Compatibility */
+    --font-header: 'Inter', sans-serif; /* Clean, modern, authoritative */
+    --font-body: 'Lato', sans-serif;    /* Accessible and legible */
+    --font-heading: var(--font-header);
 
-    --border-radius: 10px;
+    --border-radius: 8px; /* Slightly sharper corners for a tech aesthetic */
     --box-shadow-subtle: 0 4px 12px var(--color-shadow);
-    --box-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+    --box-shadow-hover: 0 8px 24px rgba(27, 54, 93, 0.2);
 }
 
 /* Base Styles & Typography Consistency */
@@ -46,8 +48,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-header);
-    color: var(--color-text);
+    color: var(--color-primary); /* Headings are now Navy for authority */
     font-weight: 700;
+    letter-spacing: -0.02em; /* Slight tightening for modern header look */
 }
 
 .container {
@@ -75,7 +78,8 @@ section.fade-in {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--color-secondary); /* Warm Cream */
+    background-color: var(--color-secondary); /* White */
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Subtle tech border */
     box-shadow: var(--box-shadow-subtle);
     z-index: 1000;
     height: 80px;
@@ -93,10 +97,12 @@ section.fade-in {
 
 .logo a {
     font-family: var(--font-header);
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 800; /* Bolder logo */
     color: var(--color-primary);
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .nav-links {
@@ -110,26 +116,27 @@ section.fade-in {
 .nav-links a {
     text-decoration: none;
     color: var(--color-text);
-    font-weight: 500;
+    font-weight: 600;
     padding: 25px 0;
     transition: all 0.3s ease;
     position: relative;
-    font-family: var(--font-body);
+    font-family: var(--font-header);
+    font-size: 0.95rem;
 }
 
 .nav-links a:hover {
-    color: var(--color-primary);
+    color: var(--color-highlight); /* Teal hover state */
 }
 
-/* Gold Accent Underline on Hover (Premium Feature) */
+/* Accent Underline on Hover */
 .nav-links a::after {
     content: '';
     position: absolute;
     bottom: 20px;
     left: 0;
     width: 0;
-    height: 2px;
-    background-color: var(--color-accent);
+    height: 3px;
+    background-color: var(--color-highlight); /* Teal underline */
     transition: width 0.3s ease;
 }
 
@@ -159,6 +166,7 @@ section.fade-in {
     gap: 15px;
     z-index: 999;
     border-radius: 0 0 0 var(--border-radius);
+    border-left: 1px solid rgba(0,0,0,0.05);
 }
 
 .mobile-nav-links.active {
@@ -169,49 +177,51 @@ section.fade-in {
     text-decoration: none;
     color: var(--color-text);
     padding: 10px 0;
-    border-bottom: 1px solid rgba(124, 152, 133, 0.2);
+    border-bottom: 1px solid rgba(27, 54, 93, 0.1);
+    font-weight: 600;
 }
 
-/* --- Button Styling (Consistent, Rounded, Hover) --- */
-.btn-primary, .btn { /* Added .btn here for backwards compatibility */
+/* --- Button Styling (Tech-Forward) --- */
+.btn-primary, .btn { 
     display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--color-primary);
-    color: var(--color-background); /* Cream/Off-white for contrast */
+    padding: 14px 32px;
+    background-color: var(--color-highlight); /* Teal for primary actions */
+    color: #FFFFFF; 
     border: none;
     border-radius: var(--border-radius);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(42, 157, 143, 0.25); /* Teal glow shadow */
+    font-family: var(--font-header);
 }
 
 .btn-primary:hover, .btn:hover {
-    background-color: #6a8373; /* Slightly darker sage */
-    box-shadow: var(--box-shadow-hover);
+    background-color: #238579; /* Darker Teal */
     transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(42, 157, 143, 0.35);
 }
 
 .btn-secondary {
-    background-color: var(--color-accent);
-    color: var(--color-text);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    background-color: var(--color-primary); /* Navy */
+    color: #FFFFFF;
+    box-shadow: 0 4px 6px rgba(27, 54, 93, 0.25);
 }
 
 .btn-secondary:hover {
-    background-color: #c19f2f; /* Slightly darker gold */
-    box-shadow: var(--box-shadow-hover);
+    background-color: #132845; /* Darker Navy */
     transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(27, 54, 93, 0.35);
 }
 
 /* --- Footer Styling --- */
 footer {
-    background-color: var(--color-text); /* Charcoal Footer */
-    color: var(--color-background); /* Off-White Text */
-    padding: 40px 20px;
-    font-size: 0.9rem;
+    background-color: var(--color-primary); /* Navy Footer */
+    color: #FFFFFF; 
+    padding: 60px 20px;
+    font-size: 0.95rem;
     line-height: 1.8;
 }
 
@@ -223,13 +233,15 @@ footer .container {
 }
 
 footer h4 {
-    color: var(--color-primary);
+    color: var(--color-accent); /* Gold headings in footer */
     font-size: 1.1rem;
     margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 footer a {
-    color: var(--color-secondary);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -238,16 +250,17 @@ footer a:hover {
     color: var(--color-accent);
 }
 
-/* Utility Class for seamless integration into existing page styles */
+/* Utility Class for Content Cards */
 .premium-card {
     background: var(--color-secondary);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow-subtle);
     padding: 30px;
     margin-bottom: 30px;
+    border: 1px solid rgba(0,0,0,0.03); /* Subtle definition */
 }
 
-/* Assessment Wrapper to contain React/Tailwind elements */
+/* Assessment Wrapper */
 .assessment-wrapper {
     margin-top: 30px;
     padding: 20px;
@@ -267,7 +280,7 @@ footer a:hover {
     }
 
     body {
-        padding-top: 70px; /* Adjust for smaller header on mobile */
+        padding-top: 70px; 
     }
 
     .navbar {
