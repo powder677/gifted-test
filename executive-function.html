@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Function Hub | Navigator Kids AI™</title>
+    <title>Executive Function & Focus | Navigator Kids AI™</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* --- VARIABLES --- */
         :root {
             --color-primary: #1B365D;
             --color-primary-dark: #132845;
@@ -30,16 +29,13 @@
             --transition: all 0.2s ease;
         }
 
-        /* --- GLOBAL RESET --- */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -54,12 +50,8 @@
             color: var(--color-primary);
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
-        /* --- CONTAINER --- */
         .container {
             width: 100%;
             max-width: 1100px;
@@ -67,7 +59,6 @@
             padding: 0 24px;
         }
 
-        /* --- NAVIGATION --- */
         .navbar {
             background-color: #FFFFFF;
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
@@ -97,14 +88,8 @@
             gap: 10px;
         }
 
-        .logo i {
-            color: var(--color-highlight);
-            font-size: 1.4rem;
-        }
-
-        .logo span {
-            color: var(--color-highlight);
-        }
+        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
+        .logo span { color: var(--color-highlight); }
 
         .desktop-nav .nav-links {
             list-style: none;
@@ -121,9 +106,7 @@
             position: relative;
         }
 
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover {
-            color: var(--color-highlight);
-        }
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover { color: var(--color-highlight); }
 
         .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
             content: '';
@@ -136,9 +119,7 @@
             transition: width 0.2s ease;
         }
 
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after {
-            width: 100%;
-        }
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after { width: 100%; }
 
         .nav-btn-primary {
             background-color: var(--color-highlight);
@@ -154,9 +135,7 @@
             transform: translateY(-1px);
         }
 
-        .nav-btn-primary::after {
-            display: none !important;
-        }
+        .nav-btn-primary::after { display: none !important; }
 
         .menu-toggle {
             display: none;
@@ -180,9 +159,7 @@
             border-top: 1px solid #eee;
         }
 
-        .mobile-nav.active {
-            display: flex;
-        }
+        .mobile-nav.active { display: flex; }
 
         .mobile-nav a {
             padding: 16px 24px;
@@ -210,7 +187,6 @@
             .menu-toggle { display: block; }
         }
 
-        /* --- HERO SECTION --- */
         .hero {
             background: linear-gradient(135deg, var(--color-primary) 0%, #2A4A7A 100%);
             padding: 80px 24px 100px;
@@ -223,18 +199,12 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.5;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
+        .hero-content { position: relative; z-index: 1; }
 
         .hero-icon {
             width: 100px;
@@ -267,9 +237,7 @@
             margin: 0 auto;
         }
 
-        .hero-breadcrumb {
-            margin-bottom: 24px;
-        }
+        .hero-breadcrumb { margin-bottom: 24px; }
 
         .hero-breadcrumb a {
             color: rgba(255,255,255,0.7);
@@ -277,16 +245,9 @@
             transition: var(--transition);
         }
 
-        .hero-breadcrumb a:hover {
-            color: white;
-        }
+        .hero-breadcrumb a:hover { color: white; }
+        .hero-breadcrumb span { color: rgba(255,255,255,0.5); margin: 0 8px; }
 
-        .hero-breadcrumb span {
-            color: rgba(255,255,255,0.5);
-            margin: 0 8px;
-        }
-
-        /* --- EMPATHY BLOCK --- */
         .empathy-section {
             padding: 0 24px;
             margin-top: -50px;
@@ -311,20 +272,13 @@
             color: var(--color-text);
         }
 
-        .empathy-block p strong {
-            color: var(--color-primary);
-        }
+        .empathy-block p strong { color: var(--color-primary); }
 
         @media (max-width: 600px) {
-            .empathy-block {
-                padding: 32px 24px;
-            }
+            .empathy-block { padding: 32px 24px; }
         }
 
-        /* --- ARTICLES SECTION --- */
-        .articles-section {
-            padding: 80px 24px;
-        }
+        .articles-section { padding: 80px 24px; }
 
         .section-header {
             text-align: center;
@@ -347,7 +301,6 @@
             gap: 28px;
         }
 
-        /* --- ARTICLE CARDS --- */
         .article-card {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -386,9 +339,7 @@
             transition: var(--transition);
         }
 
-        .article-card:hover h3 {
-            color: var(--color-highlight);
-        }
+        .article-card:hover h3 { color: var(--color-highlight); }
 
         .article-excerpt {
             font-size: 0.95rem;
@@ -415,7 +366,6 @@
             transform: translateX(0);
         }
 
-        /* Featured Card */
         .article-card--featured {
             grid-column: span 2;
             display: grid;
@@ -432,9 +382,7 @@
             color: white;
         }
 
-        .article-card--featured h3 {
-            font-size: 1.6rem;
-        }
+        .article-card--featured h3 { font-size: 1.6rem; }
 
         .article-card--featured .card-visual {
             display: flex;
@@ -449,15 +397,10 @@
                 grid-column: span 1;
                 grid-template-columns: 1fr;
             }
-            .article-card--featured .card-visual {
-                display: none;
-            }
+            .article-card--featured .card-visual { display: none; }
         }
 
-        /* --- NAVIGATOR METHOD PROMO --- */
-        .promo-section {
-            padding: 0 24px 80px;
-        }
+        .promo-section { padding: 0 24px 80px; }
 
         .promo-card {
             background: linear-gradient(135deg, var(--color-primary) 0%, #2A4A7A 100%);
@@ -494,10 +437,7 @@
             margin-bottom: 12px;
         }
 
-        .promo-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
+        .promo-card p { opacity: 0.9; line-height: 1.6; }
 
         .promo-card .btn {
             display: inline-flex;
@@ -518,7 +458,6 @@
             transform: translateY(-2px);
         }
 
-        /* --- CTA SECTION --- */
         .cta-section {
             background: var(--color-highlight);
             padding: 80px 24px;
@@ -559,7 +498,6 @@
             transform: translateY(-2px);
         }
 
-        /* --- FOOTER --- */
         .footer {
             background-color: #0f1f33;
             color: white;
@@ -600,13 +538,8 @@
             font-family: 'Inter', sans-serif;
         }
 
-        .footer__links ul {
-            list-style: none;
-        }
-
-        .footer__links li {
-            margin-bottom: 12px;
-        }
+        .footer__links ul { list-style: none; }
+        .footer__links li { margin-bottom: 12px; }
 
         .footer__links a {
             color: rgba(255, 255, 255, 0.75);
@@ -614,9 +547,7 @@
             transition: var(--transition);
         }
 
-        .footer__links a:hover {
-            color: var(--color-accent);
-        }
+        .footer__links a:hover { color: var(--color-accent); }
 
         .footer__bottom {
             padding-top: 32px;
@@ -629,7 +560,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
@@ -660,7 +590,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -676,47 +605,30 @@
         </div>
     </section>
 
-    <!-- Empathy Block -->
     <section class="empathy-section">
         <div class="container">
             <div class="empathy-block">
-                <p>You've heard it a thousand times: "He's so smart, if he would just apply himself." But nagging doesn't work. Punishment doesn't work. That's because this isn't a behavior problem; it's a wiring problem. <strong>Your child isn't lazy—they're struggling with Executive Function.</strong></p>
+                <p>You've heard it a thousand times: "He's so smart, if he would just apply himself." But nagging doesn't work. Punishment doesn't work. That's because <strong>this isn't a behavior problem; it's a wiring problem.</strong> Your child isn't lazy—they are struggling with Executive Function.</p>
             </div>
         </div>
     </section>
 
-    <!-- Articles Section -->
     <section class="articles-section">
         <div class="container">
             <div class="section-header">
                 <h2>Guides & Strategies</h2>
-                <p>Practical tools from our learning architects and specialists</p>
+                <p>Practical tools from our learning architects</p>
             </div>
 
             <div class="articles-grid">
-                <!-- Featured Card -->
                 <a href="laziness-vs-dysfunction.html" class="article-card article-card--featured">
                     <div class="article-content">
                         <span class="article-tag">🎯 Start Here</span>
                         <h3>Laziness vs. Dysfunction</h3>
-                        <p class="article-excerpt">The neurological reality behind "unmotivated" behavior. Learn how to tell if they won't do it or genuinely can't—and what to do either way.</p>
+                        <p class="article-excerpt">How to tell if they won't do it, or can't do it. Understanding this distinction changes everything about how you support your child.</p>
                         <span class="card-arrow">Read the guide <i class="fas fa-arrow-right"></i></span>
                     </div>
-                    <div class="card-visual">🎒</div>
-                </a>
-
-                <a href="cant-vs-wont.html" class="article-card">
-                    <span class="article-tag">Insight</span>
-                    <h3>They're Not Lazy</h3>
-                    <p class="article-excerpt">How to tell the difference between "can't" and "won't"—the question that changes everything.</p>
-                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <a href="smart-child-lost-shoes.html" class="article-card">
-                    <span class="article-tag">Deep Dive</span>
-                    <h3>Why Smart Kids Lose Shoes</h3>
-                    <p class="article-excerpt">The surprising link between high IQ and executive function gaps.</p>
-                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                    <div class="card-visual">⚡</div>
                 </a>
 
                 <a href="black-hole-backpack.html" class="article-card">
@@ -729,7 +641,7 @@
                 <a href="dopamine-menu.html" class="article-card">
                     <span class="article-tag">Motivation</span>
                     <h3>The Dopamine Menu</h3>
-                    <p class="article-excerpt">Jumpstart a bored brain without using screens.</p>
+                    <p class="article-excerpt">How to jumpstart a bored brain without screens.</p>
                     <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                 </a>
 
@@ -739,27 +651,39 @@
                     <p class="article-excerpt">Overcoming the fear of making mistakes.</p>
                     <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                 </a>
+
+                <a href="smart-child-lost-shoes.html" class="article-card">
+                    <span class="article-tag">Insight</span>
+                    <h3>Why Smart Kids Lose Shoes</h3>
+                    <p class="article-excerpt">The surprising link between high IQ and executive function gaps.</p>
+                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a href="they-are-not-lazy.html" class="article-card">
+                    <span class="article-tag">Deep Dive</span>
+                    <h3>They're Not Lazy</h3>
+                    <p class="article-excerpt">The neurological reality behind "unmotivated" behavior.</p>
+                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Navigator Method Promo -->
     <section class="promo-section">
         <div class="container">
             <div class="promo-card">
                 <div class="promo-content">
                     <h3>The Navigator Method™</h3>
                     <h2>Step 1: ASSESS</h2>
-                    <p>Executive function challenges look different in every child. Our AI assessment identifies your child's specific gaps and strengths, so you can target the right strategies.</p>
+                    <p>Understanding your child's executive function profile is the foundation for effective support. Our AI assessment maps strengths and gaps across all domains.</p>
                 </div>
-                <a href="gifted-assessment-tool.html" class="btn">
-                    Take Free Assessment <i class="fas fa-arrow-right"></i>
+                <a href="index.html#methodology" class="btn">
+                    Learn the Method <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <h2>Not sure where to start?</h2>
@@ -770,7 +694,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
