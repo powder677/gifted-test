@@ -1,94 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission Control Center - Premium Educational Resources</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    
-    <div id="navigation-placeholder"></div>
-    <script>
-        fetch('navigation.html').then(response => response.text()).then(data => {
-            document.getElementById('navigation-placeholder').innerHTML = data;
-        });
-    </script>
-
-    <main>
-        <section id="hero" class="container" style="text-align: center; padding: 80px 20px;">
-            <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 20px;">
-                Unlock Your Child's Full Potential
+<main>
+    <section id="hero" style="background: linear-gradient(135deg, #F4F6F8 0%, #FFFFFF 100%); padding: 100px 20px; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 24px; color: var(--color-primary);">
+                Your Child’s Brain Didn’t Come With a Manual.<br>
+                <span style="color: var(--color-highlight);">Until Now.</span>
             </h1>
-            <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.3rem; color: #555;">
-                Empowering suburban parents with **professional, research-based** tools to build essential executive function skills. Clean, sophisticated, and inviting.
+            <p style="font-size: 1.25rem; max-width: 750px; margin: 0 auto 40px; color: var(--color-text);">
+                Stop fighting their operating system. Start working with it. Get the AI-powered roadmap to go from meltdowns to mission accomplished in minutes a day.
             </p>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="mission-control-preview.html" class="btn-primary">
-                    <i class="fas fa-file-pdf"></i> Explore Our Training Packet
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="gifted-assessment-tool.html" class="btn-primary" style="background-color: var(--color-accent); color: var(--color-primary); box-shadow: 0 4px 15px rgba(233, 196, 106, 0.4);">
+                    <i class="fas fa-microchip"></i> Start Free AI Assessment
                 </a>
-                <a href="gifted-assessment-tool.html" class="btn-secondary btn-primary">
-                    <i class="fas fa-clipboard-list"></i> Take A Quick Assessment
+                <a href="mission-control-preview.html" class="btn-secondary">
+                    <i class="fas fa-kit-medical"></i> Get Emergency Reset Kit
                 </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about" style="background-color: var(--color-secondary);">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.2rem;">Our Promise: Trust, Warmth, and Expertise</h2>
-                <div style="display: flex; gap: 30px; text-align: center; flex-wrap: wrap; justify-content: center;">
-                    <div class="premium-card" style="flex: 1; min-width: 250px; background-color: white; padding: 25px;">
-                        <i class="fas fa-balance-scale" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.4rem; font-family: var(--font-header);">Science-Backed</h3>
-                        <p style="font-size: 1rem; color: #555;">Strategies grounded in cognitive science and child psychology.</p>
-                    </div>
-                    <div class="premium-card" style="flex: 1; min-width: 250px; background-color: white; padding: 25px;">
-                        <i class="fas fa-hand-holding-heart" style="font-size: 2rem; color: var(--color-accent); margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.4rem; font-family: var(--font-header);">Warm & Polished</h3>
-                        <p style="font-size: 1rem; color: #555;">A design aesthetic that feels supportive, not clinical.</p>
-                    </div>
-                    <div class="premium-card" style="flex: 1; min-width: 250px; background-color: white; padding: 25px;">
-                        <i class="fas fa-mobile-alt" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.4rem; font-family: var(--font-header);">Effortless Mobile Use</h3>
-                        <p style="font-size: 1rem; color: #555;">Designed to look perfect whether on a desktop or phone.</p>
-                    </div>
-                </div>
+    <section id="methodology" style="background-color: #FFFFFF; padding: 80px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">The Navigator Method™</h2>
+                <p style="font-size: 1.1rem; color: #666;">A data-driven framework to decode and optimize your child's behavior.</p>
             </div>
-        </section>
-
-        <section id="testimonials">
-            <div class="container" style="max-width: 900px; text-align: center;">
-                <h2 style="margin-bottom: 40px; font-size: 2rem;">What Suburban Moms Are Saying</h2>
-                <div class="premium-card" style="background-color: white;">
-                    <i class="fas fa-quote-left" style="font-size: 1.5rem; color: var(--color-accent); margin-bottom: 20px;"></i>
-                    <blockquote style="font-style: italic; font-size: 1.25rem; line-height: 1.7; color: #444; font-family: var(--font-header);">
-                        "The Mission Control Packet finally gave me the elegant, structured tools I needed. It feels premium and professional—exactly what I want for my child's education. The design is so clean and inviting!"
-                    </blockquote>
-                    <p style="font-weight: 600; color: var(--color-primary); margin-top: 20px;">&mdash; Sarah L., Mom of Two, Westchester, NY</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contact" style="background-color: var(--color-secondary);">
-            <div class="container" style="max-width: 600px; text-align: center; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--box-shadow-subtle);">
-                <h3 style="margin-bottom: 20px; font-size: 1.8rem;">Ready for Clarity and Calm?</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 30px; color: #555;">Join our community for expert tips and exclusive insights delivered weekly.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
                 
-                <form action="#" style="display: flex; flex-direction: column; gap: 15px;">
-                    <input type="email" placeholder="Enter your best email address" required style="padding: 14px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: var(--border-radius); font-family: var(--font-body);">
-                    <button type="submit" class="btn-primary">Subscribe Now for Weekly Tips</button>
-                </form>
-            </div>
-        </section>
-    </main>
+                <div class="premium-card" style="text-align: center; padding: 30px 20px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">🔍</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">1. ASSESS</h3>
+                    <p style="font-size: 0.95rem; color: #555;">Decode the behavior using our AI diagnostic tools.</p>
+                </div>
 
-    <div id="footer-placeholder"></div>
-    <script>
-        fetch('footer.html').then(response => response.text()).then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        });
-    </script>
+                <div class="premium-card" style="text-align: center; padding: 30px 20px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">🗺️</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">2. MAP</h3>
+                    <p style="font-size: 0.95rem; color: #555;">Create a custom operational plan for your unique child.</p>
+                </div>
+
+                <div class="premium-card" style="text-align: center; padding: 30px 20px; border: 2px solid var(--color-highlight);">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">🚀</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-highlight);">3. LAUNCH</h3>
+                    <p style="font-size: 0.95rem; color: #555;">Deploy the Emergency Reset Kit for immediate stabilization.</p>
+                </div>
+
+                <div class="premium-card" style="text-align: center; padding: 30px 20px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">🔧</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">4. ADJUST</h3>
+                    <p style="font-size: 0.95rem; color: #555;">Refine strategies based on real-world data and feedback.</p>
+                </div>
+
+                <div class="premium-card" style="text-align: center; padding: 30px 20px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">📈</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">5. EXPAND</h3>
+                    <p style="font-size: 0.95rem; color: #555;">Build long-term resilience and executive function skills.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="pilot-program" style="background-color: var(--color-primary); color: white;">
+        <div class="container" style="max-width: 900px; text-align: center;">
+            <h2 style="color: var(--color-accent); margin-bottom: 40px;">Pilot Program Results</h2>
+            <div style="background-color: rgba(255,255,255,0.1); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
+                <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--color-highlight); margin-bottom: 20px;"></i>
+                <blockquote style="font-family: var(--font-header); font-size: 1.4rem; line-height: 1.6; margin-bottom: 30px; font-style: italic;">
+                    "I finally understand my son's operating system. The Reset Kit stopped the morning screaming matches in just 3 days. It wasn't magic—it was just better data."
+                </blockquote>
+                <p style="font-weight: 700; color: var(--color-accent); letter-spacing: 1px;">— SARAH L. // PILOT COHORT MEMBER</p>
+            </div>
+        </div>
+    </section>
     
-    <script src="script.js"></script>
-</body>
-</html>
+    <section id="contact" style="background-color: #F4F6F8;">
+        <div class="container" style="max-width: 600px; text-align: center;">
+            <h3 style="margin-bottom: 20px; font-size: 1.8rem; color: var(--color-primary);">Ready to Upgrade Your Parenting OS?</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: #555;">Join the waitlist for our next cohort or start immediately with the Reset Kit.</p>
+            
+            <form action="#" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="email" placeholder="Enter your email address" required style="padding: 16px; border: 1px solid #ccc; border-radius: 8px; font-family: var(--font-body);">
+                <button type="submit" class="btn-primary">Get the Roadmap</button>
+            </form>
+        </div>
+    </section>
+</main>
