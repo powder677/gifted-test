@@ -1,150 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Mission Control Center - Credible Child Support</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <title>About Us | Navigator Kids AI™ - Support for Exceptional Children</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
-        /*
-        * Injected styles to override old colors and blend with new theme variables.
-        * Most core styling is now handled by styles.css.
-        */
-        
-        /* Apply new header font to h1 for consistent, elegant branding */
-        .hero h1, .team-section h2 {
-            font-family: var(--font-header) !important;
-            font-weight: 700;
+        /* --- VARIABLES --- */
+        :root {
+            --color-primary: #1B365D;
+            --color-primary-dark: #132845;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
+            --color-highlight-dark: #238579;
+            --color-text: #2F2F2F;
+            --color-text-muted: #666666;
+            --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
+            --color-cream: #FDF9F3;
+            --border-radius: 8px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --transition: all 0.2s ease;
         }
 
-        /* --- Hero Section Fix: New Premium Gradient --- */
+        /* --- GLOBAL RESET --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--color-text);
+            line-height: 1.7;
+            background-color: var(--color-secondary);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 10px;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--color-highlight);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(42, 157, 143, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(233, 196, 106, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo a {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--color-highlight);
+            font-size: 1.4rem;
+        }
+
+        .logo span {
+            color: var(--color-highlight);
+        }
+
+        .desktop-nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .desktop-nav .nav-links a {
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover {
+            color: var(--color-highlight);
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-highlight);
+            transition: width 0.2s ease;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after {
+            width: 100%;
+        }
+
+        .nav-btn-primary {
+            background-color: var(--color-highlight);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-1px);
+        }
+
+        .nav-btn-primary::after {
+            display: none !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primary);
+            padding: 8px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border-top: 1px solid #eee;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
+        .mobile-nav a:last-child {
+            background-color: var(--color-highlight);
+            color: white;
+            margin: 16px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
+        }
+
+        /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #7D9D9C 100%); /* Soft Sage Gradient */
-            color: var(--color-background); /* White/Cream text */
-            padding: 80px 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #2A4A7A 100%);
+            color: white;
+            padding: 100px 24px;
             text-align: center;
         }
 
-        /* --- Story Section Fix: Clean Background & Quote Block --- */
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* --- STORY SECTION --- */
         .story-section {
-            background: var(--color-background); /* Off-White */
-            padding: 80px 0;
+            background: var(--color-background-warm);
+            padding: 80px 24px;
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            line-height: 1.8;
         }
 
         .quote-block {
-            background: var(--color-secondary); /* Cream Background */
-            border-left: 4px solid var(--color-accent); /* Gold Accent Bar */
-            padding: 30px;
-            margin: 40px auto;
+            background: white;
+            border-left: 4px solid var(--color-accent);
+            padding: 32px 40px;
+            margin: 40px 0;
             font-style: italic;
-            font-family: var(--font-header); /* Elegant Serif for Quotes */
-            font-size: 1.25rem;
-            color: var(--color-text);
-            box-shadow: var(--box-shadow-subtle);
-            border-radius: var(--border-radius);
-            max-width: 800px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
         }
 
-        /* --- Mission Section Fix: Primary Brand Color --- */
+        /* --- MISSION SECTION --- */
         .mission-section {
-            background: var(--color-primary); /* Solid Sage Green */
-            color: var(--color-secondary); /* Cream text */
-            padding: 60px 0;
+            background: var(--color-highlight);
+            color: white;
+            padding: 80px 24px;
             text-align: center;
         }
 
-        /* --- Team Section Fix: Adopting Premium Card Aesthetic --- */
-        .team-member {
-            background: var(--color-secondary); /* Cream background */
-            box-shadow: var(--box-shadow-subtle);
-            border-radius: var(--border-radius);
-            padding: 40px;
+        .mission-section h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
-        /* --- NEW: IMAGE STYLES FOR HEADSHOTS --- */
-        /* This handles the circular crop and sizing for the new photos */
-        img.team-avatar {
-            width: 150px;           
-            height: 150px;          
-            border-radius: 50%;     
-            object-fit: cover;      /* Prevents distortion */
-            margin-bottom: 20px;    
-            border: 4px solid white; /* Clean border around the photo */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .mission-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* --- TEAM SECTION --- */
+        .team-section {
+            background: var(--color-background);
+            padding: 100px 24px;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        .team-member {
+            background: white;
+            box-shadow: var(--shadow-md);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 24px;
+            border: 4px solid var(--color-highlight);
+            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.2);
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            background: var(--color-background);
         }
 
         .team-member h3 {
-            font-family: var(--font-header);
-            color: var(--color-text);
-            margin-top: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
         }
+
         .team-member .role {
-            color: var(--color-primary);
+            color: var(--color-highlight);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            display: block;
         }
 
-        /* --- Services Section Fix: Clean, Cream Cards --- */
+        .team-member p:last-child {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        /* --- SERVICES SECTION --- */
         .services-section {
-            background: var(--color-background);
-        }
-        .service-card {
             background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow-subtle);
+            padding: 100px 24px;
         }
+
+        .services-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .services-section > .container > p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 1000px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            background: var(--color-background);
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            border-color: var(--color-highlight);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-card i {
+            font-size: 2rem;
+            color: var(--color-highlight);
+            margin-bottom: 16px;
+        }
+
         .service-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* --- METHOD CALLOUT --- */
+        .method-callout {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #2A4A7A 100%);
+            color: white;
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .method-callout h3 {
+            color: var(--color-accent);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .method-callout h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .method-callout p {
+            max-width: 600px;
+            margin: 0 auto 32px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .method-steps {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .method-step {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .method-callout .btn {
+            background: var(--color-accent);
             color: var(--color-primary);
-            font-family: var(--font-header);
         }
 
-        /* --- CTA Section Fix: Use Primary Button Styles --- */
+        .method-callout .btn:hover {
+            background: var(--color-accent-light);
+        }
+
+        /* --- CTA SECTION --- */
         .cta-section {
-            background: var(--color-text); /* Charcoal CTA Footer for maximum contrast */
-            color: var(--color-secondary);
+            background: var(--color-primary);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
         }
 
-        /* Styles for buttons injected here (inheriting from styles.css) */
-        .cta-buttons a.btn-primary {
-             background: var(--color-primary); 
-             color: var(--color-secondary);
+        .cta-section h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 16px;
         }
-        .cta-buttons a.btn-primary:hover {
-            background: #6a8373;
+
+        .cta-section > .container > p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
         }
-        .cta-buttons a.btn-secondary {
-            background: var(--color-accent); 
-            color: var(--color-text);
-            border: none;
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .cta-buttons a.btn-secondary:hover {
-            background: #c19f2f;
+
+        .cta-buttons .btn-primary {
+            background: var(--color-highlight);
+            color: white;
+        }
+
+        .cta-buttons .btn-secondary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #0f1f33;
+            color: white;
+            padding: 80px 24px 40px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
         }
 
         @media (max-width: 768px) {
-            .team-member { padding: 30px; }
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .footer__brand h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer__brand p {
+            opacity: 0.75;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer__links h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer__links ul {
+            list-style: none;
+        }
+
+        .footer__links li {
+            margin-bottom: 12px;
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer__bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
         }
     </style>
 </head>
 
 <body>
-    <div id="navigation-placeholder"></div>
-    <script>
-        fetch('navigation.html').then(response => response.text()).then(data => {
-            document.getElementById('navigation-placeholder').innerHTML = data;
-        });
-    </script>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="resources.html">Resources</a>
+            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+        </nav>
+    </header>
     
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <h1>Every Gifted Child Has a Story</h1>
+                <h1>Every Exceptional Child Has a Story</h1>
                 <p>Ours began in a quiet corner—and became a movement to ensure no exceptional child is misunderstood again.</p>
             </div>
         </section>
 
+        <!-- Story Section -->
         <section class="story-section">
             <div class="container">
                 <div class="story-content">
@@ -160,7 +689,7 @@
 
                     <p>But this time would be different.</p>
 
-                    <p>Rachel dove deep into research, connected with specialists, and discovered a truth that changed everything: These children don't need less. They need different.</p>
+                    <p>Rachel dove deep into research, connected with specialists, and discovered a truth that changed everything: <strong>These children don't need less. They need different.</strong></p>
 
                     <p>She assembled a team of professionals who understood that a child could be years ahead intellectually while struggling with basic tasks, could see patterns others missed while missing social cues others caught, could create masterpieces while unable to organize a backpack.</p>
 
@@ -169,6 +698,7 @@
             </div>
         </section>
 
+        <!-- Mission Section -->
         <section class="mission-section">
             <div class="container">
                 <h2>Our Mission</h2>
@@ -176,6 +706,7 @@
             </div>
         </section>
 
+        <!-- Team Section -->
         <section class="team-section">
             <div class="container">
                 <h2>Meet Your Advocates</h2>
@@ -184,75 +715,164 @@
                     <div class="team-member">
                         <img src="images/rachel-whitcomb.jpg" alt="Rachel Whitcomb" class="team-avatar">
                         <h3>Rachel Whitcomb</h3>
-                        <p class="role">Founder & Parent Advocate</p>
+                        <span class="role">Founder & Parent Advocate</span>
                         <p>Rachel transforms personal experience into powerful advocacy. As both a formerly misunderstood gifted child and a fierce parent advocate, she guides families through the complex journey of raising exceptional children with practical strategies and deep empathy.</p>
                     </div>
 
                     <div class="team-member">
                         <img src="images/evan-calder.jpg" alt="Evan Calder" class="team-avatar">
                         <h3>Evan Calder</h3>
-                        <p class="role">Learning Architect</p>
+                        <span class="role">Learning Architect</span>
                         <p>With 15+ years translating between gifted minds and traditional systems, Evan helps children understand their own thinking patterns. He transforms overthinking into analysis, perfectionism into excellence, and confusion into clarity through metacognitive strategies that actually work.</p>
                     </div>
 
                     <div class="team-member">
                         <img src="images/avery-sage.jpg" alt="Avery Sage" class="team-avatar">
                         <h3>Avery Sage</h3>
-                        <p class="role">Emotional Intelligence Specialist</p>
+                        <span class="role">Emotional Intelligence Specialist</span>
                         <p>Avery sees beyond "behavior problems" to understand what children are really communicating. With 12+ years of clinical experience, they create practical tools that transform emotional intensity from a liability into a strength, building homes where sensitive children can thrive.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Method Callout -->
+        <section class="method-callout">
+            <div class="container">
+                <h3>Our Framework</h3>
+                <h2>The Navigator Method™</h2>
+                <p>A 5-step system to decode your child's unique operating system and build cooperation without conflict.</p>
+                <div class="method-steps">
+                    <span class="method-step">🔍 ASSESS</span>
+                    <span class="method-step">🗺️ MAP</span>
+                    <span class="method-step">🚀 LAUNCH</span>
+                    <span class="method-step">🔧 ADJUST</span>
+                    <span class="method-step">📈 EXPAND</span>
+                </div>
+                <a href="index.html#methodology" class="btn">Learn the Method</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
         <section class="services-section">
             <div class="container">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">How We Help</h2>
-                <p style="text-align: center; font-size: 1.125rem; color: var(--color-text); max-width: 600px; margin: 0 auto 40px; opacity: 0.8;">Transform understanding into action with tools designed for your unique child</p>
+                <h2>How We Help</h2>
+                <p>Transform understanding into action with tools designed for your unique child</p>
 
                 <div class="services-grid">
                     <div class="service-card">
-                        <h3><i class="fas fa-clipboard-list" style="color: var(--color-accent);"></i> Comprehensive Assessments</h3>
+                        <i class="fas fa-microchip"></i>
+                        <h3>AI-Powered Assessments</h3>
                         <p>Discover your child's complete profile—cognitive gifts, learning style, emotional patterns, and hidden challenges.</p>
                     </div>
 
                     <div class="service-card">
-                        <h3><i class="fas fa-magic" style="color: var(--color-accent);"></i> Personalized Strategies</h3>
-                        <p>Receive custom learning packets that turn your child's unique traits into academic and social strengths.</p>
+                        <i class="fas fa-route"></i>
+                        <h3>Personalized Plans</h3>
+                        <p>Receive custom strategies and learning packets that turn your child's unique traits into strengths.</p>
                     </div>
 
                     <div class="service-card">
-                        <h3><i class="fas fa-book" style="color: var(--color-accent);"></i> Parent Resources</h3>
-                        <p>Access practical guides for advocacy, daily challenges, and maintaining your own emotional balance.</p>
+                        <i class="fas fa-kit-medical"></i>
+                        <h3>Emergency Tools</h3>
+                        <p>Access the Reset Kit and regulation strategies for when meltdowns happen—because they will.</p>
                     </div>
 
                     <div class="service-card">
-                        <h3><i class="fas fa-users" style="color: var(--color-accent);"></i> Community Support</h3>
+                        <i class="fas fa-users"></i>
+                        <h3>Community Support</h3>
                         <p>Connect with families who understand the unique joys and challenges of raising exceptional children.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- CTA Section -->
         <section class="cta-section">
             <div class="container">
                 <h2>Your Child's Brilliance Is Waiting to Shine</h2>
-                <p style="font-size: 1.25rem; margin-bottom: 30px;">Take the first step toward understanding and supporting your exceptional child.</p>
+                <p>Take the first step toward understanding and supporting your exceptional child.</p>
 
                 <div class="cta-buttons">
-                    <a href="gifted-assessment-tool.html" class="btn-primary" style="font-family: var(--font-body);">Start Our Free Assessment</a>
-                    <a href="resources.html" class="btn-primary btn-secondary" style="font-family: var(--font-body);">Explore Resources</a>
+                    <a href="gifted-assessment-tool.html" class="btn btn-primary">
+                        <i class="fas fa-microchip"></i> Start Free Assessment
+                    </a>
+                    <a href="emergency-reset-kit-sales-page.html" class="btn btn-secondary">
+                        <i class="fas fa-kit-medical"></i> Get Emergency Reset Kit
+                    </a>
                 </div>
             </div>
         </section>
     </main>
     
-    <div id="footer-placeholder"></div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        fetch('footer.html').then(response => response.text()).then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
         });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
