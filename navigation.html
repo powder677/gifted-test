@@ -1,28 +1,16 @@
 <style>
-    /*
-     * NAVIGATION STYLES
-     * Applies premium aesthetic using project variables and sticky behavior.
+    /* * NAVIGATION STYLES - Updated for Navigator Kids AI™
+     * Uses new --color-primary (Navy) and --color-highlight (Teal) variables
      */
-    :root {
-        /* Assuming these are globally defined, redefined here for safety/context */
-        --bg-cream: #FDFBF7;
-        --color-sage: #81B29A;
-        --color-terracotta: #E07A5F;
-        --text-dark: #2A2C35;
-        --color-gold: #F2CC8F;
-        --radius: 12px;
-        --font-heading: 'Merriweather', serif;
-        --font-body: 'Inter', sans-serif;
-    }
-
+    
     .navbar {
-        background-color: var(--bg-cream); /* Cream background */
-        border-bottom: 2px solid rgba(129, 178, 154, 0.2); /* Soft Sage/Light Border */
+        background-color: #FFFFFF; /* Clean White */
+        border-bottom: 1px solid rgba(27, 54, 93, 0.1); /* Navy tint border */
         position: sticky;
         top: 0;
         z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        font-family: var(--font-body);
+        box-shadow: 0 2px 10px rgba(27, 54, 93, 0.05);
+        font-family: var(--font-header);
     }
 
     .navbar-container {
@@ -35,71 +23,81 @@
     }
 
     .logo a {
-        font-family: var(--font-heading);
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-dark);
+        font-family: var(--font-header);
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--color-primary); /* Navy */
         text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* Icon for logo (optional, using font-awesome) */
+    .logo i {
+        color: var(--color-highlight); /* Teal icon */
     }
 
     .desktop-nav .nav-links {
         list-style: none;
         display: flex;
-        gap: 30px;
+        gap: 25px;
         margin: 0;
         padding: 0;
+        align-items: center;
     }
 
     .desktop-nav .nav-links a {
-        color: var(--text-dark);
+        color: var(--color-text);
         text-decoration: none;
-        font-weight: 500;
-        padding: 5px 0;
-        transition: color 0.3s ease, border-bottom 0.3s ease;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
     }
 
     .desktop-nav .nav-links a:hover {
-        color: var(--color-terracotta);
-        border-bottom: 2px solid var(--color-gold); /* Gold accent on hover */
+        color: var(--color-highlight); /* Teal hover */
     }
 
-    /* Accent Link Styling */
-    .desktop-nav .nav-links a[data-download-fix],
-    .mobile-nav-links a[data-download-fix] {
-        color: var(--color-terracotta) !important; 
-        font-weight: 700;
-        border: 2px solid var(--color-terracotta);
-        padding: 8px 15px;
-        border-radius: var(--radius);
-        transition: all 0.3s ease;
-    }
-
-    .desktop-nav .nav-links a[data-download-fix]:hover,
-    .mobile-nav-links a[data-download-fix]:hover {
-        background-color: var(--color-terracotta);
+    /* Primary Action Button (Reset Kit) */
+    .desktop-nav .nav-links a.nav-btn-primary {
+        background-color: var(--color-highlight); /* Teal */
         color: white !important;
-        border-bottom: none;
+        padding: 10px 20px;
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 6px rgba(42, 157, 143, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .desktop-nav .nav-links a.nav-btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 12px rgba(42, 157, 143, 0.3);
     }
 
     /* Mobile Menu Styles */
     .menu-toggle {
-        display: none; /* Hidden on desktop */
+        display: none;
         background: none;
         border: none;
         font-size: 1.5rem;
         cursor: pointer;
-        color: var(--text-dark);
+        color: var(--color-primary);
         padding: 0;
     }
 
     .mobile-nav-links {
         display: none;
         flex-direction: column;
-        background-color: var(--bg-white); /* Lighter background for dropdown */
+        background-color: #FFFFFF;
         position: absolute;
         width: 100%;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        top: 100%;
+        left: 0;
+        box-shadow: 0 4px 10px rgba(27, 54, 93, 0.1);
         z-index: 999;
+        border-top: 1px solid rgba(0,0,0,0.05);
     }
 
     .mobile-nav-links.active {
@@ -109,41 +107,28 @@
     .mobile-nav-links a {
         padding: 15px 24px;
         text-decoration: none;
-        color: var(--text-dark);
+        color: var(--color-primary);
+        font-weight: 600;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        transition: background-color 0.3s ease;
     }
 
-    .mobile-nav-links a:hover {
-        background-color: rgba(129, 178, 154, 0.1); /* Light Sage hover */
-        color: var(--color-sage);
-    }
-
-    /* Responsive adjustments */
     @media (max-width: 900px) {
-        .desktop-nav {
-            display: none;
-        }
-
-        .menu-toggle {
-            display: block;
-        }
+        .desktop-nav { display: none; }
+        .menu-toggle { display: block; }
     }
 </style>
 
 <header class="navbar">
     <div class="navbar-container">
         <div class="logo">
-            <a href="index.html">Mission Control Center</a>
+            <a href="index.html"><i class="fas fa-compass"></i> Navigator Kids AI™</a>
         </div>
         <nav class="desktop-nav">
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="mission-control-preview.html">Training Preview</a></li>
-                <li><a href="gifted-assessment-tool.html">Parent Assessment</a></li>
-                <li><a href="child-self-assessment.html">Child Assessment</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="#" data-download-fix>Download Packet</a></li>
+                <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                <li><a href="resources.html">Knowledge Base</a></li>
+                <li><a href="mission-control-preview.html" class="nav-btn-primary">Get Emergency Reset Kit</a></li>
             </ul>
         </nav>
 
@@ -155,16 +140,13 @@
 
 <nav class="mobile-nav-links" id="mobileMenu">
     <a href="index.html">Home</a>
-    <a href="mission-control-preview.html">Training Preview</a>
-    <a href="gifted-assessment-tool.html">Parent Assessment</a>
-    <a href="child-self-assessment.html">Child Assessment</a>
-    <a href="resources.html">Resources</a>
-    <a href="#" data-download-fix>Download Packet</a>
+    <a href="gifted-assessment-tool.html">AI Assessment</a>
+    <a href="resources.html">Knowledge Base</a>
+    <a href="mission-control-preview.html">Get Emergency Reset Kit</a>
 </nav>
 
 <script>
-    // Note: The main logic for this menu is in script.js, but this fetcher is needed 
-    // for local development if the user is fetching navigation.html separately.
+    // Mobile menu toggle logic
     function initNav() {
         const mobileMenu = document.getElementById('mobileMenu');
         const menuToggle = document.getElementById('menuToggle');
@@ -176,7 +158,6 @@
             });
         }
     }
-    // Only run if the DOM is already loaded (i.e., when fetch injects it)
     if (document.readyState !== 'loading') {
         initNav();
     } else {
