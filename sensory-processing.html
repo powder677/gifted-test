@@ -1,335 +1,850 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sensory & Physical Hub | Gifted Child Authority</title>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Sensory & Physical Hub | Navigator Kids AI™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
+        /* --- VARIABLES --- */
         :root {
-            /* Backgrounds */
-            --bg-cream: #FDFBF7;
-            --bg-white: #FFFFFF;
-
-            /* Colors */
-            --color-terracotta: #E07A5F;
-            --color-sage: #81B29A;
-            --text-charcoal: #3D405B;
-            --text-dark: #2A2C35;
-            --color-gold: #F2CC8F;
-
-            /* UI */
-            --radius: 12px;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-
-            /* Typography */
-            --font-heading: 'Merriweather', serif;
-            --font-body: 'Inter', sans-serif;
-
-            /* Spacing */
-            --section-padding: 80px;
-            --max-text-width: 700px;
-            --line-height: 1.6;
+            --color-primary: #1B365D;
+            --color-primary-dark: #132845;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
+            --color-highlight-dark: #238579;
+            --color-highlight-light: #E8F4F2;
+            --color-text: #2F2F2F;
+            --color-text-muted: #666666;
+            --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --transition: all 0.2s ease;
         }
 
-        * {
+        /* --- GLOBAL RESET --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-body);
-            background-color: var(--bg-cream);
-            color: var(--text-charcoal);
-            line-height: var(--line-height);
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--color-text);
+            line-height: 1.7;
+            background-color: var(--color-background);
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: var(--font-heading);
-            color: var(--text-dark);
-            line-height: 1.3;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+            color: var(--color-primary);
         }
 
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- CONTAINER --- */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        section {
-            padding: var(--section-padding) 0;
+        /* --- NAVIGATION --- */
+        .navbar {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
         }
 
-        /* Hero Section */
-        .hero {
-            background-color: var(--bg-cream);
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo a {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--color-highlight);
+            font-size: 1.4rem;
+        }
+
+        .logo span {
+            color: var(--color-highlight);
+        }
+
+        .desktop-nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .desktop-nav .nav-links a {
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover {
+            color: var(--color-highlight);
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-highlight);
+            transition: width 0.2s ease;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after {
+            width: 100%;
+        }
+
+        .nav-btn-primary {
+            background-color: var(--color-highlight);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-1px);
+        }
+
+        .nav-btn-primary::after {
+            display: none !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primary);
+            padding: 8px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border-top: 1px solid #eee;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
+        .mobile-nav a:last-child {
+            background-color: var(--color-highlight);
+            color: white;
+            margin: 16px;
+            border-radius: var(--border-radius);
             text-align: center;
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #2A4A7A 100%);
+            padding: 80px 24px 100px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
         }
 
         .hero-content {
-            max-width: var(--max-text-width);
-            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 24px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            color: var(--text-charcoal);
-        }
-
-        .hero-visual-container {
-            margin: 0 auto 40px;
-        }
-        
-        .hero-visual {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 10px;
-            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-sage) 100%);
+        .hero-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 4rem;
+            font-size: 3rem;
+            margin: 0 auto 32px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
-        /* Empathy Block */
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: white;
+            margin-bottom: 16px;
+            font-weight: 800;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-breadcrumb {
+            margin-bottom: 24px;
+        }
+
+        .hero-breadcrumb a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .hero-breadcrumb a:hover {
+            color: white;
+        }
+
+        .hero-breadcrumb span {
+            color: rgba(255,255,255,0.5);
+            margin: 0 8px;
+        }
+
+        /* --- EMPATHY BLOCK --- */
+        .empathy-section {
+            padding: 0 24px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
         .empathy-block {
-            background-color: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 60px 40px;
-            box-shadow: var(--shadow);
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 48px;
             text-align: center;
+            max-width: 850px;
+            margin: 0 auto;
+            border-left: 4px solid var(--color-highlight);
         }
 
         .empathy-block p {
-            max-width: var(--max-text-width);
-            margin: 0 auto;
-            font-size: 1.125rem;
-            line-height: 1.7;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--color-text);
         }
 
-        /* Articles Grid */
+        .empathy-block p strong {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 600px) {
+            .empathy-block {
+                padding: 32px 24px;
+            }
+        }
+
+        /* --- ARTICLES SECTION --- */
+        .articles-section {
+            padding: 80px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+        }
+
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
         }
 
+        /* --- ARTICLE CARDS --- */
         .article-card {
-            background: var(--bg-white);
-            border-radius: var(--radius);
+            background: white;
+            border-radius: var(--border-radius-lg);
             padding: 32px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            height: 100%;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
-            text-decoration: none; /* Inherited by anchor tags */
-            color: inherit;
+            border-top: 4px solid var(--color-accent);
         }
 
         .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-top-color: var(--color-highlight);
         }
 
         .article-tag {
             display: inline-block;
-            background-color: var(--color-gold);
-            color: var(--text-dark);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
+            background-color: var(--color-highlight-light);
+            color: var(--color-highlight);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 16px;
+            width: fit-content;
         }
 
         .article-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-            transition: color 0.3s ease;
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            color: var(--color-primary);
+            transition: var(--transition);
         }
 
         .article-card:hover h3 {
-            color: var(--color-terracotta);
+            color: var(--color-highlight);
         }
 
         .article-excerpt {
-            color: var(--text-charcoal);
-            margin-top: auto;
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            flex-grow: 1;
         }
 
-        /* CTA Section */
+        .article-card .card-arrow {
+            margin-top: 20px;
+            color: var(--color-highlight);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: var(--transition);
+        }
+
+        .article-card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Featured Card */
+        .article-card--featured {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--color-highlight-light) 0%, white 100%);
+            border: 2px solid var(--color-highlight);
+            border-top: 4px solid var(--color-highlight);
+        }
+
+        .article-card--featured .article-tag {
+            background: var(--color-highlight);
+            color: white;
+        }
+
+        .article-card--featured h3 {
+            font-size: 1.6rem;
+        }
+
+        .article-card--featured .card-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            opacity: 0.2;
+        }
+
+        @media (max-width: 900px) {
+            .article-card--featured {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+            .article-card--featured .card-visual {
+                display: none;
+            }
+        }
+
+        /* --- NAVIGATOR METHOD PROMO --- */
+        .promo-section {
+            padding: 0 24px 80px;
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #2A4A7A 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 32px;
+            align-items: center;
+            color: white;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            .promo-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 40px 32px;
+            }
+        }
+
+        .promo-card h3 {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .promo-card h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .promo-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .promo-card .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 16px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .promo-card .btn:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* --- CTA SECTION --- */
         .cta-section {
-            background-color: var(--color-sage);
+            background: var(--color-highlight);
+            padding: 80px 24px;
             text-align: center;
             color: white;
         }
 
         .cta-section h2 {
             color: white;
-            margin-bottom: 24px;
+            font-size: 2rem;
+            margin-bottom: 16px;
         }
 
-        .btn {
-            display: inline-block;
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--color-highlight);
             padding: 16px 32px;
-            background-color: var(--color-terracotta);
-            color: white;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            border-radius: var(--border-radius);
+            font-weight: 700;
             font-size: 1rem;
+            transition: var(--transition);
         }
 
-        .btn:hover {
-            background-color: #d36547;
+        .cta-section .btn:hover {
+            background: var(--color-background);
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Responsive */
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #0f1f33;
+            color: white;
+            padding: 80px 24px 40px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-
-            .hero p {
-                font-size: 1.125rem;
-            }
-
-            .empathy-block {
-                padding: 40px 24px;
-            }
-
-            .article-card {
-                padding: 24px;
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
 
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.875rem;
-            }
+        .footer__brand h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+        }
 
-            .hero-visual {
-                width: 150px;
-                height: 150px;
-                font-size: 3rem;
-            }
+        .footer__brand p {
+            opacity: 0.75;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer__links h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer__links ul {
+            list-style: none;
+        }
+
+        .footer__links li {
+            margin-bottom: 12px;
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer__bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
         }
     </style>
 </head>
 
 <body>
-    <div id="navigation-placeholder"></div>
-    <script>
-        fetch('navigation.html').then(response => response.text()).then(data => {
-            document.getElementById('navigation-placeholder').innerHTML = data;
-        });
-    </script>
-    
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="resources.html">Resources</a>
+            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>When the world feels too loud.</h1>
-                <p>Managing sensory processing issues, picky eating, and physical sensitivities.</p>
-                
-                <div class="hero-visual-container">
-                    <div class="hero-visual" aria-hidden="true">🔊</div>
-                    <span class="sr-only">Icon representing sound and sensory sensitivity.</span>
+                <div class="hero-breadcrumb">
+                    <a href="resources.html">Resources</a>
+                    <span>/</span>
+                    <a href="#">Sensory & Physical</a>
                 </div>
+                <div class="hero-icon">👕</div>
+                <h1>When the world feels too loud.</h1>
+                <p>Managing sensory processing, picky eating, and physical sensitivities in exceptional children.</p>
             </div>
         </div>
     </section>
 
-    <section>
+    <!-- Empathy Block -->
+    <section class="empathy-section">
         <div class="container">
             <div class="empathy-block">
-                <p>Your child's sensory experiences aren't dramatic—they're neurological. What feels normal to others can feel overwhelming or even painful to gifted children with heightened sensory processing. Their reactions aren't choices or manipulations; they're genuine responses to a world that bombards their nervous system with too much, too fast, too often.</p>
+                <p>Your child's sensory experiences aren't dramatic—they're neurological. What feels normal to others can feel overwhelming or even painful to gifted children with heightened sensory processing. <strong>Their reactions aren't choices or manipulations; they're genuine responses to a world that bombards their nervous system with too much, too fast, too often.</strong></p>
             </div>
         </div>
     </section>
 
-    <section>
+    <!-- Articles Section -->
+    <section class="articles-section">
         <div class="container">
+            <div class="section-header">
+                <h2>Guides & Strategies</h2>
+                <p>Practical tools from our emotional intelligence specialists</p>
+            </div>
+
             <div class="articles-grid">
-                <a href="seekers-vs-avoiders.html" class="article-card">
-                    <span class="article-tag">Start Here</span>
-                    <h3>Seekers vs. Avoiders</h3>
-                    <p class="article-excerpt">Does your child crash into walls or hide under tables?</p>
+                <!-- Featured Card -->
+                <a href="seekers-vs-avoiders.html" class="article-card article-card--featured">
+                    <div class="article-content">
+                        <span class="article-tag">🎯 Start Here</span>
+                        <h3>Seekers vs. Avoiders</h3>
+                        <p class="article-excerpt">Does your child crash into walls or hide under tables? Understanding your child's sensory profile is the first step to creating an environment where they can thrive.</p>
+                        <span class="card-arrow">Read the guide <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="card-visual">👂</div>
                 </a>
 
                 <a href="when-noise-hurts.html" class="article-card">
                     <span class="article-tag">Auditory</span>
                     <h3>When Noise Hurts</h3>
                     <p class="article-excerpt">Helping your child survive loud spaces without a meltdown.</p>
+                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                 </a>
 
                 <a href="the-touch-factor.html" class="article-card">
                     <span class="article-tag">Touch</span>
                     <h3>The Touch Factor</h3>
                     <p class="article-excerpt">Why hugs, haircuts, and handshakes can trigger overload.</p>
+                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                 </a>
 
                 <a href="the-sock-war.html" class="article-card">
                     <span class="article-tag">Clothing</span>
                     <h3>The Sock War</h3>
                     <p class="article-excerpt">Why seams feel like razor blades (and how to fix it).</p>
+                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                 </a>
 
                 <a href="beige-diet.html" class="article-card">
                     <span class="article-tag">Eating</span>
                     <h3>The 'Beige Diet'</h3>
                     <p class="article-excerpt">Dealing with sensory picky eating and texture aversion.</p>
+                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                 </a>
 
                 <a href="routine-rescue.html" class="article-card">
                     <span class="article-tag">Strategy</span>
                     <h3>Routine Rescue</h3>
                     <p class="article-excerpt">Using predictable schedules to calm a sensitive nervous system.</p>
+                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                 </a>
 
                 <a href="classroom-sensory-solutions.html" class="article-card">
                     <span class="article-tag">School</span>
                     <h3>Classroom Solutions</h3>
-                    <p class="article-excerpt">Advocating for accommodations that actually work.</p>
+                    <p class="article-excerpt">Advocating for sensory accommodations that actually work.</p>
+                    <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="cta-section">
+    <!-- Navigator Method Promo -->
+    <section class="promo-section">
         <div class="container">
-            <h2>Don't know where to start?</h2>
-            <a href="quiz.html" class="btn">Take the Free 2-Minute Patterns Quiz</a>
+            <div class="promo-card">
+                <div class="promo-content">
+                    <h3>The Navigator Method™</h3>
+                    <h2>Step 4: ADJUST</h2>
+                    <p>Sensory needs change over time. Our approach helps you track what works, refine strategies based on real-world feedback, and adapt as your child grows.</p>
+                </div>
+                <a href="index.html#methodology" class="btn">
+                    Learn the Method <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <div id="footer-placeholder"></div>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Not sure where to start?</h2>
+            <p>Take our free AI assessment to discover your child's unique sensory profile.</p>
+            <a href="gifted-assessment-tool.html" class="btn">
+                <i class="fas fa-microchip"></i> Start Free Assessment
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        fetch('footer.html').then(response => response.text()).then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
         });
     </script>
-    <script src="script.js"></script>
 </body>
-
 </html>
