@@ -21,12 +21,17 @@
             --border-radius: 8px;
         }
 
-        /* --- BUTTON STYLES (Fixed) --- */
+        /* --- GLOBAL RESET --- */
+        * {
+            box-sizing: border-box; /* Crucial for preventing overflow */
+        }
+
+        /* --- BUTTON STYLES (FIXED) --- */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 32px;
+            padding: 14px 24px; /* Slightly reduced padding */
             border-radius: var(--border-radius);
             font-family: 'Inter', sans-serif;
             font-weight: 700;
@@ -35,9 +40,10 @@
             cursor: pointer;
             transition: all 0.2s ease;
             gap: 10px;
-            line-height: 1.2;
+            line-height: 1.4; /* Allow multi-line text */
             border: none;
-            white-space: nowrap; /* Prevents button text from breaking */
+            max-width: 100%; /* Prevent button from exceeding screen width */
+            text-align: center;
         }
 
         .btn-primary {
@@ -76,14 +82,14 @@
         .navbar-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 15px 24px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .logo a {
             font-family: 'Inter', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem; /* Slightly smaller for mobile safety */
             font-weight: 800;
             color: var(--color-primary);
             text-decoration: none;
@@ -91,14 +97,14 @@
             letter-spacing: 0.05em;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .logo i { color: var(--color-highlight); }
         
         .desktop-nav .nav-links {
             list-style: none;
             display: flex;
-            gap: 25px;
+            gap: 20px;
             margin: 0;
             padding: 0;
             align-items: center;
@@ -112,14 +118,15 @@
         }
         .desktop-nav a:hover { color: var(--color-highlight); }
         
-        /* Nav specific button */
+        /* Nav specific button - Smaller to fit better */
         .nav-btn-primary {
             background-color: var(--color-highlight);
             color: white !important;
-            padding: 10px 20px;
+            padding: 8px 16px; 
             border-radius: 6px;
             transition: all 0.2s ease;
-            white-space: nowrap; /* Ensures button stays on one line */
+            font-size: 0.9rem;
+            white-space: nowrap; 
         }
         .nav-btn-primary:hover {
             background-color: #238579;
@@ -128,8 +135,8 @@
         }
 
         /* Mobile Menu */
-        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-primary); }
-        .mobile-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-primary); padding: 0; }
+        .mobile-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 1px solid #eee; }
         .mobile-nav.active { display: flex; }
         .mobile-nav a { padding: 15px 20px; border-bottom: 1px solid #eee; text-decoration: none; color: var(--color-primary); font-weight: 600; }
 
@@ -144,7 +151,7 @@
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <a href="index.html"><i class="fas fa-compass"></i> Navigator Kids AI™</a>
+                <a href="index.html"><i class="fas fa-compass"></i> Navigator <span>Kids AI</span></a>
             </div>
             <nav class="desktop-nav">
                 <ul class="nav-links">
@@ -165,16 +172,17 @@
     </header>
 
     <main>
-        <section id="hero" style="background: linear-gradient(135deg, #F4F6F8 0%, #FFFFFF 100%); padding: 100px 20px; text-align: center;">
+        <section id="hero" style="background: linear-gradient(135deg, #F4F6F8 0%, #FFFFFF 100%); padding: 80px 20px; text-align: center;">
             <div class="container">
-                <h1 style="font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 24px; color: var(--color-primary); font-family: 'Inter', sans-serif; font-weight: 800;">
+                <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin-bottom: 24px; color: var(--color-primary); font-family: 'Inter', sans-serif; font-weight: 800;">
                     Your Child’s Brain Didn’t Come With a Manual.<br>
                     <span style="color: var(--color-highlight);">Until Now.</span>
                 </h1>
-                <p style="font-size: 1.25rem; max-width: 750px; margin: 0 auto 40px; color: var(--color-text); line-height: 1.6;">
+                <p style="font-size: 1.2rem; max-width: 750px; margin: 0 auto 40px; color: var(--color-text); line-height: 1.6;">
                     Stop fighting their operating system. Start working with it. Get the AI-powered roadmap to go from meltdowns to mission accomplished in minutes a day.
                 </p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     
                     <a href="gifted-assessment-tool.html" class="btn btn-primary" style="background-color: var(--color-accent); color: var(--color-primary) !important;">
                         <i class="fas fa-microchip"></i> Start Free AI Assessment
