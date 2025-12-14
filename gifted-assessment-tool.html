@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Brain Profile Quiz | Navigator Kids AI™</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
         :root {
@@ -19,7 +20,8 @@
             --color-highlight-light: rgba(42, 157, 143, 0.1);
             --color-text: #2F2F2F;
             --color-text-muted: #6B7280;
-            --color-background: #F8FAFC;
+            --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
             --color-card: #FFFFFF;
             --color-border: #E5E7EB;
             --shadow-sm: 0 1px 3px rgba(27, 54, 93, 0.08);
@@ -35,11 +37,15 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--color-background);
             color: var(--color-text);
             line-height: 1.6;
             min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
         }
 
         /* Header Bar */
@@ -61,12 +67,19 @@
         }
 
         .logo {
+            font-family: 'Inter', sans-serif;
             font-weight: 800;
             font-size: 1.1rem;
             color: var(--color-primary);
             display: flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--color-highlight);
+            font-size: 1.2rem;
         }
 
         .logo span {
@@ -101,7 +114,7 @@
         .welcome-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -112,11 +125,10 @@
         }
 
         .welcome-screen h1 {
-            font-family: 'Lora', serif;
             font-size: clamp(1.75rem, 5vw, 2.25rem);
             color: var(--color-primary);
             margin-bottom: 16px;
-            font-weight: 600;
+            font-weight: 800;
             line-height: 1.2;
         }
 
@@ -152,6 +164,7 @@
             align-items: center;
             justify-content: center;
             font-size: 0.75rem;
+            color: var(--color-primary);
         }
 
         .btn-primary {
@@ -272,11 +285,11 @@
         }
 
         .question-text {
-            font-family: 'Lora', serif;
             font-size: 1.35rem;
             color: var(--color-primary);
             line-height: 1.5;
             margin-bottom: 32px;
+            font-weight: 600;
         }
 
         /* Answer Options */
@@ -430,7 +443,6 @@
         }
 
         .email-screen h2 {
-            font-family: 'Lora', serif;
             font-size: 1.75rem;
             color: var(--color-primary);
             margin-bottom: 12px;
@@ -493,7 +505,6 @@
         }
 
         .results-header h2 {
-            font-family: 'Lora', serif;
             font-size: 1.75rem;
             color: var(--color-primary);
             margin-bottom: 8px;
@@ -607,17 +618,30 @@
             background: linear-gradient(90deg, #22C55E, #4ADE80);
         }
 
-        /* CTA Box */
+        /* CTA Box - Primary (Full Assessment) */
         .cta-box {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
             border-radius: 16px;
             padding: 40px 32px;
             text-align: center;
             color: white;
+            margin-bottom: 24px;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
 
         .cta-box h3 {
-            font-family: 'Lora', serif;
             font-size: 1.5rem;
             color: white;
             margin-bottom: 12px;
@@ -649,6 +673,21 @@
             color: var(--color-accent);
         }
 
+        .cta-price {
+            margin-bottom: 20px;
+        }
+
+        .cta-price-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .cta-price-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
         .btn-cta {
             background: var(--color-accent);
             color: var(--color-primary);
@@ -666,6 +705,79 @@
         .btn-cta:hover {
             background: var(--color-accent-light);
             transform: translateY(-2px);
+        }
+
+        /* CTA Box - Secondary (Reset Kit) */
+        .cta-box-secondary {
+            background: var(--color-card);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--color-highlight-light);
+        }
+
+        .cta-box-secondary .cta-badge {
+            background: var(--color-highlight-light);
+            color: var(--color-highlight-dark);
+        }
+
+        .cta-box-secondary h3 {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+        }
+
+        .cta-box-secondary p {
+            color: var(--color-text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .cta-box-secondary .cta-price-amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-highlight);
+        }
+
+        .cta-box-secondary .cta-price-label {
+            color: var(--color-text-muted);
+        }
+
+        .btn-cta-secondary {
+            background: var(--color-highlight);
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .btn-cta-secondary:hover {
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--color-border);
         }
 
         /* Hidden */
@@ -719,9 +831,10 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">
+            <a href="index.html" class="logo">
+                <i class="fas fa-compass"></i>
                 Navigator<span>Kids AI</span>™
-            </div>
+            </a>
             <div class="time-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
@@ -810,9 +923,11 @@
                 <!-- Trait cards injected by JS -->
             </div>
 
+            <!-- Primary CTA: Full Assessment -->
             <div class="cta-box">
+                <div class="cta-badge">Recommended</div>
                 <h3>Want the Complete Picture?</h3>
-                <p>The full assessment reveals detailed patterns across 7 domains with personalized strategies.</p>
+                <p>The full assessment reveals detailed patterns across 7 domains with personalized strategies for your child.</p>
                 <div class="cta-features">
                     <div class="cta-feature">
                         <span class="cta-feature-icon">✓</span>
@@ -827,8 +942,28 @@
                         <span>Custom action plan</span>
                     </div>
                 </div>
+                <div class="cta-price">
+                    <div class="cta-price-amount">$99</div>
+                    <div class="cta-price-label">One-time payment • Instant access</div>
+                </div>
                 <button class="btn-cta" onclick="goToFullAssessment()">
-                    Take the Full Assessment →
+                    Get the Full Assessment →
+                </button>
+            </div>
+
+            <div class="or-divider">or start here</div>
+
+            <!-- Secondary CTA: Reset Kit -->
+            <div class="cta-box-secondary">
+                <div class="cta-badge">Quick Win</div>
+                <h3>Need Help With Meltdowns Now?</h3>
+                <p>Get our Emergency Reset Kit — 3 proven scripts to de-escalate meltdowns in under 90 seconds, plus a calm-down toolkit for immediate relief.</p>
+                <div class="cta-price" style="margin-bottom: 16px;">
+                    <div class="cta-price-amount">$19</div>
+                    <div class="cta-price-label">Instant PDF download</div>
+                </div>
+                <button class="btn-cta-secondary" onclick="goToResetKit()">
+                    Get the Reset Kit →
                 </button>
             </div>
         </div>
@@ -1080,19 +1215,13 @@
         }
 
         function goToFullAssessment() {
-            // Pass data to full assessment
-            // In production, this would navigate to the full assessment page
-            // with the screener data pre-loaded
-            const screenerData = localStorage.getItem('screenerData');
-            
-            // Option 1: URL params
-            // window.location.href = `gifted-assessment-tool.html?from=screener&child=${encodeURIComponent(childName)}`;
-            
-            // Option 2: For demo, just alert
-            alert(`Taking ${childName} to the full assessment!\n\nIn production, this would:\n1. Pre-fill the child's name\n2. Highlight relevant sections based on screener results\n3. Proceed to payment or full assessment`);
-            
-            // Uncomment for actual navigation:
-            // window.location.href = 'gifted-assessment-tool.html';
+            // Navigate to the full assessment page
+            window.location.href = 'gifted-assessment-tool.html';
+        }
+
+        function goToResetKit() {
+            // Navigate to the Reset Kit sales page
+            window.location.href = 'emergency-reset-kit-sales-page.html';
         }
 
         // Copy results for AI coach (hidden feature, can expose later)
