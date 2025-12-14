@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>When Noise Hurts: Helping Your Child Survive Loud Spaces</title>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>When Noise Hurts: Helping Your Child Survive Loud Spaces | Navigator Kids AI™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
+        /* --- VARIABLES --- */
         :root {
-            /* Backgrounds */
-            --bg-cream: #FDFBF7;
-            --bg-white: #FFFFFF;
-
-            /* Colors */
-            --color-terracotta: #E07A5F;
-            --color-sage: #81B29A;
-            --text-charcoal: #3D405B;
-            --text-dark: #2A2C35;
-            --color-gold: #F2CC8F;
-
-            /* UI */
-            --radius: 12px;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-
-            /* Typography */
-            --font-heading: 'Merriweather', serif;
-            --font-body: 'Inter', sans-serif;
-
-            /* Spacing */
-            --section-padding: 80px;
-            --max-text-width: 700px;
-            --line-height: 1.6;
+            --color-primary: #1B365D;
+            --color-primary-dark: #132845;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
+            --color-highlight-dark: #238579;
+            --color-highlight-light: #E8F4F2;
+            --color-text: #2F2F2F;
+            --color-text-muted: #666666;
+            --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --transition: all 0.2s ease;
         }
 
-        * {
+        /* --- GLOBAL RESET --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: var(--font-body);
-            background-color: var(--bg-cream);
-            color: var(--text-charcoal);
-            line-height: var(--line-height);
-            font-size: 18px;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--color-text);
+            line-height: 1.7;
+            background-color: var(--color-background);
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: var(--font-heading);
-            color: var(--text-dark);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
             line-height: 1.3;
+            color: var(--color-primary);
         }
+
+        a { text-decoration: none; color: inherit; }
+
+        ul, ol { margin-left: 24px; }
+        li { margin-bottom: 8px; }
 
         .container {
             width: 100%;
@@ -64,363 +64,598 @@
             padding: 0 24px;
         }
 
-        section {
-            padding: var(--section-padding) 0;
+        /* --- NAVIGATION --- */
+        .navbar {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
         }
 
-        /* Article Layout */
-        .article-layout {
-            display: flex;
-            gap: 60px;
-            max-width: 1400px;
+        .navbar-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
         }
 
-        .article-content {
-            flex: 1;
-            max-width: 800px;
+        .logo a {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .article-sidebar {
-            width: 300px;
-            flex-shrink: 0;
+        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
+        .logo span { color: var(--color-highlight); }
+
+        .desktop-nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            margin: 0;
         }
 
-        /* Breadcrumbs */
-        .breadcrumbs {
-            margin-bottom: 30px;
+        .desktop-nav .nav-links li { margin: 0; }
+
+        .desktop-nav .nav-links a {
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover { color: var(--color-highlight); }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-highlight);
+            transition: width 0.2s ease;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after { width: 100%; }
+
+        .nav-btn-primary {
+            background-color: var(--color-highlight);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
             font-size: 0.9rem;
         }
 
-        .breadcrumbs a {
-            color: var(--color-terracotta);
-            text-decoration: none;
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-1px);
         }
+
+        .nav-btn-primary::after { display: none !important; }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primary);
+            padding: 8px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border-top: 1px solid #eee;
+        }
+
+        .mobile-nav.active { display: flex; }
+
+        .mobile-nav a {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
+        .mobile-nav a:last-child {
+            background-color: var(--color-highlight);
+            color: white;
+            margin: 16px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
+        }
+
+        /* --- ARTICLE LAYOUT --- */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        @media (max-width: 1024px) {
+            .article-layout {
+                grid-template-columns: 1fr;
+            }
+            .article-sidebar { order: -1; }
+        }
+
+        /* --- BREADCRUMBS --- */
+        .breadcrumbs {
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            color: var(--color-text-muted);
+        }
+
+        .breadcrumbs a {
+            color: var(--color-highlight);
+            transition: var(--transition);
+        }
+
+        .breadcrumbs a:hover { color: var(--color-highlight-dark); }
 
         .breadcrumbs span {
-            color: var(--text-charcoal);
-            opacity: 0.7;
+            margin: 0 8px;
+            color: var(--color-text-muted);
         }
 
-        /* Article Header */
-        .article-header {
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
+        /* --- ARTICLE HEADER --- */
+        .article-header { margin-bottom: 40px; }
 
         .article-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 24px;
             line-height: 1.2;
         }
 
         .author-byline {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
         }
 
         .author-photo {
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-gold) 100%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .author-info {
-            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
         .author-name {
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .author-role {
+            font-size: 0.85rem;
+            color: var(--color-highlight);
         }
 
         .publish-date {
-            color: var(--text-charcoal);
-            opacity: 0.7;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
         }
 
-        /* Key Takeaways */
+        /* --- KEY TAKEAWAYS --- */
         .key-takeaways {
-            background-color: rgba(129, 178, 154, 0.1);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 50px;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 32px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--color-highlight);
         }
 
         .key-takeaways h2 {
-            color: var(--color-sage);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--color-highlight);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .key-takeaways ul {
+            margin: 0;
             padding-left: 20px;
         }
 
         .key-takeaways li {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            color: var(--color-text);
         }
 
-        /* Highlight Box */
-        .highlight-box {
-            background-color: var(--bg-cream);
-            border-left: 4px solid var(--color-terracotta);
-            padding: 25px 30px;
-            margin: 40px 0;
-            border-radius: 0 var(--radius) var(--radius) 0;
-        }
-
-        .highlight-box h3 {
-            margin-bottom: 15px;
-            color: var(--color-terracotta);
-        }
-
-        /* Article Content */
+        /* --- ARTICLE BODY --- */
         .article-body {
-            line-height: 1.7;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 48px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 600px) {
+            .article-body { padding: 32px 24px; }
         }
 
         .article-body p {
-            margin-bottom: 30px;
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            line-height: 1.8;
         }
 
         .article-body h2 {
-            font-size: 1.8rem;
-            margin: 50px 0 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(224, 122, 95, 0.3);
+            font-size: 1.6rem;
+            margin: 48px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--color-highlight-light);
         }
 
         .article-body h3 {
-            font-size: 1.4rem;
-            margin: 40px 0 20px;
+            font-size: 1.25rem;
+            margin: 32px 0 16px;
+            color: var(--color-primary);
         }
 
-        .article-body ul,
-        .article-body ol {
-            margin: 30px 0;
-            padding-left: 30px;
-        }
+        .article-body ul, .article-body ol { margin-bottom: 24px; }
 
         .article-body li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            line-height: 1.7;
         }
 
-        /* Noise Level Chart */
+        .article-body li strong { color: var(--color-primary); }
+
+        /* --- HIGHLIGHT BOX --- */
+        .highlight-box {
+            background: var(--color-background-warm);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+
+        .highlight-box h3 {
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* --- NOISE CHART --- */
         .noise-chart {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin: 40px 0;
-            box-shadow: var(--shadow);
+            background: var(--color-highlight-light);
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            margin: 32px 0;
         }
 
         .noise-chart h3 {
+            color: var(--color-primary);
             text-align: center;
-            color: var(--color-sage);
-            margin-bottom: 30px;
+            margin-bottom: 24px;
+            font-size: 1.3rem;
         }
 
         .noise-levels {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
 
-        .noise-level {
-            background: var(--bg-cream);
-            border-radius: var(--radius);
-            padding: 20px;
-            text-align: center;
-        }
-
-        .noise-level h4 {
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .noise-decibel {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--color-terracotta);
-            margin-bottom: 10px;
-        }
-
-        .noise-description {
-            font-size: 0.9rem;
-            color: var(--text-charcoal);
-        }
-
-        /* Sidebar */
-        .sidebar-widget {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 30px;
-        }
-
-        .sidebar-widget h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            background-color: var(--color-terracotta);
-            color: white;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        .btn:hover {
-            background-color: #d36547;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Read Next Section */
-        .read-next {
-            background-color: var(--bg-white);
-            padding: var(--section-padding) 0;
-            margin-top: 80px;
-        }
-
-        .read-next h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 50px;
-        }
-
-        .read-next-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .read-next-card {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .read-next-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .read-next-card:hover h3 {
-            color: var(--color-terracotta);
-        }
-
-        .read-next-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            transition: color 0.3s ease;
-        }
-
-        .read-next-card p {
-            color: var(--text-charcoal);
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .article-layout {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .article-sidebar {
-                width: 100%;
-                max-width: 800px;
-                margin: 0 auto;
+        @media (max-width: 900px) {
+            .noise-levels {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 768px) {
-            .article-header h1 {
-                font-size: 2rem;
-            }
-
-            body {
-                font-size: 16px;
-            }
-
-            .article-layout {
-                padding: 20px;
-            }
-
+        @media (max-width: 500px) {
             .noise-levels {
                 grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 480px) {
-            .article-header h1 {
-                font-size: 1.75rem;
-            }
+        .noise-level {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-top: 3px solid var(--color-highlight);
+            transition: var(--transition);
+        }
 
-            .highlight-box {
-                padding: 20px;
+        .noise-level:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .noise-level h4 {
+            color: var(--color-primary);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .noise-decibel {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-highlight);
+            margin-bottom: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .noise-description {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+        }
+
+        /* --- SIDEBAR --- */
+        .article-sidebar { position: relative; }
+
+        .sidebar-widget {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 32px;
+            position: sticky;
+            top: 100px;
+            text-align: center;
+            border-top: 4px solid var(--color-highlight);
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-widget p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: var(--color-highlight);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- READ NEXT --- */
+        .read-next {
+            background: var(--color-primary);
+            padding: 80px 24px;
+        }
+
+        .read-next h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+        }
+
+        .read-next-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .read-next-grid { grid-template-columns: 1fr; }
+        }
+
+        .read-next-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            transition: var(--transition);
+        }
+
+        .read-next-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .read-next-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            transition: var(--transition);
+        }
+
+        .read-next-card:hover h3 { color: var(--color-highlight); }
+
+        .read-next-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #0f1f33;
+            color: white;
+            padding: 80px 24px 40px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
+        }
+
+        .footer__brand h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer__brand p {
+            opacity: 0.75;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer__links h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer__links ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer__links li { margin-bottom: 12px; }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover { color: var(--color-accent); }
+
+        .footer__bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
         }
     </style>
 </head>
 
 <body>
-    <div id="navigation-placeholder"></div>
-    <script>
-        fetch('navigation.html').then(response => response.text()).then(data => {
-            document.getElementById('navigation-placeholder').innerHTML = data;
-        });
-    </script>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="resources.html">Resources</a>
+            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+        </nav>
+    </header>
 
+    <!-- Article Layout -->
     <div class="article-layout">
-        <div class="article-content">
+        <article class="article-content">
             <div class="breadcrumbs">
                 <a href="index.html">Home</a> <span>/</span>
-                <a href="resources.html">Sensory Processing</a> <span>/</span>
-                <span>Noise Sensitivity</span>
+                <a href="resources.html">Resources</a> <span>/</span>
+                <a href="sensory-physical-hub.html">Sensory & Physical</a> <span>/</span>
+                <span>When Noise Hurts</span>
             </div>
 
             <header class="article-header">
                 <h1>When Noise Hurts: Helping Your Child Survive Loud Spaces</h1>
                 <div class="author-byline">
-                    <div class="author-photo">JD</div>
+                    <div class="author-photo">AS</div>
                     <div class="author-info">
-                        <div class="author-name">Jane Doe</div>
+                        <div class="author-name">Avery Sage</div>
+                        <div class="author-role">Emotional Intelligence Specialist</div>
                         <div class="publish-date">Published November 22, 2024</div>
                     </div>
                 </div>
             </header>
 
             <div class="key-takeaways">
-                <h2>TL;DR</h2>
+                <h2>Key Takeaways</h2>
                 <ul>
                     <li>Noise sensitivity in gifted children is a neurological difference, not a behavioral choice</li>
                     <li>Loud environments trigger genuine pain responses in sensitive auditory systems</li>
@@ -448,20 +683,20 @@
                 <p>Gifted children's ears and brains process sound differently:</p>
 
                 <ul>
-                    <li>**Enhanced Frequency Detection:** Notice subtle pitch and tone variations others miss</li>
-                    <li>**Amplified Volume Perception:** Experience sounds as louder than neurotypical peers</li>
-                    <li>**Reduced Filtering Ability:** Struggle to tune out background noise</li>
-                    <li>**Increased Temporal Sensitivity:** React more intensely to sudden or unexpected sounds</li>
+                    <li><strong>Enhanced Frequency Detection:</strong> Notice subtle pitch and tone variations others miss</li>
+                    <li><strong>Amplified Volume Perception:</strong> Experience sounds as louder than neurotypical peers</li>
+                    <li><strong>Reduced Filtering Ability:</strong> Struggle to tune out background noise</li>
+                    <li><strong>Increased Temporal Sensitivity:</strong> React more intensely to sudden or unexpected sounds</li>
                 </ul>
 
                 <h3>The Auditory Gateway Theory</h3>
                 <p>Why noise sensitivity matters:</p>
 
                 <ul>
-                    <li>**Attention Drain:** Constant sound processing consumes cognitive resources</li>
-                    <li>**Stress Activation:** Loud environments trigger fight-or-flight responses</li>
-                    <li>**Communication Interference:** Background noise masks important verbal information</li>
-                    <li>**Regulatory Overload:** Multiple sounds simultaneously overwhelm processing capacity</li>
+                    <li><strong>Attention Drain:</strong> Constant sound processing consumes cognitive resources</li>
+                    <li><strong>Stress Activation:</strong> Loud environments trigger fight-or-flight responses</li>
+                    <li><strong>Communication Interference:</strong> Background noise masks important verbal information</li>
+                    <li><strong>Regulatory Overload:</strong> Multiple sounds simultaneously overwhelm processing capacity</li>
                 </ul>
 
                 <div class="noise-chart">
@@ -485,7 +720,7 @@
                         <div class="noise-level">
                             <h4>Birthday Party</h4>
                             <div class="noise-decibel">100+ dB</div>
-                            <div class="noise-description">Overwhelming for most sensitive listeners</div>
+                            <div class="noise-description">Overwhelming for most</div>
                         </div>
                     </div>
                 </div>
@@ -500,26 +735,26 @@
 
                 <h3>Social Gathering Spaces</h3>
                 <ul>
-                    <li>**Birthday Parties:** Music, laughter, balloons popping, excited voices</li>
-                    <li>**Restaurants:** Clattering dishes, multiple conversations, background music</li>
-                    <li>**Malls/Shops:** Announcements, crowd noise, cash registers, footsteps</li>
-                    <li>**Playgrounds:** Screaming children, equipment sounds, echoing voices</li>
+                    <li><strong>Birthday Parties:</strong> Music, laughter, balloons popping, excited voices</li>
+                    <li><strong>Restaurants:</strong> Clattering dishes, multiple conversations, background music</li>
+                    <li><strong>Malls/Shops:</strong> Announcements, crowd noise, cash registers, footsteps</li>
+                    <li><strong>Playgrounds:</strong> Screaming children, equipment sounds, echoing voices</li>
                 </ul>
 
                 <h3>Educational Environments</h3>
                 <ul>
-                    <li>**School Cafeterias:** 85-95 decibels of echoing voices and clattering trays</li>
-                    <li>**Assemblies/Auditoriums:** Microphone feedback, applause, group singing</li>
-                    <li>**Gymnasiums:** Echoing voices, bouncing balls, whistles blowing</li>
-                    <li>**Hallways:** Foot traffic, locker slamming, group conversations</li>
+                    <li><strong>School Cafeterias:</strong> 85-95 decibels of echoing voices and clattering trays</li>
+                    <li><strong>Assemblies/Auditoriums:</strong> Microphone feedback, applause, group singing</li>
+                    <li><strong>Gymnasiums:</strong> Echoing voices, bouncing balls, whistles blowing</li>
+                    <li><strong>Hallways:</strong> Foot traffic, locker slamming, group conversations</li>
                 </ul>
 
                 <h3>Public Venues</h3>
                 <ul>
-                    <li>**Airports:** Announcements, luggage carts, crying babies, jet engines</li>
-                    <li>**Movie Theaters:** Commercials, previews, surround sound systems</li>
-                    <li>**Churches/Temples:** Organ music, group singing, echo effects</li>
-                    <li>**Sports Events:** Crowd cheering, announcements, music, whistles</li>
+                    <li><strong>Airports:</strong> Announcements, luggage carts, crying babies, jet engines</li>
+                    <li><strong>Movie Theaters:</strong> Commercials, previews, surround sound systems</li>
+                    <li><strong>Churches/Temples:</strong> Organ music, group singing, echo effects</li>
+                    <li><strong>Sports Events:</strong> Crowd cheering, announcements, music, whistles</li>
                 </ul>
 
                 <h2>Recognizing Noise Sensitivity Patterns</h2>
@@ -559,18 +794,18 @@
 
                 <h3>Dismissal and Minimization</h3>
                 <ul>
-                    <li>**"It's not that loud":** Invalidates genuine sensory experiences</li>
-                    <li>**"Everyone deals with it":** Ignores individual neurological differences</li>
-                    <li>**"You're being dramatic":** Damages trust and communication</li>
-                    <li>**"Just ignore it":** Ignores the neurological reality of processing</li>
+                    <li><strong>"It's not that loud":</strong> Invalidates genuine sensory experiences</li>
+                    <li><strong>"Everyone deals with it":</strong> Ignores individual neurological differences</li>
+                    <li><strong>"You're being dramatic":</strong> Damages trust and communication</li>
+                    <li><strong>"Just ignore it":</strong> Ignores the neurological reality of processing</li>
                 </ul>
 
                 <h3>Forced Exposure Tactics</h3>
                 <ul>
-                    <li>**Gradual Desensitization:** Often increases anxiety without addressing root causes</li>
-                    <li>**Exposure Therapy:** Can traumatize rather than acclimate sensitive individuals</li>
-                    <li>**Peer Pressure:** Creates shame around legitimate sensory needs</li>
-                    <li>**Consequence-Based:** Punishes neurological responses rather than supporting coping</li>
+                    <li><strong>Gradual Desensitization:</strong> Often increases anxiety without addressing root causes</li>
+                    <li><strong>Exposure Therapy:</strong> Can traumatize rather than acclimate sensitive individuals</li>
+                    <li><strong>Peer Pressure:</strong> Creates shame around legitimate sensory needs</li>
+                    <li><strong>Consequence-Based:</strong> Punishes neurological responses rather than supporting coping</li>
                 </ul>
 
                 <h2>Effective Support Strategies</h2>
@@ -578,26 +813,26 @@
 
                 <h3>Prevention Through Preparation</h3>
                 <ul>
-                    <li>**Environmental Research:** Scout venues for noise levels before visiting</li>
-                    <li>**Timing Strategies:** Attend events during quieter periods</li>
-                    <li>**Alternative Arrangements:** Request quieter seating or spaces</li>
-                    <li>**Escape Planning:** Identify quiet areas and exit routes in advance</li>
+                    <li><strong>Environmental Research:</strong> Scout venues for noise levels before visiting</li>
+                    <li><strong>Timing Strategies:</strong> Attend events during quieter periods</li>
+                    <li><strong>Alternative Arrangements:</strong> Request quieter seating or spaces</li>
+                    <li><strong>Escape Planning:</strong> Identify quiet areas and exit routes in advance</li>
                 </ul>
 
                 <h3>Protective Equipment</h3>
                 <ul>
-                    <li>**Noise-Canceling Headphones:** Professional-grade options for older children</li>
-                    <li>**Earplugs:** Disposable or reusable options for various settings</li>
-                    <li>**Musicians' Earplugs:** Flat-frequency reduction for music events</li>
-                    <li>**Personal Sound Amplifiers:** Devices that enhance desired sounds while reducing background noise</li>
+                    <li><strong>Noise-Canceling Headphones:</strong> Professional-grade options for older children</li>
+                    <li><strong>Earplugs:</strong> Disposable or reusable options for various settings</li>
+                    <li><strong>Musicians' Earplugs:</strong> Flat-frequency reduction for music events</li>
+                    <li><strong>Personal Sound Amplifiers:</strong> Devices that enhance desired sounds while reducing background noise</li>
                 </ul>
 
                 <h3>Environmental Modifications</h3>
                 <ul>
-                    <li>**Seating Selection:** Choose quieter areas away from sound sources</li>
-                    <li>**Time Management:** Arrive early or leave before peak noise periods</li>
-                    <li>**Physical Barriers:** Use walls, corners, or furniture to reduce sound exposure</li>
-                    <li>**Alternative Activities:** Provide quiet options during noisy events</li>
+                    <li><strong>Seating Selection:</strong> Choose quieter areas away from sound sources</li>
+                    <li><strong>Time Management:</strong> Arrive early or leave before peak noise periods</li>
+                    <li><strong>Physical Barriers:</strong> Use walls, corners, or furniture to reduce sound exposure</li>
+                    <li><strong>Alternative Activities:</strong> Provide quiet options during noisy events</li>
                 </ul>
 
                 <div class="highlight-box">
@@ -610,26 +845,26 @@
 
                 <h3>Self-Advocacy Development</h3>
                 <ul>
-                    <li>**Communication Scripts:** Teach phrases for requesting accommodations</li>
-                    <li>**Boundary Setting:** Help children identify and express their limits</li>
-                    <li>**Alternative Requests:** Provide options for quieter participation</li>
-                    <li>**Professional Support:** Practice requesting accommodations in safe environments</li>
+                    <li><strong>Communication Scripts:</strong> Teach phrases for requesting accommodations</li>
+                    <li><strong>Boundary Setting:</strong> Help children identify and express their limits</li>
+                    <li><strong>Alternative Requests:</strong> Provide options for quieter participation</li>
+                    <li><strong>Professional Support:</strong> Practice requesting accommodations in safe environments</li>
                 </ul>
 
                 <h3>Regulation Techniques</h3>
                 <ul>
-                    <li>**Breathing Exercises:** Controlled breathing to reduce stress responses</li>
-                    <li>**Grounding Strategies:** Focus on physical sensations to anchor attention</li>
-                    <li>**Mindfulness Practices:** Present-moment awareness to reduce anxiety</li>
-                    <li>**Recovery Rituals:** Established routines for post-event decompression</li>
+                    <li><strong>Breathing Exercises:</strong> Controlled breathing to reduce stress responses</li>
+                    <li><strong>Grounding Strategies:</strong> Focus on physical sensations to anchor attention</li>
+                    <li><strong>Mindfulness Practices:</strong> Present-moment awareness to reduce anxiety</li>
+                    <li><strong>Recovery Rituals:</strong> Established routines for post-event decompression</li>
                 </ul>
 
                 <h3>Stress Reduction Methods</h3>
                 <ul>
-                    <li>**Predictable Routines:** Consistent pre- and post-event schedules</li>
-                    <li>**Comfort Items:** Preferred objects for emotional regulation</li>
-                    <li>**Sensory Tools:** Fidget items or weighted accessories for grounding</li>
-                    <li>**Recovery Time:** Scheduled quiet periods after noisy experiences</li>
+                    <li><strong>Predictable Routines:</strong> Consistent pre- and post-event schedules</li>
+                    <li><strong>Comfort Items:</strong> Preferred objects for emotional regulation</li>
+                    <li><strong>Sensory Tools:</strong> Fidget items or weighted accessories for grounding</li>
+                    <li><strong>Recovery Time:</strong> Scheduled quiet periods after noisy experiences</li>
                 </ul>
 
                 <h2>School-Based Accommodations</h2>
@@ -637,26 +872,26 @@
 
                 <h3>Classroom Supports</h3>
                 <ul>
-                    <li>**Seating Arrangements:** Strategic positioning away from noise sources</li>
-                    <li>**Quiet Spaces:** Designated areas for sensory breaks</li>
-                    <li>**Alternative Testing:** Quieter environments for assessments</li>
-                    <li>**Technology Tools:** Personal amplification or noise reduction devices</li>
+                    <li><strong>Seating Arrangements:</strong> Strategic positioning away from noise sources</li>
+                    <li><strong>Quiet Spaces:</strong> Designated areas for sensory breaks</li>
+                    <li><strong>Alternative Testing:</strong> Quieter environments for assessments</li>
+                    <li><strong>Technology Tools:</strong> Personal amplification or noise reduction devices</li>
                 </ul>
 
                 <h3>Special Event Planning</h3>
                 <ul>
-                    <li>**Advance Notice:** Early warning about noisy activities or assemblies</li>
-                    <li>**Alternative Participation:** Options for quieter involvement</li>
-                    <li>**Escape Routes:** Permission to leave overwhelming situations</li>
-                    <li>**Recovery Time:** Scheduled breaks after intense auditory experiences</li>
+                    <li><strong>Advance Notice:</strong> Early warning about noisy activities or assemblies</li>
+                    <li><strong>Alternative Participation:</strong> Options for quieter involvement</li>
+                    <li><strong>Escape Routes:</strong> Permission to leave overwhelming situations</li>
+                    <li><strong>Recovery Time:</strong> Scheduled breaks after intense auditory experiences</li>
                 </ul>
 
                 <h3>Communication Protocols</h3>
                 <ul>
-                    <li>**Teacher Education:** Inform educators about auditory sensitivity needs</li>
-                    <li>**Emergency Plans:** Clear procedures for overwhelming situations</li>
-                    <li>**Regular Check-ins:** Ongoing assessment of accommodation effectiveness</li>
-                    <li>**Documentation:** Record successful strategies and needed adjustments</li>
+                    <li><strong>Teacher Education:</strong> Inform educators about auditory sensitivity needs</li>
+                    <li><strong>Emergency Plans:</strong> Clear procedures for overwhelming situations</li>
+                    <li><strong>Regular Check-ins:</strong> Ongoing assessment of accommodation effectiveness</li>
+                    <li><strong>Documentation:</strong> Record successful strategies and needed adjustments</li>
                 </ul>
 
                 <div class="highlight-box">
@@ -669,26 +904,26 @@
 
                 <h3>Physical Environment</h3>
                 <ul>
-                    <li>**Soundproofing:** Heavy curtains, rugs, and soft furnishings to absorb noise</li>
-                    <li>**Dedicated Spaces:** Specific rooms or areas designated as quiet zones</li>
-                    <li>**Technology Solutions:** White noise machines or sound masking systems</li>
-                    <li>**Visual Barriers:** Doors or partitions to reduce visual noise</li>
+                    <li><strong>Soundproofing:</strong> Heavy curtains, rugs, and soft furnishings to absorb noise</li>
+                    <li><strong>Dedicated Spaces:</strong> Specific rooms or areas designated as quiet zones</li>
+                    <li><strong>Technology Solutions:</strong> White noise machines or sound masking systems</li>
+                    <li><strong>Visual Barriers:</strong> Doors or partitions to reduce visual noise</li>
                 </ul>
 
                 <h3>Family Communication</h3>
                 <ul>
-                    <li>**Noise Awareness:** Family education about sensitivity needs</li>
-                    <li>**Quiet Hours:** Established times for reduced household noise</li>
-                    <li>**Alternative Activities:** Quieter options for family entertainment</li>
-                    <li>**Respect Protocols:** Clear boundaries around noise expectations</li>
+                    <li><strong>Noise Awareness:</strong> Family education about sensitivity needs</li>
+                    <li><strong>Quiet Hours:</strong> Established times for reduced household noise</li>
+                    <li><strong>Alternative Activities:</strong> Quieter options for family entertainment</li>
+                    <li><strong>Respect Protocols:</strong> Clear boundaries around noise expectations</li>
                 </ul>
 
                 <h3>Recovery Systems</h3>
                 <ul>
-                    <li>**Decompression Routines:** Structured time for sensory processing</li>
-                    <li>**Comfort Items:** Preferred objects for emotional regulation</li>
-                    <li>**Sensory Tools:** Fidget items or weighted accessories for grounding</li>
-                    <li>**Recovery Time:** Scheduled quiet periods after noisy experiences</li>
+                    <li><strong>Decompression Routines:</strong> Structured time for sensory processing</li>
+                    <li><strong>Comfort Items:</strong> Preferred objects for emotional regulation</li>
+                    <li><strong>Sensory Tools:</strong> Fidget items or weighted accessories for grounding</li>
+                    <li><strong>Recovery Time:</strong> Scheduled quiet periods after noisy experiences</li>
                 </ul>
 
                 <h2>When to Seek Professional Support</h2>
@@ -735,40 +970,104 @@
                     <p>Create a family noise management plan that includes everyone's auditory needs. When sound sensitivity is normalized and accommodated, family energy can focus on connection rather than daily battles over environmental stressors.</p>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <div class="article-sidebar">
+        <aside class="article-sidebar">
             <div class="sidebar-widget">
-                <h3>Is your child 2e?</h3>
-                <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
-                <a href="quiz.html" class="btn">Take the Free Quiz</a>
+                <h3>Understand Your Child's Sensory Profile</h3>
+                <p>Our AI assessment identifies auditory patterns and provides targeted strategies.</p>
+                <a href="gifted-assessment-tool.html" class="btn">
+                    <i class="fas fa-microchip"></i> Start Free Assessment
+                </a>
             </div>
-        </div>
+        </aside>
     </div>
 
+    <!-- Read Next Section -->
     <section class="read-next">
         <div class="container">
             <h2>Read Next</h2>
             <div class="read-next-grid">
-                <a href="classroom-overload.html" class="read-next-card">
-                    <h3>Classroom Overload</h3>
-                    <p>Why 2 PM is the danger zone for sensory overwhelm.</p>
-                </a>
-                <a href="the-sock-war.html" class="read-next-card">
+                <a href="sock-war.html" class="read-next-card">
                     <h3>The Sock War</h3>
                     <p>Why seams feel like razor blades to sensitive children.</p>
+                </a>
+                <a href="seekers-vs-avoiders.html" class="read-next-card">
+                    <h3>Seekers vs. Avoiders</h3>
+                    <p>Does your child crash into walls or hide under tables?</p>
                 </a>
             </div>
         </div>
     </section>
-    
-    <div id="footer-placeholder"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        fetch('footer.html').then(response => response.text()).then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
         });
     </script>
-    <script src="script.js"></script>
 </body>
-
 </html>
