@@ -814,50 +814,54 @@
                 <h3 class="cta-section__title">Stop the Meltdowns Tonight.</h3>
                 <p class="cta-section__subtitle">Download our <strong>Free Emergency Reset Kit</strong>. It's the 4-step protocol to de-escalate yelling without bribing or losing your mind.</p>
                 
-               <form class="cta-section__form" id="freeKitForm">
-    <input 
-        type="email" 
-        id="freeKitEmail"
-        class="cta-section__input"
-        placeholder="Enter your email address" 
-        required
-        aria-label="Email address"
-    >
-    <button type="submit" class="btn btn-primary">
-        <i class="fas fa-download"></i> Get The Kit
-    </button>
-</form>
+                <form class="cta-section__form" id="freeKitForm">
+                    <input 
+                        type="email" 
+                        id="freeKitEmail"
+                        class="cta-section__input"
+                        placeholder="Enter your email address" 
+                        required
+                        aria-label="Email address"
+                    >
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Get The Kit
+                    </button>
+                </form>
 
-<p class="cta-section__note">No spam. Unsubscribe anytime. We respect your inbox.</p>
+                <p class="cta-section__note">No spam. Unsubscribe anytime. We respect your inbox.</p>
 
-<script>
-    document.getElementById('freeKitForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Stops the page from refreshing
-        
-        // 1. (Optional) In the future, send this email to your backend/Mailchimp here
-        const email = document.getElementById('freeKitEmail').value;
-        console.log("Lead captured:", email);
+                <script>
+                    document.getElementById('freeKitForm').addEventListener('submit', function(e) {
+                        e.preventDefault(); // Stops the page from refreshing
+                        
+                        // 1. (Optional) In the future, send this email to your backend/Mailchimp here
+                        const email = document.getElementById('freeKitEmail').value;
+                        console.log("Lead captured:", email);
 
-        // 2. Trigger the PDF Download
-        const link = document.createElement('a');
-        // Ensure this path matches where you put the PDF file
-        link.href = 'downloads/EMERGENCY REGULATION KIT.pdf'; 
-        link.download = 'Emergency_Regulation_Kit.pdf'; // The name the user sees
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        // 3. User Feedback
-        const btn = this.querySelector('button');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Download Starting...';
-        
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            document.getElementById('freeKitEmail').value = ''; // Clear input
-        }, 3000);
-    });
-</script>
+                        // 2. Trigger the PDF Download
+                        const link = document.createElement('a');
+                        // Ensure this path matches where you put the PDF file
+                        link.href = 'downloads/EMERGENCY REGULATION KIT.pdf'; 
+                        link.download = 'Emergency_Regulation_Kit.pdf'; // The name the user sees
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // 3. User Feedback
+                        const btn = this.querySelector('button');
+                        const originalText = btn.innerHTML;
+                        btn.innerHTML = '<i class="fas fa-check"></i> Download Starting...';
+                        
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            document.getElementById('freeKitEmail').value = ''; // Clear input
+                        }, 3000);
+                    });
+                </script>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
