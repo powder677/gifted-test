@@ -12,7 +12,6 @@
 
    <style>
       /* --- DIAGRAM SPECIFIC STYLES --- */
-
       .diagram-section {
          padding: 80px 24px;
          background: linear-gradient(180deg, #FFFFFF 0%, var(--color-background) 100%);
@@ -227,42 +226,209 @@
 
 <body>
 
-   <!-- 🔗 SHARED HEADER -->
-   <div id="site-header"></div>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Knowledge Base</a></li>
+                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="resources.html">Knowledge Base</a>
+            <a href="emergency-reset-kit-sales-page.html">Get Emergency Reset Kit</a>
+        </nav>
+    </header>
 
-   <main>
+    <main>
+      <section class="diagram-section">
+         <div class="container">
+            <div class="diagram-header">
+               <h1>The Parent-Child "Sync" Protocol</h1>
+               <p>We don't just assess your child. We map the invisible friction between your parenting style and their operating system—then fix it with 20 minutes of specialized play a week.</p>
+            </div>
 
-      <!-- ✅ YOUR ORIGINAL CONTENT (UNCHANGED) -->
-      <!-- Everything from your diagram section through CTA stays the same -->
+            <div class="process-visual">
+               <div class="process-line"></div>
 
-      <!-- (Content omitted here for brevity in explanation, but INCLUDED above verbatim) -->
+               <div class="process-step">
+                  <div class="step-content">
+                     <h3>Step 1: The Dual Diagnostic</h3>
+                     <p>Most assessments only look at the child. We look at the <strong>dynamic</strong>.</p>
+                     <ul style="margin-top: 16px; padding-left: 20px; color: var(--color-text-muted);">
+                        <li><strong>Parent:</strong> You take a 15-min assessment on your expectations, triggers, and style.</li>
+                        <li><strong>Child:</strong> Takes a gamified, image-based quiz (no wrong answers).</li>
+                     </ul>
+                  </div>
+                  <div class="step-marker">1</div>
+                  <div class="step-visual">
+                     <div class="dual-inputs">
+                        <div class="input-card input-card--parent">
+                           <i class="fas fa-user-friends fa-2x"></i><br>
+                           <strong>Parent Profile</strong>
+                        </div>
+                        <div class="input-card input-card--child">
+                           <i class="fas fa-child fa-2x"></i><br>
+                           <strong>Child Profile</strong>
+                        </div>
+                     </div>
+                  </div>
+               </div>
 
-   </main>
+               <div class="process-step" style="flex-direction: row-reverse;">
+                  <div class="step-content">
+                     <h3>Step 2: The Friction Heat Map</h3>
+                     <p>Our AI overlays both profiles to identify exactly where the "clash" happens.</p>
+                     <p style="font-size: 0.95rem; margin-top: 12px; color: var(--color-primary);">
+                        <i class="fas fa-exclamation-circle" style="color: var(--color-accent);"></i> Example: Your high need for "Order" vs. their high need for "Novelty" = Morning Routine Meltdowns.
+                     </p>
+                  </div>
+                  <div class="step-marker">2</div>
+                  <div class="step-visual">
+                     <div class="heatmap-graphic">
+                        <div style="font-size: 0.8rem; font-weight: 700; color: #666;">EMOTIONAL REACTIVITY GAP</div>
+                        <div class="heat-bar">
+                           <div class="heat-fill heat-fill-1"></div>
+                        </div>
+                        <div style="font-size: 0.8rem; font-weight: 700; color: #666; margin-top: 4px;">SENSORY THRESHOLD GAP</div>
+                        <div class="heat-bar">
+                           <div class="heat-fill heat-fill-2"></div>
+                        </div>
+                        <div style="font-size: 0.8rem; font-weight: 700; color: #666; margin-top: 4px;">EXECUTIVE FUNCTION SYNC</div>
+                        <div class="heat-bar">
+                           <div class="heat-fill heat-fill-3"></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
 
-   <!-- 🔗 SHARED FOOTER -->
-   <div id="site-footer"></div>
+               <div class="process-step">
+                  <div class="step-content">
+                     <h3>Step 3: The "Stealth" Packet</h3>
+                     <p>We generate a personalized activity packet delivered twice a week. </p>
+                     <p><strong>The Subconscious Method:</strong> We embed emotional regulation strategies into logic puzzles and stories featuring people they love. They think they're solving a mystery with their best friend; actually, they're practicing frustration tolerance.</p>
+                  </div>
+                  <div class="step-marker">3</div>
+                  <div class="step-visual">
+                     <div class="packet-preview">
+                        <strong>MISSION: THE MISSING LEGO</strong><br><br>
+                        <span class="highlight-name">Uncle Mike</span> dropped his keys in the lava pit! You and <span class="highlight-name">Best Friend Leo</span> need to build a bridge.<br><br>
+                        <em>Challenge: You only have 3 blocks. How do you calm down to find the secret 4th block?</em>
+                     </div>
+                  </div>
+               </div>
 
-   <!-- HEADER + FOOTER INJECTION -->
-   <script>
-      fetch('header.html')
-         .then(res => res.text())
-         .then(html => document.getElementById('site-header').innerHTML = html);
+            </div>
 
-      fetch('footer.html')
-         .then(res => res.text())
-         .then(html => document.getElementById('site-footer').innerHTML = html);
-   </script>
+            <div class="pricing-section" id="pricing">
+               <div class="pricing-card">
+                  <h2>The Navigator Membership</h2>
+                  <div class="price-tag">$99<span class="price-sub">/month</span></div>
+                  <p style="opacity: 0.9; margin-bottom: 24px;">Complete family operating system upgrade.</p>
 
-   <!-- MOBILE MENU LOGIC -->
-   <script>
-      function toggleMenu() {
-         const menu = document.getElementById('mobileMenu');
-         const icon = document.querySelector('.menu-toggle i');
-         menu.classList.toggle('active');
-         icon.classList.toggle('fa-bars');
-         icon.classList.toggle('fa-times');
-      }
-   </script>
+                  <ul class="feature-list" style="text-align: left; margin: 32px 0; list-style: none; padding: 0;">
+                     <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <strong>Initial "Deep Dive" Assessment</strong> (Parent & Child)</li>
+                     <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <strong>Monthly Friction Heat Map</strong> updates</li>
+                     <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <strong>8x Personalized "Stealth" Packets</strong> per month</li>
+                     <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <strong>Names & Interests Integration</strong> (We use their friends' names!)</li>
+                     <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <strong>Progress Tracking Dashboard</strong></li>
+                  </ul>
 
+                  <a href="checkout.html" class="btn btn-accent btn-large" style="width: 100%; background: var(--color-accent); color: var(--color-primary); padding: 18px 36px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                     Start Your Diagnostic
+                  </a>
+                  <p style="font-size: 0.85rem; margin-top: 16px; opacity: 0.7;">30-day money-back guarantee. Cancel anytime.</p>
+               </div>
+            </div>
+
+         </div>
+      </section>
+
+      <section class="cta-section" style="padding: 100px 24px; background-color: var(--color-background);">
+         <div class="container" style="text-align: center;">
+            <h2>Not ready to subscribe?</h2>
+            <p>Get our "Emergency Reset Kit" for free to see our strategies in action.</p>
+            <br>
+            <a href="emergency-reset-kit-sales-page.html" class="btn btn-secondary" style="background: var(--color-primary); color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px;">Download Free Kit</a>
+         </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>
+                        Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.
+                    </p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                        <li><a href="resources.html">Knowledge Base</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
+            
+            // Toggle icon
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>
