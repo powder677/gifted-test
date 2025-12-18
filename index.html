@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Navigator Kids AI - AI-powered tools and strategies for parents of exceptional and gifted children.">
     <title>Navigator Kids AI™ - The Operating System for Exceptional Children</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -16,7 +17,8 @@
             --color-secondary: #FFFFFF;
             --color-accent: #E9C46A;
             --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
+            /* UPDATED: Darkened slightly for better accessibility/contrast against white text */
+            --color-highlight: #1F7A6F; 
             --color-highlight-dark: #238579;
             --color-text: #2F2F2F;
             --color-text-muted: #666666;
@@ -38,6 +40,8 @@
 
         html {
             scroll-behavior: smooth;
+            /* FIX: Prevents the sticky header from covering content when scrolling */
+            scroll-padding-top: 90px;
         }
 
         body {
@@ -699,17 +703,17 @@
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="#">
                     <i class="fas fa-compass"></i>
                     Navigator <span>Kids AI</span>
                 </a>
             </div>
             <nav class="desktop-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="methodology.html">The Method</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Knowledge Base</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">The Method</a></li>
+                    <li><a href="#">AI Assessment</a></li>
+                    <li><a href="#">Knowledge Base</a></li>
                     <li><a href="#free-kit" class="nav-btn-primary">Free Reset Kit</a></li>
                 </ul>
             </nav>
@@ -718,10 +722,10 @@
             </button>
         </div>
         <nav class="mobile-nav" id="mobileMenu">
-            <a href="index.html">Home</a>
-            <a href="methodology.html">The Method</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
-            <a href="resources.html">Knowledge Base</a>
+            <a href="#">Home</a>
+            <a href="#">The Method</a>
+            <a href="#">AI Assessment</a>
+            <a href="#">Knowledge Base</a>
             <a href="#free-kit">Free Reset Kit</a>
         </nav>
     </header>
@@ -739,7 +743,7 @@
                 </p>
                 
                 <div class="hero__cta-group">
-                    <a href="gifted-assessment-tool.html" class="btn btn-primary btn-large">
+                    <a href="#" class="btn btn-primary btn-large">
                         <i class="fas fa-microchip"></i> Start AI Assessment
                     </a>
                     <a href="#free-kit" class="btn btn-secondary btn-large">
@@ -840,9 +844,13 @@
 
                         // 2. Trigger the PDF Download
                         const link = document.createElement('a');
-                        // Ensure this path matches where you put the PDF file
-                        link.href = 'downloads/EMERGENCY REGULATION KIT.pdf'; 
-                        link.download = 'Emergency_Regulation_Kit.pdf'; // The name the user sees
+                        
+                        // --- IMPORTANT FIX: USING A DUMMY PDF FOR TESTING ---
+                        // To go live: Delete the line below and uncomment the local path
+                        link.href = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+                        // link.href = 'downloads/EMERGENCY REGULATION KIT.pdf'; 
+                        
+                        link.download = 'Emergency_Regulation_Kit.pdf'; 
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
@@ -874,10 +882,10 @@
                 <div class="footer__links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="methodology.html">The Method</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Knowledge Base</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">The Method</a></li>
+                        <li><a href="#">AI Assessment</a></li>
+                        <li><a href="#">Knowledge Base</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
