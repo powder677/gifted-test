@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Emergency Reset Kit | Navigator Kids AI™</title>
+    <meta name="description" content="Get the free Emergency Regulation Kit - a science-backed system for when your child is in meltdown mode. Instant PDF download.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* === NAVIGATOR BRAND VARIABLES === */
+        :root {
+            --color-primary: #1B365D;
+            --color-primary-dark: #132845;
+            --color-primary-light: #2A4A7A;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
+            --color-highlight-dark: #238579;
+            --color-highlight-light: #E8F4F2;
+            --color-text: #2F2F2F;
+            --color-text-muted: #666666;
+            --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
+            --color-danger: #dc3545;
+            --color-danger-light: #fff5f5;
+            
+            --border-radius: 8px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 24px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
+            --transition: all 0.3s ease;
+        }
+
+        /* === RESET & BASE === */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--color-text);
+            line-height: 1.7;
+            background-color: var(--color-secondary);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* === NAVIGATION === */
+        .navbar {
+            background-color: var(--color-secondary);
+            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar__logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar__logo i {
+            color: var(--color-highlight);
+        }
+
+        .navbar__logo span {
+            color: var(--color-highlight);
+        }
+
+        /* === HERO === */
+        .hero {
+            background: linear-gradient(135deg, var(--color-danger) 0%, #c82333 100%);
+            color: white;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero__inner {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+            .hero__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero__badge i {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero__title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .hero__subtitle {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .hero__points {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .hero__points li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero__points {
+                display: inline-block;
+                text-align: left;
+            }
+        }
+
+        .hero__points li i {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+        }
+
+        /* === FORM CARD === */
+        .form-card {
+            background: white;
+            border-radius: var(--border-radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .form-card__header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .form-card__icon {
+            width: 64px;
+            height: 64px;
+            background: var(--color-danger-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 16px;
+        }
+
+        .form-card__title {
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-card__subtitle {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-highlight);
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #a0aec0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        .btn--danger {
+            background: var(--color-danger);
+            color: white;
+            box-shadow: 0 4px 14px rgba(220, 53, 69, 0.4);
+        }
+
+        .btn--danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
+        }
+
+        .form-card__note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-top: 16px;
+        }
+
+        .form-card__note i {
+            color: var(--color-highlight);
+            margin-right: 6px;
+        }
+
+        /* === WHAT'S INSIDE === */
+        .whats-inside {
+            padding: 100px 0;
+            background: var(--color-background);
+        }
+
+        .whats-inside__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .whats-inside__title {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .whats-inside__subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .component-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-left: 4px solid var(--color-highlight);
+        }
+
+        .component-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .component-card__header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .component-card__number {
+            width: 48px;
+            height: 48px;
+            background: var(--color-danger);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .component-card__title {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .component-card__status {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-danger);
+        }
+
+        .component-card__desc {
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .component-card__when {
+            background: var(--color-background);
+            padding: 12px 16px;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+
+        .component-card__when strong {
+            color: var(--color-primary);
+        }
+
+        /* === EXERCISES PREVIEW === */
+        .exercises {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .exercises__header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .exercises__title {
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+        }
+
+        .exercises__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .exercises__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .exercises__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .exercise-card {
+            background: var(--color-background);
+            border-radius: var(--border-radius-lg);
+            padding: 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .exercise-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .exercise-card__name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .exercise-card__target {
+            font-size: 0.8rem;
+            color: var(--color-highlight);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* === STRATEGY DECK === */
+        .deck {
+            padding: 80px 0;
+            background: var(--color-background);
+        }
+
+        .deck__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .deck__inner {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .deck__content h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .deck__content p {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .deck__categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .deck__category {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .deck__category i {
+            color: var(--color-highlight);
+        }
+
+        .deck__visual {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .deck__card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .deck__card:hover {
+            transform: rotate(-2deg) scale(1.02);
+        }
+
+        .deck__card:nth-child(2):hover {
+            transform: rotate(2deg) scale(1.02);
+        }
+
+        .deck__card-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .deck__card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .deck__card-category {
+            font-size: 0.8rem;
+            color: var(--color-highlight);
+            font-weight: 600;
+        }
+
+        /* === SCIENCE === */
+        .science {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: white;
+        }
+
+        .science__inner {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .science__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .science h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .science p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .science__quote {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--color-accent);
+            padding: 24px 32px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .science__quote strong {
+            color: var(--color-accent);
+        }
+
+        /* === FINAL CTA === */
+        .final-cta {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .final-cta__inner {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .final-cta__icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+
+        .final-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 32px;
+        }
+
+        .final-cta__form {
+            background: var(--color-background);
+            padding: 32px;
+            border-radius: var(--border-radius-xl);
+        }
+
+        .final-cta__form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 500px) {
+            .final-cta__form .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .final-cta__guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .final-cta__guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .final-cta__guarantee-item i {
+            color: var(--color-highlight);
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background: var(--color-primary-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer__logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer__logo i {
+            color: var(--color-highlight);
+        }
+
+        .footer__links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: white;
+        }
+
+        .footer__bottom {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* === THANK YOU STATE === */
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .thank-you.active {
+            display: block;
+        }
+
+        .thank-you__icon {
+            font-size: 4rem;
+            color: var(--color-highlight);
+            margin-bottom: 20px;
+        }
+
+        .thank-you h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .thank-you p {
+            color: var(--color-text-muted);
+            margin-bottom: 24px;
+        }
+
+        .btn--highlight {
+            background: var(--color-highlight);
+            color: white;
+        }
+
+        .btn--highlight:hover {
+            background: var(--color-highlight-dark);
+        }
+
+        .form-state {
+            display: block;
+        }
+
+        .form-state.hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <a href="index.html" class="navbar__logo">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>™
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO WITH FORM -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__inner">
+                <div class="hero__content">
+                    <div class="hero__badge">
+                        <i class="fas fa-bolt"></i>
+                        FREE EMERGENCY RESOURCE
+                    </div>
+                    <h1 class="hero__title">
+                        When Your Child Is In Meltdown Mode, You Need a System That Works.
+                    </h1>
+                    <p class="hero__subtitle">
+                        The Emergency Regulation Kit is a science-backed response system for moments when behavior is driven by nervous system overload — not choice.
+                    </p>
+                    <ul class="hero__points">
+                        <li><i class="fas fa-check-circle"></i> Rapid Response Protocol for active dysregulation</li>
+                        <li><i class="fas fa-check-circle"></i> Co-Regulation Scripts that actually work</li>
+                        <li><i class="fas fa-check-circle"></i> 6 Physiological Exercises for recovery</li>
+                        <li><i class="fas fa-check-circle"></i> 12-Card Strategy Deck for skill building</li>
+                    </ul>
+                </div>
+
+                <div class="form-card">
+                    <div class="form-state" id="formState">
+                        <div class="form-card__header">
+                            <div class="form-card__icon">🚨</div>
+                            <h2 class="form-card__title">Get Instant Access</h2>
+                            <p class="form-card__subtitle">Download the complete PDF kit free</p>
+                        </div>
+
+                        <form id="downloadForm">
+                            <div class="form-group">
+                                <label for="parentName">Your First Name</label>
+                                <input type="text" id="parentName" name="parentName" placeholder="e.g., Sarah" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="childAge">Child's Age</label>
+                                <input type="number" id="childAge" name="childAge" placeholder="e.g., 8" min="3" max="18" required>
+                            </div>
+                            <button type="submit" class="btn btn--danger">
+                                <i class="fas fa-download"></i> Send Me the Free Kit
+                            </button>
+                        </form>
+
+                        <p class="form-card__note">
+                            <i class="fas fa-lock"></i>
+                            No spam. Unsubscribe anytime.
+                        </p>
+                    </div>
+
+                    <div class="thank-you" id="thankYou">
+                        <div class="thank-you__icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Your Kit Is Ready!</h3>
+                        <p>Click below to download your Emergency Regulation Kit.</p>
+                        <a href="EMERGENCY_REGULATION_KIT.pdf" download class="btn btn--highlight">
+                            <i class="fas fa-file-pdf"></i> Download PDF Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT'S INSIDE -->
+    <section class="whats-inside">
+        <div class="container">
+            <div class="whats-inside__header">
+                <h2 class="whats-inside__title">What's Inside the Kit</h2>
+                <p class="whats-inside__subtitle">Four components designed to restore safety first. Understanding comes later.</p>
+            </div>
+
+            <div class="components-grid">
+                <div class="component-card">
+                    <div class="component-card__header">
+                        <div class="component-card__number">1</div>
+                        <div>
+                            <h3 class="component-card__title">Rapid Response Protocol</h3>
+                            <span class="component-card__status">Emergency Reference</span>
+                        </div>
+                    </div>
+                    <p class="component-card__desc">
+                        A step-by-step sequence to stabilize the nervous system during active meltdowns. Read only the bolded lines. Follow the sequence. No thinking required.
+                    </p>
+                    <div class="component-card__when">
+                        <strong>When to use:</strong> During active dysregulation when the thinking brain is offline.
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-card__header">
+                        <div class="component-card__number">2</div>
+                        <div>
+                            <h3 class="component-card__title">Co-Regulation Scripting</h3>
+                            <span class="component-card__status">Acute Management</span>
+                        </div>
+                    </div>
+                    <p class="component-card__desc">
+                        Exact phrases to say when emotions are high and verbal processing is limited. Short phrases. Long pauses. Expect no response. Signal safety through tone.
+                    </p>
+                    <div class="component-card__when">
+                        <strong>When to use:</strong> When you need words but your child can't process complex language.
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-card__header">
+                        <div class="component-card__number">3</div>
+                        <div>
+                            <h3 class="component-card__title">Physiological Exercises</h3>
+                            <span class="component-card__status">Recovery Support</span>
+                        </div>
+                    </div>
+                    <p class="component-card__desc">
+                        Six body-based exercises to help complete the stress response cycle. Each targets a specific regulation system: proprioceptive, respiratory, sensory, and somatic.
+                    </p>
+                    <div class="component-card__when">
+                        <strong>When to use:</strong> After the body begins to settle — demonstrate first, offer, do not force.
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-card__header">
+                        <div class="component-card__number">4</div>
+                        <div>
+                            <h3 class="component-card__title">Regulation Strategy Deck</h3>
+                            <span class="component-card__status">Skill Building</span>
+                        </div>
+                    </div>
+                    <p class="component-card__desc">
+                        12 printable cards covering Breath, Body, Sensory, and Grounding techniques. Practice one card at a time during calm moments to build long-term capacity.
+                    </p>
+                    <div class="component-card__when">
+                        <strong>When to use:</strong> Only during calm moments — never introduce new cards during dysregulation.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXERCISES PREVIEW -->
+    <section class="exercises">
+        <div class="container">
+            <div class="exercises__header">
+                <h2 class="exercises__title">6 Physiological Regulation Exercises Included</h2>
+                <p style="color: var(--color-text-muted);">Each targets a specific biological system</p>
+            </div>
+
+            <div class="exercises__grid">
+                <div class="exercise-card">
+                    <div class="exercise-card__icon">🧱</div>
+                    <div class="exercise-card__name">The Wall Press</div>
+                    <div class="exercise-card__target">Proprioceptive Regulation</div>
+                </div>
+                <div class="exercise-card">
+                    <div class="exercise-card__icon">🌬️</div>
+                    <div class="exercise-card__name">4-Count Breath</div>
+                    <div class="exercise-card__target">Respiratory Regulation</div>
+                </div>
+                <div class="exercise-card">
+                    <div class="exercise-card__icon">❄️</div>
+                    <div class="exercise-card__name">Cold Contact</div>
+                    <div class="exercise-card__target">Sensory Reset</div>
+                </div>
+                <div class="exercise-card">
+                    <div class="exercise-card__icon">🛋️</div>
+                    <div class="exercise-card__name">Weighted Compress</div>
+                    <div class="exercise-card__target">Deep Pressure Regulation</div>
+                </div>
+                <div class="exercise-card">
+                    <div class="exercise-card__icon">⬇️</div>
+                    <div class="exercise-card__name">Floor Anchor</div>
+                    <div class="exercise-card__target">Somatic Grounding</div>
+                </div>
+                <div class="exercise-card">
+                    <div class="exercise-card__icon">🔄</div>
+                    <div class="exercise-card__name">Cross-Body Tap</div>
+                    <div class="exercise-card__target">Neurological Integration</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRATEGY DECK -->
+    <section class="deck">
+        <div class="container">
+            <div class="deck__inner">
+                <div class="deck__content">
+                    <h2>12-Card Regulation Strategy Deck</h2>
+                    <p>
+                        Print on heavy cardstock. Cut along lines. Practice one card daily during calm states. Each card explains WHEN to use, WHAT to do, and WHY it works.
+                    </p>
+                    <div class="deck__categories">
+                        <div class="deck__category">
+                            <i class="fas fa-wind"></i> Breath (3 cards)
+                        </div>
+                        <div class="deck__category">
+                            <i class="fas fa-running"></i> Body (3 cards)
+                        </div>
+                        <div class="deck__category">
+                            <i class="fas fa-hand-paper"></i> Sensory (3 cards)
+                        </div>
+                        <div class="deck__category">
+                            <i class="fas fa-anchor"></i> Grounding (3 cards)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deck__visual">
+                    <div class="deck__card">
+                        <div class="deck__card-number">Card 01</div>
+                        <div class="deck__card-title">Box Breathing</div>
+                        <div class="deck__card-category">Breath</div>
+                    </div>
+                    <div class="deck__card">
+                        <div class="deck__card-number">Card 07</div>
+                        <div class="deck__card-title">Cold Reset</div>
+                        <div class="deck__card-category">Sensory</div>
+                    </div>
+                    <div class="deck__card">
+                        <div class="deck__card-number">Card 04</div>
+                        <div class="deck__card-title">Wall Press</div>
+                        <div class="deck__card-category">Body</div>
+                    </div>
+                    <div class="deck__card">
+                        <div class="deck__card-number">Card 10</div>
+                        <div class="deck__card-title">5-4-3-2-1 Scan</div>
+                        <div class="deck__card-category">Grounding</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCIENCE -->
+    <section class="science">
+        <div class="container">
+            <div class="science__inner">
+                <div class="science__badge">
+                    <i class="fas fa-brain"></i>
+                    The Science Behind It
+                </div>
+                <h2>Why This System Works</h2>
+                <p>
+                    During dysregulation, your child's prefrontal cortex (thinking brain) goes offline. Logic, reasoning, and consequences become impossible to process. This isn't defiance — it's neurobiology.
+                </p>
+                <div class="science__quote">
+                    <strong>"Dysregulation is not defiance."</strong> It is a temporary loss of control. This system restores safety first through your regulated presence, then helps the body complete its stress response cycle. Understanding comes later.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta__inner">
+                <div class="final-cta__icon">🚨</div>
+                <h2>Get the Emergency Regulation Kit Free</h2>
+                <p>
+                    The next meltdown is coming. Be ready with a system that actually works.
+                </p>
+
+                <div class="final-cta__form">
+                    <form id="downloadFormBottom">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="parentName2">Your First Name</label>
+                                <input type="text" id="parentName2" name="parentName" placeholder="e.g., Sarah" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="childAge2">Child's Age</label>
+                                <input type="number" id="childAge2" name="childAge" placeholder="e.g., 8" min="3" max="18" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email2">Email Address</label>
+                            <input type="email" id="email2" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <button type="submit" class="btn btn--danger">
+                            <i class="fas fa-download"></i> Send Me the Free Kit
+                        </button>
+                    </form>
+                </div>
+
+                <div class="final-cta__guarantee">
+                    <div class="final-cta__guarantee-item">
+                        <i class="fas fa-check-circle"></i> Instant PDF download
+                    </div>
+                    <div class="final-cta__guarantee-item">
+                        <i class="fas fa-check-circle"></i> No credit card required
+                    </div>
+                    <div class="final-cta__guarantee-item">
+                        <i class="fas fa-check-circle"></i> Unsubscribe anytime
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__logo">
+                <i class="fas fa-compass"></i> Navigator Kids AI™
+            </div>
+            <div class="footer__links">
+                <a href="index.html">Home</a>
+                <a href="gifted-assessment-tool.html">AI Assessment</a>
+                <a href="methodology.html">Membership</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="footer__bottom">
+                © 2024 Navigator Kids AI™. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('downloadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide form, show thank you
+            document.getElementById('formState').classList.add('hidden');
+            document.getElementById('thankYou').classList.add('active');
+            
+            // In production, you would send form data to your email service here
+            // Example: send to ConvertKit, Mailchimp, etc.
+        });
+
+        // Bottom form submission
+        document.getElementById('downloadFormBottom').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Scroll to top and show download
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            setTimeout(function() {
+                document.getElementById('formState').classList.add('hidden');
+                document.getElementById('thankYou').classList.add('active');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
