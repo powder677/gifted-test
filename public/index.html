@@ -4,189 +4,1208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigator Kids AI™ - The Operating System for Exceptional Children</title>
+    <meta name="description" content="Your child's brain didn't come with a manual. Until now. AI-powered strategies for gifted, twice-exceptional, and intensely wired kids.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <style>
+        /* === NAVIGATOR BRAND VARIABLES === */
+        :root {
+            --color-primary: #1B365D;
+            --color-primary-dark: #132845;
+            --color-primary-light: #2A4A7A;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
+            --color-highlight-dark: #238579;
+            --color-highlight-light: #E8F4F2;
+            --color-text: #2F2F2F;
+            --color-text-muted: #666666;
+            --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
+            
+            --border-radius: 8px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 24px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
+        }
 
-    <div id="navigation-placeholder"></div>
+        /* === RESET & BASE === */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--color-text);
+            line-height: 1.7;
+            background-color: var(--color-secondary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* === NAVIGATION === */
+        .navbar {
+            background-color: var(--color-secondary);
+            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .navbar__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar__logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar__logo i {
+            color: var(--color-highlight);
+            font-size: 1.4rem;
+        }
+
+        .navbar__logo span {
+            color: var(--color-highlight);
+        }
+
+        .navbar__nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .navbar__links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .navbar__links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-text);
+            transition: var(--transition);
+        }
+
+        .navbar__links a:hover {
+            color: var(--color-highlight);
+        }
+
+        .navbar__cta {
+            background: var(--color-highlight);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .navbar__cta:hover {
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
+        }
+
+        .navbar__toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border-top: 1px solid #eee;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
+        .mobile-nav a:last-child {
+            background-color: var(--color-highlight);
+            color: white;
+            margin: 16px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .navbar__nav {
+                display: none;
+            }
+            .navbar__toggle {
+                display: block;
+            }
+        }
+
+        /* === HERO === */
+        .hero {
+            padding: 160px 0 120px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero__title {
+            font-size: clamp(2.5rem, 5vw, 3.75rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.15;
+        }
+
+        .hero__title span {
+            color: var(--color-accent);
+        }
+
+        .hero__subtitle {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .hero__cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn--primary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn--primary:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn--secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn--secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        .hero__note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero__note i {
+            color: var(--color-accent);
+            margin-right: 6px;
+        }
+
+        /* === PAIN POINTS === */
+        .pain {
+            padding: 100px 0;
+            background: var(--color-secondary);
+        }
+
+        .pain__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pain__title {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .pain__subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pain__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .pain__card {
+            background: var(--color-background);
+            padding: 32px;
+            border-radius: var(--border-radius-lg);
+            transition: var(--transition);
+            border-left: 4px solid var(--color-highlight);
+        }
+
+        .pain__card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pain__card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .pain__card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .pain__card p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* === ABOUT TEASER === */
+        .about-teaser {
+            padding: 80px 0;
+            background: var(--color-background-warm);
+            text-align: center;
+        }
+
+        .about-teaser__content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-teaser h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .about-teaser p {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .about-teaser__avatars {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .about-teaser__avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 3px solid var(--color-accent);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: 14px 28px;
+        }
+
+        .btn--outline:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* === METHODOLOGY === */
+        .methodology {
+            padding: 100px 0;
+            background: var(--color-secondary);
+        }
+
+        .methodology__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .methodology__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .methodology__title {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .methodology__subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .methodology__grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 1000px) {
+            .methodology__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .methodology__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .method-card {
+            background: var(--color-background);
+            padding: 32px 24px;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .method-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .method-card--active {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: white;
+        }
+
+        .method-card--active h3,
+        .method-card--active p {
+            color: white;
+        }
+
+        .method-card--active .method-card__step {
+            color: var(--color-accent);
+        }
+
+        .method-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .method-card__step {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--color-highlight);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .method-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .method-card p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* === FREE KIT CTA === */
+        .free-kit {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-highlight-dark) 100%);
+            color: white;
+        }
+
+        .free-kit__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .free-kit__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .free-kit__content h2 {
+            color: white;
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .free-kit__content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .free-kit__features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .free-kit__features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .free-kit__features li i {
+            color: var(--color-accent);
+        }
+
+        .free-kit .btn--primary {
+            background: white;
+            color: var(--color-highlight-dark);
+        }
+
+        .free-kit .btn--primary:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .free-kit__visual {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-xl);
+            padding: 48px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .free-kit__visual-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+
+        .free-kit__visual h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .free-kit__visual p {
+            opacity: 0.8;
+        }
+
+        /* === TESTIMONIALS === */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--color-background);
+        }
+
+        .testimonials__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials__title {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial {
+            background: var(--color-secondary);
+            padding: 32px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .testimonial:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial__stars {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .testimonial__quote {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial__author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial__avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .testimonial__name {
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 2px;
+        }
+
+        .testimonial__details {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* === FINAL CTA === */
+        .final-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .final-cta__title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .final-cta__subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .final-cta__buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .final-cta .btn--primary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .final-cta .btn--secondary {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .final-cta .btn--secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background: var(--color-primary-dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .footer__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer__brand h4 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer__brand h4 i {
+            color: var(--color-highlight);
+        }
+
+        .footer__brand p {
+            opacity: 0.7;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer__links h5 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--color-accent);
+        }
+
+        .footer__links ul {
+            list-style: none;
+        }
+
+        .footer__links li {
+            margin-bottom: 12px;
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: white;
+        }
+
+        .footer__bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <a href="index.html" class="navbar__logo">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>™
+                </a>
+                
+                <div class="navbar__nav">
+                    <ul class="navbar__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                    <a href="methodology-sales-page.html" class="navbar__cta">Get Started</a>
+                </div>
+
+                <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="resources.html">Resources</a>
+            <a href="methodology-sales-page.html">Get Started</a>
+        </nav>
+    </nav>
 
     <main>
+        <!-- HERO -->
         <section class="hero">
             <div class="container">
-                <div class="hero__eyebrow">For Parents of Exceptional Children</div>
-                <h1 class="hero__title">
-                    Your Child's Brain Didn't Come With a Manual.<br>
-                    <span>Until Now.</span>
-                </h1>
-                <p class="hero__subtitle">
-                    Stop fighting their operating system. Start working with it. Get the AI-powered roadmap to go from meltdowns to mission accomplished—in minutes a day.
-                </p>
-                
-                <div class="hero__cta-group">
-                    <a href="gifted-assessment-tool.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-microchip"></i> Start AI Assessment
-                    </a>
-                    <a href="#free-kit" class="btn btn-secondary btn-large">
-                        <i class="fas fa-download"></i> Download Free Reset Kit
-                    </a>
+                <div class="hero__content">
+                    <div class="hero__badge">
+                        <i class="fas fa-sparkles"></i>
+                        For Parents of Exceptional Children
+                    </div>
+                    
+                    <h1 class="hero__title">
+                        Your Child's Brain Didn't Come With a Manual.<br>
+                        <span>Until Now.</span>
+                    </h1>
+                    
+                    <p class="hero__subtitle">
+                        Stop fighting their operating system. Start working with it. Get the AI-powered roadmap to go from meltdowns to mission accomplished—in minutes a day.
+                    </p>
+                    
+                    <div class="hero__cta-group">
+                        <a href="gifted-assessment-tool.html" class="btn btn--primary">
+                            <i class="fas fa-microchip"></i> Take Free AI Assessment
+                        </a>
+                        <a href="#free-kit" class="btn btn--secondary">
+                            <i class="fas fa-download"></i> Get Emergency Reset Kit
+                        </a>
+                    </div>
+                    
+                    <p class="hero__note">
+                        <i class="fas fa-shield-check"></i>
+                        Science-backed strategies • No credit card required
+                    </p>
                 </div>
-
-                <p class="hero__note">
-                    <i class="fas fa-shield-check"></i>
-                    Used by 500+ families • Science-backed strategies
-                </p>
             </div>
         </section>
 
-        <section class="about-teaser" style="background: white; padding: 80px 24px; text-align: center; border-bottom: 1px solid #eee;">
+        <!-- PAIN POINTS -->
+        <section class="pain">
             <div class="container">
-                <h2 style="font-size: 2rem; margin-bottom: 16px;">Built by Parents Who've Been There</h2>
-                <p style="max-width: 700px; margin: 0 auto 32px; color: var(--color-text-muted); font-size: 1.1rem; line-height: 1.6;">
-                    We aren't just developers. We are parents of twice-exceptional children who got tired of being told our kids were "too much." We built the manual we wished we had.
-                </p>
-                <div style="display: flex; gap: 24px; justify-content: center; margin-bottom: 32px;">
-                    <img src="images/rachel-whitcomb.jpg" alt="Rachel" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-highlight);">
-                    <img src="images/evan-calder.jpg" alt="Evan" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-highlight);">
-                    <img src="images/avery-sage.jpg" alt="Avery" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-highlight);">
+                <div class="pain__header">
+                    <h2 class="pain__title">Sound Familiar?</h2>
+                    <p class="pain__subtitle">You're not failing. You're parenting an exceptional child without the right tools.</p>
                 </div>
-                <a href="about.html" class="btn btn-secondary">Read Our Story →</a>
+
+                <div class="pain__grid">
+                    <div class="pain__card">
+                        <div class="pain__card-icon">⏰</div>
+                        <h3>Morning Battles</h3>
+                        <p>Every day feels like defusing a bomb before 8am. Simple tasks become hour-long negotiations.</p>
+                    </div>
+                    <div class="pain__card">
+                        <div class="pain__card-icon">📚</div>
+                        <h3>Homework Meltdowns</h3>
+                        <p>They can explain quantum physics but can't find their shoes. 20 minutes of work takes 4 hours.</p>
+                    </div>
+                    <div class="pain__card">
+                        <div class="pain__card-icon">💔</div>
+                        <h3>Emotional Intensity</h3>
+                        <p>Everything is felt at 100% volume. Small disappointments become catastrophic events.</p>
+                    </div>
+                    <div class="pain__card">
+                        <div class="pain__card-icon">📖</div>
+                        <h3>Nothing Works</h3>
+                        <p>You've read every parenting book. The reward charts. The consequences. Nothing sticks.</p>
+                    </div>
+                    <div class="pain__card">
+                        <div class="pain__card-icon">🧠</div>
+                        <h3>External Brain Exhaustion</h3>
+                        <p>You're their memory, their planner, their emotional regulator. You have nothing left for yourself.</p>
+                    </div>
+                    <div class="pain__card">
+                        <div class="pain__card-icon">🏫</div>
+                        <h3>"They Just Need to Apply Themselves"</h3>
+                        <p>Teachers see the potential. You see the struggle. Nobody sees the whole picture.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- ABOUT TEASER -->
+        <section class="about-teaser">
+            <div class="container">
+                <div class="about-teaser__content">
+                    <h2>Built by Parents Who've Been There</h2>
+                    <p>
+                        We aren't just developers. We are parents of twice-exceptional children who got tired of being told our kids were "too much." We built the manual we wished we had.
+                    </p>
+                    <div class="about-teaser__avatars">
+                        <div class="about-teaser__avatar">RW</div>
+                        <div class="about-teaser__avatar">EC</div>
+                        <div class="about-teaser__avatar">AS</div>
+                    </div>
+                    <a href="about.html" class="btn btn--outline">Read Our Story →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- METHODOLOGY -->
         <section class="methodology">
             <div class="container">
                 <div class="methodology__header">
+                    <div class="methodology__badge">Our Signature Framework</div>
                     <h2 class="methodology__title">The Navigator Method™</h2>
-                    <p class="methodology__subtitle">A 5-step framework to decode your child's unique operating system and build cooperation without conflict.</p>
+                    <p class="methodology__subtitle">5 steps to decode your child's unique operating system and build cooperation without conflict.</p>
                 </div>
-                
+
                 <div class="methodology__grid">
                     <div class="method-card">
                         <div class="method-card__icon">🔍</div>
-                        <span class="method-card__step">Step 1</span>
-                        <h3 class="method-card__title">ASSESS</h3>
-                        <p class="method-card__desc">Discover your child's unique cognitive profile with our AI assessment.</p>
+                        <div class="method-card__step">Step 1</div>
+                        <h3>ASSESS</h3>
+                        <p>Discover your child's unique cognitive profile with our AI assessment.</p>
                     </div>
                     <div class="method-card">
                         <div class="method-card__icon">🗺️</div>
-                        <span class="method-card__step">Step 2</span>
-                        <h3 class="method-card__title">MAP</h3>
-                        <p class="method-card__desc">Get a personalized action plan matched to their specific needs.</p>
+                        <div class="method-card__step">Step 2</div>
+                        <h3>MAP</h3>
+                        <p>Get a personalized action plan matched to their specific needs.</p>
                     </div>
                     <div class="method-card method-card--active">
                         <div class="method-card__icon">🚀</div>
-                        <span class="method-card__step">Step 3</span>
-                        <h3 class="method-card__title">LAUNCH</h3>
-                        <p class="method-card__desc">Deploy the <strong>Free</strong> Emergency Reset Kit for immediate stabilization.</p>
+                        <div class="method-card__step">Step 3</div>
+                        <h3>LAUNCH</h3>
+                        <p>Start with quick wins using our <strong>Free</strong> Emergency Reset Kit.</p>
                     </div>
                     <div class="method-card">
                         <div class="method-card__icon">🔧</div>
-                        <span class="method-card__step">Step 4</span>
-                        <h3 class="method-card__title">ADJUST</h3>
-                        <p class="method-card__desc">Refine strategies based on real-world feedback and data.</p>
+                        <div class="method-card__step">Step 4</div>
+                        <h3>ADJUST</h3>
+                        <p>Track what's working and adapt strategies in real-time.</p>
                     </div>
                     <div class="method-card">
                         <div class="method-card__icon">📈</div>
-                        <span class="method-card__step">Step 5</span>
-                        <h3 class="method-card__title">EXPAND</h3>
-                        <p class="method-card__desc">Build lasting executive function skills and independence.</p>
+                        <div class="method-card__step">Step 5</div>
+                        <h3>EXPAND</h3>
+                        <p>Level up as they grow toward independence.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="testimonial">
-            <div class="testimonial__inner">
-                <p class="testimonial__label">Pilot Program Results</p>
-                <div class="testimonial__card">
-                    <i class="fas fa-quote-left testimonial__icon"></i>
-                    <blockquote class="testimonial__quote">
-                        "I finally understand my son's operating system. The Reset Kit stopped the morning screaming matches in just 3 days. It wasn't magic—it was just better data."
-                    </blockquote>
-                    <p class="testimonial__author">— SARAH L. // PILOT COHORT MEMBER</p>
+        <!-- FREE KIT CTA -->
+        <section class="free-kit" id="free-kit">
+            <div class="container">
+                <div class="free-kit__inner">
+                    <div class="free-kit__content">
+                        <h2>Get Immediate Help — Free</h2>
+                        <p>
+                            The Emergency Reset Kit is a 15-page packet of executive function activities designed for kids ages 8-14. Use it when everything is falling apart and you need something that works RIGHT NOW.
+                        </p>
+                        <ul class="free-kit__features">
+                            <li><i class="fas fa-check-circle"></i> 5-day structured program</li>
+                            <li><i class="fas fa-check-circle"></i> Space-themed gamification kids love</li>
+                            <li><i class="fas fa-check-circle"></i> Parent guide included</li>
+                            <li><i class="fas fa-check-circle"></i> Instant PDF download</li>
+                        </ul>
+                        <a href="mission-control-preview.html" class="btn btn--primary">
+                            <i class="fas fa-download"></i> Download Free Reset Kit
+                        </a>
+                    </div>
+                    <div class="free-kit__visual">
+                        <div class="free-kit__visual-icon">🚀</div>
+                        <h3>Mission Control Center</h3>
+                        <p>Executive Function Space Academy</p>
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <section class="cta-section" id="free-kit">
-            <div class="cta-section__inner">
-                <h3 class="cta-section__title">Stop the Meltdowns Tonight.</h3>
-                <p class="cta-section__subtitle">Download our <strong>Free Emergency Reset Kit</strong>. It's the 4-step protocol to de-escalate yelling without bribing or losing your mind.</p>
-                
-                <form class="cta-section__form" id="freeKitForm">
-                    <input 
-                        type="email" 
-                        id="freeKitEmail"
-                        class="cta-section__input"
-                        placeholder="Enter your email address" 
-                        required
-                        aria-label="Email address"
-                    >
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-download"></i> Get The Kit
-                    </button>
-                </form>
 
-                <p class="cta-section__note">No spam. Unsubscribe anytime. We respect your inbox.</p>
+        <!-- TESTIMONIALS -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="testimonials__header">
+                    <h2 class="testimonials__title">Parents Like You Are Seeing Results</h2>
+                </div>
+
+                <div class="testimonials__grid">
+                    <div class="testimonial">
+                        <div class="testimonial__stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial__quote">
+                            "Finally, something that explains why my son acts the way he does. The assessment was like someone had been watching our family for years."
+                        </p>
+                        <div class="testimonial__author">
+                            <div class="testimonial__avatar">SM</div>
+                            <div>
+                                <div class="testimonial__name">Sarah M.</div>
+                                <div class="testimonial__details">Parent of a 2e 8-year-old</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial__stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial__quote">
+                            "I stopped blaming myself. Now I understand my daughter's brain works differently — and I finally have tools that match how she's wired."
+                        </p>
+                        <div class="testimonial__author">
+                            <div class="testimonial__avatar">MT</div>
+                            <div>
+                                <div class="testimonial__name">Michael T.</div>
+                                <div class="testimonial__details">Parent of a gifted 10-year-old</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial__stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial__quote">
+                            "The Reset Kit saved our mornings. My son actually uses the launch sequence before homework now. It's become part of our routine."
+                        </p>
+                        <div class="testimonial__author">
+                            <div class="testimonial__avatar">JL</div>
+                            <div>
+                                <div class="testimonial__name">Jennifer L.</div>
+                                <div class="testimonial__details">Parent of a 9-year-old with ADHD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="final-cta">
+            <div class="container">
+                <h2 class="final-cta__title">Ready to Understand Your Child?</h2>
+                <p class="final-cta__subtitle">
+                    Take the first step. In 10 minutes, discover how your child's brain is wired — and what actually works for them.
+                </p>
+                <div class="final-cta__buttons">
+                    <a href="gifted-assessment-tool.html" class="btn btn--primary">
+                        <i class="fas fa-microchip"></i> Start Free Assessment
+                    </a>
+                    <a href="methodology-sales-page.html" class="btn btn--secondary">
+                        Learn About Membership →
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
-    <div id="footer-placeholder"></div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We're parents of exceptional children building the tools we wished we had.</p>
+                </div>
+                <div class="footer__links">
+                    <h5>Product</h5>
+                    <ul>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="methodology-sales-page.html">Membership</a></li>
+                        <li><a href="mission-control-preview.html">Free Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="resources.html">Knowledge Base</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                © 2024 Navigator Kids AI™. All rights reserved.
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Load Navigation
-        fetch('navigation.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navigation-placeholder').innerHTML = data;
-                // Initialize mobile menu AFTER loading the HTML
-                const menuToggle = document.getElementById('menuToggle');
-                const mobileMenu = document.getElementById('mobileMenu');
-                if (menuToggle && mobileMenu) {
-                    menuToggle.addEventListener('click', function() {
-                        mobileMenu.classList.toggle('active');
-                        menuToggle.innerHTML = mobileMenu.classList.contains('active') ? '✖' : '☰';
-                    });
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.navbar__toggle i');
+            
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-
-        // Load Footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-
-        // Free Kit Form Logic
-        document.getElementById('freeKitForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // 1. Capture Lead
-            const email = document.getElementById('freeKitEmail').value;
-            console.log("Lead captured:", email);
-
-            // 2. Trigger Download
-            const link = document.createElement('a');
-            link.href = 'downloads/EMERGENCY REGULATION KIT.pdf'; 
-            link.download = 'Emergency_Regulation_Kit.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // 3. User Feedback
-            const btn = this.querySelector('button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> Download Starting...';
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                document.getElementById('freeKitEmail').value = ''; 
-            }, 3000);
         });
     </script>
 </body>
