@@ -8,723 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <style>
-        /* --- VARIABLES --- */
-        :root {
-            --color-primary: #1B365D;
-            --color-primary-dark: #132845;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
-            --color-highlight-dark: #238579;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-background: #F4F6F8;
-            --color-background-warm: #FFFBF5;
-            --border-radius: 8px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
-        }
-
-        /* --- GLOBAL RESET --- */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--color-text);
-            line-height: 1.6;
-            background-color: var(--color-secondary);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.2;
-            color: var(--color-primary);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* --- CONTAINER --- */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .container--narrow {
-            max-width: 800px;
-        }
-
-        /* --- BUTTON STYLES --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            border-radius: var(--border-radius);
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            gap: 10px;
-            line-height: 1.4;
-            border: none;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .btn i {
-            font-size: 0.9em;
-        }
-
-        .btn-primary {
-            background-color: var(--color-highlight);
-            color: #FFFFFF;
-            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(42, 157, 143, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: var(--color-primary);
-            color: #FFFFFF;
-            box-shadow: 0 4px 12px rgba(27, 54, 93, 0.25);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--color-primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(27, 54, 93, 0.35);
-        }
-
-        .btn-accent {
-            background-color: var(--color-accent);
-            color: var(--color-primary);
-            box-shadow: 0 4px 12px rgba(233, 196, 106, 0.4);
-        }
-
-        .btn-accent:hover {
-            background-color: var(--color-accent-light);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(233, 196, 106, 0.5);
-        }
-
-        .btn-large {
-            padding: 18px 36px;
-            font-size: 1.1rem;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background-color: #FFFFFF;
-            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo a {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            color: var(--color-highlight);
-            font-size: 1.4rem;
-        }
-
-        .logo span {
-            color: var(--color-highlight);
-        }
-
-        .desktop-nav .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 32px;
-            margin: 0;
-            padding: 0;
-            align-items: center;
-        }
-
-        .desktop-nav .nav-links a {
-            text-decoration: none;
-            color: var(--color-text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover {
-            color: var(--color-highlight);
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-highlight);
-            transition: width 0.2s ease;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after {
-            width: 100%;
-        }
-
-        .nav-btn-primary {
-            background-color: var(--color-highlight);
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .nav-btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
-        }
-
-        .nav-btn-primary::after {
-            display: none !important;
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-primary);
-            padding: 8px;
-            line-height: 1;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid #eee;
-        }
-
-        .mobile-nav.active {
-            display: flex;
-        }
-
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            text-decoration: none;
-            color: var(--color-primary);
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        .mobile-nav a:last-child:hover {
-            background-color: var(--color-highlight-dark);
-        }
-
-        @media (max-width: 900px) {
-            .desktop-nav {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(180deg, var(--color-background) 0%, #FFFFFF 100%);
-            padding: 80px 24px 100px;
-            text-align: center;
-        }
-
-        .hero__eyebrow {
-            display: inline-block;
-            background: rgba(42, 157, 143, 0.1);
-            color: var(--color-highlight);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 24px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .hero__title {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            line-height: 1.15;
-            margin-bottom: 24px;
-            color: var(--color-primary);
-            font-weight: 800;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero__title span {
-            color: var(--color-highlight);
-        }
-
-        .hero__subtitle {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: var(--color-text-muted);
-            line-height: 1.7;
-        }
-
-        .hero__cta-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero__note {
-            margin-top: 24px;
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .hero__note i {
-            color: var(--color-highlight);
-        }
-
-        @media (max-width: 600px) {
-            .hero {
-                padding: 60px 20px 80px;
-            }
-            .hero__cta-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero__cta-group .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-
-        /* --- METHODOLOGY SECTION --- */
-        .methodology {
-            background-color: #FFFFFF;
-            padding: 100px 24px;
-        }
-
-        .methodology__header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .methodology__title {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .methodology__subtitle {
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .methodology__grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 1000px) {
-            .methodology__grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 700px) {
-            .methodology__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .methodology__grid {
-                grid-template-columns: 1fr;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-        }
-
-        .method-card {
-            text-align: center;
-            padding: 32px 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid #f0f0f0;
-            transition: var(--transition);
-        }
-
-        .method-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .method-card--active {
-            border: 2px solid var(--color-highlight);
-            box-shadow: 0 4px 20px rgba(42, 157, 143, 0.15);
-        }
-
-        .method-card--active .method-card__title {
-            color: var(--color-highlight);
-        }
-
-        .method-card__icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-
-        .method-card__step {
-            display: inline-block;
-            background: var(--color-background);
-            color: var(--color-text-muted);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .method-card--active .method-card__step {
-            background: rgba(42, 157, 143, 0.1);
-            color: var(--color-highlight);
-        }
-
-        .method-card__title {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .method-card__desc {
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-            line-height: 1.5;
-        }
-
-        /* --- TESTIMONIAL SECTION --- */
-        .testimonial {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 100px 24px;
-        }
-
-        .testimonial__inner {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .testimonial__label {
-            color: var(--color-accent);
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 40px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .testimonial__card {
-            background-color: rgba(255, 255, 255, 0.08);
-            padding: 48px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .testimonial__icon {
-            font-size: 2rem;
-            color: var(--color-highlight);
-            margin-bottom: 24px;
-        }
-
-        .testimonial__quote {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.4rem;
-            line-height: 1.6;
-            margin-bottom: 32px;
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        .testimonial__author {
-            font-weight: 700;
-            color: var(--color-accent);
-            letter-spacing: 0.5px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-        }
-
-        @media (max-width: 600px) {
-            .testimonial__card {
-                padding: 32px 24px;
-            }
-            .testimonial__quote {
-                font-size: 1.15rem;
-            }
-        }
-
-        /* --- CTA SECTION --- */
-        .cta-section {
-            background-color: var(--color-background);
-            padding: 100px 24px;
-        }
-
-        .cta-section__inner {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .cta-section__title {
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-        }
-
-        .cta-section__subtitle {
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .cta-section__form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .cta-section__input {
-            padding: 16px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: var(--border-radius);
-            font-family: 'Lato', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .cta-section__input:focus {
-            outline: none;
-            border-color: var(--color-highlight);
-            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
-        }
-
-        .cta-section__form .btn {
-            width: 100%;
-        }
-
-        .cta-section__note {
-            margin-top: 16px;
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 80px 24px 40px;
-        }
-
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        @media (max-width: 768px) {
-            .footer__grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .footer__brand h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-        }
-
-        .footer__brand p {
-            opacity: 0.75;
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .footer__links h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1rem;
-        }
-
-        .footer__links ul {
-            list-style: none;
-        }
-
-        .footer__links li {
-            margin-bottom: 12px;
-        }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.75);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .footer__links a:hover {
-            color: var(--color-accent);
-        }
-
-        .footer__bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-
-        /* --- ANIMATIONS --- */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero__eyebrow,
-        .hero__title,
-        .hero__subtitle,
-        .hero__cta-group {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .hero__title { animation-delay: 0.1s; }
-        .hero__subtitle { animation-delay: 0.2s; }
-        .hero__cta-group { animation-delay: 0.3s; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <a href="index.html">
-                    <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>
-                </a>
-            </div>
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="methodology.html">The Method</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Knowledge Base</a></li>
-                    <li><a href="#free-kit" class="nav-btn-primary">Free Reset Kit</a></li>
-                </ul>
-            </nav>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        <nav class="mobile-nav" id="mobileMenu">
-            <a href="index.html">Home</a>
-            <a href="methodology.html">The Method</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
-            <a href="resources.html">Knowledge Base</a>
-            <a href="#free-kit">Free Reset Kit</a>
-        </nav>
-    </header>
+    <div id="navigation-placeholder"></div>
 
     <main>
         <section class="hero">
@@ -751,6 +39,21 @@
                     <i class="fas fa-shield-check"></i>
                     Used by 500+ families • Science-backed strategies
                 </p>
+            </div>
+        </section>
+
+        <section class="about-teaser" style="background: white; padding: 80px 24px; text-align: center; border-bottom: 1px solid #eee;">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 16px;">Built by Parents Who've Been There</h2>
+                <p style="max-width: 700px; margin: 0 auto 32px; color: var(--color-text-muted); font-size: 1.1rem; line-height: 1.6;">
+                    We aren't just developers. We are parents of twice-exceptional children who got tired of being told our kids were "too much." We built the manual we wished we had.
+                </p>
+                <div style="display: flex; gap: 24px; justify-content: center; margin-bottom: 32px;">
+                    <img src="images/rachel-whitcomb.jpg" alt="Rachel" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-highlight);">
+                    <img src="images/evan-calder.jpg" alt="Evan" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-highlight);">
+                    <img src="images/avery-sage.jpg" alt="Avery" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-highlight);">
+                </div>
+                <a href="about.html" class="btn btn-secondary">Read Our Story →</a>
             </div>
         </section>
 
@@ -829,110 +132,61 @@
                 </form>
 
                 <p class="cta-section__note">No spam. Unsubscribe anytime. We respect your inbox.</p>
-
-                <script>
-                    document.getElementById('freeKitForm').addEventListener('submit', function(e) {
-                        e.preventDefault(); // Stops the page from refreshing
-                        
-                        // 1. (Optional) In the future, send this email to your backend/Mailchimp here
-                        const email = document.getElementById('freeKitEmail').value;
-                        console.log("Lead captured:", email);
-
-                        // 2. Trigger the PDF Download
-                        const link = document.createElement('a');
-                        // Ensure this path matches where you put the PDF file
-                        link.href = 'downloads/EMERGENCY REGULATION KIT.pdf'; 
-                        link.download = 'Emergency_Regulation_Kit.pdf'; // The name the user sees
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        
-                        // 3. User Feedback
-                        const btn = this.querySelector('button');
-                        const originalText = btn.innerHTML;
-                        btn.innerHTML = '<i class="fas fa-check"></i> Download Starting...';
-                        
-                        setTimeout(() => {
-                            btn.innerHTML = originalText;
-                            document.getElementById('freeKitEmail').value = ''; // Clear input
-                        }, 3000);
-                    });
-                </script>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <h4>Navigator Kids AI™</h4>
-                    <p>
-                        Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.
-                    </p>
-                </div>
-                <div class="footer__links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="methodology.html">The Method</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Knowledge Base</a></li>
-                    </ul>
-                </div>
-                <div class="footer__links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle i');
-            menu.classList.toggle('active');
-            
-            // Toggle icon
-            if (menu.classList.contains('active')) {
-                toggle.classList.remove('fa-bars');
-                toggle.classList.add('fa-times');
-            } else {
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            }
-        }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                const icon = toggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('mobileMenu');
-                const toggle = document.querySelector('.menu-toggle i');
-                menu.classList.remove('active');
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
+        // Load Navigation
+        fetch('navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
+                // Initialize mobile menu AFTER loading the HTML
+                const menuToggle = document.getElementById('menuToggle');
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (menuToggle && mobileMenu) {
+                    menuToggle.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('active');
+                        menuToggle.innerHTML = mobileMenu.classList.contains('active') ? '✖' : '☰';
+                    });
+                }
             });
+
+        // Load Footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Free Kit Form Logic
+        document.getElementById('freeKitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 1. Capture Lead
+            const email = document.getElementById('freeKitEmail').value;
+            console.log("Lead captured:", email);
+
+            // 2. Trigger Download
+            const link = document.createElement('a');
+            link.href = 'downloads/EMERGENCY REGULATION KIT.pdf'; 
+            link.download = 'Emergency_Regulation_Kit.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // 3. User Feedback
+            const btn = this.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Download Starting...';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                document.getElementById('freeKitEmail').value = ''; 
+            }, 3000);
         });
     </script>
 </body>
