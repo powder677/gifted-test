@@ -10,7 +10,719 @@
     <title>Anxiety or Intelligence? | Navigator Kids AI™</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudfla<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anxiety or Intelligence? | Navigator Kids AI™</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* === VARIABLES === */
+        :root {
+            --color-primary: #1B365D;
+            --color-primary-dark: #132845;
+            --color-primary-light: #2A4A7A;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
+            --color-highlight-dark: #238579;
+            --color-highlight-light: #E8F4F2;
+            --color-text: #2F2F2F;
+            --color-text-muted: #666666;
+            --color-background: #F4F6F8;
+
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --transition: all 0.2s ease;
+        }
+
+        /* === RESET === */
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Inter', sans-serif; 
+            color: var(--color-primary);
+            line-height: 1.3;
+        }
+
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+        /* === NAVIGATION === */
+        .navbar {
+            background-color: var(--color-secondary);
+            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar__logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar__logo i {
+            color: var(--color-highlight);
+            font-size: 1.4rem;
+        }
+
+        .navbar__logo span {
+            color: var(--color-highlight);
+        }
+
+        .navbar__nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .navbar__links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .navbar__links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-text);
+            transition: var(--transition);
+        }
+
+        .navbar__links a:hover {
+            color: var(--color-highlight);
+        }
+
+        .navbar__cta {
+            background: var(--color-highlight);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .navbar__cta:hover {
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
+        }
+
+        .navbar__toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border-top: 1px solid #eee;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
+        .mobile-nav a:last-child {
+            background-color: var(--color-highlight);
+            color: white;
+            margin: 16px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .navbar__nav {
+                display: none;
+            }
+            .navbar__toggle {
+                display: block;
+            }
+        }
+
+        /* === HERO === */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            padding: 80px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero__breadcrumb {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 16px;
+        }
+
+        .hero__breadcrumb a {
+            color: white;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .hero__breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .hero__breadcrumb span {
+            margin: 0 8px;
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .hero p { 
+            font-size: 1.2rem; 
+            opacity: 0.9; 
+            max-width: 650px; 
+            margin: 0 auto; 
+        }
+
+        /* === ARTICLE CONTENT === */
+        .article-section { 
+            padding: 60px 24px; 
+            background: white;
+        }
+
+        .article-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+
+        .article-container p { 
+            margin-bottom: 1.5rem; 
+            font-size: 1.1rem; 
+        }
+
+        .article-container h2 { 
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+            font-size: 1.8rem; 
+        }
+
+        .article-container h3 { 
+            margin-top: 2rem; 
+            margin-bottom: 0.8rem; 
+            font-size: 1.4rem; 
+            color: var(--color-primary-dark); 
+        }
+
+        .article-container ul { 
+            margin-bottom: 1.5rem; 
+            padding-left: 24px; 
+        }
+
+        .article-container li { 
+            margin-bottom: 0.75rem; 
+        }
+
+        .article-container li strong {
+            color: var(--color-primary);
+        }
+
+        /* === KEY TAKEAWAYS === */
+        .key-takeaways {
+            background: var(--color-highlight-light);
+            padding: 28px 32px;
+            border-radius: var(--border-radius-lg);
+            border-left: 5px solid var(--color-highlight);
+            margin-bottom: 40px;
+        }
+
+        .key-takeaways h3 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            color: var(--color-highlight-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .key-takeaways ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+
+        .key-takeaways li {
+            margin-bottom: 8px;
+        }
+
+        /* === HIGHLIGHT BOX === */
+        .highlight-box {
+            background: var(--color-background);
+            padding: 24px 28px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--color-accent);
+            margin: 32px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        /* === AUTHOR BOX === */
+        .author-box {
+            margin-top: 60px;
+            padding: 28px;
+            background: var(--color-background);
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-box__avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .author-box__info h4 {
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .author-box__info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+            background: var(--color-highlight-light);
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: var(--color-text-muted);
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-highlight);
+            color: white;
+            padding: 16px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .cta-section .btn:hover {
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
+        }
+
+        /* === FOOTER === */
+        .footer { 
+            background: var(--color-primary-dark); 
+            color: white; 
+            padding: 60px 24px 30px; 
+        }
+
+        .footer__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .footer__inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        .footer__brand h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer__brand h4 i {
+            color: var(--color-highlight);
+        }
+
+        .footer__brand p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer__links h5 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .footer__links ul {
+            list-style: none;
+        }
+
+        .footer__links li {
+            margin-bottom: 10px;
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: white;
+        }
+
+        .footer__bottom { 
+            opacity: 0.6; 
+            text-align: center; 
+            padding-top: 24px; 
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__logo">
+                <i class="fas fa-compass"></i>
+                Navigator <span>Kids AI</span>™
+            </a>
+            
+            <div class="navbar__nav">
+                <ul class="navbar__links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+                <a href="methodology.html" class="navbar__cta">Get Started</a>
+            </div>
+
+            <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="resources.html">Resources</a>
+            <a href="methodology.html">Get Started</a>
+        </nav>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__breadcrumb">
+            <a href="resources.html">Resources</a>
+            <span>/</span>
+            <a href="emotional-regulation.html">Emotional Regulation</a>
+        </div>
+        <h1>Anxiety or Intelligence?</h1>
+        <p>When smart kids over-calculate risk and get stuck in "Analysis Paralysis."</p>
+    </section>
+
+    <!-- ARTICLE CONTENT -->
+    <section class="article-section">
+        <div class="article-container">
+
+            <div class="key-takeaways">
+                <h3><i class="fas fa-bolt"></i> Key Takeaways</h3>
+                <ul>
+                    <li>Gifted children's anxiety often stems from seeing more potential outcomes than neurotypical peers.</li>
+                    <li>High intelligence can manifest as "analysis paralysis" when too many variables are considered.</li>
+                    <li>Gifted child anxiety symptoms differ from typical anxiety—they're often rational responses to complex thinking.</li>
+                    <li>Validation and channeling analytical skills are more effective than traditional anxiety management techniques.</li>
+                </ul>
+            </div>
+
+            <p>Your 8-year-old refuses to climb the playground monkey bars, not because they're afraid of heights, but because they've calculated the precise trajectory of every possible fall scenario. Your teenager won't apply to their dream college because they've researched every potential negative outcome, from roommate conflicts to career prospects twenty years hence.</p>
+
+            <p>This isn't garden-variety anxiety. This is the burden of brilliance—when extraordinary cognitive abilities transform simple decisions into complex risk analyses. What appears as fear is often just intelligence running amok in environments that don't require such sophisticated thinking.</p>
+
+            <div class="highlight-box">
+                <h3>The Intelligence-Anxiety Connection</h3>
+                <p>Gifted children's brains process information differently, seeing connections and consequences that escape others. This neurological advantage becomes problematic when it generates overwhelming mental simulations of potential negative outcomes.</p>
+            </div>
+
+            <h2>Understanding Gifted Child Anxiety Symptoms</h2>
+            <p>Traditional anxiety presents as generalized worry, panic attacks, and phobias. Gifted child anxiety symptoms often masquerade as:</p>
+
+            <ul>
+                <li><strong>Selective mutism in new situations:</strong> Not shyness, but processing overload.</li>
+                <li><strong>Paralysis in decision-making:</strong> Seeing too many variables to choose from.</li>
+                <li><strong>Refusal of age-appropriate challenges:</strong> Calculating risks others don't perceive.</li>
+                <li><strong>Physical symptoms before performances:</strong> Intense mental rehearsal triggering stress responses.</li>
+                <li><strong>Perfectionist avoidance:</strong> Fear of outcomes they can clearly envision.</li>
+            </ul>
+
+            <h3>The Cognitive Load Problem</h3>
+            <p>Gifted children's brains don't just think faster—they think in higher resolution. Where a neurotypical child sees a slide as "fun," a gifted child sees:</p>
+
+            <ul>
+                <li>Potential equipment malfunctions</li>
+                <li>Collision risks with other children</li>
+                <li>Embarrassment scenarios if they fall</li>
+                <li>Disappointment if it's not as thrilling as anticipated</li>
+                <li>Time wasted that could be spent on more meaningful activities</li>
+            </ul>
+
+            <p>This isn't anxiety—it's computational overload. Their brains are running Monte Carlo simulations for everyday activities.</p>
+
+            <div class="highlight-box">
+                <h3>Research Insight</h3>
+                <p>Neuroimaging studies reveal that gifted children show heightened activity in the prefrontal cortex during decision-making tasks, indicating increased analysis and future-thinking compared to neurotypical peers.</p>
+            </div>
+
+            <h2>The Paradox of Predictive Intelligence</h2>
+            <p>Gifted children's ability to anticipate consequences creates a unique developmental challenge:</p>
+
+            <h3>Advantages in Complex Situations</h3>
+            <p>Their predictive abilities serve them well in:</p>
+
+            <ul>
+                <li>Academic problem-solving requiring multi-step reasoning</li>
+                <li>Strategic games and competitions</li>
+                <li>Identifying potential pitfalls in projects</li>
+                <li>Understanding complex systems and relationships</li>
+            </ul>
+
+            <h3>Challenges in Everyday Life</h3>
+            <p>However, these same abilities create obstacles in:</p>
+
+            <ul>
+                <li>Simple, low-stakes decisions that don't require analysis</li>
+                <li>Activities where "good enough" suffices</li>
+                <li>Social situations requiring quick intuitive responses</li>
+                <li>Novel experiences where unknown variables exist</li>
+            </ul>
+
+            <h2>Distinguishing Intelligence from Anxiety</h2>
+            <p>Understanding whether your child's behavior stems from giftedness or genuine anxiety requires careful observation:</p>
+
+            <h3>Gifted Overthinking Characteristics</h3>
+            <ul>
+                <li>Concerns are logically connected to actual potential outcomes</li>
+                <li>Child can articulate specific scenarios they've considered</li>
+                <li>Anxiety decreases when given more information or control</li>
+                <li>Performance improves in familiar, predictable environments</li>
+                <li>Child shows advanced reasoning about their concerns</li>
+            </ul>
+
+            <h3>Traditional Anxiety Indicators</h3>
+            <ul>
+                <li>Fears are disproportionate to actual threat level</li>
+                <li>Child struggles to explain specific worries</li>
+                <li>Anxiety persists despite reassurance or information</li>
+                <li>Physical symptoms occur without identifiable triggers</li>
+                <li>Worry generalizes across unrelated situations</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Diagnostic Question</h3>
+                <p>Ask: "Are they afraid of the thing itself, or the 47 ways it could go wrong that only they can see?" The answer reveals the root of their hesitation.</p>
+            </div>
+
+            <h2>Practical Strategies for Parents</h2>
+
+            <h3>1. Validate Their Intelligence</h3>
+            <p>Instead of dismissing concerns with "Don't worry about it," acknowledge: "You're thinking about this really carefully. Let's look at which possibilities are most likely."</p>
+
+            <h3>2. Channel the Analysis</h3>
+            <p>Give their brain something productive to calculate: "What would you need to know to feel comfortable trying this?" This redirects overthinking toward problem-solving.</p>
+
+            <h3>3. Create Decision Frameworks</h3>
+            <p>Help them develop shortcuts for low-stakes decisions: "For choices that can be undone easily, we use the 'good enough' rule. For important decisions, we use the full analysis."</p>
+
+            <h3>4. Build Familiarity Gradually</h3>
+            <p>New situations trigger maximum analysis. Repeated exposure reduces variables and builds confidence through predictability.</p>
+
+            <h3>5. Model Imperfect Decision-Making</h3>
+            <p>Narrate your own "good enough" choices: "I'm not sure if this is the best restaurant, but it looks fine and I don't want to spend twenty minutes researching. Let's try it."</p>
+
+            <h2>When to Seek Professional Help</h2>
+            <p>While gifted overthinking is normal, professional support may be needed if:</p>
+            <ul>
+                <li>Anxiety significantly impairs daily functioning or relationships</li>
+                <li>Physical symptoms persist (sleep issues, stomach problems)</li>
+                <li>Avoidance behaviors are increasing over time</li>
+                <li>Your child expresses distress about their own thinking patterns</li>
+            </ul>
+            <p>Look for professionals experienced with gifted children, as standard anxiety interventions may need modification.</p>
+
+            <div class="author-box">
+                <div class="author-box__avatar">NK</div>
+                <div class="author-box__info">
+                    <h4>Navigator Kids AI™ Editorial Team</h4>
+                    <p>Written by specialists who understand gifted and twice-exceptional children.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <h2>Need Help With Meltdowns?</h2>
+        <p>Get our free Emergency Reset Kit — science-backed strategies for when emotions run high.</p>
+        <a href="emergency-reset-kit.html" class="btn">
+            <i class="fas fa-download"></i> Get the Free Kit
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
+                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+            </div>
+            <div class="footer__links">
+                <h5>Product</h5>
+                <ul>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="methodology.html">Membership</a></li>
+                    <li><a href="emergency-reset-kit.html">Free Reset Kit</a></li>
+                </ul>
+            </div>
+            <div class="footer__links">
+                <h5>Resources</h5>
+                <ul>
+                    <li><a href="resources.html">Knowledge Base</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            © 2024 Navigator Kids AI™. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.navbar__toggle i');
+            
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+    </script>
+</body>
+</html>re.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
         :root {
