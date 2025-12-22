@@ -3,66 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission Control Packet - Your Child's User Manual | Navigator Kids AI™</title>
+    <title>Mission Control Center | Navigator Kids AI™</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* --- VARIABLES --- */
         :root {
             --color-primary: #1B365D;
             --color-primary-dark: #132845;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
+            --color-primary-light: #2A4A7A;
             --color-highlight: #2A9D8F;
             --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
+            --color-accent: #E9C46A;
             --color-text: #2F2F2F;
             --color-text-muted: #666666;
             --color-background: #F4F6F8;
-            --color-background-warm: #FFFBF5;
             --border-radius: 8px;
-            --border-radius-lg: 12px;
+            --border-radius-lg: 16px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
+            --transition: all 0.3s ease;
         }
 
-        /* --- GLOBAL RESET --- */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html { scroll-behavior: smooth; }
-
         body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Lato', -apple-system, sans-serif;
+            background: var(--color-background);
             color: var(--color-text);
             line-height: 1.7;
-            background-color: var(--color-background);
-            padding-bottom: 80px; /* Space for sticky bar */
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4 {
             font-family: 'Inter', sans-serif;
-            line-height: 1.3;
             color: var(--color-primary);
+            line-height: 1.3;
         }
 
         a { text-decoration: none; color: inherit; }
 
         .container {
-            width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* --- NAVIGATION --- */
+        /* Navigation */
         .navbar {
             background-color: #FFFFFF;
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
@@ -75,16 +67,15 @@
         .navbar-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 16px 24px;
+            padding: 15px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
 
         .logo a {
             font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--color-primary);
             display: flex;
@@ -92,66 +83,42 @@
             gap: 10px;
         }
 
-        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
+        .logo i { color: var(--color-highlight); }
         .logo span { color: var(--color-highlight); }
 
         .desktop-nav .nav-links {
-            list-style: none;
             display: flex;
-            gap: 32px;
+            gap: 28px;
+            list-style: none;
             align-items: center;
-            margin: 0;
         }
-
-        .desktop-nav .nav-links li { margin: 0; }
 
         .desktop-nav .nav-links a {
-            color: var(--color-text);
             font-weight: 600;
             font-size: 0.95rem;
+            color: var(--color-text);
             transition: var(--transition);
-            position: relative;
         }
 
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-highlight);
-            transition: width 0.2s ease;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after { width: 100%; }
+        .desktop-nav .nav-links a:hover { color: var(--color-highlight); }
 
         .nav-btn-primary {
-            background-color: var(--color-highlight);
+            background: var(--color-highlight) !important;
             color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: var(--transition);
-            font-size: 0.9rem;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
         }
 
-        .nav-btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-1px);
-        }
-
-        .nav-btn-primary::after { display: none !important; }
+        .nav-btn-primary:hover { background: var(--color-highlight-dark) !important; }
 
         .menu-toggle {
             display: none;
             background: none;
             border: none;
             font-size: 1.5rem;
-            cursor: pointer;
             color: var(--color-primary);
-            padding: 8px;
+            cursor: pointer;
         }
 
         .mobile-nav {
@@ -159,7 +126,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            width: 100%;
+            right: 0;
             background: white;
             flex-direction: column;
             box-shadow: var(--shadow-lg);
@@ -194,336 +161,526 @@
             .menu-toggle { display: block; }
         }
 
-        /* --- HERO SECTION --- */
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #2A4A7A 100%);
-            padding: 80px 24px;
+            background: linear-gradient(135deg, #1a1a5e 0%, #4169e1 50%, #2A9D8F 100%);
             color: white;
+            padding: 80px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
         }
 
         .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-            max-width: 1100px;
-            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero-text {
-            max-width: 55%;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: white;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        .btn-primary {
+        .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: var(--color-accent);
-            color: var(--color-primary);
-            padding: 18px 36px;
-            border-radius: var(--border-radius);
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: var(--transition);
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
         }
 
-        .btn-primary:hover {
-            background: var(--color-accent-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .hero-image {
-            background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-primary) 100%);
-            box-shadow: var(--shadow-lg);
-            padding: 40px;
-            border-radius: var(--border-radius-lg);
+        .hero h1 {
             color: white;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-align: center;
-            line-height: 1.4;
-            flex-shrink: 0;
-            width: 320px;
-            height: 320px;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-stats {
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            border: 3px solid rgba(255,255,255,0.2);
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
         }
 
-        .hero-image span {
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
             display: block;
-            font-size: 1rem;
-            font-weight: 400;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
             opacity: 0.8;
-            margin-top: 16px;
         }
 
-        @media (max-width: 900px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-text {
-                max-width: 100%;
-            }
-            .hero-image {
-                width: 100%;
-                max-width: 320px;
-                height: auto;
-                aspect-ratio: 1;
-            }
-        }
-
-        /* --- PROBLEM SECTION --- */
-        .problem {
-            background-color: var(--color-background);
-            padding: 80px 24px;
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: white;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .section-header h2 {
-            font-size: 2rem;
-            margin-bottom: 12px;
+            font-size: 2.25rem;
+            margin-bottom: 16px;
         }
 
         .section-header p {
             font-size: 1.1rem;
             color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .cards-grid {
+        .workflow-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
 
-        .card {
-            background: white;
+        @media (max-width: 900px) {
+            .workflow-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .workflow-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .workflow-step {
+            background: var(--color-background);
             border-radius: var(--border-radius-lg);
-            padding: 36px;
+            padding: 32px 24px;
             text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border-top: 4px solid var(--color-accent);
+            position: relative;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+        .workflow-step::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--color-highlight);
+            font-weight: bold;
         }
 
-        .card-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--color-highlight-light);
+        .workflow-step:last-child::after {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .workflow-step::after { display: none; }
+        }
+
+        .workflow-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--color-highlight), var(--color-primary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .card-icon i {
-            font-size: 1.8rem;
-            color: var(--color-highlight);
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: var(--color-text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* --- SOLUTION SECTION --- */
-        .solution {
-            background-color: white;
-            padding: 80px 24px;
-        }
-
-        .solution-item {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            margin-bottom: 60px;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .solution-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .solution-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .solution-image {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
-            padding: 40px;
-            border-radius: var(--border-radius-lg);
+            margin: 0 auto 16px;
+            font-size: 1.75rem;
             color: white;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-align: center;
-            min-width: 280px;
-            height: 280px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-            flex-shrink: 0;
         }
 
-        .solution-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
+        .workflow-step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
         }
 
-        .solution-text p {
-            font-size: 1.05rem;
+        .workflow-step p {
+            font-size: 0.9rem;
             color: var(--color-text-muted);
-            line-height: 1.8;
         }
 
-        @media (max-width: 800px) {
-            .solution-item,
-            .solution-item:nth-child(even) {
-                flex-direction: column;
-                text-align: center;
-            }
-            .solution-image {
-                width: 100%;
-                max-width: 280px;
-                height: auto;
-                aspect-ratio: 1;
-            }
+        /* Weekly Missions */
+        .missions-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--color-background) 0%, white 100%);
         }
 
-        /* --- SOCIAL PROOF --- */
-        .social-proof {
-            background: var(--color-background);
-            padding: 80px 24px;
-            text-align: center;
-        }
-
-        .social-proof h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-
-        .testimonial-grid {
+        .missions-preview {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
-            max-width: 900px;
-            margin: 0 auto;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
         }
 
-        .testimonial-card {
+        @media (max-width: 768px) {
+            .missions-preview {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mission-card {
             background: white;
             border-radius: var(--border-radius-lg);
-            padding: 32px;
-            box-shadow: var(--shadow-sm);
-            text-align: left;
-        }
-
-        .testimonial-card p {
-            font-style: italic;
-            color: var(--color-text);
-            margin-bottom: 16px;
-            line-height: 1.7;
-        }
-
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--color-primary);
-        }
-
-        /* --- STICKY BAR --- */
-        .sticky-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--color-primary);
-            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.15);
-            z-index: 990;
-            padding: 16px 0;
-        }
-
-        .sticky-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .sticky-text {
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .sticky-btn {
-            background-color: var(--color-accent);
-            color: var(--color-primary);
-            padding: 12px 28px;
-            border-radius: var(--border-radius);
-            font-weight: 700;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
             transition: var(--transition);
         }
 
-        .sticky-btn:hover {
-            background-color: var(--color-accent-light);
-            transform: translateY(-1px);
+        .mission-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
-        @media (max-width: 600px) {
-            .sticky-content {
-                flex-direction: column;
-                gap: 12px;
-            }
-            .sticky-text {
-                font-size: 0.9rem;
-                text-align: center;
-            }
-            .sticky-btn {
-                width: 100%;
-                text-align: center;
+        .mission-header {
+            padding: 20px 24px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mission-header.executive { background: linear-gradient(135deg, #4169e1, #6366f1); }
+        .mission-header.emotional { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+        .mission-header.sensory { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
+        .mission-header.social { background: linear-gradient(135deg, #10b981, #14b8a6); }
+
+        .mission-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mission-title span {
+            font-size: 1.5rem;
+        }
+
+        .mission-title h3 {
+            color: white;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .mission-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .mission-content {
+            padding: 24px;
+        }
+
+        .mission-target {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+
+        .mission-target i {
+            color: var(--color-highlight);
+        }
+
+        .mission-description {
+            margin-bottom: 20px;
+        }
+
+        .mission-description h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .mission-description p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+        }
+
+        .mission-pages {
+            display: flex;
+            gap: 12px;
+        }
+
+        .page-preview {
+            flex: 1;
+            background: var(--color-background);
+            border-radius: var(--border-radius);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .page-preview-icon {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .page-preview-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Personalization */
+        .personalization-section {
+            padding: 80px 0;
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .personalization-section h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .personalization-section > .container > p {
+            text-align: center;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .personalization-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .personalization-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* --- FOOTER --- */
+        .personalization-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            text-align: center;
+        }
+
+        .personalization-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .personalization-card h3 {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .personalization-card p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        /* Sample Mission */
+        .sample-mission {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .sample-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .sample-packet {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 3px solid var(--color-primary);
+        }
+
+        .sample-packet-header {
+            background: linear-gradient(135deg, #4169e1, #1a1a5e);
+            color: white;
+            padding: 24px 32px;
+            text-align: center;
+        }
+
+        .sample-packet-header h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .sample-packet-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .sample-packet-body {
+            padding: 32px;
+        }
+
+        .sample-page {
+            background: var(--color-background);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sample-page:last-child {
+            margin-bottom: 0;
+        }
+
+        .sample-page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px dashed #ddd;
+        }
+
+        .sample-page-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .sample-page-badge {
+            background: var(--color-highlight);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .sample-activity {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--color-highlight);
+        }
+
+        .sample-activity:last-child {
+            margin-bottom: 0;
+        }
+
+        .sample-activity h5 {
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            color: var(--color-primary);
+        }
+
+        .sample-activity p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
+        .personalized-highlight {
+            background: linear-gradient(90deg, #fef3c7, #fde68a);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-primary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--color-primary);
+            padding: 18px 36px;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .cta-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .cta-feature i {
+            color: var(--color-accent);
+        }
+
+        /* Footer */
         .footer {
             background-color: #0f1f33;
             color: white;
@@ -535,6 +692,9 @@
             grid-template-columns: 2fr 1fr 1fr;
             gap: 48px;
             margin-bottom: 48px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (max-width: 768px) {
@@ -548,7 +708,6 @@
             color: var(--color-accent);
             margin-bottom: 16px;
             font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
         }
 
         .footer__brand p {
@@ -561,15 +720,9 @@
             color: var(--color-accent);
             margin-bottom: 16px;
             font-size: 1rem;
-            font-family: 'Inter', sans-serif;
         }
 
-        .footer__links ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
+        .footer__links ul { list-style: none; }
         .footer__links li { margin-bottom: 12px; }
 
         .footer__links a {
@@ -586,11 +739,13 @@
             text-align: center;
             font-size: 0.85rem;
             opacity: 0.6;
+            max-width: 1200px;
+            margin: 0 auto;
         }
     </style>
 </head>
-
 <body>
+
     <!-- Navigation -->
     <header class="navbar">
         <div class="navbar-container">
@@ -603,10 +758,9 @@
             <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                    <li><a href="emergency-reset-kit.html" class="nav-btn-primary">Free Reset Kit</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -615,148 +769,363 @@
         </div>
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+            <a href="emergency-reset-kit.html">Free Reset Kit</a>
         </nav>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>The User Manual Your Child Didn't Come With.</h1>
-                        <p>A 12-page actionable guide for Deep Processors and Sensitive Kids—download your exclusive preview now!</p>
-                        <a href="checkout.html" class="btn-primary">
-                            <i class="fas fa-download"></i> Get Instant Access - $129
-                        </a>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    NAVIGATOR MEMBERSHIP
+                </div>
+                <h1>Mission Control Center</h1>
+                <p>Your child's personalized command center. Every week, receive 2 targeted "stealth" missions designed specifically for YOUR child's brain — disguised as games they'll actually want to do.</p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">8</span>
+                        <span class="hero-stat-label">Missions Per Month</span>
                     </div>
-                    <div class="hero-image">
-                        THE MISSION CONTROL PACKET
-                        <span>12-Page Digital Guide</span>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">2-3</span>
+                        <span class="hero-stat-label">Pages Each</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">15</span>
+                        <span class="hero-stat-label">Minutes to Complete</span>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Problem Section -->
-        <section class="problem">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Tired of the drama?</h2>
-                    <p>Stop guessing and start understanding with science-backed insights.</p>
-                </div>
-                <div class="cards-grid">
-                    <div class="card">
-                        <div class="card-icon">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <h3>Morning Battles</h3>
-                        <p>End the daily struggle to get everyone dressed and out the door on time.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <h3>Homework Meltdowns</h3>
-                        <p>Create a calm, productive homework environment that actually works.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                        <h3>Bedtime Anxiety</h3>
-                        <p>Help your child wind down and sleep peacefully without endless negotiations.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Solution Section -->
-        <section class="solution">
-            <div class="container">
-                <div class="solution-item">
-                    <div class="solution-image">
-                        THE SCIENCE BEHIND<br>
-                        YOUR CHILD'S BRAIN
-                    </div>
-                    <div class="solution-text">
-                        <h3>The "Why" - Neuroscience explained simply.</h3>
-                        <p>Understand exactly what's happening in your child's developing brain. Learn why they think differently, feel more deeply, and experience the world in unique ways.</p>
-                    </div>
-                </div>
-
-                <div class="solution-item">
-                    <div class="solution-image">
-                        6-WEEK ACTION PLAN<br>
-                        WITH WEEKLY GOALS
-                    </div>
-                    <div class="solution-text">
-                        <h3>The 6-Week Action Plan.</h3>
-                        <p>A structured roadmap to implement positive changes in your home. Each week focuses on a specific area: routines, communication, emotional regulation, and more.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Social Proof Section -->
-        <section class="social-proof">
-            <div class="container">
-                <h2>Trusted by Parents Like You</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p>"Finally, something that explains why my son acts the way he does. The 6-week plan gave us concrete steps to follow."</p>
-                        <div class="testimonial-author">— Sarah M., Parent of a 2e 8-year-old</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"I wish I had this years ago. The neuroscience section alone was worth the price. Now I understand my daughter so much better."</p>
-                        <div class="testimonial-author">— Michael T., Parent of a gifted 10-year-old</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Sticky CTA Bar -->
-    <div class="sticky-bar">
-        <div class="sticky-content">
-            <div class="sticky-text">Get the Full Packet & Assessment</div>
-            <a href="checkout.html" class="sticky-btn">Buy Now - $129</a>
         </div>
-    </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How Mission Control Works</h2>
+                <p>A personalized skill-building system that adapts to your child's needs every month.</p>
+            </div>
+
+            <div class="workflow-grid">
+                <div class="workflow-step">
+                    <div class="workflow-icon">🔍</div>
+                    <h3>We Assess</h3>
+                    <p>Your child's Deep Dive Assessment reveals their unique challenges and strengths</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-icon">🎯</div>
+                    <h3>We Target</h3>
+                    <p>Monthly "Friction Heat Map" identifies exactly where struggles are happening</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-icon">🎮</div>
+                    <h3>We Personalize</h3>
+                    <p>Missions use THEIR interests, friends' names, and favorite things</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-icon">📈</div>
+                    <h3>We Adapt</h3>
+                    <p>Track progress and adjust next month's missions based on results</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Missions -->
+    <section class="missions-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Weekly Mission Drops</h2>
+                <p>Every week, 2 new missions appear in your Mission Control dashboard — each one targeting specific skills your child needs to develop.</p>
+            </div>
+
+            <div class="missions-preview">
+                <div class="mission-card">
+                    <div class="mission-header executive">
+                        <div class="mission-title">
+                            <span>🧠</span>
+                            <h3>Task Launch Sequence</h3>
+                        </div>
+                        <span class="mission-badge">WEEK 1</span>
+                    </div>
+                    <div class="mission-content">
+                        <div class="mission-target">
+                            <i class="fas fa-crosshairs"></i>
+                            Targets: Task Initiation, Time Estimation
+                        </div>
+                        <div class="mission-description">
+                            <h4>The Homework Countdown</h4>
+                            <p>A space-themed mission that turns "starting homework" into a launch sequence game. Includes timer challenges and reward checkpoints.</p>
+                        </div>
+                        <div class="mission-pages">
+                            <div class="page-preview">
+                                <div class="page-preview-icon">📋</div>
+                                <div class="page-preview-label">Mission Brief</div>
+                            </div>
+                            <div class="page-preview">
+                                <div class="page-preview-icon">🎮</div>
+                                <div class="page-preview-label">Activity Sheet</div>
+                            </div>
+                            <div class="page-preview">
+                                <div class="page-preview-icon">⭐</div>
+                                <div class="page-preview-label">Progress Log</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mission-card">
+                    <div class="mission-header emotional">
+                        <div class="mission-title">
+                            <span>💖</span>
+                            <h3>Emotion Decoder</h3>
+                        </div>
+                        <span class="mission-badge">WEEK 1</span>
+                    </div>
+                    <div class="mission-content">
+                        <div class="mission-target">
+                            <i class="fas fa-crosshairs"></i>
+                            Targets: Emotional Awareness, Self-Regulation
+                        </div>
+                        <div class="mission-description">
+                            <h4>The Feelings Detective</h4>
+                            <p>A mystery-themed activity where kids identify and name emotions using their favorite characters. Builds vocabulary for big feelings.</p>
+                        </div>
+                        <div class="mission-pages">
+                            <div class="page-preview">
+                                <div class="page-preview-icon">🔍</div>
+                                <div class="page-preview-label">Case File</div>
+                            </div>
+                            <div class="page-preview">
+                                <div class="page-preview-icon">🎯</div>
+                                <div class="page-preview-label">Evidence Board</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mission-card">
+                    <div class="mission-header sensory">
+                        <div class="mission-title">
+                            <span>🌈</span>
+                            <h3>Sensory Shield</h3>
+                        </div>
+                        <span class="mission-badge">WEEK 2</span>
+                    </div>
+                    <div class="mission-content">
+                        <div class="mission-target">
+                            <i class="fas fa-crosshairs"></i>
+                            Targets: Sensory Awareness, Coping Strategies
+                        </div>
+                        <div class="mission-description">
+                            <h4>The Comfort Zone Builder</h4>
+                            <p>Kids create their own sensory toolkit by identifying what helps when things feel "too much." Personalized to their specific triggers.</p>
+                        </div>
+                        <div class="mission-pages">
+                            <div class="page-preview">
+                                <div class="page-preview-icon">🛡️</div>
+                                <div class="page-preview-label">Shield Design</div>
+                            </div>
+                            <div class="page-preview">
+                                <div class="page-preview-icon">🧰</div>
+                                <div class="page-preview-label">Toolkit Cards</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mission-card">
+                    <div class="mission-header social">
+                        <div class="mission-title">
+                            <span>👥</span>
+                            <h3>Connection Quest</h3>
+                        </div>
+                        <span class="mission-badge">WEEK 2</span>
+                    </div>
+                    <div class="mission-content">
+                        <div class="mission-target">
+                            <i class="fas fa-crosshairs"></i>
+                            Targets: Social Skills, Friendship Building
+                        </div>
+                        <div class="mission-description">
+                            <h4>The Friend Finder Map</h4>
+                            <p>An adventure game that helps identify shared interests with peers. Uses real classmate names to practice conversation starters.</p>
+                        </div>
+                        <div class="mission-pages">
+                            <div class="page-preview">
+                                <div class="page-preview-icon">🗺️</div>
+                                <div class="page-preview-label">Quest Map</div>
+                            </div>
+                            <div class="page-preview">
+                                <div class="page-preview-icon">💬</div>
+                                <div class="page-preview-label">Conversation Cards</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personalization -->
+    <section class="personalization-section">
+        <div class="container">
+            <h2>Personalized to YOUR Child</h2>
+            <p>Generic worksheets don't work. That's why every mission is customized using details from your child's profile.</p>
+
+            <div class="personalization-grid">
+                <div class="personalization-card">
+                    <div class="personalization-card-icon">🎮</div>
+                    <h3>Their Interests</h3>
+                    <p>Love Minecraft? Missions become building challenges. Obsessed with horses? Activities feature stable themes.</p>
+                </div>
+                <div class="personalization-card">
+                    <div class="personalization-card-icon">👦</div>
+                    <h3>Real Names</h3>
+                    <p>Activities use their friends' actual names, their teacher's name, real scenarios they face daily.</p>
+                </div>
+                <div class="personalization-card">
+                    <div class="personalization-card-icon">🎯</div>
+                    <h3>Targeted Skills</h3>
+                    <p>Based on assessment results, we focus on THEIR specific challenges — not generic "executive function."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Mission -->
+    <section class="sample-mission">
+        <div class="container">
+            <div class="section-header">
+                <h2>Inside a Mission Packet</h2>
+                <p>Each mission is 2-3 pages designed to take about 15 minutes. Short enough to complete, engaging enough to enjoy.</p>
+            </div>
+
+            <div class="sample-container">
+                <div class="sample-packet">
+                    <div class="sample-packet-header">
+                        <h3>🚀 Mission: Launch Sequence Alpha</h3>
+                        <p>Personalized for: <span class="personalized-highlight">Mason, Age 9</span></p>
+                    </div>
+                    <div class="sample-packet-body">
+                        <div class="sample-page">
+                            <div class="sample-page-header">
+                                <span class="sample-page-title">
+                                    <span>📋</span> Page 1: Mission Briefing
+                                </span>
+                                <span class="sample-page-badge">5 MIN</span>
+                            </div>
+                            <div class="sample-activity">
+                                <h5>Your Challenge, Commander <span class="personalized-highlight">Mason</span></h5>
+                                <p>Before you can launch your <span class="personalized-highlight">Minecraft</span> rocket, you need to complete your pre-flight checklist. How fast can you get ready for launch?</p>
+                            </div>
+                            <div class="sample-activity">
+                                <h5>Time Prediction Challenge</h5>
+                                <p>Guess how long each task will take. Then time yourself and see how close you were!</p>
+                            </div>
+                        </div>
+
+                        <div class="sample-page">
+                            <div class="sample-page-header">
+                                <span class="sample-page-title">
+                                    <span>🎮</span> Page 2: Launch Checklist
+                                </span>
+                                <span class="sample-page-badge">8 MIN</span>
+                            </div>
+                            <div class="sample-activity">
+                                <h5>Pre-Flight Sequence</h5>
+                                <p>☐ Gather materials (like <span class="personalized-highlight">Mrs. Johnson</span> asked)<br>
+                                ☐ Clear the launch pad (desk)<br>
+                                ☐ Set the countdown timer<br>
+                                ☐ Begin mission (start homework)</p>
+                            </div>
+                            <div class="sample-activity">
+                                <h5>Power-Up Rewards</h5>
+                                <p>Complete the sequence in under 5 minutes = Earn 10 minutes of <span class="personalized-highlight">Minecraft</span> after homework!</p>
+                            </div>
+                        </div>
+
+                        <div class="sample-page">
+                            <div class="sample-page-header">
+                                <span class="sample-page-title">
+                                    <span>⭐</span> Page 3: Mission Log
+                                </span>
+                                <span class="sample-page-badge">2 MIN</span>
+                            </div>
+                            <div class="sample-activity">
+                                <h5>Commander's Report</h5>
+                                <p>Today's launch time: _____ minutes<br>
+                                What helped me start faster: _____<br>
+                                Next mission goal: _____</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Build Their Launch System?</h2>
+            <p>Start with the free assessment to discover your child's unique operating system. Then unlock personalized missions designed just for them.</p>
+            
+            <a href="gifted-assessment-tool.html" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Start Free Assessment
+            </a>
+
+            <div class="cta-features">
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>8 personalized missions/month</span>
+                </div>
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>$99/month, cancel anytime</span>
+                </div>
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>30-day money-back guarantee</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
-                </div>
-                <div class="footer__links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
-                    </ul>
-                </div>
-                <div class="footer__links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <h4>Navigator Kids AI™</h4>
+                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
             </div>
-            <div class="footer__bottom">
-                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+            <div class="footer__links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                </ul>
             </div>
+            <div class="footer__links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2025 Navigator Kids AI™. All rights reserved.</p>
         </div>
     </footer>
 
@@ -779,22 +1148,14 @@
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
             
-            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
-        });
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('mobileMenu');
-                const toggle = document.querySelector('.menu-toggle i');
-                menu.classList.remove('active');
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            });
         });
     </script>
 </body>
