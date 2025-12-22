@@ -38,9 +38,7 @@
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -55,10 +53,7 @@
             color: var(--color-primary);
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
         /* --- CONTAINER --- */
         .container {
@@ -69,27 +64,26 @@
             padding-right: 24px;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION (Standardized) --- */
         .navbar {
             background-color: var(--color-secondary);
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 16px 0;
             box-shadow: var(--shadow-sm);
         }
 
-        .navbar__inner {
+        .navbar-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 15px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar__logo {
+        .logo a {
             font-family: 'Inter', sans-serif;
             font-size: 1.3rem;
             font-weight: 800;
@@ -99,54 +93,43 @@
             gap: 10px;
         }
 
-        .navbar__logo i {
+        .logo i {
             color: var(--color-highlight);
             font-size: 1.4rem;
         }
 
-        .navbar__logo span {
-            color: var(--color-highlight);
-        }
+        .logo span { color: var(--color-highlight); }
 
-        .navbar__nav {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .navbar__links {
+        .desktop-nav .nav-links {
             display: flex;
             gap: 28px;
             list-style: none;
+            align-items: center;
         }
 
-        .navbar__links a {
+        .desktop-nav .nav-links a {
             font-weight: 600;
             font-size: 0.95rem;
             color: var(--color-text);
             transition: var(--transition);
         }
 
-        .navbar__links a:hover {
-            color: var(--color-highlight);
-        }
+        .desktop-nav .nav-links a:hover { color: var(--color-highlight); }
 
-        .navbar__cta {
-            background: var(--color-highlight);
-            color: white;
+        .nav-btn-primary {
+            background: var(--color-highlight) !important;
+            color: white !important;
             padding: 12px 24px;
             border-radius: var(--border-radius);
             font-weight: 700;
-            font-size: 0.9rem;
-            transition: var(--transition);
         }
 
-        .navbar__cta:hover {
-            background: var(--color-highlight-dark);
+        .nav-btn-primary:hover {
+            background: var(--color-highlight-dark) !important;
             transform: translateY(-2px);
         }
 
-        .navbar__toggle {
+        .menu-toggle {
             display: none;
             background: none;
             border: none;
@@ -167,9 +150,7 @@
             border-top: 1px solid #eee;
         }
 
-        .mobile-nav.active {
-            display: flex;
-        }
+        .mobile-nav.active { display: flex; }
 
         .mobile-nav a {
             padding: 16px 24px;
@@ -193,12 +174,8 @@
         }
 
         @media (max-width: 900px) {
-            .navbar__nav {
-                display: none;
-            }
-            .navbar__toggle {
-                display: block;
-            }
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
         }
 
         /* --- LIBRARY HEADER --- */
@@ -256,19 +233,18 @@
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
             margin-bottom: 16px;
         }
 
         .featured-content h2 {
-            font-size: 1.8rem;
+            font-size: 1.75rem;
             margin-bottom: 12px;
         }
 
         .featured-content p {
             color: var(--color-text-muted);
             margin-bottom: 24px;
-            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         .featured-cta {
@@ -279,7 +255,7 @@
             color: white;
             padding: 14px 28px;
             border-radius: var(--border-radius);
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
         }
 
@@ -289,145 +265,106 @@
         }
 
         .featured-image {
-            text-align: center;
+            display: flex;
+            justify-content: center;
         }
 
-        .featured-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
-
-        .featured-image i {
-            font-size: 8rem;
-            color: var(--color-highlight);
-            opacity: 0.3;
-        }
-
-        /* Kit Preview Visual */
         .kit-preview {
-            background: linear-gradient(145deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            background: white;
             border-radius: var(--border-radius-lg);
-            padding: 40px 32px;
+            padding: 32px;
             text-align: center;
-            color: white;
-            box-shadow: 0 12px 40px rgba(27, 54, 93, 0.3);
+            box-shadow: var(--shadow-lg);
             position: relative;
-            overflow: hidden;
-        }
-
-        .kit-preview::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
         }
 
         .kit-preview__icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5rem;
-            color: var(--color-accent);
+            font-size: 3rem;
+            color: var(--color-highlight);
+            margin-bottom: 16px;
         }
 
         .kit-preview__badge {
-            display: inline-block;
+            position: absolute;
+            top: -10px;
+            right: -10px;
             background: var(--color-accent);
             color: var(--color-primary);
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 6px 12px;
+            border-radius: 50px;
             font-size: 0.7rem;
             font-weight: 800;
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
         }
 
         .kit-preview__title {
             font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            line-height: 1.2;
+            color: var(--color-primary);
             margin-bottom: 8px;
         }
 
         .kit-preview__subtitle {
             font-size: 0.9rem;
-            opacity: 0.85;
+            color: var(--color-text-muted);
         }
 
-        /* --- LIBRARY SECTIONS --- */
+        /* --- LIBRARY CONTENT --- */
         .library-content {
-            padding: 60px 24px 100px;
+            padding: 60px 0 80px;
         }
 
         .library-section {
-            margin-bottom: 64px;
+            margin-bottom: 60px;
         }
 
         .section-header {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 2px solid var(--color-highlight);
+            border-bottom: 2px solid var(--color-highlight-light);
         }
 
         .section-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--color-highlight-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
+            font-size: 2rem;
         }
 
         .section-title {
             font-size: 1.5rem;
-            margin: 0;
+            color: var(--color-primary);
         }
 
         .resource-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
+            gap: 20px;
         }
 
         .resource-card {
-            display: flex;
-            flex-direction: column;
             background: white;
-            border-radius: var(--border-radius-lg);
-            padding: 28px;
+            border-radius: var(--border-radius);
+            padding: 24px;
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
             border: 1px solid transparent;
         }
 
         .resource-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--color-highlight);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-highlight-light);
         }
 
         .resource-card .tag {
             display: inline-block;
-            background: var(--color-highlight-light);
+            background: var(--color-background);
             color: var(--color-highlight-dark);
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 4px 10px;
+            border-radius: 4px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -460,80 +397,67 @@
             gap: 6px;
         }
 
-        .resource-card:hover .card-arrow {
-            gap: 10px;
-        }
+        .resource-card:hover .card-arrow { gap: 10px; }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER (Standardized) --- */
         .footer {
-            background: var(--color-primary-dark);
+            background-color: #0f1f33;
             color: white;
-            padding: 80px 0 40px;
+            padding: 80px 24px 40px;
         }
 
         .footer__grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 48px;
+            margin-bottom: 48px;
             max-width: 1200px;
-            margin: 0 auto 48px;
-            padding: 0 24px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (max-width: 768px) {
             .footer__grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 32px;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .footer__grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
 
         .footer__brand h4 {
-            font-size: 1.25rem;
+            color: var(--color-accent);
             margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer__brand h4 i {
-            color: var(--color-highlight);
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .footer__brand p {
-            opacity: 0.7;
+            opacity: 0.75;
             line-height: 1.7;
             font-size: 0.95rem;
         }
 
-        .footer__links h5 {
-            font-size: 1rem;
-            margin-bottom: 20px;
+        .footer__links h4 {
             color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .footer__links ul {
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
-        .footer__links li {
-            margin-bottom: 12px;
-        }
+        .footer__links li { margin-bottom: 12px; }
 
         .footer__links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
             font-size: 0.95rem;
             transition: var(--transition);
         }
 
-        .footer__links a:hover {
-            color: white;
-        }
+        .footer__links a:hover { color: var(--color-accent); }
 
         .footer__bottom {
             padding-top: 32px;
@@ -543,44 +467,39 @@
             opacity: 0.6;
             max-width: 1200px;
             margin: 0 auto;
-            padding-left: 24px;
-            padding-right: 24px;
         }
     </style>
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar__inner">
-            <a href="index.html" class="navbar__logo">
-                <i class="fas fa-compass"></i>
-                Navigator <span>Kids AI</span>™
-            </a>
-            
-            <div class="navbar__nav">
-                <ul class="navbar__links">
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency-reset-kit.html" class="nav-btn-primary">Free Reset Kit</a></li>
                 </ul>
-                <a href="methodology.html" class="navbar__cta">Get Started</a>
-            </div>
-
-            <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        
-        <nav class="mobile-nav" id="mobileNav">
+        <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a>
+            <a href="emergency-reset-kit.html">Free Reset Kit</a>
         </nav>
-    </nav>
+    </header>
 
     <!-- Hero -->
     <section class="library-header">
@@ -655,12 +574,7 @@
                     <h2 class="section-title">Executive Function & Focus</h2>
                 </div>
                 <div class="resource-list">
-                    <a href="executive-function.html" class="resource-card">
-                        <span class="tag">Start Here</span>
-                        <span class="card-title">Executive Function 101</span>
-                        <span class="card-desc">The complete guide to understanding your child's mental command center.</span>
-                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-                    </a>
+                    <!-- REMOVED: Executive Function 101 (stub page) -->
                     <a href="laziness-vs-dysfunction.html" class="resource-card">
                         <span class="tag">Essential</span>
                         <span class="card-title">Laziness vs. Dysfunction</span>
@@ -682,31 +596,19 @@
                     <a href="black-hole-backpack.html" class="resource-card">
                         <span class="tag">Organization</span>
                         <span class="card-title">The Black Hole Backpack</span>
-                        <span class="card-desc">A 3-step system to stop losing homework, permission slips, and your sanity.</span>
+                        <span class="card-desc">Strategies for kids who lose everything that enters their bag.</span>
                         <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="smart-child-lost-shoes.html" class="resource-card">
-                        <span class="tag">Daily Life</span>
-                        <span class="card-title">Smart Child, Lost Shoes</span>
-                        <span class="card-desc">Why brilliant kids lose everything and how to help them keep track.</span>
-                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-                    </a>
-                    <a href="homework-without-tears.html" class="resource-card">
-                        <span class="tag">Homework</span>
-                        <span class="card-title">Homework Without Tears</span>
-                        <span class="card-desc">Why traditional homework battles fail—and what actually works.</span>
+                    <a href="dopamine-menu.html" class="resource-card">
+                        <span class="tag">Tools</span>
+                        <span class="card-title">The Dopamine Menu</span>
+                        <span class="card-desc">Building a motivation toolkit that actually works for your child's brain.</span>
                         <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                     </a>
                     <a href="routine-rescue.html" class="resource-card">
                         <span class="tag">Systems</span>
                         <span class="card-title">Routine Rescue</span>
-                        <span class="card-desc">Building routines that actually stick for kids who resist structure.</span>
-                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-                    </a>
-                    <a href="dopamine-menu.html" class="resource-card">
-                        <span class="tag">Motivation</span>
-                        <span class="card-title">The Dopamine Menu</span>
-                        <span class="card-desc">Harnessing your child's reward system for sustainable motivation.</span>
+                        <span class="card-desc">Creating sustainable routines that don't fall apart after a week.</span>
                         <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                     </a>
                 </div>
@@ -719,12 +621,7 @@
                     <h2 class="section-title">Emotional Regulation</h2>
                 </div>
                 <div class="resource-list">
-                    <a href="emotional-regulation.html" class="resource-card">
-                        <span class="tag">Start Here</span>
-                        <span class="card-title">Emotional Regulation 101</span>
-                        <span class="card-desc">Understanding why big feelings hit gifted kids even harder.</span>
-                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-                    </a>
+                    <!-- REMOVED: Emotional Regulation 101 (stub page) -->
                     <a href="emotional-intensity.html" class="resource-card">
                         <span class="tag">Deep Dive</span>
                         <span class="card-title">Emotional Intensity</span>
@@ -771,12 +668,7 @@
                     <h2 class="section-title">Sensory & Physical</h2>
                 </div>
                 <div class="resource-list">
-                    <a href="sensory-processing.html" class="resource-card">
-                        <span class="tag">Start Here</span>
-                        <span class="card-title">Sensory Processing 101</span>
-                        <span class="card-desc">Understanding why certain textures, sounds, and environments overwhelm your child.</span>
-                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-                    </a>
+                    <!-- REMOVED: Sensory Processing 101 (stub page) -->
                     <a href="seekers-vs-avoiders.html" class="resource-card">
                         <span class="tag">Profiles</span>
                         <span class="card-title">Seekers vs. Avoiders</span>
@@ -863,42 +755,74 @@
     <footer class="footer">
         <div class="footer__grid">
             <div class="footer__brand">
-                <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
-                <p>Your child's brain didn't come with a manual. Until now. Science-backed guidance for raising exceptional children.</p>
+                <h4>Navigator Kids AI™</h4>
+                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
             </div>
             <div class="footer__links">
-                <h5>Resources</h5>
+                <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="resources.html">Knowledge Base</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                 </ul>
             </div>
             <div class="footer__links">
-                <h5>Company</h5>
+                <h4>Support</h4>
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="methodology.html">Our Method</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer__links">
-                <h5>Legal</h5>
-                <ul>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer__bottom">
-            <p>© 2024 Navigator Kids AI™. All rights reserved.</p>
+            <p>&copy; 2025 Navigator Kids AI™. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        function toggleMobileNav() {
-            document.getElementById('mobileNav').classList.toggle('active');
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
         }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                if (menu) menu.classList.remove('active');
+                if (toggle) {
+                    toggle.classList.remove('fa-times');
+                    toggle.classList.add('fa-bars');
+                }
+            });
+        });
     </script>
 </body>
 </html>
