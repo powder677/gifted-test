@@ -9,54 +9,80 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
+        /* === NAVIGATOR BRAND VARIABLES === */
         :root {
             --color-primary: #1B365D;
             --color-primary-dark: #132845;
             --color-primary-light: #2A4A7A;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
             --color-highlight: #2A9D8F;
             --color-highlight-dark: #238579;
-            --color-accent: #E9C46A;
+            --color-highlight-light: #E8F4F2;
             --color-text: #2F2F2F;
             --color-text-muted: #666666;
+            --color-text-light: #94a3b8;
             --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
+            --color-danger: #ef4444;
+            --color-danger-light: #fef2f2;
+            
             --border-radius: 8px;
             --border-radius-lg: 16px;
+            --border-radius-xl: 24px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
             --transition: all 0.3s ease;
         }
 
+        /* === RESET & BASE === */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Lato', -apple-system, sans-serif;
-            background: var(--color-background);
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--color-text);
             line-height: 1.7;
+            background-color: var(--color-secondary);
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Inter', sans-serif;
+            line-height: 1.2;
             color: var(--color-primary);
-            line-height: 1.3;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
         .container {
+            width: 100%;
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Navigation */
+        /* --- NAVIGATION --- */
         .navbar {
-            background-color: #FFFFFF;
+            background-color: var(--color-secondary);
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
             position: sticky;
             top: 0;
@@ -67,10 +93,11 @@
         .navbar-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 15px 24px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo a {
@@ -83,14 +110,15 @@
             gap: 10px;
         }
 
-        .logo i { color: var(--color-highlight); }
+        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
         .logo span { color: var(--color-highlight); }
 
         .desktop-nav .nav-links {
-            display: flex;
-            gap: 28px;
             list-style: none;
+            display: flex;
+            gap: 32px;
             align-items: center;
+            margin: 0;
         }
 
         .desktop-nav .nav-links a {
@@ -103,14 +131,19 @@
         .desktop-nav .nav-links a:hover { color: var(--color-highlight); }
 
         .nav-btn-primary {
-            background: var(--color-highlight) !important;
+            background-color: var(--color-highlight);
             color: white !important;
             padding: 12px 24px;
             border-radius: var(--border-radius);
             font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
-        .nav-btn-primary:hover { background: var(--color-highlight-dark) !important; }
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-2px);
+        }
 
         .menu-toggle {
             display: none;
@@ -119,6 +152,7 @@
             font-size: 1.5rem;
             color: var(--color-primary);
             cursor: pointer;
+            padding: 8px;
         }
 
         .mobile-nav {
@@ -708,6 +742,7 @@
             color: var(--color-accent);
             margin-bottom: 16px;
             font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .footer__brand p {
@@ -720,10 +755,18 @@
             color: var(--color-accent);
             margin-bottom: 16px;
             font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
-        .footer__links ul { list-style: none; }
-        .footer__links li { margin-bottom: 12px; }
+        .footer__links ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer__links li {
+            margin-bottom: 12px;
+        }
 
         .footer__links a {
             color: rgba(255, 255, 255, 0.75);
@@ -731,7 +774,9 @@
             transition: var(--transition);
         }
 
-        .footer__links a:hover { color: var(--color-accent); }
+        .footer__links a:hover {
+            color: var(--color-accent);
+        }
 
         .footer__bottom {
             padding-top: 32px;
@@ -739,14 +784,11 @@
             text-align: center;
             font-size: 0.85rem;
             opacity: 0.6;
-            max-width: 1200px;
-            margin: 0 auto;
         }
     </style>
 </head>
-<body>
 
-    <!-- Navigation -->
+<body>
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
@@ -755,27 +797,31 @@
                     Navigator <span>Kids AI</span>
                 </a>
             </div>
+            
             <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit.html" class="nav-btn-primary">Free Reset Kit</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
             </nav>
+
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
+            <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="emergency-reset-kit.html">Free Reset Kit</a>
+            <a href="methodology.html">Get Started</a>
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -804,7 +850,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
     <section class="how-it-works">
         <div class="container">
             <div class="section-header">
@@ -837,7 +882,6 @@
         </div>
     </section>
 
-    <!-- Weekly Missions -->
     <section class="missions-section">
         <div class="container">
             <div class="section-header">
@@ -973,7 +1017,6 @@
         </div>
     </section>
 
-    <!-- Personalization -->
     <section class="personalization-section">
         <div class="container">
             <h2>Personalized to YOUR Child</h2>
@@ -999,7 +1042,6 @@
         </div>
     </section>
 
-    <!-- Sample Mission -->
     <section class="sample-mission">
         <div class="container">
             <div class="section-header">
@@ -1071,13 +1113,12 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <h2>Ready to Build Their Launch System?</h2>
             <p>Start with the free assessment to discover your child's unique operating system. Then unlock personalized missions designed just for them.</p>
             
-            <a href="gifted-assessment-tool.html" class="cta-button">
+            <a href="checkout.html" class="cta-button">
                 <i class="fas fa-rocket"></i>
                 Start Free Assessment
             </a>
@@ -1099,33 +1140,35 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="footer__grid">
-            <div class="footer__brand">
-                <h4>Navigator Kids AI™</h4>
-                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer__links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
-                </ul>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
-            <div class="footer__links">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <p>&copy; 2025 Navigator Kids AI™. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1148,7 +1191,7 @@
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
             
-            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
                 if (icon) {
@@ -1156,6 +1199,16 @@
                     icon.classList.add('fa-bars');
                 }
             }
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
         });
     </script>
 </body>
