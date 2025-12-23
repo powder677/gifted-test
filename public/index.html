@@ -27,12 +27,12 @@
             --color-background-warm: #FFFBF5;
             
             --border-radius: 8px;
-            --border-radius-lg: 16px;
+            --border-radius-lg: 12px; /* Standardized to 12px */
             --border-radius-xl: 24px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
             --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.3s ease;
+            --transition: all 0.2s ease;
         }
 
         /* === RESET & BASE === */
@@ -77,7 +77,7 @@
             padding: 0 24px;
         }
 
-        /* === NAVIGATION === */
+        /* --- NAVIGATION --- */
         .navbar {
             background-color: var(--color-secondary);
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
@@ -86,16 +86,20 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 16px 0;
+            padding: 0;
+            box-shadow: var(--shadow-sm);
         }
 
-        .navbar__inner {
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar__logo {
+        .logo a {
             font-family: 'Inter', sans-serif;
             font-size: 1.3rem;
             font-weight: 800;
@@ -105,41 +109,29 @@
             gap: 10px;
         }
 
-        .navbar__logo i {
-            color: var(--color-highlight);
-            font-size: 1.4rem;
-        }
+        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
+        .logo span { color: var(--color-highlight); }
 
-        .navbar__logo span {
-            color: var(--color-highlight);
-        }
-
-        .navbar__nav {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .navbar__links {
-            display: flex;
-            gap: 28px;
+        .desktop-nav .nav-links {
             list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            margin: 0;
         }
 
-        .navbar__links a {
+        .desktop-nav .nav-links a {
             font-weight: 600;
             font-size: 0.95rem;
             color: var(--color-text);
             transition: var(--transition);
         }
 
-        .navbar__links a:hover {
-            color: var(--color-highlight);
-        }
+        .desktop-nav .nav-links a:hover { color: var(--color-highlight); }
 
-        .navbar__cta {
-            background: var(--color-highlight);
-            color: white;
+        .nav-btn-primary {
+            background-color: var(--color-highlight);
+            color: white !important;
             padding: 12px 24px;
             border-radius: var(--border-radius);
             font-weight: 700;
@@ -147,18 +139,19 @@
             transition: var(--transition);
         }
 
-        .navbar__cta:hover {
-            background: var(--color-highlight-dark);
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
             transform: translateY(-2px);
         }
 
-        .navbar__toggle {
+        .menu-toggle {
             display: none;
             background: none;
             border: none;
             font-size: 1.5rem;
             color: var(--color-primary);
             cursor: pointer;
+            padding: 8px;
         }
 
         .mobile-nav {
@@ -173,9 +166,7 @@
             border-top: 1px solid #eee;
         }
 
-        .mobile-nav.active {
-            display: flex;
-        }
+        .mobile-nav.active { display: flex; }
 
         .mobile-nav a {
             padding: 16px 24px;
@@ -199,12 +190,8 @@
         }
 
         @media (max-width: 900px) {
-            .navbar__nav {
-                display: none;
-            }
-            .navbar__toggle {
-                display: block;
-            }
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
         }
 
         /* === HERO === */
@@ -258,9 +245,7 @@
             line-height: 1.15;
         }
 
-        .hero__title span {
-            color: var(--color-accent);
-        }
+        .hero__title span { color: var(--color-accent); }
 
         .hero__subtitle {
             font-size: 1.25rem;
@@ -755,57 +740,49 @@
 
         /* === FOOTER === */
         .footer {
-            background: var(--color-primary-dark);
+            background-color: #0f1f33;
             color: white;
-            padding: 80px 0 40px;
+            padding: 80px 24px 40px;
         }
 
         .footer__grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 48px;
             margin-bottom: 48px;
         }
 
         @media (max-width: 768px) {
             .footer__grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 32px;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .footer__grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
 
         .footer__brand h4 {
-            font-size: 1.25rem;
+            color: var(--color-accent);
             margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer__brand h4 i {
-            color: var(--color-highlight);
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .footer__brand p {
-            opacity: 0.7;
+            opacity: 0.75;
             line-height: 1.7;
             font-size: 0.95rem;
         }
 
-        .footer__links h5 {
-            font-size: 1rem;
-            margin-bottom: 20px;
+        .footer__links h4 {
             color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .footer__links ul {
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .footer__links li {
@@ -813,13 +790,13 @@
         }
 
         .footer__links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
             font-size: 0.95rem;
             transition: var(--transition);
         }
 
         .footer__links a:hover {
-            color: white;
+            color: var(--color-accent);
         }
 
         .footer__bottom {
@@ -829,62 +806,44 @@
             font-size: 0.85rem;
             opacity: 0.6;
         }
-
-        /* === ANIMATIONS === */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-in {
-            animation: fadeInUp 0.6s ease forwards;
-        }
     </style>
 </head>
 
 <body>
-    <!-- NAVIGATION -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar__inner">
-                <a href="index.html" class="navbar__logo">
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
                     <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>™
+                    Navigator <span>Kids AI</span>
                 </a>
-                
-                <div class="navbar__nav">
-                    <ul class="navbar__links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                    </ul>
-                    <a href="methodology.html" class="navbar__cta">Get Started</a>
-                </div>
-
-                <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
         
-        <nav class="mobile-nav" id="mobileNav">
+        <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
             <a href="methodology.html">Get Started</a>
         </nav>
-    </nav>
+    </header>
 
     <main>
-        <!-- HERO -->
         <section class="hero">
             <div class="container">
                 <div class="hero__content">
@@ -919,7 +878,6 @@
             </div>
         </section>
 
-        <!-- PAIN POINTS -->
         <section class="pain">
             <div class="container">
                 <div class="pain__header">
@@ -962,7 +920,6 @@
             </div>
         </section>
 
-        <!-- ABOUT TEASER -->
         <section class="about-teaser">
             <div class="container">
                 <div class="about-teaser__content">
@@ -980,7 +937,6 @@
             </div>
         </section>
 
-        <!-- METHODOLOGY -->
         <section class="methodology">
             <div class="container">
                 <div class="methodology__header">
@@ -1024,7 +980,6 @@
             </div>
         </section>
 
-        <!-- FREE KIT CTA -->
         <section class="free-kit" id="free-kit">
             <div class="container">
                 <div class="free-kit__inner">
@@ -1052,7 +1007,6 @@
             </div>
         </section>
 
-        <!-- TESTIMONIALS -->
         <section class="testimonials">
             <div class="container">
                 <div class="testimonials__header">
@@ -1123,7 +1077,6 @@
             </div>
         </section>
 
-        <!-- FINAL CTA -->
         <section class="final-cta">
             <div class="container">
                 <h2 class="final-cta__title">Ready to Understand Your Child?</h2>
@@ -1142,53 +1095,45 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
+                    <h4>Navigator Kids AI™</h4>
                     <p>Your child's brain didn't come with a manual. Until now. We're parents of exceptional children building the tools we wished we had.</p>
                 </div>
                 <div class="footer__links">
-                    <h5>Product</h5>
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="methodology.html">Membership</a></li>
-                        <li><a href="emergency-reset-kit.html">Free Reset Kit</a></li>
-                    </ul>
-                </div>
-                <div class="footer__links">
-                    <h5>Resources</h5>
-                    <ul>
-                        <li><a href="resources.html">Knowledge Base</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h5>Legal</h5>
+                    <h4>Support</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer__bottom">
-                © 2024 Navigator Kids AI™. All rights reserved.
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        function toggleMobileNav() {
-            const mobileNav = document.getElementById('mobileNav');
-            const toggle = document.querySelector('.navbar__toggle i');
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
             
-            mobileNav.classList.toggle('active');
-            
-            if (mobileNav.classList.contains('active')) {
+            if (menu.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
             } else {
