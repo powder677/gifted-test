@@ -3,73 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Navigator Kids AI™</title>
-    <meta name="description" content="Privacy Policy for Navigator Kids AI™ - How we collect, use, and protect your information.">
-    
+    <title>Anxiety or Intelligence? | Navigator Kids AI™</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <style>
+        /* === VARIABLES === */
         :root {
             --color-primary: #1B365D;
             --color-primary-dark: #132845;
             --color-primary-light: #2A4A7A;
             --color-secondary: #FFFFFF;
             --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
             --color-highlight: #2A9D8F;
             --color-highlight-dark: #238579;
             --color-highlight-light: #E8F4F2;
             --color-text: #2F2F2F;
             --color-text-muted: #666666;
             --color-background: #F4F6F8;
+
             --border-radius: 8px;
-            --border-radius-lg: 12px; /* Standardized to 12px */
+            --border-radius-lg: 12px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --transition: all 0.2s ease;
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* === RESET === */
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Lato', -apple-system, sans-serif;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--color-background);
             color: var(--color-text);
             line-height: 1.7;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Inter', sans-serif;
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Inter', sans-serif; 
             color: var(--color-primary);
             line-height: 1.3;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+        }
 
-        /* Navigation */
+        /* === NAVIGATION === */
         .navbar {
             background-color: var(--color-secondary);
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
+            padding: 16px 0;
             box-shadow: var(--shadow-sm);
         }
 
-        .navbar-container {
+        .navbar__inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 15px 24px;
+            padding: 0 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo a {
+        .navbar__logo {
             font-family: 'Inter', sans-serif;
             font-size: 1.3rem;
             font-weight: 800;
@@ -79,36 +91,54 @@
             gap: 10px;
         }
 
-        .logo i { color: var(--color-highlight); }
-        .logo span { color: var(--color-highlight); }
+        .navbar__logo i {
+            color: var(--color-highlight);
+            font-size: 1.4rem;
+        }
 
-        .desktop-nav .nav-links {
+        .navbar__logo span {
+            color: var(--color-highlight);
+        }
+
+        .navbar__nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .navbar__links {
             display: flex;
             gap: 28px;
             list-style: none;
-            align-items: center;
         }
 
-        .desktop-nav .nav-links a {
+        .navbar__links a {
             font-weight: 600;
             font-size: 0.95rem;
             color: var(--color-text);
             transition: var(--transition);
         }
 
-        .desktop-nav .nav-links a:hover { color: var(--color-highlight); }
+        .navbar__links a:hover {
+            color: var(--color-highlight);
+        }
 
-        .nav-btn-primary {
-            background: var(--color-highlight) !important;
-            color: white !important;
+        .navbar__cta {
+            background: var(--color-highlight);
+            color: white;
             padding: 12px 24px;
             border-radius: var(--border-radius);
             font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
-        .nav-btn-primary:hover { background: var(--color-highlight-dark) !important; }
+        .navbar__cta:hover {
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
+        }
 
-        .menu-toggle {
+        .navbar__toggle {
             display: none;
             background: none;
             border: none;
@@ -125,11 +155,13 @@
             right: 0;
             background: white;
             flex-direction: column;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             border-top: 1px solid #eee;
         }
 
-        .mobile-nav.active { display: flex; }
+        .mobile-nav.active {
+            display: flex;
+        }
 
         .mobile-nav a {
             padding: 16px 24px;
@@ -153,520 +185,521 @@
         }
 
         @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            color: white;
-            padding: 60px 24px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            color: white;
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 12px;
-        }
-
-        .hero p {
-            opacity: 0.9;
-        }
-
-        /* Content */
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 24px;
-        }
-
-        .content-card {
-            background: white;
-            border-radius: var(--border-radius-lg);
-            padding: 48px;
-            box-shadow: var(--shadow-md);
-        }
-
-        @media (max-width: 600px) {
-            .content-card {
-                padding: 32px 24px;
+            .navbar__nav {
+                display: none;
+            }
+            .navbar__toggle {
+                display: block;
             }
         }
 
-        .last-updated {
-            background: var(--color-highlight-light);
-            color: var(--color-highlight-dark);
-            padding: 12px 20px;
-            border-radius: var(--border-radius);
-            font-weight: 600;
+        /* === HERO === */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            padding: 80px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero__breadcrumb {
             font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 32px;
-        }
-
-        .content h2 {
-            font-size: 1.5rem;
-            margin: 40px 0 16px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--color-background);
-        }
-
-        .content h2:first-of-type {
-            margin-top: 0;
-        }
-
-        .content h3 {
-            font-size: 1.15rem;
-            margin: 24px 0 12px;
-        }
-
-        .content p {
+            opacity: 0.8;
             margin-bottom: 16px;
-            color: var(--color-text);
         }
 
-        .content ul, .content ol {
-            margin: 16px 0 24px 24px;
+        .hero__breadcrumb a {
+            color: white;
+            opacity: 0.8;
+            transition: var(--transition);
         }
 
-        .content li {
-            margin-bottom: 10px;
+        .hero__breadcrumb a:hover {
+            opacity: 1;
         }
 
+        .hero__breadcrumb span {
+            margin: 0 8px;
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .hero p { 
+            font-size: 1.2rem; 
+            opacity: 0.9; 
+            max-width: 650px; 
+            margin: 0 auto; 
+        }
+
+        /* === ARTICLE CONTENT === */
+        .article-section { 
+            padding: 60px 24px; 
+            background: white;
+        }
+
+        .article-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+
+        .article-container p { 
+            margin-bottom: 1.5rem; 
+            font-size: 1.1rem; 
+        }
+
+        .article-container h2 { 
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+            font-size: 1.8rem; 
+        }
+
+        .article-container h3 { 
+            margin-top: 2rem; 
+            margin-bottom: 0.8rem; 
+            font-size: 1.4rem; 
+            color: var(--color-primary-dark); 
+        }
+
+        .article-container ul { 
+            margin-bottom: 1.5rem; 
+            padding-left: 24px; 
+        }
+
+        .article-container li { 
+            margin-bottom: 0.75rem; 
+        }
+
+        .article-container li strong {
+            color: var(--color-primary);
+        }
+
+        /* === KEY TAKEAWAYS === */
+        .key-takeaways {
+            background: var(--color-highlight-light);
+            padding: 28px 32px;
+            border-radius: var(--border-radius-lg);
+            border-left: 5px solid var(--color-highlight);
+            margin-bottom: 40px;
+        }
+
+        .key-takeaways h3 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            color: var(--color-highlight-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .key-takeaways ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+
+        .key-takeaways li {
+            margin-bottom: 8px;
+        }
+
+        /* === HIGHLIGHT BOX === */
         .highlight-box {
             background: var(--color-background);
-            border-left: 4px solid var(--color-highlight);
-            padding: 20px 24px;
-            margin: 24px 0;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 24px 28px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--color-accent);
+            margin: 32px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
         }
 
         .highlight-box p {
             margin-bottom: 0;
         }
 
-        .warning-box {
-            background: #fef3c7;
-            border-left: 4px solid var(--color-accent);
-            padding: 20px 24px;
-            margin: 24px 0;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-        }
-
-        .warning-box p {
-            margin-bottom: 0;
-        }
-
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
-        }
-
-        .data-table th,
-        .data-table td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--color-background);
-        }
-
-        .data-table th {
+        /* === AUTHOR BOX === */
+        .author-box {
+            margin-top: 60px;
+            padding: 28px;
             background: var(--color-background);
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            color: var(--color-primary);
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        .data-table tr:hover {
-            background: var(--color-background);
-        }
-
-        .contact-box {
-            background: var(--color-primary);
+        .author-box__avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            padding: 24px;
-            border-radius: var(--border-radius);
-            margin-top: 40px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
         }
 
-        .contact-box h3 {
-            color: var(--color-accent);
-            margin-top: 0;
+        .author-box__info h4 {
+            margin-bottom: 4px;
+            font-size: 1rem;
         }
 
-        .contact-box a {
-            color: var(--color-accent);
+        .author-box__info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
         }
 
-        /* Footer */
-        .footer {
-            background-color: #0f1f33;
-            color: white;
-            padding: 60px 24px 40px;
+        /* === CTA SECTION === */
+        .cta-section {
+            background: var(--color-highlight-light);
+            padding: 60px 24px;
+            text-align: center;
         }
 
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-            max-width: 1200px;
+        .cta-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: var(--color-text-muted);
+            margin-bottom: 24px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        .cta-section .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-highlight);
+            color: white;
+            padding: 16px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .cta-section .btn:hover {
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
+        }
+
+        /* === FOOTER === */
+        .footer { 
+            background: var(--color-primary-dark); 
+            color: white; 
+            padding: 60px 24px 30px; 
+        }
+
+        .footer__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
         @media (max-width: 768px) {
-            .footer__grid {
+            .footer__inner {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 32px;
             }
         }
 
         .footer__brand h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
             font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer__brand h4 i {
+            color: var(--color-highlight);
         }
 
         .footer__brand p {
-            opacity: 0.75;
-            line-height: 1.7;
+            opacity: 0.7;
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        .footer__links h4 {
+        .footer__links h5 {
             color: var(--color-accent);
             margin-bottom: 16px;
             font-size: 1rem;
         }
 
-        .footer__links ul { list-style: none; }
-        .footer__links li { margin-bottom: 12px; }
+        .footer__links ul {
+            list-style: none;
+        }
+
+        .footer__links li {
+            margin-bottom: 10px;
+        }
 
         .footer__links a {
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
             transition: var(--transition);
         }
 
-        .footer__links a:hover { color: var(--color-accent); }
+        .footer__links a:hover {
+            color: white;
+        }
 
-        .footer__bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
+        .footer__bottom { 
+            opacity: 0.6; 
+            text-align: center; 
+            padding-top: 24px; 
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.85rem;
-            opacity: 0.6;
-            max-width: 1200px;
-            margin: 0 auto;
         }
     </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <a href="index.html">
-                    <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>
-                </a>
-            </div>
-            <nav class="desktop-nav">
-                <ul class="nav-links">
+    <nav class="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__logo">
+                <i class="fas fa-compass"></i>
+                Navigator <span>Kids AI</span>™
+            </a>
+            
+            <div class="navbar__nav">
+                <ul class="navbar__links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
-            </nav>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <a href="methodology.html" class="navbar__cta">Get Started</a>
+            </div>
+
+            <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        <nav class="mobile-nav" id="mobileMenu">
+        
+        <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
             <a href="methodology.html">Get Started</a>
         </nav>
-    </header>
+    </nav>
 
     <section class="hero">
-        <h1>Privacy Policy</h1>
-        <p>Your privacy and your child's privacy are our top priorities.</p>
+        <div class="hero__breadcrumb">
+            <a href="resources.html">Resources</a>
+            <span>/</span>
+            <a href="emotional-regulation.html">Emotional Regulation</a>
+        </div>
+        <h1>Anxiety or Intelligence?</h1>
+        <p>When smart kids over-calculate risk and get stuck in "Analysis Paralysis."</p>
     </section>
 
-    <div class="content">
-        <div class="content-card">
-            <div class="last-updated">
-                <i class="fas fa-calendar-alt"></i> Last Updated: December 2024
+    <section class="article-section">
+        <div class="article-container">
+
+            <div class="key-takeaways">
+                <h3><i class="fas fa-bolt"></i> Key Takeaways</h3>
+                <ul>
+                    <li>Gifted children's anxiety often stems from seeing more potential outcomes than neurotypical peers.</li>
+                    <li>High intelligence can manifest as "analysis paralysis" when too many variables are considered.</li>
+                    <li>Gifted child anxiety symptoms differ from typical anxiety—they're often rational responses to complex thinking.</li>
+                    <li>Validation and channeling analytical skills are more effective than traditional anxiety management techniques.</li>
+                </ul>
             </div>
 
-            <h2>1. Introduction</h2>
-            <p>Navigator Kids AI™ ("Company," "we," "us," or "our") is committed to protecting the privacy of you and your family. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services.</p>
-            <p>We understand that you are trusting us with sensitive information about your child. We take this responsibility seriously and have designed our practices to protect your family's privacy while providing valuable educational support.</p>
+            <p>Your 8-year-old refuses to climb the playground monkey bars, not because they're afraid of heights, but because they've calculated the precise trajectory of every possible fall scenario. Your teenager won't apply to their dream college because they've researched every potential negative outcome, from roommate conflicts to career prospects twenty years hence.</p>
+
+            <p>This isn't garden-variety anxiety. This is the burden of brilliance—when extraordinary cognitive abilities transform simple decisions into complex risk analyses. What appears as fear is often just intelligence running amok in environments that don't require such sophisticated thinking.</p>
 
             <div class="highlight-box">
-                <p><strong>Our Commitment:</strong> We never sell your personal information or your child's information to third parties. Your family's data is used solely to provide and improve our services to you.</p>
+                <h3>The Intelligence-Anxiety Connection</h3>
+                <p>Gifted children's brains process information differently, seeing connections and consequences that escape others. This neurological advantage becomes problematic when it generates overwhelming mental simulations of potential negative outcomes.</p>
             </div>
 
-            <h2>2. Information We Collect</h2>
-            
-            <h3>2.1 Information You Provide</h3>
-            <p>We collect information that you voluntarily provide when using our services:</p>
-            
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Examples</th>
-                        <th>Purpose</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Account Information</strong></td>
-                        <td>Name, email address, password</td>
-                        <td>Create and manage your account</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Payment Information</strong></td>
-                        <td>Credit card details, billing address</td>
-                        <td>Process subscription payments</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Child Profile Data</strong></td>
-                        <td>Child's first name, age, grade, interests, challenges</td>
-                        <td>Personalize assessments and activity packets</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Family Information</strong></td>
-                        <td>Names of family members, pets, teachers, friends</td>
-                        <td>Personalize activity content</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Assessment Responses</strong></td>
-                        <td>Answers to assessment questions from parent and child</td>
-                        <td>Generate personalized recommendations</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Understanding Gifted Child Anxiety Symptoms</h2>
+            <p>Traditional anxiety presents as generalized worry, panic attacks, and phobias. Gifted child anxiety symptoms often masquerade as:</p>
 
-            <h3>2.2 Information Collected Automatically</h3>
-            <p>When you access our services, we automatically collect:</p>
             <ul>
-                <li><strong>Device Information:</strong> Browser type, operating system, device identifiers</li>
-                <li><strong>Usage Data:</strong> Pages visited, features used, time spent on the platform</li>
-                <li><strong>Log Data:</strong> IP address, access times, referring URLs</li>
-                <li><strong>Cookies:</strong> Small files stored on your device (see Section 7)</li>
+                <li><strong>Selective mutism in new situations:</strong> Not shyness, but processing overload.</li>
+                <li><strong>Paralysis in decision-making:</strong> Seeing too many variables to choose from.</li>
+                <li><strong>Refusal of age-appropriate challenges:</strong> Calculating risks others don't perceive.</li>
+                <li><strong>Physical symptoms before performances:</strong> Intense mental rehearsal triggering stress responses.</li>
+                <li><strong>Perfectionist avoidance:</strong> Fear of outcomes they can clearly envision.</li>
             </ul>
 
-            <h2>3. Children's Privacy</h2>
+            <h3>The Cognitive Load Problem</h3>
+            <p>Gifted children's brains don't just think faster—they think in higher resolution. Where a neurotypical child sees a slide as "fun," a gifted child sees:</p>
+
+            <ul>
+                <li>Potential equipment malfunctions</li>
+                <li>Collision risks with other children</li>
+                <li>Embarrassment scenarios if they fall</li>
+                <li>Disappointment if it's not as thrilling as anticipated</li>
+                <li>Time wasted that could be spent on more meaningful activities</li>
+            </ul>
+
+            <p>This isn't anxiety—it's computational overload. Their brains are running Monte Carlo simulations for everyday activities.</p>
             
-            <div class="warning-box">
-                <p><strong>Important:</strong> We are committed to complying with the Children's Online Privacy Protection Act (COPPA) and similar laws worldwide. We do not knowingly collect personal information directly from children under 13 without verifiable parental consent.</p>
+            
+
+            <div class="highlight-box">
+                <h3>Research Insight</h3>
+                <p>Neuroimaging studies reveal that gifted children show heightened activity in the prefrontal cortex during decision-making tasks, indicating increased analysis and future-thinking compared to neurotypical peers.</p>
             </div>
 
-            <h3>3.1 Parental Consent</h3>
-            <p>All information about children is provided by parents or guardians. By using our services and providing information about your child, you represent that you are the child's parent or legal guardian and consent to our collection and use of this information as described in this policy.</p>
+            <h2>The Paradox of Predictive Intelligence</h2>
+            <p>Gifted children's ability to anticipate consequences creates a unique developmental challenge:</p>
 
-            <h3>3.2 How We Use Child Information</h3>
-            <p>Information about your child is used exclusively to:</p>
+            <h3>Advantages in Complex Situations</h3>
+            <p>Their predictive abilities serve them well in:</p>
+
             <ul>
-                <li>Generate personalized assessment results</li>
-                <li>Create customized activity packets tailored to their interests</li>
-                <li>Track progress and adjust recommendations</li>
-                <li>Improve our educational content and algorithms</li>
+                <li>Academic problem-solving requiring multi-step reasoning</li>
+                <li>Strategic games and competitions</li>
+                <li>Identifying potential pitfalls in projects</li>
+                <li>Understanding complex systems and relationships</li>
             </ul>
 
-            <h3>3.3 What We Do NOT Do</h3>
-            <p>We will never:</p>
+            <h3>Challenges in Everyday Life</h3>
+            <p>However, these same abilities create obstacles in:</p>
+
             <ul>
-                <li>Sell or rent your child's information to anyone</li>
-                <li>Allow your child to interact with other users or third parties</li>
-                <li>Use your child's information for behavioral advertising</li>
-                <li>Share your child's information with social networks</li>
-                <li>Require more information than necessary to provide our services</li>
+                <li>Simple, low-stakes decisions that don't require analysis</li>
+                <li>Activities where "good enough" suffices</li>
+                <li>Social situations requiring quick intuitive responses</li>
+                <li>Novel experiences where unknown variables exist</li>
             </ul>
 
-            <h3>3.4 Parental Rights</h3>
-            <p>As a parent or guardian, you have the right to:</p>
-            <ul>
-                <li>Review the personal information we have collected about your child</li>
-                <li>Request deletion of your child's personal information</li>
-                <li>Refuse further collection or use of your child's information</li>
-                <li>Consent to collection but not disclosure to third parties</li>
-            </ul>
-            <p>To exercise these rights, please contact us at <a href="mailto:privacy@navigatorkidsai.com" style="color: var(--color-highlight);">privacy@navigatorkidsai.com</a>.</p>
+            <h2>Distinguishing Intelligence from Anxiety</h2>
+            <p>Understanding whether your child's behavior stems from giftedness or genuine anxiety requires careful observation:</p>
 
-            <h2>4. How We Use Your Information</h2>
-            <p>We use collected information to:</p>
+            <h3>Gifted Overthinking Characteristics</h3>
             <ul>
-                <li>Provide, maintain, and improve our services</li>
-                <li>Process transactions and send related information</li>
-                <li>Generate personalized assessments, reports, and activity packets</li>
-                <li>Send you technical notices, updates, and support messages</li>
-                <li>Respond to your comments, questions, and requests</li>
-                <li>Monitor and analyze trends, usage, and activities</li>
-                <li>Detect, investigate, and prevent fraudulent transactions and abuse</li>
-                <li>Personalize and improve your experience</li>
+                <li>Concerns are logically connected to actual potential outcomes</li>
+                <li>Child can articulate specific scenarios they've considered</li>
+                <li>Anxiety decreases when given more information or control</li>
+                <li>Performance improves in familiar, predictable environments</li>
+                <li>Child shows advanced reasoning about their concerns</li>
             </ul>
 
-            <h2>5. How We Share Your Information</h2>
-            <p>We do not sell your personal information. We may share your information only in the following circumstances:</p>
-
-            <h3>5.1 Service Providers</h3>
-            <p>We share information with third-party vendors who perform services on our behalf, such as:</p>
+            <h3>Traditional Anxiety Indicators</h3>
             <ul>
-                <li>Payment processing (e.g., Stripe)</li>
-                <li>Email delivery services</li>
-                <li>Cloud hosting and storage</li>
-                <li>Analytics providers</li>
-            </ul>
-            <p>These providers are contractually obligated to protect your information and use it only for the services they provide to us.</p>
-
-            <h3>5.2 Legal Requirements</h3>
-            <p>We may disclose information if required by law, regulation, legal process, or governmental request, or to protect the rights, property, or safety of our users or others.</p>
-
-            <h3>5.3 Business Transfers</h3>
-            <p>If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will notify you of any such change.</p>
-
-            <h2>6. Data Security</h2>
-            <p>We implement appropriate technical and organizational measures to protect your information, including:</p>
-            <ul>
-                <li>Encryption of data in transit (SSL/TLS) and at rest</li>
-                <li>Secure password hashing</li>
-                <li>Regular security assessments and updates</li>
-                <li>Access controls limiting who can view your data</li>
-                <li>Secure cloud infrastructure with industry-standard certifications</li>
-            </ul>
-            <p>While we strive to protect your information, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.</p>
-
-            <h2>7. Cookies and Tracking Technologies</h2>
-            <p>We use cookies and similar technologies to:</p>
-            <ul>
-                <li>Keep you logged in to your account</li>
-                <li>Remember your preferences</li>
-                <li>Understand how you use our services</li>
-                <li>Improve our website and user experience</li>
+                <li>Fears are disproportionate to actual threat level</li>
+                <li>Child struggles to explain specific worries</li>
+                <li>Anxiety persists despite reassurance or information</li>
+                <li>Physical symptoms occur without identifiable triggers</li>
+                <li>Worry generalizes across unrelated situations</li>
             </ul>
 
-            <h3>7.1 Types of Cookies We Use</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Purpose</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Essential</strong></td>
-                        <td>Required for the website to function (login, security)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Functional</strong></td>
-                        <td>Remember your preferences and settings</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Analytics</strong></td>
-                        <td>Help us understand how visitors use our site</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>7.2 Managing Cookies</h3>
-            <p>Most browsers allow you to control cookies through settings. Note that disabling certain cookies may limit your ability to use some features of our services.</p>
-
-            <h2>8. Data Retention</h2>
-            <p>We retain your information for as long as your account is active or as needed to provide services. After account closure, we may retain certain information for:</p>
-            <ul>
-                <li>Compliance with legal obligations</li>
-                <li>Resolving disputes</li>
-                <li>Enforcing our agreements</li>
-                <li>Legitimate business purposes</li>
-            </ul>
-            <p>You may request deletion of your data at any time by contacting us.</p>
-
-            <h2>9. Your Rights and Choices</h2>
-            <p>Depending on your location, you may have the following rights:</p>
-            <ul>
-                <li><strong>Access:</strong> Request a copy of your personal information</li>
-                <li><strong>Correction:</strong> Update inaccurate or incomplete information</li>
-                <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-                <li><strong>Portability:</strong> Receive your data in a portable format</li>
-                <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications</li>
-                <li><strong>Restriction:</strong> Limit how we process your information</li>
-            </ul>
-            <p>To exercise these rights, contact us at <a href="mailto:privacy@navigatorkidsai.com" style="color: var(--color-highlight);">privacy@navigatorkidsai.com</a>.</p>
-
-            <h2>10. Third-Party Links</h2>
-            <p>Our services may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.</p>
-
-            <h2>11. International Data Transfers</h2>
-            <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your information in accordance with this Privacy Policy.</p>
-
-            <h2>12. Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of material changes by posting the updated policy on our website and updating the "Last Updated" date. Your continued use of our services after changes become effective constitutes acceptance of the revised policy.</p>
-
-            <h2>13. California Privacy Rights</h2>
-            <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information we collect, request deletion, and opt out of the sale of personal information (which we do not do).</p>
-
-            <h2>14. Contact Us</h2>
-            <p>If you have questions about this Privacy Policy or our privacy practices, please contact us:</p>
-
-            <div class="contact-box">
-                <h3>Privacy Inquiries</h3>
-                <p><strong>Email:</strong> <a href="mailto:privacy@navigatorkidsai.com">privacy@navigatorkidsai.com</a></p>
-                <p><strong>Contact Form:</strong> <a href="contact.html">Contact Us</a></p>
-                <p><strong>Mail:</strong> Navigator Kids AI™, Privacy Officer<br>
-                [Your Business Address]</p>
+            <div class="highlight-box">
+                <h3>Diagnostic Question</h3>
+                <p>Ask: "Are they afraid of the thing itself, or the 47 ways it could go wrong that only they can see?" The answer reveals the root of their hesitation.</p>
             </div>
+
+            <h2>Practical Strategies for Parents</h2>
+
+            <h3>1. Validate Their Intelligence</h3>
+            <p>Instead of dismissing concerns with "Don't worry about it," acknowledge: "You're thinking about this really carefully. Let's look at which possibilities are most likely."</p>
+
+            <h3>2. Channel the Analysis</h3>
+            <p>Give their brain something productive to calculate: "What would you need to know to feel comfortable trying this?" This redirects overthinking toward problem-solving.</p>
+
+            <h3>3. Create Decision Frameworks</h3>
+            <p>Help them develop shortcuts for low-stakes decisions: "For choices that can be undone easily, we use the 'good enough' rule. For important decisions, we use the full analysis."</p>
+            
+            
+
+            <h3>4. Build Familiarity Gradually</h3>
+            <p>New situations trigger maximum analysis. Repeated exposure reduces variables and builds confidence through predictability.</p>
+
+            <h3>5. Model Imperfect Decision-Making</h3>
+            <p>Narrate your own "good enough" choices: "I'm not sure if this is the best restaurant, but it looks fine and I don't want to spend twenty minutes researching. Let's try it."</p>
+
+            <h2>When to Seek Professional Help</h2>
+            <p>While gifted overthinking is normal, professional support may be needed if:</p>
+            <ul>
+                <li>Anxiety significantly impairs daily functioning or relationships</li>
+                <li>Physical symptoms persist (sleep issues, stomach problems)</li>
+                <li>Avoidance behaviors are increasing over time</li>
+                <li>Your child expresses distress about their own thinking patterns</li>
+            </ul>
+            <p>Look for professionals experienced with gifted children, as standard anxiety interventions may need modification.</p>
+
+            <div class="author-box">
+                <div class="author-box__avatar">NK</div>
+                <div class="author-box__info">
+                    <h4>Navigator Kids AI™ Editorial Team</h4>
+                    <p>Written by specialists who understand gifted and twice-exceptional children.</p>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Need Help With Meltdowns?</h2>
+        <p>Get our free Emergency Reset Kit — science-backed strategies for when emotions run high.</p>
+        <a href="emergency-reset-kit.html" class="btn">
+            <i class="fas fa-download"></i> Get the Free Kit
+        </a>
+    </section>
 
     <footer class="footer">
-        <div class="footer__grid">
+        <div class="footer__inner">
             <div class="footer__brand">
-                <h4>Navigator Kids AI™</h4>
+                <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
                 <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
             </div>
             <div class="footer__links">
-                <h4>Quick Links</h4>
+                <h5>Product</h5>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                    <li><a href="methodology.html">Membership</a></li>
+                    <li><a href="emergency-reset-kit.html">Free Reset Kit</a></li>
                 </ul>
             </div>
             <div class="footer__links">
-                <h4>Support</h4>
+                <h5>Resources</h5>
                 <ul>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="resources.html">Knowledge Base</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer__bottom">
-            <p>&copy; 2025 Navigator Kids AI™. All rights reserved.</p>
+            © 2024 Navigator Kids AI™. All rights reserved.
         </div>
     </footer>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle i');
-            menu.classList.toggle('active');
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.navbar__toggle i');
             
-            if (menu.classList.contains('active')) {
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
             } else {
@@ -674,20 +707,6 @@
                 toggle.classList.add('fa-bars');
             }
         }
-
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                const icon = toggle.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
-        });
     </script>
 </body>
 </html>
