@@ -1,63 +1,92 @@
-// navigation.js
+/**
+ * Navigator Kids AI™ - Navigation Logic
+ * Aligned with standard HTML structure:
+ * - Mobile Menu ID: #mobileMenu
+ * - Toggle Button Class: .menu-toggle
+ * - Active Class: .active
+ */
 
-// 1. Toggles the Mobile Menu using a single class
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
+// 1. Mobile Menu Toggle
+function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
 
     if (!menu) return;
 
-    // Use classList.toggle for visibility, let CSS handle 'display' and animation
-    menu.classList.toggle('open'); 
+    // Toggle visibility class
+    menu.classList.toggle('active');
 
-    const isOpen = menu.classList.contains('open');
-
-    // Toggle icons using class control (assuming CSS sets display based on .open class)
-    if (menuIcon) menuIcon.style.display = isOpen ? 'none' : 'block';
-    if (closeIcon) closeIcon.style.display = isOpen ? 'block' : 'none';
+    // Toggle Icon (Hamburger <-> X)
+    if (icon) {
+        if (menu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    }
 }
 
-// 2. Toggles the Blog Dropdown using a single class
-function toggleBlogDropdown(event) {
-    // CRITICAL: Stop the click from bubbling to the document
+// 2. Dropdown Toggle (Safe Implementation)
+// Only runs if the specific dropdown HTML exists on the page
+function toggleDropdown(event, dropdownId, chevronId) {
     if (event) {
-        event.preventDefault(); // Stop link navigation
-        event.stopPropagation(); // Prevent the global document listener from immediately closing it
+        event.preventDefault();
+        event.stopPropagation();
     }
 
-    const dropdown = document.getElementById('blog-dropdown');
-    const chevron = document.getElementById('blog-chevron');
+    const dropdown = document.getElementById(dropdownId);
+    const chevron = document.getElementById(chevronId);
 
     if (!dropdown) return;
 
-    // Use classList.toggle for animation/visibility
-    dropdown.classList.toggle('open');
+    // Close other open dropdowns first (optional, for safety)
+    document.querySelectorAll('.dropdown-menu.active').forEach(d => {
+        if (d.id !== dropdownId) d.classList.remove('active');
+    });
 
-    // Toggle chevron rotation based on class state
+    // Toggle current state
+    dropdown.classList.toggle('active');
+
+    // Rotate chevron if it exists
     if (chevron) {
-        chevron.style.transform = dropdown.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        chevron.style.transform = dropdown.classList.contains('active') 
+            ? 'rotate(180deg)' 
+            : 'rotate(0deg)';
     }
 }
 
-// 3. Global Listener to close dropdown when clicking anywhere else
+// 3. Global Click Listener (Closes Menus when clicking outside)
 document.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('blog-dropdown');
-    const chevron = document.getElementById('blog-chevron');
-    const dropdownToggle = document.getElementById('blog-dropdown-toggle'); // Assuming the link/button has this ID
+    // --- Handle Mobile Menu ---
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuToggle = document.querySelector('.menu-toggle');
 
-    if (!dropdown || !dropdown.classList.contains('open')) return;
-    
-    // Check if the click occurred on the dropdown menu itself, the chevron, or the toggle element
-    const clickedInsideDropdown = dropdown.contains(event.target);
-    const clickedToggle = (dropdownToggle && dropdownToggle.contains(event.target));
-    
-    if (!clickedInsideDropdown && !clickedToggle) {
-        dropdown.classList.remove('open');
-        if (chevron) chevron.style.transform = 'rotate(0deg)';
+    if (mobileMenu && menuToggle) {
+        const isClickInside = mobileMenu.contains(event.target);
+        const isClickOnToggle = menuToggle.contains(event.target);
+
+        if (!isClickInside && !isClickOnToggle && mobileMenu.classList.contains('active')) {
+            toggleMenu(); // Reuse function to reset icons correctly
+        }
     }
-});
 
-// Assuming event listeners are attached in the HTML:
-// <a href="resources.html" onclick="toggleBlogDropdown(event)" id="blog-dropdown-toggle">Resources <span id="blog-chevron">▼</span></a>
-// <button onclick="toggleMobileMenu()" id="menu-toggle">...</button>
+    // --- Handle Dropdowns (Generic) ---
+    // Closes any element with class 'dropdown-menu' if clicked outside
+    const openDropdowns = document.querySelectorAll('.dropdown-menu.active');
+    openDropdowns.forEach(dropdown => {
+        // Find the trigger button/link for this dropdown (assumes logic or specific structure)
+        // For simple implementations, just checking if click is outside the dropdown is usually enough
+        if (!dropdown.contains(event.target)) {
+            dropdown.classList.remove('active');
+            
+            // Reset associated chevrons if necessary (requires specific ID mapping)
+            // This is a generic reset:
+            document.querySelectorAll('.dropdown-chevron').forEach(c => {
+                c.style.transform = 'rotate(0deg)';
+            });
+        }
+    });
+});
