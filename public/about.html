@@ -534,7 +534,7 @@
 
         .footer__grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 48px;
             margin-bottom: 48px;
         }
@@ -605,7 +605,6 @@
 </head>
 
 <body>
-    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="container">
             <div class="navbar__inner">
@@ -624,13 +623,13 @@
                     <a href="methodology.html" class="navbar__cta">Get Started</a>
                 </div>
 
-                <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <button class="navbar__toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
         
-        <nav class="mobile-nav" id="mobileNav">
+        <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
@@ -640,7 +639,6 @@
     </nav>
 
     <main>
-        <!-- HERO -->
         <section class="hero">
             <div class="container">
                 <h1>Every Exceptional Child Has a Story</h1>
@@ -648,7 +646,6 @@
             </div>
         </section>
 
-        <!-- STORY -->
         <section class="story">
             <div class="container">
                 <div class="story__content">
@@ -673,7 +670,6 @@
             </div>
         </section>
 
-        <!-- MISSION -->
         <section class="mission">
             <div class="container">
                 <h2>Our Mission</h2>
@@ -681,7 +677,6 @@
             </div>
         </section>
 
-        <!-- TEAM -->
         <section class="team">
             <div class="container">
                 <h2>Meet Your Advocates</h2>
@@ -735,7 +730,6 @@
             </div>
         </section>
 
-        <!-- METHOD CALLOUT -->
         <section class="method-callout">
             <div class="container">
                 <h3>Our Framework</h3>
@@ -752,7 +746,6 @@
             </div>
         </section>
 
-        <!-- SERVICES -->
         <section class="services">
             <div class="container">
                 <h2>How We Help</h2>
@@ -784,7 +777,6 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
@@ -793,44 +785,38 @@
                     <p>Your child's brain didn't come with a manual. Until now. We're parents of exceptional children building the tools we wished we had.</p>
                 </div>
                 <div class="footer__links">
-                    <h5>Product</h5>
+                    <h5>Quick Links</h5>
                     <ul>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="methodology.html">Membership</a></li>
-                        <li><a href="mission-control-preview.html">Free Reset Kit</a></li>
-                    </ul>
-                </div>
-                <div class="footer__links">
-                    <h5>Resources</h5>
-                    <ul>
-                        <li><a href="resources.html">Knowledge Base</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h5>Legal</h5>
+                    <h5>Support</h5>
                     <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer__bottom">
-                © 2024 Navigator Kids AI™. All rights reserved.
+                © 2025 Navigator Kids AI™. All rights reserved.
             </div>
         </div>
     </footer>
 
     <script>
-        function toggleMobileNav() {
-            const mobileNav = document.getElementById('mobileNav');
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.navbar__toggle i');
             
-            mobileNav.classList.toggle('active');
+            menu.classList.toggle('active');
             
-            if (mobileNav.classList.contains('active')) {
+            if (menu.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
             } else {
