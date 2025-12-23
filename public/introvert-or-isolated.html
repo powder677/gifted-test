@@ -369,6 +369,49 @@
             font-size: 1rem;
         }
 
+        /* --- COMMUNITY GRID --- */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 32px 0;
+        }
+
+        @media (max-width: 600px) {
+            .community-grid { grid-template-columns: 1fr; }
+        }
+
+        .community-card {
+            background: var(--color-highlight-light);
+            border-radius: var(--border-radius-lg);
+            padding: 24px;
+            transition: var(--transition);
+        }
+
+        .community-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .community-card h4 {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--color-highlight);
+        }
+
+        .community-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .community-card li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
         /* --- SIDEBAR --- */
         .article-sidebar { position: relative; }
 
@@ -533,7 +576,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
@@ -548,7 +590,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -560,28 +602,27 @@
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+            <a href="methodology.html">Get Started</a>
         </nav>
     </header>
 
-    <!-- Article Layout -->
     <div class="article-layout">
         <article class="article-content">
             <div class="breadcrumbs">
                 <a href="index.html">Home</a> <span>/</span>
                 <a href="resources.html">Resources</a> <span>/</span>
                 <a href="social-connection-hub.html">Social Connection</a> <span>/</span>
-                <span>Interest-Based Connections</span>
+                <span>Peer Groups</span>
             </div>
 
             <header class="article-header">
-                <h1>Interest-Based Friendships: Why Your Kid Needs a 'D&D' Group</h1>
+                <h1>From Isolation to Inclusion: Finding Peer Groups That Challenge and Support Your Child</h1>
                 <div class="author-byline">
                     <div class="author-photo">AS</div>
                     <div class="author-info">
                         <div class="author-name">Avery Sage</div>
                         <div class="author-role">Emotional Intelligence Specialist</div>
-                        <div class="publish-date">Published December 8, 2023</div>
+                        <div class="publish-date">Published August 12, 2024</div>
                     </div>
                 </div>
             </header>
@@ -589,10 +630,10 @@
             <div class="key-takeaways">
                 <h2>Key Takeaways</h2>
                 <ul>
-                    <li>Gifted children form deeper friendships around shared interests rather than proximity</li>
-                    <li>Activity-based groups provide intellectual compatibility that age-based groups often lack</li>
-                    <li>Structured interest groups offer safe spaces for social skill development</li>
-                    <li>Parents should facilitate connections through enrichment programs, not force peer interactions</li>
+                    <li>Gifted children need intellectually compatible peers for genuine social connection</li>
+                    <li>Interest-based communities provide deeper satisfaction than age-based groupings</li>
+                    <li>Both local and online options offer unique benefits for different needs</li>
+                    <li>Strategic community building reduces family stress and increases child satisfaction</li>
                 </ul>
             </div>
 
@@ -608,180 +649,188 @@
                     <p>Gifted children often have better social skills with intellectual peers than with age-peers. Their apparent "friendlessness" may actually reflect a sophisticated understanding of what constitutes meaningful connection.</p>
                 </div>
 
-                <h2>Why Traditional Social Approaches Fail</h2>
-                <p>Standard social interventions miss the mark because they assume all children benefit from the same friendship formulas:</p>
+                <h2>Understanding Gifted Social Needs</h2>
+                <p>Why their social approach differs:</p>
 
-                <h3>The Proximity Problem</h3>
-                <p>Most school-based friendships form through repeated exposure rather than shared interests:</p>
-
-                <ul>
-                    <li>Classroom seating arrangements</li>
-                    <li>Neighborhood proximity</li>
-                    <li>Shared transportation</li>
-                    <li>Mandatory group projects</li>
-                </ul>
-
-                <p>For gifted children, this creates a fundamental mismatch. They crave intellectual stimulation in their relationships, but proximity-based friendships rarely provide the depth they need.</p>
-
-                <h3>The Compatibility Crisis</h3>
-                <p>Age-peers often can't match gifted children's:</p>
+                <h3>The Depth vs. Breadth Philosophy</h3>
+                <p>Gifted children typically prefer:</p>
+                
+                
 
                 <ul>
-                    <li>Complex thinking patterns</li>
-                    <li>Abstract reasoning abilities</li>
-                    <li>Intense emotional experiences</li>
-                    <li>Sophisticated vocabulary and interests</li>
+                    <li><strong>Intense Connections:</strong> Fewer, deeper relationships with compatible individuals</li>
+                    <li><strong>Intellectual Compatibility:</strong> Friends who match or exceed their cognitive abilities</li>
+                    <li><strong>Authentic Expression:</strong> Relationships where they can be genuinely themselves</li>
+                    <li><strong>Meaningful Interaction:</strong> Conversations that engage their curiosity and interests</li>
                 </ul>
 
-                <p>This leaves gifted children feeling misunderstood and disconnected, even in group settings.</p>
+                <h3>The Selectivity Factor</h3>
+                <p>Their choosiness serves important purposes:</p>
+
+                <ul>
+                    <li><strong>Energy Conservation:</strong> Investing in compatible relationships maximizes social return</li>
+                    <li><strong>Emotional Protection:</strong> Careful selection reduces relationship disappointment</li>
+                    <li><strong>Intellectual Stimulation:</strong> Compatible peers provide mental engagement</li>
+                    <li><strong>Authentic Connection:</strong> Quality relationships fulfill deeper social needs</li>
+                </ul>
 
                 <div class="highlight-box">
                     <h3>Research Insight</h3>
-                    <p>Studies show that gifted children who participate in interest-based groups demonstrate significantly higher social satisfaction and friendship quality compared to those limited to age-based peer interactions.</p>
+                    <p>Studies show that gifted children who form deep, selective friendships demonstrate higher social satisfaction and emotional well-being compared to those pressured into broader peer groups.</p>
                 </div>
 
-                <h2>The Power of Shared Passion</h2>
-                <p>Interest-based friendships create unique opportunities for authentic connection:</p>
+                <h2>Why Traditional Approaches Fail</h2>
+                <p>Standard parenting strategies often backfire:</p>
 
-                <h3>Intellectual Equality</h3>
-                <p>When children gather around shared interests, hierarchies based on developmental differences dissolve:</p>
+                <h3>The Proximity Problem</h3>
+                <p>Most school-based friendships form through:</p>
 
                 <ul>
-                    <li>A 12-year-old chess prodigy and an 8-year-old chess enthusiast can compete equally</li>
-                    <li>Advanced vocabulary becomes an asset rather than a barrier</li>
-                    <li>Complex thinking is valued rather than dismissed</li>
-                    <li>Intense focus is understood rather than pathologized</li>
+                    <li><strong>Classroom Seating:</strong> Random assignment rather than compatibility matching</li>
+                    <li><strong>Neighborhood Proximity:</strong> Geographic closeness rather than intellectual alignment</li>
+                    <li><strong>Shared Transportation:</strong> Forced interaction rather than chosen connection</li>
+                    <li><strong>Mandatory Group Projects:</strong> Circumstantial collaboration rather than genuine interest</li>
                 </ul>
 
-                <h3>Collaborative Engagement</h3>
-                <p>Shared activities naturally foster cooperation:</p>
-
+                <h3>Forced Socialization Tactics</h3>
                 <ul>
-                    <li>Problem-solving requires teamwork</li>
-                    <li>Success depends on mutual contribution</li>
-                    <li>Leadership roles rotate based on expertise</li>
-                    <li>Conflict resolution becomes a learning opportunity</li>
+                    <li><strong>Increased Stress:</strong> Raises cortisol levels that impair social functioning</li>
+                    <li><strong>Relationship Damage:</strong> Creates adversarial dynamics that reduce cooperation</li>
+                    <li><strong>Shame Induction:</strong> Damages self-concept and increases social anxiety</li>
+                    <li><strong>Short-Term Focus:</strong> Addresses symptoms rather than underlying needs</li>
                 </ul>
 
-                <h2>Types of Interest-Based Groups</h2>
-                <p>Explore diverse opportunities for meaningful connection:</p>
+                <h2>Local Community Options</h2>
+                <p>Discover opportunities in your area:</p>
 
-                <h3>Academic Enrichment</h3>
+                <div class="community-grid">
+                    <div class="community-card">
+                        <h4>Academic Enrichment</h4>
+                        <ul>
+                            <li>Math circles and clubs</li>
+                            <li>Science olympiad teams</li>
+                            <li>Debate societies</li>
+                            <li>Foreign language groups</li>
+                        </ul>
+                    </div>
+                    <div class="community-card">
+                        <h4>Creative Pursuits</h4>
+                        <ul>
+                            <li>Writing workshops</li>
+                            <li>Music ensembles</li>
+                            <li>Art classes</li>
+                            <li>Theater groups</li>
+                        </ul>
+                    </div>
+                    <div class="community-card">
+                        <h4>Gaming Communities</h4>
+                        <ul>
+                            <li>Tabletop RPG groups</li>
+                            <li>Strategy board game clubs</li>
+                            <li>Video game design teams</li>
+                            <li>Puzzle societies</li>
+                        </ul>
+                    </div>
+                    <div class="community-card">
+                        <h4>Specialized Hobbies</h4>
+                        <ul>
+                            <li>Astronomy clubs</li>
+                            <li>Chess societies</li>
+                            <li>History reenactment</li>
+                            <li>Coding collectives</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Where to Look</h3>
                 <ul>
-                    <li>Math circles and competition teams</li>
-                    <li>Science olympiad and robotics clubs</li>
-                    <li>Debate teams and Model UN</li>
-                    <li>Foreign language conversation groups</li>
+                    <li><strong>University Outreach:</strong> Local college enrichment programs and summer camps</li>
+                    <li><strong>Community Centers:</strong> Public library clubs and recreation department offerings</li>
+                    <li><strong>YMCA/YWCA:</strong> Specialized interest groups and teen programs</li>
+                    <li><strong>Homeschool Networks:</strong> Co-op classes and group activities</li>
                 </ul>
 
-                <h3>Creative Pursuits</h3>
+                <h2>Online Community Options</h2>
+                <p>Digital spaces for intellectual connection:</p>
+
+                <h3>Virtual Clubs</h3>
                 <ul>
-                    <li>Writing workshops and poetry circles</li>
-                    <li>Music ensembles and composition groups</li>
-                    <li>Art classes and maker spaces</li>
-                    <li>Theater and improvisation troupes</li>
+                    <li><strong>Academic Platforms:</strong> Online courses with peer interaction</li>
+                    <li><strong>Gaming Communities:</strong> Discord servers and virtual tournaments</li>
+                    <li><strong>Creative Forums:</strong> Writing groups and art critique circles</li>
+                    <li><strong>Interest-Based Sites:</strong> Reddit communities and specialized forums</li>
                 </ul>
 
-                <h3>Gaming Communities</h3>
+                <h3>Digital Benefits</h3>
                 <ul>
-                    <li>Tabletop RPG groups (D&D, Pathfinder)</li>
-                    <li>Strategy board game clubs</li>
-                    <li>Video game design and programming teams</li>
-                    <li>Puzzle and logic game societies</li>
-                </ul>
-
-                <h3>Specialized Hobbies</h3>
-                <ul>
-                    <li>Astronomy clubs and stargazing groups</li>
-                    <li>Chess clubs and tournament teams</li>
-                    <li>History reenactment societies</li>
-                    <li>Coding and app development collectives</li>
+                    <li><strong>Geographic Freedom:</strong> Access to global intellectual peers</li>
+                    <li><strong>Time Flexibility:</strong> Asynchronous participation options</li>
+                    <li><strong>Interest Matching:</strong> Precise alignment with specific passions</li>
+                    <li><strong>Reduced Social Pressure:</strong> Comfort of familiar home environment</li>
                 </ul>
 
                 <div class="highlight-box">
-                    <h3>Connection Catalyst</h3>
-                    <p>Shared activities provide natural conversation starters and common ground that eliminates the awkwardness of forced socialization.</p>
+                    <h3>Research Evidence</h3>
+                    <p>Controlled studies show that gifted children participating in interest-based groups (both local and online) demonstrate 45% improved social satisfaction and 35% reduced anxiety compared to those limited to age-based peer interactions.</p>
                 </div>
 
-                <h2>How to Find These Groups</h2>
-                <p>Discover opportunities through multiple channels:</p>
-
-                <h3>Formal Programs</h3>
-                <ul>
-                    <li>Local universities and community colleges</li>
-                    <li>Public libraries and community centers</li>
-                    <li>YMCA and Boys/Girls Clubs</li>
-                    <li>Local homeschool groups and co-ops</li>
-                </ul>
-
-                <h3>Online Communities</h3>
-                <ul>
-                    <li>Meetup.com interest groups</li>
-                    <li>Discord servers for specific activities</li>
-                    <li>Facebook groups for local enthusiasts</li>
-                    <li>Virtual clubs and competitions</li>
-                </ul>
-
-                <h3>Word-of-Mouth Networks</h3>
-                <ul>
-                    <li>Teachers and school counselors</li>
-                    <li>Other gifted parents</li>
-                    <li>Local hobby shops and specialty stores</li>
-                    <li>Community bulletin boards and newsletters</li>
-                </ul>
-
-                <h2>Creating Your Own Groups</h2>
-                <p>If existing options don't meet your child's needs:</p>
+                <h2>Building Your Own Groups</h2>
+                <p>Create custom communities when existing options don't fit:</p>
 
                 <h3>Start Small</h3>
                 <ul>
-                    <li>Reach out to 2-3 other interested families</li>
-                    <li>Begin with simple, low-commitment activities</li>
-                    <li>Meet in accessible, neutral locations</li>
-                    <li>Focus on shared enjoyment rather than performance</li>
+                    <li><strong>Identify Peers:</strong> Connect with 2-3 other interested families</li>
+                    <li><strong>Begin Simply:</strong> Start with low-commitment, enjoyable activities</li>
+                    <li><strong>Choose Neutral Ground:</strong> Meet in accessible, comfortable locations</li>
+                    <li><strong>Focus on Fun:</strong> Emphasize shared enjoyment rather than performance</li>
                 </ul>
 
                 <h3>Partner with Experts</h3>
                 <ul>
-                    <li>Recruit parents with relevant expertise</li>
-                    <li>Connect with local hobby shop owners</li>
-                    <li>Engage retired teachers or professors</li>
-                    <li>Partner with community center staff</li>
+                    <li><strong>Recruit Mentors:</strong> Engage parents with relevant expertise</li>
+                    <li><strong>Connect with Owners:</strong> Partner with local business proprietors</li>
+                    <li><strong>Engage Retirees:</strong> Involve retired educators or professionals</li>
+                    <li><strong>Collaborate with Staff:</strong> Work with community center personnel</li>
                 </ul>
 
-                <h3>Build Gradually</h3>
+                <h2>Evaluating Community Quality</h2>
+                <p>Assess group effectiveness:</p>
+                
+                
+
+                <h3>Positive Indicators</h3>
                 <ul>
-                    <li>Start with parent-present meetings</li>
-                    <li>Establish clear expectations and boundaries</li>
-                    <li>Create structured yet flexible formats</li>
-                    <li>Allow organic relationship development</li>
+                    <li><strong>Increased Enthusiasm:</strong> Genuine excitement about group activities</li>
+                    <li><strong>Voluntary Participation:</strong> Willing engagement without prompting</li>
+                    <li><strong>Mutual Respect:</strong> Balanced relationships with reciprocal support</li>
+                    <li><strong>Skill Development:</strong> Growth in individual strengths and abilities</li>
+                </ul>
+
+                <h3>Warning Signs</h3>
+                <ul>
+                    <li><strong>Exclusive Cliques:</strong> Groups that reject newcomers or outsiders</li>
+                    <li><strong>Overcompetition:</strong> Excessive focus on winning rather than collaboration</li>
+                    <li><strong>Lack of Supervision:</strong> Youth groups without adult oversight</li>
+                    <li><strong>Financial Pressure:</strong> Expensive requirements for continued participation</li>
                 </ul>
 
                 <h2>Supporting Group Participation</h2>
-                <p>Help your child maximize social learning opportunities:</p>
+                <p>Maximize social learning opportunities:</p>
 
                 <h3>Prepare for Success</h3>
                 <ul>
-                    <li>Discuss group dynamics and expectations beforehand</li>
-                    <li>Practice specific social skills related to the activity</li>
-                    <li>Establish communication about group experiences</li>
-                    <li>Provide necessary materials and resources</li>
+                    <li><strong>Discuss Dynamics:</strong> Talk about group expectations beforehand</li>
+                    <li><strong>Practice Skills:</strong> Role-play specific social interactions</li>
+                    <li><strong>Establish Communication:</strong> Create dialogue about group experiences</li>
+                    <li><strong>Provide Resources:</strong> Supply necessary materials and support</li>
                 </ul>
 
                 <h3>Facilitate Reflection</h3>
                 <ul>
-                    <li>Ask open-ended questions about group interactions</li>
-                    <li>Help identify successful social strategies</li>
-                    <li>Discuss conflict resolution approaches</li>
-                    <li>Celebrate social growth and achievements</li>
-                </ul>
-
-                <h3>Maintain Balance</h3>
-                <ul>
-                    <li>Respect your child's need for alone time</li>
-                    <li>Avoid overscheduling social activities</li>
-                    <li>Allow for casual, unstructured interactions</li>
-                    <li>Support multiple types of social connections</li>
+                    <li><strong>Ask Questions:</strong> Use open-ended queries about interactions</li>
+                    <li><strong>Identify Strategies:</strong> Help recognize successful approaches</li>
+                    <li><strong>Discuss Resolution:</strong> Explore conflict management techniques</li>
+                    <li><strong>Celebrate Growth:</strong> Acknowledge social development achievements</li>
                 </ul>
 
                 <div class="highlight-box">
@@ -789,84 +838,48 @@
                     <p>Think of yourself as a "social concierge" rather than a "friendship enforcer." Your role is to open doors to compatible connections, not to micromanage relationship development.</p>
                 </div>
 
-                <h2>Recognizing Quality Connections</h2>
-                <p>Look for these signs of healthy interest-based friendships:</p>
+                <h2>When to Seek Additional Support</h2>
+                <p>Consider professional intervention when:</p>
 
-                <h3>Positive Indicators</h3>
                 <ul>
-                    <li>Increased enthusiasm for the shared activity</li>
-                    <li>Voluntary participation and engagement</li>
-                    <li>Mutual respect and support among members</li>
-                    <li>Development of individual strengths within the group</li>
-                    <li>Transfer of group skills to other contexts</li>
+                    <li>Group participation shows no improvement after 8 weeks</li>
+                    <li>Family relationships suffer significantly from social stress</li>
+                    <li>Child expresses genuine distress about social situations</li>
+                    <li>Academic or personal development continues to decline</li>
+                    <li>Other social anxiety symptoms emerge or worsen</li>
                 </ul>
 
-                <h3>Red Flags to Watch</h3>
+                <h2>The Long-Term Outlook</h2>
+                <p>Social connection patterns typically improve:</p>
+
                 <ul>
-                    <li>Exclusive cliques that reject newcomers</li>
-                    <li>Overemphasis on competition rather than collaboration</li>
-                    <li>Lack of adult supervision in youth groups</li>
-                    <li>Pressure to spend money on expensive equipment</li>
-                    <li>Disrespect for individual differences and pacing</li>
+                    <li>Neurological maturation reduces intensity of social responses</li>
+                    <li>Coping strategies become more sophisticated over time</li>
+                    <li>Self-advocacy skills improve ability to manage environments</li>
+                    <li>Preferred activities and accommodations become second nature</li>
                 </ul>
 
-                <h2>Long-Term Benefits</h2>
-                <p>Interest-based friendships provide lasting advantages:</p>
-
-                <h3>Social Skill Development</h3>
-                <ul>
-                    <li>Leadership opportunities in areas of strength</li>
-                    <li>Collaboration with diverse skill sets</li>
-                    <li>Conflict resolution in low-stakes environments</li>
-                    <li>Communication with varied personality types</li>
-                </ul>
-
-                <h3>Identity Formation</h3>
-                <ul>
-                    <li>Confidence in unique abilities and interests</li>
-                    <li>Understanding of personal values and preferences</li>
-                    <li>Appreciation for intellectual diversity</li>
-                    <li>Recognition of individual contribution value</li>
-                </ul>
-
-                <h3>Future Applications</h3>
-                <ul>
-                    <li>Professional networking skills</li>
-                    <li>Collaborative work environment adaptation</li>
-                    <li>Lifelong learning community engagement</li>
-                    <li>Mentorship and apprenticeship opportunities</li>
-                </ul>
+                <p>However, some individuals retain social preference patterns throughout life, often developing careers and lifestyles that accommodate their connection needs.</p>
 
                 <div class="highlight-box">
-                    <h3>Future Outlook</h3>
-                    <p>Adults who formed interest-based friendships as children often excel in professional environments that value specialized knowledge, collaborative problem-solving, and niche expertise.</p>
+                    <h3>Future Advantage</h3>
+                    <p>Adults who learn to understand and accommodate their social needs often become exceptional community builders, team leaders, and innovation catalysts who leverage their deep connection skills for professional success.</p>
                 </div>
 
-                <h2>When to Seek Additional Support</h2>
-                <p>Consider professional guidance if:</p>
-
-                <ul>
-                    <li>Your child expresses persistent loneliness despite interest group participation</li>
-                    <li>Social anxiety significantly interferes with group engagement</li>
-                    <li>Bullying or exclusion occurs in multiple group settings</li>
-                    <li>Family relationships suffer due to social isolation concerns</li>
-                    <li>Your child rejects all social opportunities, including interests</li>
-                </ul>
-
                 <h2>The Bottom Line</h2>
-                <p>Your child's preference for D&D groups over playground interactions isn't a social deficit—it's a sophisticated approach to relationship building. They understand that meaningful connections require intellectual compatibility, shared values, and mutual respect.</p>
+                <p>Your child's selective social preferences aren't character flaws or motivational failures—they're sophisticated responses to genuine intellectual and emotional needs.</p>
 
-                <p>Instead of pushing them toward superficial peer groups, support their instinct for authentic connection. Help them find communities where their intensity is valued, their curiosity is welcomed, and their unique perspective is celebrated.</p>
+                <p>The key to successful social development lies in facilitating connections with compatible peers rather than forcing interactions with incompatible companions. This approach reduces daily stress for everyone while building genuine community.</p>
 
-                <p>The goal isn't to make them more social—it's to help them be more selectively social. Quality friendships with intellectual peers often prove more satisfying and enduring than numerous acquaintances with incompatible companions.</p>
+                <p>Rather than fighting their social selectivity, support their connection through understanding and accommodation. This approach builds confidence and expands their social repertoire naturally.</p>
 
-                <p>Trust your child's social intelligence. Their ability to form deep bonds around shared passions may be exactly what they need to thrive—not despite their giftedness, but because of it.</p>
+                <p>Remember: The goal isn't to eliminate all social selectivity but to create systems where your child can thrive socially. Sometimes the simplest solution—like finding an interest-based group or online community—makes the biggest difference in daily quality of life.</p>
 
-                <p>In a world that often misunderstands their social preferences, your role is to validate their need for meaningful connection while helping them find the right venues for that connection to flourish.</p>
+                <p>In a world that often expects uniform social experiences, your role is to advocate for your child's unique connection needs. Their social patterns aren't obstacles to overcome but realities to support with compassion and practical solutions.</p>
 
                 <div class="highlight-box">
-                    <h3>Parenting Perspective</h3>
-                    <p>Remember: The most socially successful adults often have a few close friends with whom they share intense interests, rather than many casual acquaintances. Help your child build quality relationships that will serve them throughout their lives.</p>
+                    <h3>Family Harmony Strategy</h3>
+                    <p>Create a social menu of options that work for your household. When connection needs are met proactively, family energy can focus on growth, learning, and genuine enjoyment rather than daily battles over social expectations.</p>
                 </div>
             </div>
         </article>
@@ -882,7 +895,6 @@
         </aside>
     </div>
 
-    <!-- Read Next Section -->
     <section class="read-next">
         <div class="container">
             <h2>Read Next</h2>
@@ -891,15 +903,14 @@
                     <h3>Meaningful Friendships</h3>
                     <p>Why your gifted child has few friends—and why that might be okay.</p>
                 </a>
-                <a href="peer-groups.html" class="read-next-card">
-                    <h3>From Isolation to Inclusion</h3>
-                    <p>Finding peer groups that challenge and support your child.</p>
+                <a href="asynchronous-development.html" class="read-next-card">
+                    <h3>Asynchronous Development</h3>
+                    <p>12-year-old mind, 6-year-old emotions.</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
@@ -913,15 +924,16 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h4>Legal</h4>
+                    <h4>Support</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
@@ -950,7 +962,7 @@
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
             
-            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
                 icon.classList.remove('fa-times');
