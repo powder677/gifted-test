@@ -1,19 +1,72 @@
-// script.js - Navigation and Premium Animations
+/**
+ * Navigator Kids AI™ - Global Script
+ * Handles Mobile Navigation and Scroll Animations
+ */
+
+// --- 1. GLOBAL NAVIGATION LOGIC (MANDATORY) ---
+
+function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const toggle = document.querySelector('.menu-toggle i');
+    
+    // Safety check
+    if (!menu || !toggle) return;
+
+    menu.classList.toggle('active');
+
+    if (menu.classList.contains('active')) {
+        toggle.classList.remove('fa-bars');
+        toggle.classList.add('fa-times');
+    } else {
+        toggle.classList.remove('fa-times');
+        toggle.classList.add('fa-bars');
+    }
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const toggle = document.querySelector('.menu-toggle');
+
+    // Return if elements don't exist
+    if (!menu || !toggle) return;
+
+    // Return if click is inside the menu or on the toggle button
+    if (menu.contains(e.target) || toggle.contains(e.target)) return;
+
+    // Close if active
+    if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        const icon = toggle.querySelector('i');
+        if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    }
+});
+
+// --- 2. DOM CONTENT LOADED HANDLERS ---
 
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuToggle = document.getElementById('menuToggle');
-    const allSections = document.querySelectorAll('section');
-
-    // 1. Mobile Hamburger Menu Toggle
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            menuToggle.innerHTML = mobileMenu.classList.contains('active') ? '✖' : '☰';
+    
+    // A. Close Mobile Menu when a link is clicked
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            
+            if (menu && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                if (toggle) {
+                    toggle.classList.remove('fa-times');
+                    toggle.classList.add('fa-bars');
+                }
+            }
         });
-    }
+    });
 
-    // 2. Subtle Fade-In Animation on Scroll
+    // B. Subtle Fade-In Animation on Scroll
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -29,16 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    allSections.forEach(section => {
+    // Observe Sections, Article Bodies, and Key Takeaways
+    document.querySelectorAll('section, .article-body, .key-takeaways').forEach(section => {
+        section.classList.add('fade-in-section'); // Ensure CSS supports this opacity start
         observer.observe(section);
-    });
-
-    // 3. Broken Download Link Fix
-    document.querySelectorAll('a[data-download-fix]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            // This replaces the old broken PDF link with a sophisticated message.
-            alert('The official Training Packet PDF is currently being polished for release! Please subscribe on our home page for a notification when it drops.');
-        });
     });
 });
