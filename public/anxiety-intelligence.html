@@ -1,93 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-   <meta charset="UTF-8"><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anxiety or Intelligence? | Navigator Kids AI™</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudfla<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anxiety or Intelligence? | Navigator Kids AI™</title>
+    <meta name="description" content="When smart kids over-calculate risk and get stuck in Analysis Paralysis. Understanding the link between giftedness and anxiety.">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* === VARIABLES === */
+        /* === NAVIGATOR KIDS AI™ IDENTITY (Self-Contained) === */
         :root {
-            --color-primary: #1B365D;
+            --color-primary: #1B365D;    /* Navy */
             --color-primary-dark: #132845;
             --color-primary-light: #2A4A7A;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
+            --color-secondary: #FFFFFF;  /* White */
+            --color-accent: #E9C46A;     /* Gold */
+            --color-highlight: #2A9D8F;  /* Teal */
             --color-highlight-dark: #238579;
             --color-highlight-light: #E8F4F2;
             --color-text: #2F2F2F;
-            --color-text-muted: #666666;
             --color-background: #F4F6F8;
-
+            --color-background-warm: #FFFBF5;
+            
             --border-radius: 8px;
-            --border-radius-lg: 12px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
+            --transition: all 0.3s ease;
         }
 
-        /* === RESET === */
-        *, *::before, *::after { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* === BASE STYLES === */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--color-background);
+            font-family: 'Lato', sans-serif;
             color: var(--color-text);
             line-height: 1.7;
+            background-color: var(--color-background);
         }
 
-        h1, h2, h3, h4, h5, h6 { 
-            font-family: 'Inter', sans-serif; 
+        h1, h2, h3, h4, h5 {
+            font-family: 'Inter', sans-serif;
             color: var(--color-primary);
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
-        a { 
-            text-decoration: none; 
-            color: inherit; 
-        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* === NAVIGATION === */
         .navbar {
-            background-color: var(--color-secondary);
+            background: var(--color-secondary);
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
             padding: 16px 0;
-            box-shadow: var(--shadow-sm);
         }
 
         .navbar__inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -103,616 +75,357 @@
             gap: 10px;
         }
 
-        .navbar__logo i {
-            color: var(--color-highlight);
-            font-size: 1.4rem;
-        }
+        .navbar__logo i { color: var(--color-highlight); }
+        .navbar__logo span { color: var(--color-highlight); }
 
-        .navbar__logo span {
-            color: var(--color-highlight);
-        }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
+        .nav-links a:hover { color: var(--color-highlight); }
 
-        .navbar__nav {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .navbar__links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .navbar__links a {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--color-text);
-            transition: var(--transition);
-        }
-
-        .navbar__links a:hover {
-            color: var(--color-highlight);
-        }
-
-        .navbar__cta {
+        /* PDD Standard Button */
+        .nav-btn-primary {
             background: var(--color-highlight);
-            color: white;
+            color: white !important;
             padding: 12px 24px;
             border-radius: var(--border-radius);
             font-weight: 700;
-            font-size: 0.9rem;
-            transition: var(--transition);
         }
-
-        .navbar__cta:hover {
+        .nav-btn-primary:hover {
             background: var(--color-highlight-dark);
             transform: translateY(-2px);
         }
 
-        .navbar__toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            cursor: pointer;
+        .navbar__toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--color-primary); cursor: pointer; }
+
+        /* === LAYOUT & ARTICLE === */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px; /* Main content + Sidebar */
+            gap: 60px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 24px;
         }
 
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid #eee;
-        }
+        .breadcrumbs { margin-bottom: 24px; font-size: 0.9rem; color: var(--color-text); opacity: 0.8; }
+        .breadcrumbs a { color: var(--color-highlight); font-weight: 600; }
+        .breadcrumbs span { margin: 0 8px; opacity: 0.5; }
 
-        .mobile-nav.active {
+        /* Header & Author */
+        .article-header h1 { font-size: 2.5rem; margin-bottom: 24px; }
+        
+        .author-byline {
             display: flex;
-        }
-
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 900px) {
-            .navbar__nav {
-                display: none;
-            }
-            .navbar__toggle {
-                display: block;
-            }
-        }
-
-        /* === HERO === */
-        .hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            padding: 80px 24px;
-            text-align: center;
-            color: white;
-        }
-
-        .hero__breadcrumb {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 16px;
-        }
-
-        .hero__breadcrumb a {
-            color: white;
-            opacity: 0.8;
-            transition: var(--transition);
-        }
-
-        .hero__breadcrumb a:hover {
-            opacity: 1;
-        }
-
-        .hero__breadcrumb span {
-            margin: 0 8px;
-            opacity: 0.5;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-            color: white;
-            margin-bottom: 16px;
-        }
-
-        .hero p { 
-            font-size: 1.2rem; 
-            opacity: 0.9; 
-            max-width: 650px; 
-            margin: 0 auto; 
-        }
-
-        /* === ARTICLE CONTENT === */
-        .article-section { 
-            padding: 60px 24px; 
-            background: white;
-        }
-
-        .article-container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-        }
-
-        .article-container p { 
-            margin-bottom: 1.5rem; 
-            font-size: 1.1rem; 
-        }
-
-        .article-container h2 { 
-            margin-top: 2.5rem; 
-            margin-bottom: 1rem; 
-            font-size: 1.8rem; 
-        }
-
-        .article-container h3 { 
-            margin-top: 2rem; 
-            margin-bottom: 0.8rem; 
-            font-size: 1.4rem; 
-            color: var(--color-primary-dark); 
-        }
-
-        .article-container ul { 
-            margin-bottom: 1.5rem; 
-            padding-left: 24px; 
-        }
-
-        .article-container li { 
-            margin-bottom: 0.75rem; 
-        }
-
-        .article-container li strong {
-            color: var(--color-primary);
-        }
-
-        /* === KEY TAKEAWAYS === */
-        .key-takeaways {
-            background: var(--color-highlight-light);
-            padding: 28px 32px;
-            border-radius: var(--border-radius-lg);
-            border-left: 5px solid var(--color-highlight);
+            align-items: center;
+            gap: 16px;
             margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
-        .key-takeaways h3 {
-            margin-top: 0;
-            margin-bottom: 16px;
-            color: var(--color-highlight-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .key-takeaways ul {
-            margin-bottom: 0;
-            padding-left: 20px;
-        }
-
-        .key-takeaways li {
-            margin-bottom: 8px;
-        }
-
-        /* === HIGHLIGHT BOX === */
-        .highlight-box {
-            background: var(--color-background);
-            padding: 24px 28px;
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--color-accent);
-            margin: 32px 0;
-        }
-
-        .highlight-box h3 {
-            margin-top: 0;
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-
-        .highlight-box p {
-            margin-bottom: 0;
-        }
-
-        /* === AUTHOR BOX === */
-        .author-box {
-            margin-top: 60px;
-            padding: 28px;
-            background: var(--color-background);
-            border-radius: var(--border-radius-lg);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .author-box__avatar {
-            width: 64px;
-            height: 64px;
+        .author-photo {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            color: white;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-weight: 700;
-            font-size: 1.25rem;
-            flex-shrink: 0;
+            font-size: 1.1rem;
         }
 
-        .author-box__info h4 {
-            margin-bottom: 4px;
-            font-size: 1rem;
-        }
+        .author-info { font-size: 0.9rem; }
+        .author-name { font-weight: 700; color: var(--color-primary); }
+        .publish-date { color: #666; }
 
-        .author-box__info p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-        }
-
-        /* === CTA SECTION === */
-        .cta-section {
-            background: var(--color-highlight-light);
-            padding: 60px 24px;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 1.75rem;
-            margin-bottom: 12px;
-        }
-
-        .cta-section p {
-            color: var(--color-text-muted);
-            margin-bottom: 24px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-section .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--color-highlight);
-            color: white;
-            padding: 16px 32px;
+        /* Content Styling */
+        .article-body p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .article-body ul { margin-bottom: 1.5rem; padding-left: 24px; }
+        .article-body li { margin-bottom: 0.5rem; }
+        
+        /* Key Takeaways Box (PDD Standard) */
+        .key-takeaways {
+            background: white;
+            padding: 32px;
             border-radius: var(--border-radius);
-            font-weight: 700;
-            transition: var(--transition);
-        }
-
-        .cta-section .btn:hover {
-            background: var(--color-highlight-dark);
-            transform: translateY(-2px);
-        }
-
-        /* === FOOTER === */
-        .footer { 
-            background: var(--color-primary-dark); 
-            color: white; 
-            padding: 60px 24px 30px; 
-        }
-
-        .footer__inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
+            border-left: 5px solid var(--color-highlight);
+            box-shadow: var(--shadow-sm);
             margin-bottom: 40px;
         }
+        .key-takeaways h3 { color: var(--color-highlight-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 
-        @media (max-width: 768px) {
-            .footer__inner {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
+        /* Highlight Box (PDD Standard) */
+        .highlight-box {
+            background: var(--color-background-warm);
+            border-left: 4px solid var(--color-accent);
+            padding: 24px;
+            border-radius: 0 8px 8px 0;
+            margin: 32px 0;
         }
+        .highlight-box h3 { color: #B58900; font-size: 1.1rem; margin-bottom: 8px; }
 
-        .footer__brand h4 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* === SIDEBAR WIDGET === */
+        .sidebar-widget {
+            background: white;
+            padding: 32px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            position: sticky;
+            top: 100px;
         }
+        .sidebar-widget h3 { margin-bottom: 16px; }
+        .sidebar-widget p { margin-bottom: 24px; color: #666; }
+        .btn-full { width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; }
 
-        .footer__brand h4 i {
-            color: var(--color-highlight);
-        }
-
-        .footer__brand p {
-            opacity: 0.7;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .footer__links h5 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1rem;
-        }
-
-        .footer__links ul {
-            list-style: none;
-        }
-
-        .footer__links li {
-            margin-bottom: 10px;
-        }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
+        /* === READ NEXT SECTION === */
+        .read-next { background: var(--color-primary); padding: 80px 0; color: white; }
+        .read-next h2 { color: white; margin-bottom: 40px; text-align: center; }
+        .read-next-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        
+        .read-next-card {
+            background: white;
+            padding: 24px;
+            border-radius: var(--border-radius);
             transition: var(--transition);
         }
+        .read-next-card:hover { transform: translateY(-5px); }
+        .read-next-card h3 { color: var(--color-primary); margin-bottom: 8px; }
+        .read-next-card p { color: #666; font-size: 0.95rem; }
 
-        .footer__links a:hover {
-            color: white;
+        /* === FOOTER === */
+        .footer { background: #0f1f33; color: white; padding: 80px 0 40px; }
+        .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer h4 { color: white; margin-bottom: 16px; }
+        .footer h5 { color: var(--color-accent); margin-bottom: 20px; }
+        .footer a { color: rgba(255,255,255,0.7); display: block; margin-bottom: 12px; }
+        .footer a:hover { color: white; }
+        .footer__bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; font-size: 0.9rem; opacity: 0.6; }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .navbar__toggle { display: block; }
+            .article-layout { grid-template-columns: 1fr; }
+            .sidebar-widget { position: static; margin-top: 40px; }
         }
 
-        .footer__bottom { 
-            opacity: 0.6; 
-            text-align: center; 
-            padding-top: 24px; 
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%; left: 0; right: 0;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-md);
         }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a { padding: 16px 24px; border-bottom: 1px solid #eee; font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
     <nav class="navbar">
-        <div class="navbar__inner">
-            <a href="index.html" class="navbar__logo">
-                <i class="fas fa-compass"></i>
-                Navigator <span>Kids AI</span>™
-            </a>
-            
-            <div class="navbar__nav">
-                <ul class="navbar__links">
+        <div class="container">
+            <div class="navbar__inner">
+                <a href="index.html" class="navbar__logo">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>™
+                </a>
+                
+                <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency-reset-kit.html" class="nav-btn-primary">Free Reset Kit</a></li>
                 </ul>
-                <a href="methodology.html" class="navbar__cta">Get Started</a>
-            </div>
 
-            <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
+                <button class="navbar__toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
         
-        <nav class="mobile-nav" id="mobileNav">
+        <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a>
+            <a href="emergency-reset-kit.html">Free Reset Kit</a>
         </nav>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero__breadcrumb">
-            <a href="resources.html">Resources</a>
-            <span>/</span>
-            <a href="emotional-regulation.html">Emotional Regulation</a>
-        </div>
-        <h1>Anxiety or Intelligence?</h1>
-        <p>When smart kids over-calculate risk and get stuck in "Analysis Paralysis."</p>
-    </section>
+    <div class="article-layout">
+        
+        <main class="article-content">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> <span>/</span>
+                <a href="resources.html">Resources</a> <span>/</span>
+                <a href="emotional-regulation-hub.html">Emotional Regulation</a> <span>/</span>
+                <span>Anxiety or Intelligence</span>
+            </div>
 
-    <!-- ARTICLE CONTENT -->
-    <section class="article-section">
-        <div class="article-container">
+            <header class="article-header">
+                <h1>Anxiety or Intelligence?</h1>
+                <div class="author-byline">
+                    <div class="author-photo">AS</div>
+                    <div class="author-info">
+                        <div class="author-name">Avery Sage</div>
+                        <div class="author-role">Emotional Intelligence Specialist</div>
+                        <div class="publish-date">Published October 12, 2024</div>
+                    </div>
+                </div>
+            </header>
 
             <div class="key-takeaways">
                 <h3><i class="fas fa-bolt"></i> Key Takeaways</h3>
                 <ul>
                     <li>Gifted children's anxiety often stems from seeing more potential outcomes than neurotypical peers.</li>
                     <li>High intelligence can manifest as "analysis paralysis" when too many variables are considered.</li>
-                    <li>Gifted child anxiety symptoms differ from typical anxiety—they're often rational responses to complex thinking.</li>
-                    <li>Validation and channeling analytical skills are more effective than traditional anxiety management techniques.</li>
+                    <li>Gifted anxiety symptoms often look like refusal, selective mutism, or perfectionism.</li>
+                    <li>Validation and channeling analytical skills are more effective than traditional reassurance.</li>
                 </ul>
             </div>
 
-            <p>Your 8-year-old refuses to climb the playground monkey bars, not because they're afraid of heights, but because they've calculated the precise trajectory of every possible fall scenario. Your teenager won't apply to their dream college because they've researched every potential negative outcome, from roommate conflicts to career prospects twenty years hence.</p>
+            <div class="article-body">
+                <p>Your 8-year-old refuses to climb the playground monkey bars, not because they're afraid of heights, but because they've calculated the precise trajectory of every possible fall scenario. Your teenager won't apply to their dream college because they've researched every potential negative outcome, from roommate conflicts to career prospects twenty years hence.</p>
 
-            <p>This isn't garden-variety anxiety. This is the burden of brilliance—when extraordinary cognitive abilities transform simple decisions into complex risk analyses. What appears as fear is often just intelligence running amok in environments that don't require such sophisticated thinking.</p>
+                <p>This isn't garden-variety anxiety. This is the burden of brilliance—when extraordinary cognitive abilities transform simple decisions into complex risk analyses. What appears as fear is often just intelligence running amok in environments that don't require such sophisticated thinking.</p>
 
-            <div class="highlight-box">
-                <h3>The Intelligence-Anxiety Connection</h3>
-                <p>Gifted children's brains process information differently, seeing connections and consequences that escape others. This neurological advantage becomes problematic when it generates overwhelming mental simulations of potential negative outcomes.</p>
+                <div class="highlight-box">
+                    <h3>The Intelligence-Anxiety Connection</h3>
+                    <p>Gifted children's brains process information differently, seeing connections and consequences that escape others. This neurological advantage becomes problematic when it generates overwhelming mental simulations of potential negative outcomes.</p>
+                </div>
+
+                <h2>Understanding Gifted Child Anxiety Symptoms</h2>
+                <p>Traditional anxiety presents as generalized worry, panic attacks, and phobias. Gifted child anxiety symptoms often masquerade as:</p>
+                <ul>
+                    <li><strong>Selective mutism in new situations:</strong> Not shyness, but processing overload.</li>
+                    <li><strong>Paralysis in decision-making:</strong> Seeing too many variables to choose from.</li>
+                    <li><strong>Refusal of age-appropriate challenges:</strong> Calculating risks others don't perceive.</li>
+                    <li><strong>Perfectionist avoidance:</strong> Fear of outcomes they can clearly envision.</li>
+                </ul>
+
+                <h3>The Cognitive Load Problem</h3>
+                <p>Gifted children's brains don't just think faster—they think in higher resolution. Where a neurotypical child sees a slide as "fun," a gifted child sees:</p>
+                <ul>
+                    <li>Potential equipment malfunctions</li>
+                    <li>Collision risks with other children</li>
+                    <li>Embarrassment scenarios if they fall</li>
+                    <li>Disappointment if it's not as thrilling as anticipated</li>
+                </ul>
+                <p>This isn't anxiety—it's computational overload. Their brains are running Monte Carlo simulations for everyday activities.</p>
+
+                <div class="highlight-box">
+                    <h3>Research Insight</h3>
+                    <p>Neuroimaging studies reveal that gifted children show heightened activity in the prefrontal cortex during decision-making tasks, indicating increased analysis and future-thinking compared to neurotypical peers.</p>
+                </div>
+
+                <h2>Distinguishing Intelligence from Anxiety</h2>
+                <p>Understanding whether your child's behavior stems from giftedness or genuine anxiety requires careful observation.</p>
+
+                <h3>Gifted Overthinking Characteristics</h3>
+                <ul>
+                    <li>Concerns are logically connected to actual potential outcomes</li>
+                    <li>Child can articulate specific scenarios they've considered</li>
+                    <li>Anxiety decreases when given more information or control</li>
+                    <li>Performance improves in familiar, predictable environments</li>
+                </ul>
+
+                <h3>Traditional Anxiety Indicators</h3>
+                <ul>
+                    <li>Fears are disproportionate to actual threat level</li>
+                    <li>Child struggles to explain specific worries</li>
+                    <li>Anxiety persists despite reassurance or information</li>
+                    <li>Physical symptoms occur without identifiable triggers</li>
+                </ul>
+
+                <h2>Strategies for Parents</h2>
+                <h3>1. Validate Their Intelligence</h3>
+                <p>Instead of dismissing concerns with "Don't worry about it," acknowledge: "You're thinking about this really carefully. Let's look at which possibilities are most likely."</p>
+
+                <h3>2. Channel the Analysis</h3>
+                <p>Give their brain something productive to calculate: "What would you need to know to feel comfortable trying this?" This redirects overthinking toward problem-solving.</p>
+
+                <h3>3. Create Decision Frameworks</h3>
+                <p>Help them develop shortcuts for low-stakes decisions. "For choices that can be undone easily, we use the 'good enough' rule. For important decisions, we use the full analysis."</p>
             </div>
+        </main>
 
-            <h2>Understanding Gifted Child Anxiety Symptoms</h2>
-            <p>Traditional anxiety presents as generalized worry, panic attacks, and phobias. Gifted child anxiety symptoms often masquerade as:</p>
-
-            <ul>
-                <li><strong>Selective mutism in new situations:</strong> Not shyness, but processing overload.</li>
-                <li><strong>Paralysis in decision-making:</strong> Seeing too many variables to choose from.</li>
-                <li><strong>Refusal of age-appropriate challenges:</strong> Calculating risks others don't perceive.</li>
-                <li><strong>Physical symptoms before performances:</strong> Intense mental rehearsal triggering stress responses.</li>
-                <li><strong>Perfectionist avoidance:</strong> Fear of outcomes they can clearly envision.</li>
-            </ul>
-
-            <h3>The Cognitive Load Problem</h3>
-            <p>Gifted children's brains don't just think faster—they think in higher resolution. Where a neurotypical child sees a slide as "fun," a gifted child sees:</p>
-
-            <ul>
-                <li>Potential equipment malfunctions</li>
-                <li>Collision risks with other children</li>
-                <li>Embarrassment scenarios if they fall</li>
-                <li>Disappointment if it's not as thrilling as anticipated</li>
-                <li>Time wasted that could be spent on more meaningful activities</li>
-            </ul>
-
-            <p>This isn't anxiety—it's computational overload. Their brains are running Monte Carlo simulations for everyday activities.</p>
-
-            <div class="highlight-box">
-                <h3>Research Insight</h3>
-                <p>Neuroimaging studies reveal that gifted children show heightened activity in the prefrontal cortex during decision-making tasks, indicating increased analysis and future-thinking compared to neurotypical peers.</p>
+        <aside class="article-sidebar">
+            <div class="sidebar-widget">
+                <h3>Is your child 2e?</h3>
+                <p>Take our free 2-minute AI assessment to understand their unique executive function profile.</p>
+                <a href="gifted-assessment-tool.html" class="nav-btn-primary btn-full">
+                    <i class="fas fa-microchip"></i> Start Free Assessment
+                </a>
             </div>
+        </aside>
 
-            <h2>The Paradox of Predictive Intelligence</h2>
-            <p>Gifted children's ability to anticipate consequences creates a unique developmental challenge:</p>
+    </div>
 
-            <h3>Advantages in Complex Situations</h3>
-            <p>Their predictive abilities serve them well in:</p>
-
-            <ul>
-                <li>Academic problem-solving requiring multi-step reasoning</li>
-                <li>Strategic games and competitions</li>
-                <li>Identifying potential pitfalls in projects</li>
-                <li>Understanding complex systems and relationships</li>
-            </ul>
-
-            <h3>Challenges in Everyday Life</h3>
-            <p>However, these same abilities create obstacles in:</p>
-
-            <ul>
-                <li>Simple, low-stakes decisions that don't require analysis</li>
-                <li>Activities where "good enough" suffices</li>
-                <li>Social situations requiring quick intuitive responses</li>
-                <li>Novel experiences where unknown variables exist</li>
-            </ul>
-
-            <h2>Distinguishing Intelligence from Anxiety</h2>
-            <p>Understanding whether your child's behavior stems from giftedness or genuine anxiety requires careful observation:</p>
-
-            <h3>Gifted Overthinking Characteristics</h3>
-            <ul>
-                <li>Concerns are logically connected to actual potential outcomes</li>
-                <li>Child can articulate specific scenarios they've considered</li>
-                <li>Anxiety decreases when given more information or control</li>
-                <li>Performance improves in familiar, predictable environments</li>
-                <li>Child shows advanced reasoning about their concerns</li>
-            </ul>
-
-            <h3>Traditional Anxiety Indicators</h3>
-            <ul>
-                <li>Fears are disproportionate to actual threat level</li>
-                <li>Child struggles to explain specific worries</li>
-                <li>Anxiety persists despite reassurance or information</li>
-                <li>Physical symptoms occur without identifiable triggers</li>
-                <li>Worry generalizes across unrelated situations</li>
-            </ul>
-
-            <div class="highlight-box">
-                <h3>Diagnostic Question</h3>
-                <p>Ask: "Are they afraid of the thing itself, or the 47 ways it could go wrong that only they can see?" The answer reveals the root of their hesitation.</p>
+    <section class="read-next">
+        <div class="container">
+            <h2>Read Next</h2>
+            <div class="read-next-grid">
+                <a href="perfectionism-trap.html" class="read-next-card">
+                    <h3>The Perfectionism Trap</h3>
+                    <p>Helping kids who cry over getting a 98% on a test.</p>
+                </a>
+                <a href="restraint-collapse.html" class="read-next-card">
+                    <h3>Restraint Collapse</h3>
+                    <p>Why they are angels at school and monsters at home.</p>
+                </a>
+                <a href="meltdown-or-manipulation.html" class="read-next-card">
+                    <h3>Meltdown or Manipulation?</h3>
+                    <p>How to tell the difference and respond effectively.</p>
+                </a>
             </div>
+        </div>
+    </section>
 
-            <h2>Practical Strategies for Parents</h2>
-
-            <h3>1. Validate Their Intelligence</h3>
-            <p>Instead of dismissing concerns with "Don't worry about it," acknowledge: "You're thinking about this really carefully. Let's look at which possibilities are most likely."</p>
-
-            <h3>2. Channel the Analysis</h3>
-            <p>Give their brain something productive to calculate: "What would you need to know to feel comfortable trying this?" This redirects overthinking toward problem-solving.</p>
-
-            <h3>3. Create Decision Frameworks</h3>
-            <p>Help them develop shortcuts for low-stakes decisions: "For choices that can be undone easily, we use the 'good enough' rule. For important decisions, we use the full analysis."</p>
-
-            <h3>4. Build Familiarity Gradually</h3>
-            <p>New situations trigger maximum analysis. Repeated exposure reduces variables and builds confidence through predictability.</p>
-
-            <h3>5. Model Imperfect Decision-Making</h3>
-            <p>Narrate your own "good enough" choices: "I'm not sure if this is the best restaurant, but it looks fine and I don't want to spend twenty minutes researching. Let's try it."</p>
-
-            <h2>When to Seek Professional Help</h2>
-            <p>While gifted overthinking is normal, professional support may be needed if:</p>
-            <ul>
-                <li>Anxiety significantly impairs daily functioning or relationships</li>
-                <li>Physical symptoms persist (sleep issues, stomach problems)</li>
-                <li>Avoidance behaviors are increasing over time</li>
-                <li>Your child expresses distress about their own thinking patterns</li>
-            </ul>
-            <p>Look for professionals experienced with gifted children, as standard anxiety interventions may need modification.</p>
-
-            <div class="author-box">
-                <div class="author-box__avatar">NK</div>
-                <div class="author-box__info">
-                    <h4>Navigator Kids AI™ Editorial Team</h4>
-                    <p>Written by specialists who understand gifted and twice-exceptional children.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-
-        </div>
-    </section>
-
-    <!-- CTA SECTION -->
-    <section class="cta-section">
-        <h2>Need Help With Meltdowns?</h2>
-        <p>Get our free Emergency Reset Kit — science-backed strategies for when emotions run high.</p>
-        <a href="emergency-reset-kit.html" class="btn">
-            <i class="fas fa-download"></i> Get the Free Kit
-        </a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer__inner">
-            <div class="footer__brand">
-                <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
-                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+            <div class="footer__bottom">
+                © 2024 Navigator Kids AI™. All rights reserved.
             </div>
-            <div class="footer__links">
-                <h5>Product</h5>
-                <ul>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="methodology.html">Membership</a></li>
-                    <li><a href="emergency-reset-kit.html">Free Reset Kit</a></li>
-                </ul>
-            </div>
-            <div class="footer__links">
-                <h5>Resources</h5>
-                <ul>
-                    <li><a href="resources.html">Knowledge Base</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            © 2024 Navigator Kids AI™. All rights reserved.
         </div>
     </footer>
 
     <script>
-        function toggleMobileNav() {
-            const mobileNav = document.getElementById('mobileNav');
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.navbar__toggle i');
+            menu.classList.toggle('active');
             
-            mobileNav.classList.toggle('active');
-            
-            if (mobileNav.classList.contains('active')) {
+            if (menu.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
             } else {
@@ -722,707 +435,4 @@
         }
     </script>
 </body>
-</html>re.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
-    <style>
-        :root {
-            --color-primary: #1B365D;
-            --color-primary-dark: #132845;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
-            --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-background: #F4F6F8;
-
-            --radius: 8px;
-            --radius-lg: 12px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
-        }
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            background: var(--color-background);
-            color: var(--color-text);
-            line-height: 1.7;
-        }
-
-        h1, h2, h3, h4, h5 { font-family: 'Inter', sans-serif; color: var(--color-primary); }
-
-        a { text-decoration: none; color: inherit; }
-
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ========================= */
-        /* NAVIGATION         */
-        /* ========================= */
-        .navbar {
-            background: white;
-            border-bottom: 1px solid rgba(27,54,93,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .logo a {
-            display: flex;
-            gap: 10px;
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--color-primary);
-        }
-
-        .logo span { color: var(--color-highlight); }
-
-        .desktop-nav ul {
-            list-style: none;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .desktop-nav a {
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .desktop-nav a:hover { color: var(--color-highlight); }
-
-        .nav-btn-primary {
-            background: var(--color-highlight);
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: var(--transition);
-        }
-
-        .nav-btn-primary:hover { background: var(--color-highlight-dark); }
-
-        .menu-toggle { display: none; font-size: 1.5rem; background: none; border: none; }
-
-        .mobile-nav { display: none; flex-direction: column; background: white; }
-        .mobile-nav.active { display: flex; }
-        .mobile-nav a { padding: 16px 24px; border-bottom: 1px solid #eee; font-weight: 600; }
-
-        @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
-        }
-
-        /* ========================= */
-        /* HERO BLOCK         */
-        /* ========================= */
-        .hero {
-            background: linear-gradient(135deg, var(--color-primary), #2A4A7A);
-            padding: 80px 24px;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-        }
-
-        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 650px; margin: 12px auto 0; }
-
-        /* ========================= */
-        /* PAGE CONTENT        */
-        /* ========================= */
-        .content-section { padding: 60px 24px; }
-
-        #page-content { max-width: 900px; margin: 0 auto; }
-        
-        /* Typography refinements for blog content */
-        #page-content p { margin-bottom: 1.5rem; font-size: 1.1rem; }
-        #page-content h2 { margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.8rem; }
-        #page-content h3 { margin-top: 2rem; margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--color-primary-dark); }
-        #page-content ul { margin-bottom: 2rem; padding-left: 20px; }
-        #page-content li { margin-bottom: 0.8rem; }
-
-        /* Blog specific callouts */
-        .key-takeaways {
-            background: var(--color-highlight-light);
-            padding: 30px;
-            border-radius: var(--radius);
-            border-left: 5px solid var(--color-highlight);
-            margin-bottom: 40px;
-        }
-
-        .highlight-box {
-            background: white;
-            padding: 24px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--color-accent);
-            margin: 30px 0;
-        }
-
-        .author-box {
-            margin-top: 60px;
-            padding: 30px;
-            background: white;
-            border-top: 1px solid #eee;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        /* ========================= */
-        /* FOOTER           */
-        /* ========================= */
-        .footer { background: #0f1f33; color: white; padding: 60px 24px 30px; }
-        .footer__bottom { opacity: 0.6; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-    </style>
-</head>
-<body>
-
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <a href="index.html"><i class="fas fa-compass"></i> Navigator <span>Kids AI</span></a>
-            </div>
-
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a class="nav-btn-primary" href="emergency-reset-kit-sales-page.html">Get Reset Kit</a></li>
-                </ul>
-            </nav>
-
-            <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-        </div>
-
-        <nav id="mobileMenu" class="mobile-nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
-            <a href="resources.html">Resources</a>
-            <a class="nav-btn-primary" href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Anxiety or Intelligence?</h1>
-        <p>When smart kids over-calculate risk and get stuck in "Analysis Paralysis."</p>
-    </section>
-
-    <section class="content-section">
-        <div id="page-content">
-
-            <div class="key-takeaways">
-                <h3 style="margin-top:0; color:var(--color-highlight-dark);"><i class="fas fa-bolt"></i> Key Takeaways</h3>
-                <ul style="margin-bottom:0;">
-                    <li>Gifted children's anxiety often stems from seeing more potential outcomes than neurotypical peers.</li>
-                    <li>High intelligence can manifest as "analysis paralysis" when too many variables are considered.</li>
-                    <li>Validation and channeling analytical skills are more effective than traditional anxiety management techniques.</li>
-                </ul>
-            </div>
-
-            <p>Your 8-year-old refuses to climb the playground monkey bars, not because they're afraid of heights, but because they've calculated the precise trajectory of every possible fall scenario. Your teenager won't apply to their dream college because they've researched every potential negative outcome, from roommate conflicts to career prospects twenty years hence.</p>
-
-            <p>This isn't garden-variety anxiety. This is the burden of brilliance—when extraordinary cognitive abilities transform simple decisions into complex risk analyses. What appears as fear is often just intelligence running amok in environments that don't require such sophisticated thinking.</p>
-
-            <div class="highlight-box">
-                <h3>The Intelligence-Anxiety Connection</h3>
-                <p style="margin-bottom:0;">Gifted children's brains process information differently, seeing connections and consequences that escape others. This neurological advantage becomes problematic when it generates overwhelming mental simulations of potential negative outcomes.</p>
-            </div>
-
-            <h2>Understanding Gifted Child Anxiety Symptoms</h2>
-            <p>Traditional anxiety presents as generalized worry, panic attacks, and phobias. Gifted child anxiety symptoms often masquerade as:</p>
-
-            <ul>
-                <li><strong>Selective mutism in new situations:</strong> Not shyness, but processing overload.</li>
-                <li><strong>Paralysis in decision-making:</strong> Seeing too many variables to choose from.</li>
-                <li><strong>Refusal of age-appropriate challenges:</strong> Calculating risks others don't perceive.</li>
-                <li><strong>Perfectionist avoidance:</strong> Fear of outcomes they can clearly envision.</li>
-            </ul>
-
-            <h3>The Cognitive Load Problem</h3>
-            <p>Gifted children's brains don't just think faster—they think in higher resolution. Where a neurotypical child sees a slide as "fun," a gifted child sees:</p>
-
-            <ul>
-                <li>Potential equipment malfunctions</li>
-                <li>Collision risks with other children</li>
-                <li>Embarrassment scenarios if they fall</li>
-                <li>Disappointment if it's not as thrilling as anticipated</li>
-            </ul>
-
-            <p>This isn't anxiety—it's computational overload. Their brains are running Monte Carlo simulations for everyday activities.</p>
-
-            <div class="highlight-box">
-                <h3>Research Insight</h3>
-                <p style="margin-bottom:0;">Neuroimaging studies reveal that gifted children show heightened activity in the prefrontal cortex during decision-making tasks, indicating increased analysis and future-thinking compared to neurotypical peers.</p>
-            </div>
-
-            <h2>Distinguishing Intelligence from Anxiety</h2>
-            <p>Understanding whether your child's behavior stems from giftedness or genuine anxiety requires careful observation.</p>
-
-            <div style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:2rem;">
-                <div style="flex:1; min-width:300px; background:#fff; padding:20px; border-radius:8px; box-shadow:var(--shadow-sm);">
-                    <h4 style="color:var(--color-highlight);">Gifted Overthinking</h4>
-                    <ul style="font-size:0.95rem;">
-                        <li>Concerns are logically connected to actual outcomes.</li>
-                        <li>Can articulate specific scenarios considered.</li>
-                        <li>Anxiety decreases when given more information (data).</li>
-                        <li>Performance improves in familiar environments.</li>
-                    </ul>
-                </div>
-                <div style="flex:1; min-width:300px; background:#fff; padding:20px; border-radius:8px; box-shadow:var(--shadow-sm);">
-                    <h4 style="color:var(--color-accent);">Clinical Anxiety</h4>
-                    <ul style="font-size:0.95rem;">
-                        <li>Fears are disproportionate to threat level.</li>
-                        <li>Struggles to explain specific worries.</li>
-                        <li>Anxiety persists despite new data.</li>
-                        <li>Physical symptoms without triggers.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h2>Strategies for Supporting Over-Calculating Minds</h2>
-            <p>Helping gifted children manage their analytical intensity requires honoring their cognitive abilities while teaching practical coping strategies.</p>
-
-            <h3>1. Validate Their Thinking</h3>
-            <p>Acknowledge the sophistication of their analysis. Try saying: <em>"I can see you've thought through this really thoroughly. Your brain naturally considers lots of possibilities—that's actually a strength."</em></p>
-
-            <h3>2. Teach Decision-Matrix Frameworks</h3>
-            <p>Channel their analytical nature into structured decision-making:</p>
-            <ul>
-                <li>Identify 3-5 key criteria for decisions.</li>
-                <li>Rate options on these specific factors.</li>
-                <li>Set time limits for analysis (The "Stop Loss" strategy).</li>
-            </ul>
-
-            <h3>3. Create Controlled Exposure</h3>
-            <p>Gradually expand comfort zones through scaffolded experiences. Start with low-stakes scenarios where outcomes are known, and reflect on actual vs. predicted outcomes after the fact.</p>
-
-            <div class="highlight-box">
-                <h3>Language Shift</h3>
-                <p style="margin-bottom:0;">Replace <em>"What if something goes wrong?"</em> with <em>"What's the worst reasonable outcome, and how would we handle it?"</em> This shifts from vague fear to tactical planning.</p>
-            </div>
-
-            <h2>The Bottom Line</h2>
-            <p>Your child's tendency to over-calculate risk isn't a disorder—it's evidence of a brain wired to see the world in high definition. While this creates challenges in a world that often rewards quick, approximate decisions, it also confers significant advantages in complex problem-solving.</p>
-
-            <p>Rather than pathologizing their intensity, celebrate their ability to see what others miss—and then teach them when to look away.</p>
-
-            <div class="author-box">
-                <div style="display:flex; align-items:center; gap:15px;">
-                    <i class="fas fa-brain" style="font-size: 28px; color: var(--color-highlight);"></i>
-                    <div>
-                        <h4 style="margin:0;">Evan Calder</h4>
-                        <span style="color:var(--color-text-muted); font-size:0.9rem;">Learning Architect & Executive Function Specialist</span>
-                        <p style="margin:5px 0 0 0; font-size:0.8rem; opacity:0.7;">Published August 22, 2025</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer__bottom">© 2025 Navigator Kids AI™ — All Rights Reserved</div>
-    </footer>
-
-    <script>
-        function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('active');
-        }
-    </script>
-</body>
-</html>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Anxiety or Intelligence? When Smart Kids Over-Calculate Risk</title>
-   <link rel="stylesheet" href="styles.css"> <style>
-      /* Temporary local overrides to map the old template's structure to new CSS variables */
-
-      /* Article Layout adjustments for padding consistency */
-      .article-layout {
-         display: flex;
-         gap: 60px;
-         max-width: 1400px;
-         margin: 0 auto;
-         padding: 40px 24px;
-      }
-
-      /* Mapping old hardcoded colors to new variables */
-      .breadcrumbs a {
-         color: #D4A5A5; /* Dusty Rose (New Accent for links/terracotta role) */
-         text-decoration: none;
-      }
-
-      .breadcrumbs span {
-         color: var(--color-text);
-         opacity: 0.7;
-      }
-
-      .author-photo {
-         /* Using a mix of new primary and accent colors */
-         background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-      }
-
-      /* Key Takeaways - Uses transparent Sage blend (new primary) */
-      .key-takeaways {
-         background-color: rgba(124, 152, 133, 0.1);
-         border-radius: var(--border-radius);
-         box-shadow: var(--box-shadow-subtle);
-      }
-
-      .key-takeaways h2 {
-         color: var(--color-primary); /* Sage Green */
-      }
-
-      /* Highlight Box - Uses Dusty Rose and Cream/Off-White */
-      .highlight-box {
-         background-color: var(--color-secondary); /* Warm Cream */
-         border-left: 4px solid #D4A5A5; /* Dusty Rose */
-         box-shadow: var(--box-shadow-subtle);
-         border-radius: 0 var(--border-radius) var(--border-radius) 0;
-      }
-
-      .highlight-box h3 {
-         color: #D4A5A5; /* Dusty Rose */
-      }
-      
-      /* Sidebar Widget - Uses Cream background and soft shadows */
-      .sidebar-widget {
-         background: var(--color-secondary); 
-         border-radius: var(--border-radius);
-         box-shadow: var(--box-shadow-subtle);
-         position: sticky;
-         top: 100px; /* Adjusted to clear sticky navbar + spacing */
-      }
-
-      /* Button Fix */
-      .btn {
-         background-color: var(--color-primary); /* Sage Green Button */
-         color: var(--color-background);
-         border-radius: var(--border-radius);
-         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .btn:hover {
-         background-color: #6a8373; /* Darker Sage */
-         transform: translateY(-2px);
-         box-shadow: var(--box-shadow-hover);
-      }
-      
-      /* Read Next Card Styling */
-      .read-next-card {
-         background: var(--color-secondary);
-         border-radius: var(--border-radius);
-         box-shadow: var(--box-shadow-subtle);
-      }
-
-      .read-next-card:hover h3 {
-         color: var(--color-primary);
-      }
-      
-      /* Responsive Fix for Sidebar Top Position */
-      @media (min-width: 1024px) {
-         .article-sidebar {
-            /* Restore desktop width */
-            width: 300px;
-            flex-shrink: 0;
-         }
-      }
-
-   </style>
-</head>
-
-<body>
-<div id="navigation-placeholder"></div>
-<script>
-   fetch('navigation.html').then(response => response.text()).then(data => {
-      document.getElementById('navigation-placeholder').innerHTML = data;
-   });
-</script>
-   <div class="article-layout">
-      <div class="article-content">
-         <div class="breadcrumbs">
-            <a href="index.html">Home</a> <span>/</span>
-            <a href="emotional-regulation.html">Anxiety & Overthinking</a> <span>/</span>
-            <span>Anxiety or Intelligence</span>
-         </div>
-
-         <header class="article-header">
-            <h1>Anxiety or Intelligence? When Smart Kids Over-Calculate Risk</h1>
-            <div class="author-byline">
-               <div class="author-photo" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);">JD</div>
-               <div class="author-info">
-                  <div class="author-name">Jane Doe</div>
-                  <div class="publish-date">Published August 22, 2023</div>
-               </div>
-            </div>
-         </header>
-
-         <div class="key-takeaways">
-            <h2>TL;DR</h2>
-            <ul>
-               <li>Gifted children's anxiety often stems from seeing more potential outcomes than neurotypical peers</li>
-               <li>High intelligence can manifest as "analysis paralysis" when too many variables are considered</li>
-               <li>Gifted child anxiety symptoms differ from typical anxiety—they're often rational responses to complex thinking</li>
-               <li>Validation and channeling analytical skills are more effective than traditional anxiety management techniques</li>
-            </ul>
-         </div>
-
-         <div class="article-body">
-            <p>Your 8-year-old refuses to climb the playground monkey bars, not because they're afraid of heights, but because they've calculated the precise trajectory of every possible fall scenario. Your teenager won't apply to their dream college because they've researched every potential negative outcome, from roommate conflicts to career prospects twenty years hence.</p>
-
-            <p>This isn't garden-variety anxiety. This is the burden of brilliance—when extraordinary cognitive abilities transform simple decisions into complex risk analyses. What appears as fear is often just intelligence running amok in environments that don't require such sophisticated thinking.</p>
-
-            <div class="highlight-box">
-               <h3>The Intelligence-Anxiety Connection</h3>
-               <p>Gifted children's brains process information differently, seeing connections and consequences that escape others. This neurological advantage becomes problematic when it generates overwhelming mental simulations of potential negative outcomes.</p>
-            </div>
-
-            <h2>Understanding Gifted Child Anxiety Symptoms</h2>
-            <p>Traditional anxiety presents as generalized worry, panic attacks, and phobias. Gifted child anxiety symptoms often masquerade as:</p>
-
-            <ul>
-               <li><strong>Selective mutism in new situations</strong> - Not shyness, but processing overload</li>
-               <li><strong>Paralysis in decision-making</strong> - Seeing too many variables to choose</li>
-               <li><strong>Refusal of age-appropriate challenges</strong> - Calculating risks others don't perceive</li>
-               <li><strong>Physical symptoms before performances</strong> - Intense mental rehearsal triggering stress responses</li>
-               <li><strong>Perfectionist avoidance</strong> - Fear of outcomes they can clearly envision</li>
-            </ul>
-
-            <h3>The Cognitive Load Problem</h3>
-            <p>Gifted children's brains don't just think faster—they think in higher resolution. Where a neurotypical child sees a slide as "fun," a gifted child sees:</p>
-
-            <ul>
-               <li>Potential equipment malfunctions</li>
-               <li>Collision risks with other children</li>
-               <li>Embarrassment scenarios if they fall</li>
-               <li>Disappointment if it's not as thrilling as anticipated</li>
-               <li>Time wasted that could be spent on more meaningful activities</li>
-            </ul>
-
-            <p>This isn't anxiety—it's computational overload. Their brains are running Monte Carlo simulations for everyday activities.</p>
-
-            <div class="highlight-box">
-               <h3>Research Insight</h3>
-               <p>Neuroimaging studies reveal that gifted children show heightened activity in the prefrontal cortex during decision-making tasks, indicating increased analysis and future-thinking compared to neurotypical peers.</p>
-            </div>
-
-            <h2>The Paradox of Predictive Intelligence</h2>
-            <p>Gifted children's ability to anticipate consequences creates a unique developmental challenge:</p>
-
-            <h3>Advantages in Complex Situations</h3>
-            <p>Their predictive abilities serve them well in:</p>
-
-            <ul>
-               <li>Academic problem-solving requiring multi-step reasoning</li>
-               <li>Strategic games and competitions</li>
-               <li>Identifying potential pitfalls in projects</li>
-               <li>Understanding complex systems and relationships</li>
-            </ul>
-
-            <h3>Challenges in Everyday Life</h3>
-            <p>However, these same abilities create obstacles in:</p>
-
-            <ul>
-               <li>Simple, low-stakes decisions that don't require analysis</li>
-               <li>Activities where "good enough" suffices</li>
-               <li>Social situations requiring quick intuitive responses</li>
-               <li>Novel experiences where unknown variables exist</li>
-            </ul>
-
-            <h2>Distinguishing Intelligence from Anxiety</h2>
-            <p>Understanding whether your child's behavior stems from giftedness or genuine anxiety requires careful observation:</p>
-
-            <h3>Gifted Overthinking Characteristics</h3>
-            <ul>
-               <li>Concerns are logically connected to actual potential outcomes</li>
-               <li>Child can articulate specific scenarios they've considered</li>
-               <li>Anxiety decreases when given more information or control</li>
-               <li>Performance improves in familiar, predictable environments</li>
-               <li>Child shows advanced reasoning about their concerns</li>
-            </ul>
-
-            <h3>Traditional Anxiety Indicators</h3>
-            <ul>
-               <li>Fears are disproportionate to actual threat level</li>
-               <li>Child struggles to explain specific worries</li>
-               <li>Anxiety persists despite reassurance or information</li>
-               <li>Physical symptoms occur without identifiable triggers</li>
-               <li>Worry generalizes across unrelated situations</li>
-            </ul>
-
-            <div class="highlight-box">
-               <h3>Diagnostic Question</h3>
-               <p>Ask: "Are they afraid of the thing itself, or the 47 ways it could go wrong that only they can see?"</p>
-            </div>
-
-            <h2>Strategies for Supporting Over-Calculating Minds</h2>
-            <p>Helping gifted children manage their analytical intensity requires honoring their cognitive abilities while teaching practical coping strategies:</p>
-
-            <h3>1. Validate Their Thinking</h3>
-            <p>Acknowledge the sophistication of their analysis:</p>
-
-            <p>"I can see you've thought through this really thoroughly. Your brain naturally considers lots of possibilities—that's actually a strength."</p>
-
-            <h3>2. Teach Decision-Matrix Frameworks</h3>
-            <p>Channel their analytical nature into structured decision-making:</p>
-
-            <ul>
-               <li>Identify 3-5 key criteria for decisions</li>
-               <li>Rate options on these specific factors</li>
-               <li>Set time limits for analysis</li>
-               <li>Accept "good enough" thresholds</li>
-            </ul>
-
-            <h3>3. Create Controlled Exposure</h3>
-            <p>Gradually expand comfort zones through scaffolded experiences:</p>
-
-            <ul>
-               <li>Start with low-stakes scenarios where outcomes are known</li>
-               <li>Practice rapid decision-making in safe environments</li>
-               <li>Reflect on actual vs. predicted outcomes</li>
-               <li>Build confidence through successful small risks</li>
-            </ul>
-
-            <h2>The Role of Time Pressure</h2>
-            <p>Ironically, imposing time constraints often reduces anxiety in over-analytical children:</p>
-
-            <ul>
-               <li>Decision-making timers for low-stakes choices</li>
-               <li>"Rapid-fire" question sessions to build quick thinking</li>
-               <li>First-draft writing with no editing allowed</li>
-               <li>Speed challenges that reward approximation over precision</li>
-            </ul>
-
-            <h3>Reframing Uncertainty</h3>
-            <p>Help children understand that uncertainty isn't a problem to solve but a condition to navigate:</p>
-
-            <ul>
-               <li>Teach probabilistic thinking rather than binary outcomes</li>
-               <li>Practice estimating confidence levels in predictions</li>
-               <li>Explore how successful people thrive with incomplete information</li>
-               <li>Model comfortable ambiguity in your own decision-making</li>
-            </ul>
-
-            <div class="highlight-box">
-               <h3>Language Shift</h3>
-               <p>Replace "What if something goes wrong?" with "What's the worst reasonable outcome, and how would we handle it?"</p>
-            </div>
-
-            <h2>Building Risk-Tolerance Muscle</h2>
-            <p>Like physical fitness, risk tolerance improves with gradual conditioning:</p>
-
-            <h3>Daily Micro-Risks</h3>
-            <p>Start small to build confidence:</p>
-
-            <ul>
-               <li>Ordering something new at a restaurant</li>
-               <li>Trying a different route to school</li>
-               <li>Asking a question in class without pre-writing</li>
-               <li>Choosing a book based on cover alone</li>
-            </ul>
-
-            <h3>Post-Experience Analysis</h3>
-            <p>Turn experiences into learning data:</p>
-
-            <ul>
-               <li>What did they predict would happen?</li>
-               <li>What actually occurred?</li>
-               <li>What would they do differently next time?</li>
-               <li>What positive outcomes emerged unexpectedly?</li>
-            </ul>
-
-            <h2>When to Seek Professional Support</h2>
-            <p>While over-analysis is common in gifted children, certain patterns warrant intervention:</p>
-
-            <ul>
-               <li>Persistent avoidance interfering with normal activities</li>
-               <li>Physical symptoms (panic attacks, chronic stomach aches)</li>
-               <li>Sleep disruption from mental rumination</li>
-               <li>Academic performance decline due to decision paralysis</li>
-               <li>Family functioning significantly impacted</li>
-            </ul>
-
-            <p>In these cases, seek professionals experienced with gifted children who understand the difference between intense thinking and pathological anxiety.</p>
-
-            <h2>The Long-Term Perspective</h2>
-            <p>Gifted children who learn to manage their analytical intensity often become exceptional problem-solvers, strategists, and innovators. Their ability to see multiple outcomes isn't a weakness to eliminate but a strength to channel effectively.</p>
-
-            <p>The goal isn't to reduce their cognitive abilities but to teach them when to deploy their full analytical power versus when to trust simpler heuristics. This discrimination between complexity and simplicity becomes a lifelong leadership skill.</p>
-
-            <div class="highlight-box">
-               <h3>Future Advantage</h3>
-               <p>Children who learn to manage analytical intensity often become adults who excel in crisis management, strategic planning, and innovation—fields that desperately need people who can see around corners.</p>
-            </div>
-
-            <h2>The Bottom Line</h2>
-            <p>Your child's tendency to over-calculate risk isn't a disorder—it's evidence of a brain wired to see the world in high definition. While this creates challenges in a world that often rewards quick, approximate decisions, it also confers significant advantages in complex problem-solving.</p>
-
-            <p>Your role isn't to suppress their analytical nature but to teach them to modulate it—to know when to engage their full cognitive power and when to trust that "good enough" truly is good enough. This discrimination becomes their superpower in a world that increasingly values both quick thinking and deep analysis.</p>
-
-            <p>Rather than pathologizing their intensity, celebrate their ability to see what others miss—and then teach them when to look away.</p>
-         </div>
-      </div>
-
-      <div class="article-sidebar">
-         <div class="sidebar-widget">
-            <h3>Is your child 2e?</h3>
-            <p style="margin-bottom: 20px; text-align: center;">Take our free 2-minute quiz to understand their unique profile.</p>
-            <a href="quiz.html" class="btn btn-primary">Take the Free Quiz</a>
-         </div>
-      </div>
-   </div>
-
-   <section class="read-next">
-      <div class="container">
-         <h2>Read Next</h2>
-         <div class="read-next-grid">
-            <a href="perfectionism-trap.html" class="read-next-card premium-card">
-               <h3>The Perfectionism Trap</h3>
-               <p>Helping kids who cry over a 98%.</p>
-            </a>
-            <a href="restraint-collapse.html" class="read-next-card premium-card">
-               <h3>Restraint Collapse</h3>
-               <p>Why they are angels at school and monsters at home.</p>
-            </a>
-         </div>
-      </div>
-   </section>
-
-<div id="footer-placeholder"></div>
-<script>
-    fetch('footer.html').then(response => response.text()).then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-    });
-</script>
-<script src="script.js"></script>
-</body>
-
 </html>
