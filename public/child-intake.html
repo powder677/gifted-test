@@ -25,7 +25,7 @@
             --color-background: #F4F6F8;
             --color-background-warm: #FFFBF5;
             --border-radius: 8px;
-            --border-radius-lg: 16px;
+            --border-radius-lg: 12px; /* Standardized to 12px */
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
             --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
@@ -625,7 +625,6 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
@@ -640,7 +639,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit.html" class="nav-btn-primary">Free Reset Kit</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -652,20 +651,17 @@
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="emergency-reset-kit.html">Free Reset Kit</a>
+            <a href="methodology.html">Get Started</a>
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <h1>Let's Personalize Your Child's Experience</h1>
         <p>Tell us about your child's world so we can create mission packets that feel like they were made just for them — because they are.</p>
     </section>
 
-    <!-- Form -->
     <div class="form-container">
         <div class="form-card">
-            <!-- Progress Bar -->
             <div class="progress-bar">
                 <div class="progress-steps">
                     <div class="progress-step active" data-step="1">
@@ -692,7 +688,6 @@
             </div>
 
             <form id="intakeForm">
-                <!-- Section 1: Child Info -->
                 <div class="form-section active" data-section="1">
                     <div class="form-section-header">
                         <div class="form-section-icon">👦</div>
@@ -760,7 +755,6 @@
                     </div>
                 </div>
 
-                <!-- Section 2: Family -->
                 <div class="form-section" data-section="2">
                     <div class="form-section-header">
                         <div class="form-section-icon">👨‍👩‍👧‍👦</div>
@@ -834,7 +828,6 @@
                     </button>
                 </div>
 
-                <!-- Section 3: School -->
                 <div class="form-section" data-section="3">
                     <div class="form-section-header">
                         <div class="form-section-icon">🏫</div>
@@ -876,7 +869,6 @@
                     </button>
                 </div>
 
-                <!-- Section 4: Interests -->
                 <div class="form-section" data-section="4">
                     <div class="form-section-header">
                         <div class="form-section-icon">🎮</div>
@@ -916,7 +908,6 @@
                     </div>
                 </div>
 
-                <!-- Section 5: Challenges -->
                 <div class="form-section" data-section="5">
                     <div class="form-section-header">
                         <div class="form-section-icon">🎯</div>
@@ -994,7 +985,6 @@
                     </div>
                 </div>
 
-                <!-- Success Message -->
                 <div class="form-section" data-section="success">
                     <div class="success-message">
                         <div class="success-icon">
@@ -1009,7 +999,6 @@
                 </div>
             </form>
 
-            <!-- Form Navigation -->
             <div class="form-nav" id="formNav">
                 <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeSection(-1)" disabled>
                     <i class="fas fa-arrow-left"></i> Back
@@ -1021,7 +1010,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer__grid">
             <div class="footer__brand">
@@ -1042,8 +1030,8 @@
                 <h4>Support</h4>
                 <ul>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
@@ -1227,6 +1215,16 @@
                     icon.classList.add('fa-bars');
                 }
             }
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
         });
     </script>
 </body>
