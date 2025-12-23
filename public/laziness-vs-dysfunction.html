@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laziness vs. Dysfunction: How to Tell If They Won't or Can't | Navigator Kids AI™</title>
+    <title>Why They Freeze on Easy Work (The Perfectionism-Procrastination Loop) | Navigator Kids AI™</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -369,13 +369,82 @@
             font-size: 1rem;
         }
 
-        .highlight-box ul {
-            margin: 0;
-            padding-left: 20px;
+        /* --- LOOP DIAGRAM --- */
+        .loop-diagram {
+            background: var(--color-highlight-light);
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            margin: 32px 0;
+            text-align: center;
         }
 
-        .highlight-box li {
+        .loop-diagram h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: var(--color-primary);
+        }
+
+        .loop-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 900px) {
+            .loop-container {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        .loop-step {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .loop-step::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .loop-step:last-child::after {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .loop-step::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -20px;
+                transform: translateX(50%);
+            }
+            .loop-step:last-child::after {
+                display: none;
+            }
+        }
+
+        .loop-step h4 {
+            font-size: 0.95rem;
+            color: var(--color-highlight);
             margin-bottom: 8px;
+        }
+
+        .loop-step p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin: 0;
+            line-height: 1.4;
         }
 
         /* --- SIDEBAR --- */
@@ -521,7 +590,9 @@
             padding: 0;
         }
 
-        .footer__links li { margin-bottom: 12px; }
+        .footer__links li {
+            margin-bottom: 12px;
+        }
 
         .footer__links a {
             color: rgba(255, 255, 255, 0.75);
@@ -529,7 +600,9 @@
             transition: var(--transition);
         }
 
-        .footer__links a:hover { color: var(--color-accent); }
+        .footer__links a:hover {
+            color: var(--color-accent);
+        }
 
         .footer__bottom {
             padding-top: 32px;
@@ -542,7 +615,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
@@ -557,7 +629,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -569,28 +641,27 @@
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+            <a href="methodology.html">Get Started</a>
         </nav>
     </header>
 
-    <!-- Article Layout -->
     <div class="article-layout">
         <article class="article-content">
             <div class="breadcrumbs">
                 <a href="index.html">Home</a> <span>/</span>
                 <a href="resources.html">Resources</a> <span>/</span>
                 <a href="executive-function-hub.html">Executive Function</a> <span>/</span>
-                <span>Laziness vs. Dysfunction</span>
+                <span>Freeze on Easy Work</span>
             </div>
 
             <header class="article-header">
-                <h1>Laziness vs. Dysfunction: How to Tell If They Won't Do It, or Can't Do It</h1>
+                <h1>Why They Freeze on Easy Work (The Perfectionism-Procrastination Loop)</h1>
                 <div class="author-byline">
                     <div class="author-photo">EC</div>
                     <div class="author-info">
                         <div class="author-name">Evan Calder</div>
                         <div class="author-role">Learning Architect</div>
-                        <div class="publish-date">Published April 12, 2023</div>
+                        <div class="publish-date">Published July 8, 2024</div>
                     </div>
                 </div>
             </header>
@@ -598,100 +669,294 @@
             <div class="key-takeaways">
                 <h2>Key Takeaways</h2>
                 <ul>
-                    <li>Genuine effort followed by struggle indicates dysfunction, not defiance</li>
-                    <li>Children with EF challenges often try hard but lack the mental tools to succeed</li>
-                    <li>Look for inconsistency in performance across tasks and settings</li>
-                    <li>Neurological differences, not character flaws, cause these challenges</li>
+                    <li>Gifted children's perfectionism creates paradoxical underperformance on simple tasks</li>
+                    <li>Fear of making mistakes prevents starting or completing work that seems "too easy"</li>
+                    <li>Procrastination serves as protection against potential failure experiences</li>
+                    <li>Breaking the perfectionism-procrastination loop requires reframing mistakes as learning data</li>
                 </ul>
             </div>
 
             <div class="article-body">
-                <p>You've watched your bright child sit at the kitchen table for two hours, claiming to do homework, only to produce a single math problem. Meanwhile, they can spend hours absorbed in Minecraft or constructing elaborate LEGO cities. How do you distinguish between willful laziness and genuine neurological challenges?</p>
+                <p>Your child can solve calculus problems in their head yet stares blankly at a first-grade worksheet. Teachers insist the work is "simple" and "within their capabilities," yet your previously confident learner freezes, claiming they "don't know how" or "can't do it."</p>
 
-                <p>This question haunts parents of gifted and twice-exceptional children. The frustration is real and valid, but the answer lies not in character judgment but in neurological understanding.</p>
+                <p>This isn't inability or defiance. This is perfectionism paralysis—a neurological response where the fear of imperfection becomes more disabling than the task itself.</p>
+
+                <p>Understanding the perfectionism-procrastination loop transforms parental frustration into strategic intervention.</p>
 
                 <div class="highlight-box">
-                    <h3>The Key Difference</h3>
-                    <p><strong>Laziness:</strong> Consistent avoidance of all tasks, especially those requiring effort<br>
-                        <strong>Dysfunction:</strong> Genuine effort with inconsistent results, often excelling in areas of high interest
-                    </p>
+                    <h3>The Paradox Principle</h3>
+                    <p>The smarter the child, the more likely they are to freeze on tasks that don't challenge their perfectionist expectations for flawless execution.</p>
                 </div>
 
-                <h2>Signs Your Child Is Trying But Struggling</h2>
-                <p>Children with executive function challenges often demonstrate their difficulties through specific behavioral patterns:</p>
+                <h2>The Perfectionism-Procrastination Loop</h2>
+                <p>How fear creates performance paralysis:</p>
+
+                <div class="loop-diagram">
+                    <h3>The Self-Reinforcing Cycle</h3>
+                    <div class="loop-container">
+                        <div class="loop-step">
+                            <h4>Task Presentation</h4>
+                            <p>Work appears "too easy"</p>
+                        </div>
+                        <div class="loop-step">
+                            <h4>Perfectionist Judgment</h4>
+                            <p>"If I can't do it perfectly, why bother?"</p>
+                        </div>
+                        <div class="loop-step">
+                            <h4>Procrastination Response</h4>
+                            <p>Avoidance protects self-image</p>
+                        </div>
+                        <div class="loop-step">
+                            <h4>Increased Pressure</h4>
+                            <p>Delay creates stress and shame</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+
+                <h3>The Neurological Foundation</h3>
+                <p>Perfectionism paralysis stems from:</p>
 
                 <ul>
-                    <li><strong>Intense effort followed by shutdown:</strong> They may work diligently for a short time, then become overwhelmed and give up</li>
-                    <li><strong>Inconsistent performance:</strong> Brilliant essays one day, forgotten assignments the next</li>
-                    <li><strong>High interest, low follow-through:</strong> Enthusiasm for projects that never get completed</li>
-                    <li><strong>Emotional dysregulation:</strong> Tears, anger, or anxiety when faced with seemingly simple tasks</li>
+                    <li><strong>Enhanced Error Detection:</strong> Gifted brains notice mistakes others overlook</li>
+                    <li><strong>Intensified Outcome Fear:</strong> Mistakes feel catastrophic rather than informative</li>
+                    <li><strong>Black-and-White Thinking:</strong> Work is either perfect or worthless</li>
+                    <li><strong>Identity Fusion:</strong> Performance equals self-worth rather than effort</li>
                 </ul>
-
-                <h3>The Neurological Reality</h3>
-                <p>Executive function challenges stem from differences in the prefrontal cortex - the brain's command center. This region, responsible for planning, organizing, and executing tasks, develops more slowly in some children, regardless of their intellectual abilities.</p>
-
-                <p>Gifted children face an additional challenge: their advanced cognitive abilities can mask these deficits. Adults assume that intelligence should naturally translate to academic success, leading to misinterpretations of their struggles.</p>
 
                 <div class="highlight-box">
                     <h3>Research Insight</h3>
-                    <p>Studies show that children with ADHD and gifted children share similar executive function profiles, particularly in working memory and cognitive flexibility challenges.</p>
+                    <p>Neuroimaging studies show that perfectionist individuals exhibit heightened amygdala activation when anticipating potential mistakes, explaining the intense fear response to imperfect outcomes.</p>
                 </div>
 
-                <h2>When It Actually IS Laziness</h2>
-                <p>True laziness manifests differently and requires a different approach:</p>
+                <h2>Why Easy Work Triggers Paralysis</h2>
+                <p>Counterintuitive reactions to simple tasks:</p>
+
+                <h3>The "Should Be Easy" Trap</h3>
+                <p>Simple work creates unique psychological pressure:</p>
 
                 <ul>
-                    <li>Consistent avoidance of all effortful activities</li>
-                    <li>No attempt to engage even with high-interest topics</li>
-                    <li>Preference for passive entertainment over active creation</li>
-                    <li>Lack of concern about consequences or outcomes</li>
+                    <li><strong>Expectation Inflation:</strong> If it's easy, I should excel effortlessly</li>
+                    <li><strong>Embarrassment Potential:</strong> Struggling with "basic" work feels shameful</li>
+                    <li><strong>Perfectionist Standards:</strong> Anything less than perfect feels like failure</li>
+                    <li><strong>Identity Threat:</strong> Poor performance on easy tasks questions intelligence</li>
                 </ul>
 
-                <h3>Distinguishing Motivation from Ability</h3>
-                <p>Ask yourself these diagnostic questions:</p>
+                <h3>The Comparison Cascade</h3>
+                <p>Gifted children's minds race through worst-case scenarios:</p>
 
-                <ol>
-                    <li>Does your child show genuine distress when struggling with tasks?</li>
-                    <li>Can they sustain focus on activities they find intrinsically rewarding?</li>
-                    <li>Do they demonstrate competence in some areas while struggling in others?</li>
-                    <li>Have they shown periods of successful task completion?</li>
-                </ol>
+                <ul>
+                    <li>"If I struggle with this, what about harder material?"</li>
+                    <li>"Will classmates think I'm not as smart as they believed?"</li>
+                    <li>"What if this reveals I'm actually average or below?"</li>
+                    <li>"How will I explain this to parents and teachers?"</li>
+                </ul>
 
-                <p>If you answered yes to these questions, you're likely dealing with executive function challenges rather than motivational issues.</p>
+                <h2>Recognizing Perfectionism Patterns</h2>
+                <p>Look for these behavioral indicators:</p>
 
-                <h2>Changing Your Approach</h2>
-                <p>Understanding the difference transforms your parenting strategy:</p>
+                <h3>Pre-Task Avoidance</h3>
+                <ul>
+                    <li>Extensive preparation rituals before starting</li>
+                    <li>Repeated requests for clarification or examples</li>
+                    <li>Delay tactics and excuse generation</li>
+                    <li>Procrastination disguised as "getting ready"</li>
+                </ul>
+
+                <h3>During-Task Paralysis</h3>
+                <ul>
+                    <li>Freezing or staring without making progress</li>
+                    <li>Erasing and restarting repeatedly</li>
+                    <li>Seeking constant validation and reassurance</li>
+                    <li>Claiming inability despite demonstrated capability</li>
+                </ul>
+
+                <h3>Post-Task Destruction</h3>
+                <ul>
+                    <li>Destroying or hiding imperfect work</li>
+                    <li>Refusing to submit work that isn't "perfect"</li>
+                    <li>Expressing intense frustration with minor errors</li>
+                    <li>Withdrawing from activities after perceived failures</li>
+                </ul>
 
                 <div class="highlight-box">
-                    <h3>For Dysfunction:</h3>
-                    <ul>
-                        <li>Provide external structure and support systems</li>
-                        <li>Break tasks into smaller, manageable steps</li>
-                        <li>Teach specific strategies rather than expecting intuitive understanding</li>
-                        <li>Focus on building skills, not assigning blame</li>
-                    </ul>
+                    <h3>Diagnostic Question</h3>
+                    <p>Ask: "Does my child perform well on challenging work but freeze or refuse simple tasks?" If yes, perfectionism likely contributes to performance inhibition.</p>
                 </div>
+
+                <h2>Why Traditional Approaches Backfire</h2>
+                <p>Standard interventions often worsen perfectionism:</p>
+
+                <h3>Pressure and Expectations</h3>
+                <ul>
+                    <li>Increase anxiety about potential mistakes</li>
+                    <li>Create urgency that intensifies perfectionist responses</li>
+                    <li>Trigger fight-or-flight reactions to challenging tasks</li>
+                    <li>Damage trust between parent and child</li>
+                </ul>
+
+                <h3>Reward-Based Motivation</h3>
+                <ul>
+                    <li>Imply that the task is inherently unpleasant</li>
+                    <li>Create external dependence rather than internal motivation</li>
+                    <li>Fail to address underlying fear of imperfection</li>
+                    <li>May increase stakes and pressure to perform perfectly</li>
+                </ul>
+
+                <h2>Breaking the Paralysis Pattern</h2>
+                <p>Strategies that address perfectionism at its root:</p>
+
+                <h3>Reframe Mistakes as Data</h3>
+                <ul>
+                    <li><strong>Language Shift:</strong> Replace "wrong" with "information gathering"</li>
+                    <li><strong>Process Focus:</strong> Celebrate effort and strategy over outcomes</li>
+                    <li><strong>Growth Mindset:</strong> Present errors as learning opportunities</li>
+                    <li><strong>Scientific Approach:</strong> Treat mistakes as hypothesis testing</li>
+                </ul>
+
+                <h3>Normalize Imperfection</h3>
+                <ul>
+                    <li><strong>Model Vulnerability:</strong> Share your own learning mistakes</li>
+                    <li><strong>Imperfect Examples:</strong> Present deliberately flawed work samples</li>
+                    <li><strong>Progress Celebration:</strong> Acknowledge improvement over perfection</li>
+                    <li><strong>Humor Integration:</strong> Laugh at mistakes rather than fearing them</li>
+                </ul>
+
+                <h3>Create Safe Failure Spaces</h3>
+                <ul>
+                    <li><strong>Low-Stakes Practice:</strong> Begin with consequence-free experimentation</li>
+                    <li><strong>Anonymous Attempts:</strong> Allow private practice before public sharing</li>
+                    <li><strong>Iterative Processes:</strong> Build revision and improvement into workflows</li>
+                    <li><strong>Peer Support:</strong> Encourage collaborative rather than competitive environments</li>
+                </ul>
 
                 <div class="highlight-box">
-                    <h3>For Motivational Issues:</h3>
-                    <ul>
-                        <li>Connect tasks to personal values and long-term goals</li>
-                        <li>Implement natural consequences for choices</li>
-                        <li>Encourage autonomy and personal responsibility</li>
-                        <li>Address underlying beliefs about effort and achievement</li>
-                    </ul>
+                    <h3>Implementation Strategy</h3>
+                    <p>Start with the least threatening tasks and gradually increase challenge levels while maintaining psychological safety. Rushing creates resistance and reinforces perfectionist paralysis.</p>
                 </div>
 
-                <h2>The Path Forward</h2>
-                <p>Recognizing executive function challenges as neurological differences rather than character flaws opens the door to effective support. Your child isn't broken - they simply need different tools to succeed.</p>
+                <h2>The Gentle Challenge Approach</h2>
+                <p>Systematic desensitization to imperfection:</p>
 
-                <p>The next step involves identifying your child's specific EF profile and implementing targeted strategies. Remember: progress takes time, but understanding makes all the difference.</p>
+                <h3>Phase 1: Safety Building</h3>
+                <ul>
+                    <li>Begin with activities where mistakes have no consequences</li>
+                    <li>Create private spaces for experimentation and error</li>
+                    <li>Establish that all attempts are valuable regardless of outcome</li>
+                    <li>Model comfort with imperfection through your own behavior</li>
+                </ul>
+
+                <h3>Phase 2: Gradual Exposure</h3>
+                <ul>
+                    <li>Introduce slightly challenging tasks with clear support systems</li>
+                    <li>Provide immediate, non-judgemental feedback on efforts</li>
+                    <li>Create opportunities for revision and improvement</li>
+                    <li>Celebrate process and persistence over perfect results</li>
+                </ul>
+
+                <h3>Phase 3: Independent Application</h3>
+                <ul>
+                    <li>Encourage self-assessment and error identification</li>
+                    <li>Build confidence in revision and improvement processes</li>
+                    <li>Develop personal standards that allow for growth</li>
+                    <li>Create sustainable habits for handling imperfection</li>
+                </ul>
+
+                <h2>Language That Liberates</h2>
+                <p>Transform perfectionist thinking through intentional communication:</p>
+
+                <h3>Process-Oriented Feedback</h3>
+                <ul>
+                    <li><strong>Instead of "Good job!" →</strong> "I noticed your persistence in working through that"</li>
+                    <li><strong>Instead of "Perfect!" →</strong> "Tell me about your thinking process"</li>
+                    <li><strong>Instead of "You're so smart" →</strong> "Your approach to that problem was creative"</li>
+                    <li><strong>Instead of "Try harder" →</strong> "What strategy could you try differently?"</li>
+                </ul>
+
+                <h3>Mistake Reframing</h3>
+                <ul>
+                    <li><strong>Instead of "Wrong answer" →</strong> "What can we learn from this approach?"</li>
+                    <li><strong>Instead of "Careless mistake" →</strong> "Let's see what your brain was thinking"</li>
+                    <li><strong>Instead of "You should know this" →</strong> "This is new learning territory"</li>
+                    <li><strong>Instead of "Be more careful" →</strong> "What system could help you track details?"</li>
+                </ul>
+                
+                
+
+                <div class="highlight-box">
+                    <h3>Research Evidence</h3>
+                    <p>Controlled studies demonstrate that children receiving process-focused feedback show 40% less perfectionist anxiety and 60% greater willingness to attempt challenging tasks compared to outcome-focused praise groups.</p>
+                </div>
+
+                <h2>Environmental Modifications</h2>
+                <p>Create spaces that support imperfection:</p>
+
+                <h3>Physical Environment</h3>
+                <ul>
+                    <li><strong>Draft Zones:</strong> Designated areas for imperfect work and experimentation</li>
+                    <li><strong>Revision Stations:</strong> Spaces optimized for editing and improvement</li>
+                    <li><strong>Mistake Museums:</strong> Displays celebrating learning from errors</li>
+                    <li><strong>Tool Kits:</strong> Resources for self-correction and improvement</li>
+                </ul>
+
+                <h3>Social Environment</h3>
+                <ul>
+                    <li><strong>Peer Groups:</strong> Communities that value growth over performance</li>
+                    <li><strong>Mentor Relationships:</strong> Adults who model comfortable imperfection</li>
+                    <li><strong>Family Culture:</strong> Home environment that celebrates effort and learning</li>
+                    <li><strong>Feedback Systems:</strong> Structured approaches to constructive criticism</li>
+                </ul>
+
+                <h2>When to Seek Professional Support</h2>
+                <p>Consider specialized intervention when:</p>
+
+                <ul>
+                    <li>Perfectionism significantly impacts academic performance</li>
+                    <li>Family relationships suffer due to performance stress</li>
+                    <li>Child expresses genuine distress about making mistakes</li>
+                    <li>Procrastination interferes with basic daily functioning</li>
+                    <li>Self-esteem becomes dangerously dependent on flawless performance</li>
+                </ul>
+
+                <h2>The Long-Term Outlook</h2>
+                <p>Perfectionism patterns typically evolve:</p>
+
+                <ul>
+                    <li>Neurological maturation reduces intensity of perfectionist responses</li>
+                    <li>Repeated safe experiences with imperfection build tolerance</li>
+                    <li>Coping strategies become more sophisticated over time</li>
+                    <li>Self-compassion skills improve ability to handle mistakes</li>
+                </ul>
+
+                <p>However, some individuals retain perfectionist tendencies throughout life, often developing exceptional attention to detail and quality standards in chosen fields.</p>
+
+                <div class="highlight-box">
+                    <h3>Future Advantage</h3>
+                    <p>Adults who learn to manage perfectionism often become exceptional editors, quality assurance specialists, and innovation leaders who combine high standards with psychological flexibility.</p>
+                </div>
+
+                <h2>The Bottom Line</h2>
+                <p>Your child's freeze response to easy work isn't oppositional behavior or attention-seeking—it's a genuine attempt to protect their self-concept from potential failure.</p>
+
+                <p>The perfectionism-procrastination loop serves a protective function, even when it creates academic and social challenges. Breaking this pattern requires understanding rather than pressure, accommodation rather than confrontation.</p>
+
+                <p>Rather than fighting their perfectionist tendencies, support their development through gradual exposure and reframing. This approach reduces daily stress for everyone while building genuine confidence in handling imperfection.</p>
+
+                <p>Remember: The goal isn't to eliminate perfectionism but to create psychological safety around imperfection. Sometimes the simplest solution—like normalizing mistakes or celebrating effort—makes the biggest difference in daily quality of life.</p>
+
+                <p>In a world that often rewards flawless performance, your role is to advocate for your child's emotional well-being. Their perfectionist patterns aren't character flaws but neurological responses to be supported with compassion and practical strategies.</p>
+
+                <div class="highlight-box">
+                    <h3>Family Harmony Strategy</h3>
+                    <p>Create a home culture that celebrates learning over performance, effort over outcomes, and growth over perfection. When mistakes become opportunities rather than failures, the perfectionism-procrastination loop loses its power.</p>
+                </div>
             </div>
         </article>
 
         <aside class="article-sidebar">
             <div class="sidebar-widget">
-                <h3>Identify Executive Function Patterns</h3>
+                <h3>Identify Perfectionism Patterns</h3>
                 <p>Our AI assessment detects learning blocks and provides targeted strategies.</p>
                 <a href="gifted-assessment-tool.html" class="btn">
                     <i class="fas fa-microchip"></i> Start Free Assessment
@@ -700,24 +965,22 @@
         </aside>
     </div>
 
-    <!-- Read Next Section -->
     <section class="read-next">
         <div class="container">
             <h2>Read Next</h2>
             <div class="read-next-grid">
+                <a href="dopamine-menu.html" class="read-next-card">
+                    <h3>The Dopamine Menu</h3>
+                    <p>How to jumpstart a bored brain without screens.</p>
+                </a>
                 <a href="black-hole-backpack.html" class="read-next-card">
                     <h3>The Black Hole Backpack</h3>
-                    <p>A 3-step system to stop losing homework and essential items forever.</p>
-                </a>
-                <a href="freeze-on-easy-work.html" class="read-next-card">
-                    <h3>Why They Freeze on Easy Work</h3>
-                    <p>Overcoming the fear of making mistakes that paralyzes gifted children.</p>
+                    <p>A 3-step system to stop losing homework forever.</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
@@ -731,15 +994,16 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h4>Legal</h4>
+                    <h4>Support</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
@@ -768,7 +1032,7 @@
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
             
-            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
                 icon.classList.remove('fa-times');
