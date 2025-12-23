@@ -315,7 +315,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
@@ -330,7 +329,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -342,7 +341,7 @@
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+            <a href="methodology.html">Get Started</a>
         </nav>
     </header>
 
@@ -350,7 +349,6 @@
         <div id="root"></div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer__grid">
             <div class="footer__brand">
@@ -363,15 +361,16 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                 </ul>
             </div>
             <div class="footer__links">
-                <h4>Legal</h4>
+                <h4>Support</h4>
                 <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
@@ -659,7 +658,7 @@
                                     {SECTIONS.map((section, idx) => {
                                         const stats = calculateSectionScore(idx);
                                         const intensity = stats.percentage > 66 ? 'High' : 
-                                                            stats.percentage > 33 ? 'Moderate' : 'Low';
+                                                          stats.percentage > 33 ? 'Moderate' : 'Low';
                                         
                                         const barColor = stats.percentage > 66 ? '#E07A5F' : 
                                                          stats.percentage > 33 ? '#E9C46A' : '#2A9D8F';
