@@ -31,7 +31,7 @@
             --transition: all 0.2s ease;
         }
 
-        /* === RESET === */
+        /* === GLOBAL RESET === */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -65,29 +65,29 @@
             padding: 0 24px;
         }
 
-        /* === NAVIGATION === */
+        /* --- NAVIGATION --- */
         .navbar {
-            background-color: var(--color-secondary);
+            background-color: #FFFFFF;
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 16px 0;
             box-shadow: var(--shadow-sm);
         }
 
-        .navbar__inner {
+        .navbar-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
-        .navbar__logo {
+        .logo a {
             font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--color-primary);
             display: flex;
@@ -95,60 +95,80 @@
             gap: 10px;
         }
 
-        .navbar__logo i {
+        .logo i {
             color: var(--color-highlight);
             font-size: 1.4rem;
         }
 
-        .navbar__logo span {
+        .logo span {
             color: var(--color-highlight);
         }
 
-        .navbar__nav {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .navbar__links {
-            display: flex;
-            gap: 28px;
+        .desktop-nav .nav-links {
             list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            margin: 0;
         }
 
-        .navbar__links a {
+        .desktop-nav .nav-links li {
+            margin: 0;
+        }
+
+        .desktop-nav .nav-links a {
+            color: var(--color-text);
             font-weight: 600;
             font-size: 0.95rem;
-            color: var(--color-text);
             transition: var(--transition);
+            position: relative;
         }
 
-        .navbar__links a:hover {
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover {
             color: var(--color-highlight);
         }
 
-        .navbar__cta {
-            background: var(--color-highlight);
-            color: white;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-weight: 700;
-            font-size: 0.9rem;
+        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-highlight);
+            transition: width 0.2s ease;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after {
+            width: 100%;
+        }
+
+        .nav-btn-primary {
+            background-color: var(--color-highlight);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
-        .navbar__cta:hover {
-            background: var(--color-highlight-dark);
-            transform: translateY(-2px);
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-1px);
         }
 
-        .navbar__toggle {
+        .nav-btn-primary::after {
+            display: none !important;
+        }
+
+        .menu-toggle {
             display: none;
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--color-primary);
             cursor: pointer;
+            color: var(--color-primary);
+            padding: 8px;
         }
 
         .mobile-nav {
@@ -156,7 +176,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            right: 0;
+            width: 100%;
             background: white;
             flex-direction: column;
             box-shadow: var(--shadow-lg);
@@ -189,8 +209,8 @@
         }
 
         @media (max-width: 900px) {
-            .navbar__nav { display: none; }
-            .navbar__toggle { display: block; }
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
         }
 
         /* === ARTICLE LAYOUT === */
@@ -207,7 +227,9 @@
             .article-layout {
                 grid-template-columns: 1fr;
             }
-            .article-sidebar { order: -1; }
+            .article-sidebar {
+                order: -1;
+            }
         }
 
         /* === BREADCRUMBS === */
@@ -222,7 +244,9 @@
             transition: var(--transition);
         }
 
-        .breadcrumbs a:hover { color: var(--color-highlight-dark); }
+        .breadcrumbs a:hover {
+            color: var(--color-highlight-dark);
+        }
 
         .breadcrumbs span {
             margin: 0 8px;
@@ -230,10 +254,12 @@
         }
 
         /* === ARTICLE HEADER === */
-        .article-header { margin-bottom: 40px; }
+        .article-header {
+            margin-bottom: 40px;
+        }
 
         .article-header h1 {
-            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 24px;
             line-height: 1.2;
         }
@@ -248,7 +274,7 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-highlight));
+            background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-primary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -257,44 +283,72 @@
             font-size: 1.1rem;
         }
 
+        .author-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
         .author-name {
             font-weight: 700;
             color: var(--color-primary);
         }
 
         .author-role {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--color-highlight);
         }
 
         .publish-date {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--color-text-muted);
         }
 
         /* === KEY TAKEAWAYS === */
         .key-takeaways {
-            background: var(--color-highlight-light);
-            border-left: 4px solid var(--color-highlight);
-            border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
-            padding: 28px 32px;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 32px;
             margin-bottom: 40px;
+            border-left: 4px solid var(--color-highlight);
         }
 
         .key-takeaways h2 {
             font-size: 1.1rem;
-            color: var(--color-highlight-dark);
+            color: var(--color-highlight);
             margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .key-takeaways ul {
-            margin-bottom: 0;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .key-takeaways li {
+            margin-bottom: 10px;
+            color: var(--color-text);
         }
 
         /* === ARTICLE BODY === */
+        .article-body {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 48px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 600px) {
+            .article-body {
+                padding: 32px 24px;
+            }
+        }
+
         .article-body p {
             margin-bottom: 24px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
         }
 
@@ -311,14 +365,18 @@
             color: var(--color-primary);
         }
 
-        .article-body ul, .article-body ol { margin-bottom: 24px; }
+        .article-body ul, .article-body ol {
+            margin-bottom: 24px;
+        }
 
         .article-body li {
             margin-bottom: 12px;
             line-height: 1.7;
         }
 
-        .article-body li strong { color: var(--color-primary); }
+        .article-body li strong {
+            color: var(--color-primary);
+        }
 
         /* === HIGHLIGHT BOX === */
         .highlight-box {
@@ -363,10 +421,13 @@
             font-size: 1.15rem;
             line-height: 1.7;
             color: var(--color-primary);
+            margin: 0;
         }
 
         /* === SIDEBAR === */
-        .article-sidebar { position: relative; }
+        .article-sidebar {
+            position: relative;
+        }
 
         .sidebar-widget {
             background: white;
@@ -441,7 +502,9 @@
         }
 
         @media (max-width: 600px) {
-            .read-next-grid { grid-template-columns: 1fr; }
+            .read-next-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .read-next-card {
@@ -462,7 +525,9 @@
             transition: var(--transition);
         }
 
-        .read-next-card:hover h3 { color: var(--color-highlight); }
+        .read-next-card:hover h3 {
+            color: var(--color-highlight);
+        }
 
         .read-next-card p {
             font-size: 0.95rem;
@@ -470,51 +535,45 @@
             margin: 0;
         }
 
-        /* === FOOTER === */
+        /* --- FOOTER --- */
         .footer {
-            background: var(--color-primary-dark);
+            background-color: #0f1f33;
             color: white;
-            padding: 60px 24px 30px;
+            padding: 80px 24px 40px;
         }
 
-        .footer__inner {
-            max-width: 1200px;
-            margin: 0 auto;
+        .footer__grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 48px;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
 
         @media (max-width: 768px) {
-            .footer__inner {
+            .footer__grid {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 40px;
             }
         }
 
         .footer__brand h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
             font-size: 1.1rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer__brand h4 i {
-            color: var(--color-highlight);
+            font-family: 'Inter', sans-serif;
         }
 
         .footer__brand p {
-            opacity: 0.7;
-            font-size: 0.95rem;
+            opacity: 0.75;
             line-height: 1.7;
+            font-size: 0.95rem;
         }
 
-        .footer__links h5 {
+        .footer__links h4 {
             color: var(--color-accent);
             margin-bottom: 16px;
             font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .footer__links ul {
@@ -524,63 +583,60 @@
         }
 
         .footer__links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer__links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
             font-size: 0.95rem;
             transition: var(--transition);
         }
 
         .footer__links a:hover {
-            color: white;
+            color: var(--color-accent);
         }
 
         .footer__bottom {
-            opacity: 0.6;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.85rem;
+            opacity: 0.6;
         }
     </style>
 </head>
 
 <body>
-    <!-- NAVIGATION -->
-    <nav class="navbar">
-        <div class="navbar__inner">
-            <a href="index.html" class="navbar__logo">
-                <i class="fas fa-compass"></i>
-                Navigator <span>Kids AI</span>™
-            </a>
-            
-            <div class="navbar__nav">
-                <ul class="navbar__links">
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
-                <a href="methodology.html" class="navbar__cta">Get Started</a>
-            </div>
-
-            <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        
-        <nav class="mobile-nav" id="mobileNav">
+        <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
             <a href="methodology.html">Get Started</a>
         </nav>
-    </nav>
+    </header>
 
-    <!-- ARTICLE LAYOUT -->
     <div class="article-layout">
         <article class="article-content">
             <div class="breadcrumbs">
@@ -706,7 +762,6 @@
         </aside>
     </div>
 
-    <!-- READ NEXT -->
     <section class="read-next">
         <div class="container">
             <h2>Read Next</h2>
@@ -723,43 +778,45 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer__inner">
-            <div class="footer__brand">
-                <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
-                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer__links">
-                <h5>Product</h5>
-                <ul>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="methodology.html">Membership</a></li>
-                    <li><a href="emergency-reset-kit.html">Free Reset Kit</a></li>
-                </ul>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
-            <div class="footer__links">
-                <h5>Resources</h5>
-                <ul>
-                    <li><a href="resources.html">Knowledge Base</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            © 2024 Navigator Kids AI™. All rights reserved.
         </div>
     </footer>
 
     <script>
-        function toggleMobileNav() {
-            const mobileNav = document.getElementById('mobileNav');
-            const toggle = document.querySelector('.navbar__toggle i');
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
             
-            mobileNav.classList.toggle('active');
-            
-            if (mobileNav.classList.contains('active')) {
+            if (menu.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
             } else {
@@ -767,6 +824,28 @@
                 toggle.classList.add('fa-bars');
             }
         }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
+        });
     </script>
 </body>
 </html>
