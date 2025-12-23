@@ -4,184 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why Your Smart Child Can't Find Their Shoes | Navigator Kids AI™</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* --- VARIABLES --- */
+        /* === STANDARD NAVIGATOR BRANDING === */
         :root {
-            --color-primary: #1B365D;
+            --color-primary: #1B365D;    /* Navy */
             --color-primary-dark: #132845;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
+            --color-primary-light: #2A4A7A;
+            --color-secondary: #FFFFFF;  /* White */
+            --color-accent: #E9C46A;     /* Gold */
+            --color-highlight: #2A9D8F;  /* Teal */
             --color-highlight-dark: #238579;
             --color-highlight-light: #E8F4F2;
             --color-text: #2F2F2F;
             --color-text-muted: #666666;
             --color-background: #F4F6F8;
             --color-background-warm: #FFFBF5;
+            
             --border-radius: 8px;
-            --border-radius-lg: 12px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
             --transition: all 0.2s ease;
         }
 
-        /* --- GLOBAL RESET --- */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html { scroll-behavior: smooth; }
-
+        /* === GLOBAL RESET === */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Lato', sans-serif;
             color: var(--color-text);
             line-height: 1.7;
             background-color: var(--color-background);
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4, h5 {
             font-family: 'Inter', sans-serif;
-            line-height: 1.3;
             color: var(--color-primary);
+            line-height: 1.2;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        ul, ol { margin-left: 24px; }
-        li { margin-bottom: 8px; }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- NAVIGATION --- */
+        /* === STANDARD NAVIGATION === */
         .navbar {
-            background-color: #FFFFFF;
+            background-color: var(--color-secondary);
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
+            padding: 16px 0;
             box-shadow: var(--shadow-sm);
         }
 
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
+        .navbar__inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
 
-        .logo a {
+        .navbar__logo {
             font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--color-primary);
             display: flex;
             align-items: center;
             gap: 10px;
         }
+        .navbar__logo i, .navbar__logo span { color: var(--color-highlight); }
 
-        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
-        .logo span { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links {
-            list-style: none;
+        .nav-links {
             display: flex;
             gap: 32px;
+            list-style: none;
             align-items: center;
-            margin: 0;
         }
-
-        .desktop-nav .nav-links li { margin: 0; }
-
-        .desktop-nav .nav-links a {
-            color: var(--color-text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-highlight);
-            transition: width 0.2s ease;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after { width: 100%; }
+        .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
+        .nav-links a:hover { color: var(--color-highlight); }
 
         .nav-btn-primary {
-            background-color: var(--color-highlight);
+            background: var(--color-highlight);
             color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: var(--transition);
-            font-size: 0.9rem;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
         }
-
         .nav-btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-1px);
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
         }
 
-        .nav-btn-primary::after { display: none !important; }
-
-        .menu-toggle {
+        .navbar__toggle {
             display: none;
             background: none;
             border: none;
             font-size: 1.5rem;
-            cursor: pointer;
             color: var(--color-primary);
-            padding: 8px;
+            cursor: pointer;
         }
 
+        /* Mobile Menu */
         .mobile-nav {
             display: none;
             position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
+            top: 100%; left: 0; right: 0;
             background: white;
             flex-direction: column;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
             border-top: 1px solid #eee;
         }
-
         .mobile-nav.active { display: flex; }
-
         .mobile-nav a {
             padding: 16px 24px;
             border-bottom: 1px solid #f0f0f0;
             font-weight: 600;
-            transition: var(--transition);
         }
-
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-
         .mobile-nav a:last-child {
             background-color: var(--color-highlight);
             color: white;
@@ -192,439 +133,191 @@
         }
 
         @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
+            .nav-links { display: none; }
+            .navbar__toggle { display: block; }
         }
 
-        /* --- ARTICLE LAYOUT --- */
+        /* === ARTICLE LAYOUT === */
         .article-layout {
             display: grid;
-            grid-template-columns: 1fr 300px;
+            grid-template-columns: 1fr 300px; /* Main + Sidebar */
             gap: 60px;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
+            margin: 60px auto;
+            padding: 0 24px;
         }
 
-        @media (max-width: 1024px) {
-            .article-layout {
-                grid-template-columns: 1fr;
-            }
-            .article-sidebar { order: -1; }
+        @media (max-width: 900px) {
+            .article-layout { grid-template-columns: 1fr; }
         }
 
-        /* --- BREADCRUMBS --- */
-        .breadcrumbs {
-            font-size: 0.9rem;
-            margin-bottom: 24px;
-            color: var(--color-text-muted);
-        }
+        /* Header & Breadcrumbs */
+        .breadcrumbs { margin-bottom: 24px; font-size: 0.9rem; color: var(--color-text-muted); }
+        .breadcrumbs a { color: var(--color-highlight); }
+        .breadcrumbs span { margin: 0 8px; opacity: 0.5; }
 
-        .breadcrumbs a {
-            color: var(--color-highlight);
-            transition: var(--transition);
-        }
-
-        .breadcrumbs a:hover { color: var(--color-highlight-dark); }
-
-        .breadcrumbs span {
-            margin: 0 8px;
-            color: var(--color-text-muted);
-        }
-
-        /* --- ARTICLE HEADER --- */
-        .article-header { margin-bottom: 40px; }
-
-        .article-header h1 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 24px;
-            line-height: 1.2;
-        }
+        .article-header h1 { font-size: 2.5rem; margin-bottom: 24px; }
 
         .author-byline {
             display: flex;
             align-items: center;
             gap: 16px;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
         .author-photo {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            color: white;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-weight: 700;
             font-size: 1.1rem;
         }
 
-        .author-info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
+        .author-info { font-size: 0.9rem; }
+        .author-name { font-weight: 700; color: var(--color-primary); }
+        .author-role { color: var(--color-highlight); }
+        .publish-date { color: #666; font-size: 0.85rem; }
 
-        .author-name {
-            font-weight: 700;
-            color: var(--color-primary);
-        }
+        /* Article Body Styles */
+        .article-body p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .article-body h2 { font-size: 1.8rem; margin: 40px 0 20px; }
+        .article-body h3 { font-size: 1.4rem; margin: 30px 0 15px; color: var(--color-primary-light); }
+        .article-body ul { margin-bottom: 1.5rem; padding-left: 24px; }
+        .article-body li { margin-bottom: 0.5rem; }
 
-        .author-role {
-            font-size: 0.85rem;
-            color: var(--color-highlight);
-        }
-
-        .publish-date {
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-        }
-
-        /* --- KEY TAKEAWAYS --- */
+        /* Key Takeaways Box */
         .key-takeaways {
             background: white;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-md);
             padding: 32px;
-            margin-bottom: 40px;
-            border-left: 4px solid var(--color-highlight);
-        }
-
-        .key-takeaways h2 {
-            font-size: 1.1rem;
-            color: var(--color-highlight);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .key-takeaways ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .key-takeaways li {
-            margin-bottom: 10px;
-            color: var(--color-text);
-        }
-
-        /* --- ARTICLE BODY --- */
-        .article-body {
-            background: white;
-            border-radius: var(--border-radius-lg);
-            padding: 48px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--color-highlight);
             box-shadow: var(--shadow-sm);
+            margin-bottom: 40px;
         }
+        .key-takeaways h3 { color: var(--color-highlight-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 
-        @media (max-width: 600px) {
-            .article-body { padding: 32px 24px; }
-        }
-
-        .article-body p {
-            margin-bottom: 24px;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .article-body h2 {
-            font-size: 1.6rem;
-            margin: 48px 0 24px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--color-highlight-light);
-        }
-
-        .article-body h3 {
-            font-size: 1.25rem;
-            margin: 32px 0 16px;
-            color: var(--color-primary);
-        }
-
-        .article-body ul, .article-body ol { margin-bottom: 24px; }
-
-        .article-body li {
-            margin-bottom: 12px;
-            line-height: 1.7;
-        }
-
-        .article-body li strong { color: var(--color-primary); }
-
-        /* --- HIGHLIGHT BOX --- */
+        /* Highlight Box */
         .highlight-box {
             background: var(--color-background-warm);
             border-left: 4px solid var(--color-accent);
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            padding: 28px 32px;
+            padding: 24px;
+            border-radius: 0 8px 8px 0;
             margin: 32px 0;
         }
+        .highlight-box h3 { color: #B58900; font-size: 1.1rem; margin-bottom: 8px; }
 
-        .highlight-box h3 {
-            font-size: 1.1rem;
-            color: var(--color-accent);
-            margin-bottom: 12px;
-        }
-
-        .highlight-box p {
-            margin: 0;
-            font-size: 1rem;
-        }
-
-        /* --- BRAIN DIAGRAM --- */
+        /* Brain Diagram (Unique to this article) */
         .brain-diagram {
             background: var(--color-highlight-light);
-            border-radius: var(--border-radius-lg);
+            border-radius: var(--border-radius);
             padding: 32px;
             margin: 32px 0;
             text-align: center;
         }
-
-        .brain-diagram h3 {
-            color: var(--color-primary);
-            margin-bottom: 24px;
-            font-size: 1.3rem;
-        }
-
-        .brain-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .brain-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        .brain-diagram h3 { color: var(--color-primary); margin-bottom: 24px; }
+        .brain-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        
         .brain-section {
             background: white;
             border-radius: var(--border-radius);
             padding: 24px;
             box-shadow: var(--shadow-sm);
             border-top: 3px solid var(--color-highlight);
-            transition: var(--transition);
         }
+        .brain-section h4 { color: var(--color-primary); margin-bottom: 12px; }
+        .brain-section p { font-size: 0.95rem; color: var(--color-text-muted); }
 
-        .brain-section:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .brain-section h4 {
-            color: var(--color-primary);
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-        }
-
-        .brain-section p {
-            color: var(--color-text-muted);
-            font-size: 0.95rem;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* --- SIDEBAR --- */
-        .article-sidebar { position: relative; }
-
+        /* Sidebar Widget */
         .sidebar-widget {
             background: white;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-md);
             padding: 32px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
             position: sticky;
             top: 100px;
-            text-align: center;
             border-top: 4px solid var(--color-highlight);
         }
+        .sidebar-widget h3 { margin-bottom: 12px; }
+        .sidebar-widget p { margin-bottom: 24px; color: var(--color-text-muted); font-size: 0.95rem; }
+        .btn-full { width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; }
 
-        .sidebar-widget h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-        }
-
-        .sidebar-widget p {
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 24px;
-            background: var(--color-highlight);
-            color: white;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            width: 100%;
-        }
-
-        .btn:hover {
-            background: var(--color-highlight-dark);
-            transform: translateY(-2px);
-        }
-
-        /* --- READ NEXT --- */
-        .read-next {
-            background: var(--color-primary);
-            padding: 80px 24px;
-        }
-
-        .read-next h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.8rem;
-        }
-
-        .read-next-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 600px) {
-            .read-next-grid { grid-template-columns: 1fr; }
-        }
-
+        /* Read Next Section */
+        .read-next { background: var(--color-primary); padding: 80px 0; color: white; margin-top: 60px; }
+        .read-next h2 { color: white; margin-bottom: 40px; text-align: center; }
+        .read-next-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        
         .read-next-card {
             background: white;
-            border-radius: var(--border-radius-lg);
-            padding: 32px;
+            padding: 24px;
+            border-radius: var(--border-radius);
             transition: var(--transition);
+            color: var(--color-text);
         }
+        .read-next-card:hover { transform: translateY(-5px); }
+        .read-next-card h3 { color: var(--color-primary); margin-bottom: 8px; }
+        .read-next-card p { color: var(--color-text-muted); font-size: 0.95rem; }
 
-        .read-next-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .read-next-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            transition: var(--transition);
-        }
-
-        .read-next-card:hover h3 { color: var(--color-highlight); }
-
-        .read-next-card p {
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            margin: 0;
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            background-color: #0f1f33;
-            color: white;
-            padding: 80px 24px 40px;
-        }
-
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        @media (max-width: 768px) {
-            .footer__grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .footer__brand h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer__brand p {
-            opacity: 0.75;
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .footer__links h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer__links ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .footer__links li { margin-bottom: 12px; }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .footer__links a:hover { color: var(--color-accent); }
-
-        .footer__bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
+        /* === FOOTER === */
+        .footer { background: #0f1f33; color: white; padding: 80px 0 40px; }
+        .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer h4 { color: white; margin-bottom: 16px; }
+        .footer h5 { color: var(--color-accent); margin-bottom: 20px; }
+        .footer a { color: rgba(255,255,255,0.7); display: block; margin-bottom: 12px; }
+        .footer a:hover { color: white; }
+        .footer__bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; font-size: 0.9rem; opacity: 0.6; }
+        
+        @media (max-width: 768px) { .footer__grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <a href="index.html">
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <a href="index.html" class="navbar__logo">
                     <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>
+                    Navigator <span>Kids AI</span>™
                 </a>
-            </div>
-            <nav class="desktop-nav">
+                
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
-            </nav>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
+
+                <button class="navbar__toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
+        
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+            <a href="methodology.html">Get Started</a>
         </nav>
-    </header>
+    </nav>
 
-    <!-- Article Layout -->
     <div class="article-layout">
-        <article class="article-content">
+        
+        <main class="article-content">
             <div class="breadcrumbs">
                 <a href="index.html">Home</a> <span>/</span>
                 <a href="resources.html">Resources</a> <span>/</span>
-                <a href="learning-focus-hub.html">Learning & Focus</a> <span>/</span>
+                <a href="executive-function-hub.html">Executive Function</a> <span>/</span>
                 <span>Why Shoes Disappear</span>
             </div>
 
@@ -641,12 +334,12 @@
             </header>
 
             <div class="key-takeaways">
-                <h2>Key Takeaways</h2>
+                <h3><i class="fas fa-bolt"></i> Key Takeaways</h3>
                 <ul>
-                    <li>High intelligence and poor executive function commonly coexist in gifted children</li>
-                    <li>Asynchronous development creates gaps between cognitive abilities and organizational skills</li>
-                    <li>Traditional behavior management fails because it addresses symptoms rather than neurological differences</li>
-                    <li>Environmental modifications and systematic supports create success without willpower</li>
+                    <li>High intelligence and poor executive function commonly coexist in gifted children.</li>
+                    <li>Asynchronous development creates gaps between cognitive abilities and organizational skills.</li>
+                    <li>Traditional behavior management fails because it addresses symptoms rather than neurological differences.</li>
+                    <li>Environmental modifications and systematic supports create success without willpower.</li>
                 </ul>
             </div>
 
@@ -654,8 +347,6 @@
                 <p>You've witnessed the impossible: a child who can discuss quantum physics yet consistently loses their shoes. The same mind that solves complex equations forgets to bring completed homework. This isn't contradiction—it's the hallmark of asynchronous development in gifted children.</p>
 
                 <p>Executive function—the brain's management system—develops independently from intellectual abilities. When this system lags behind cognitive capacity, even the brightest children struggle with seemingly simple organizational tasks.</p>
-
-                <p>Understanding this neurological disconnect transforms parental frustration into strategic intervention.</p>
 
                 <div class="highlight-box">
                     <h3>The Asynchronous Reality</h3>
@@ -667,7 +358,6 @@
                 
                 <div class="brain-diagram">
                     <h3>The Dual-Processor Brain</h3>
-                    
                     <div class="brain-container">
                         <div class="brain-section">
                             <h4>Intellectual Processor</h4>
@@ -682,204 +372,58 @@
 
                 <h3>Working Memory Challenges</h3>
                 <p>Gifted children's minds process information differently:</p>
-
                 <ul>
-                    <li><strong>Enhanced Processing:</strong> Deeper analysis creates more mental "files" to track</li>
-                    <li><strong>Connection Overload:</strong> Seeing relationships between concepts increases cognitive load</li>
-                    <li><strong>Detail Retention:</strong> Remembering peripheral information crowds working memory</li>
-                    <li><strong>Multitasking Limits:</strong> Simultaneous processing of multiple streams creates bottlenecks</li>
+                    <li><strong>Enhanced Processing:</strong> Deeper analysis creates more mental "files" to track.</li>
+                    <li><strong>Connection Overload:</strong> Seeing relationships between concepts increases cognitive load.</li>
+                    <li><strong>Detail Retention:</strong> Remembering peripheral information crowds working memory.</li>
                 </ul>
 
-                <h3>Task Initiation Difficulties</h3>
-                <p>Starting challenges stem from neurological complexity:</p>
-
+                <h2>Why Traditional Approaches Fail</h2>
+                <p>Standard parenting strategies often backfire spectacularly:</p>
                 <ul>
-                    <li><strong>Option Overload:</strong> Too many possible approaches create paralysis</li>
-                    <li><strong>Perfectionist Standards:</strong> Fear of imperfect execution prevents beginning</li>
-                    <li><strong>Interest Discrimination:</strong> Tasks lacking intrinsic motivation struggle to activate</li>
-                    <li><strong>Activation Energy:</strong> High-threshold requirements for task engagement</li>
+                    <li><strong>Nagging:</strong> Increases stress without addressing neurological differences.</li>
+                    <li><strong>Rewards:</strong> Creates external dependence rather than internal motivation.</li>
+                    <li><strong>Punishment:</strong> Damages relationship without building skills.</li>
                 </ul>
 
                 <div class="highlight-box">
                     <h3>Research Insight</h3>
-                    <p>Neuroimaging studies reveal that gifted children show heightened activity in intellectual processing regions while demonstrating typical or delayed activation in executive function networks, explaining the capacity-execution disconnect.</p>
-                </div>
-
-                <h2>Why Traditional Approaches Fail</h2>
-                <p>Standard parenting strategies backfire spectacularly:</p>
-
-                <h3>Behavioral Interventions</h3>
-                <ul>
-                    <li><strong>Nagging:</strong> Increases stress without addressing neurological differences</li>
-                    <li><strong>Rewards:</strong> Creates external dependence rather than internal motivation</li>
-                    <li><strong>Punishment:</strong> Damages relationship without building skills</li>
-                    <li><strong>Consequences:</strong> Punishes effort rather than addressing root causes</li>
-                </ul>
-
-                <h3>Academic Accommodations</h3>
-                <ul>
-                    <li><strong>Extended Time:</strong> Helps processing speed but not organizational challenges</li>
-                    <li><strong>Quiet Spaces:</strong> Reduces distractions but doesn't build executive function</li>
-                    <li><strong>Modified Assignments:</strong> Changes cognitive load but not procedural skills</li>
-                    <li><strong>Seating Changes:</strong> Alters environment but doesn't address internal systems</li>
-                </ul>
-
-                <h2>The Neurological Foundation</h2>
-                <p>Understanding why smart brains struggle with simple tasks:</p>
-
-                <h3>Prefrontal Cortex Development</h3>
-                <p>The executive function center matures last:</p>
-
-                <ul>
-                    <li><strong>Late Maturation:</strong> Executive function networks continue developing into mid-20s</li>
-                    <li><strong>Individual Variation:</strong> Development timing varies significantly between individuals</li>
-                    <li><strong>Gifted Complexity:</strong> Enhanced neural connectivity may delay functional integration</li>
-                    <li><strong>Stress Sensitivity:</strong> High-stress environments impair executive function performance</li>
-                </ul>
-
-                <h3>Neurotransmitter Systems</h3>
-                <p>Chemical messengers affect executive function:</p>
-
-                <ul>
-                    <li><strong>Dopamine Pathways:</strong> Regulate motivation and reward processing</li>
-                    <li><strong>Norepinephrine Systems:</strong> Control attention and arousal levels</li>
-                    <li><strong>Serotonin Networks:</strong> Influence emotional regulation and impulse control</li>
-                    <li><strong>Acetylcholine Circuits:</strong> Support working memory and cognitive flexibility</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h3>Research Evidence</h3>
-                    <p>Longitudinal studies show that gifted children with executive function challenges demonstrate normal or above-normal abilities once provided with appropriate external support systems, confirming that the issue lies in internal management rather than capacity.</p>
+                    <p>Neuroimaging studies reveal that gifted children show heightened activity in intellectual processing regions while demonstrating typical or delayed activation in executive function networks.</p>
                 </div>
 
                 <h2>Effective Support Strategies</h2>
-                <p>Environmental modifications that work:</p>
-
                 <h3>External Scaffold Systems</h3>
                 <ul>
-                    <li><strong>Visual Reminders:</strong> Calendars, checklists, and organizational charts</li>
-                    <li><strong>Environmental Cues:</strong> Designated spaces and consistent routines</li>
-                    <li><strong>Technology Tools:</strong> Apps and digital systems for task management</li>
-                    <li><strong>Physical Supports:</strong> Organizers, containers, and spatial management</li>
-                </ul>
-
-                <h3>Systematic Process Development</h3>
-                <ul>
-                    <li><strong>Routine Establishment:</strong> Predictable patterns reducing decision-making</li>
-                    <li><strong>Chunking Strategies:</strong> Breaking complex tasks into manageable steps</li>
-                    <li><strong>Transition Rituals:</strong> Clear markers between activities and priorities</li>
-                    <li><strong>Verification Procedures:</strong> Built-in checks to catch errors</li>
+                    <li><strong>Visual Reminders:</strong> Calendars, checklists, and organizational charts.</li>
+                    <li><strong>Environmental Cues:</strong> Designated spaces ("A home for everything").</li>
+                    <li><strong>Technology Tools:</strong> Apps and digital systems for task management.</li>
                 </ul>
 
                 <h3>Stress Reduction Approaches</h3>
                 <ul>
-                    <li><strong>Predictable Environments:</strong> Consistent routines and expectations</li>
-                    <li><strong>Buffer Time:</strong> Extra minutes to account for processing needs</li>
-                    <li><strong>Choice Opportunities:</strong> Controlled decision-making within structure</li>
-                    <li><strong>Recovery Periods:</strong> Scheduled downtime for mental restoration</li>
+                    <li><strong>Predictable Environments:</strong> Consistent routines and expectations.</li>
+                    <li><strong>Buffer Time:</strong> Extra minutes to account for processing needs.</li>
+                    <li><strong>Choice Opportunities:</strong> Controlled decision-making within structure.</li>
                 </ul>
-
-                <h2>Environmental Design Principles</h2>
-                <p>Create spaces that support success:</p>
-
-                <h3>Home Organization Systems</h3>
-                <ul>
-                    <li><strong>Centralized Command:</strong> One location for all school-related materials</li>
-                    <li><strong>Visual Management:</strong> Clear containers and labeled storage systems</li>
-                    <li><strong>Strategic Placement:</strong> Frequently used items in easily accessible locations</li>
-                    <li><strong>Redundancy Planning:</strong> Backup systems for critical materials</li>
-                </ul>
-
-                <h3>Daily Routine Structures</h3>
-                <ul>
-                    <li><strong>Morning Protocols:</strong> Step-by-step sequences for getting ready</li>
-                    <li><strong>Afternoon Transitions:</strong> Clear processes for returning home</li>
-                    <li><strong>Evening Preparation:</strong> Advance planning for tomorrow's needs</li>
-                    <li><strong>Weekly Reviews:</strong> Regular assessment and adjustment of systems</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h3>Implementation Strategy</h3>
-                    <p>Introduce one system at a time, allowing 2-3 weeks for habit formation before adding additional supports. Rushing creates overwhelm and abandonment of potentially effective strategies.</p>
-                </div>
-
-                <h2>Measuring Success</h2>
-                <p>Track improvement through objective metrics:</p>
-
-                <h3>Quantitative Measures</h3>
-                <ul>
-                    <li>Number of lost items per week</li>
-                    <li>Time spent searching for materials daily</li>
-                    <li>Parent reminder interventions required</li>
-                    <li>Completion rates for multi-step tasks</li>
-                </ul>
-
-                <h3>Qualitative Indicators</h3>
-                <ul>
-                    <li>Reduced family stress around organizational tasks</li>
-                    <li>Increased child confidence in daily routines</li>
-                    <li>Improved morning and evening routine efficiency</li>
-                    <li>Enhanced overall family harmony and cooperation</li>
-                </ul>
-
-                <h2>When to Seek Professional Support</h2>
-                <p>Consider specialized intervention when:</p>
-
-                <ul>
-                    <li>Organizational systems show no improvement after 8 weeks</li>
-                    <li>Family relationships suffer significantly from daily stress</li>
-                    <li>Child expresses genuine distress about organizational demands</li>
-                    <li>Academic performance declines due to material loss</li>
-                    <li>Other executive function challenges emerge or worsen</li>
-                </ul>
-
-                <h2>The Long-Term Outlook</h2>
-                <p>Executive function skills typically improve:</p>
-
-                <ul>
-                    <li>Neurological maturation reduces developmental gaps</li>
-                    <li>Established habits become automatic over time</li>
-                    <li>Increased self-awareness of personal needs</li>
-                    <li>Advanced coping strategies for complex demands</li>
-                </ul>
-
-                <p>However, some individuals retain organizational preferences throughout life, often developing exceptional skills in preferred areas while accepting support in challenging domains.</p>
-
-                <div class="highlight-box">
-                    <h3>Future Advantage</h3>
-                    <p>Adults who master organizational systems often become exceptional project managers, system designers, and efficiency consultants, turning childhood challenges into career strengths.</p>
-                </div>
 
                 <h2>The Bottom Line</h2>
                 <p>Your child's organizational struggles aren't character flaws or motivation failures—they're neurological differences that respond beautifully to systematic environmental support.</p>
-
-                <p>The "shoes everywhere" phenomenon works because it addresses the root cause rather than surface behaviors. Rather than fighting your child's executive function challenges, support their development through understanding and accommodation.</p>
-
                 <p>Rather than expecting internal management to magically emerge, create external systems that compensate for developmental gaps. This approach reduces daily stress for everyone while building genuine independence.</p>
-
-                <p>Remember: The goal isn't to eliminate all organizational support but to create systems where your child can thrive independently. Sometimes the simplest solution—like a designated hook or consistent routine—makes the biggest difference in daily quality of life.</p>
-
-                <p>In a world that often expects uniform developmental trajectories, your role is to advocate for your child's unique neurological profile. Their organizational patterns aren't obstacles to overcome but realities to support with compassion and practical solutions.</p>
-
-                <div class="highlight-box">
-                    <h3>Family Harmony Strategy</h3>
-                    <p>Create an organizational system that works so well your child never has to think about it. When systems become second nature, family energy can focus on learning, growth, and connection rather than daily battles over lost items.</p>
-                </div>
             </div>
-        </article>
+        </main>
 
         <aside class="article-sidebar">
             <div class="sidebar-widget">
-                <h3>Identify Executive Function Patterns</h3>
+                <h3>Map Your Child's Brain</h3>
                 <p>Our AI assessment reveals your child's unique learning profile and organizational needs.</p>
-                <a href="gifted-assessment-tool.html" class="btn">
+                <a href="gifted-assessment-tool.html" class="nav-btn-primary btn-full">
                     <i class="fas fa-microchip"></i> Start Free Assessment
                 </a>
             </div>
         </aside>
+
     </div>
 
-    <!-- Read Next Section -->
     <section class="read-next">
         <div class="container">
             <h2>Read Next</h2>
@@ -896,7 +440,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
@@ -905,25 +448,26 @@
                     <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
-                    <h4>Quick Links</h4>
+                    <h5>Quick Links</h5>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h4>Legal</h4>
+                    <h5>Support</h5>
                     <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+                © 2024 Navigator Kids AI™. All rights reserved.
             </div>
         </div>
     </footer>
@@ -931,7 +475,7 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle i');
+            const toggle = document.querySelector('.navbar__toggle i');
             menu.classList.toggle('active');
             
             if (menu.classList.contains('active')) {
@@ -942,28 +486,6 @@
                 toggle.classList.add('fa-bars');
             }
         }
-
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                const icon = toggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('mobileMenu');
-                const toggle = document.querySelector('.menu-toggle i');
-                menu.classList.remove('active');
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            });
-        });
     </script>
 </body>
 </html>
