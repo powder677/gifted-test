@@ -1,152 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Your Purchase - Mission Control Center</title>
+    <title>Complete Your Purchase - Mission Control Center | Navigator Kids AI™</title>
     <script src="https://js.stripe.com/v3/"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
-        /*
-        * Local Overrides to ensure the checkout form is clean, elegant, and uses the new palette.
-        */
-
-        /* New Color Mapping */
+        /* --- VARIABLES --- */
         :root {
-            /* Overriding the default values with the new theme colors */
-            --color-theme-primary: var(--color-primary); /* Soft Sage Green */
-            --color-theme-secondary: var(--color-secondary); /* Warm Cream */
-            --color-theme-accent: var(--color-accent); /* Gold */
-            --color-theme-text: var(--color-text); /* Charcoal Gray */
-            --color-theme-background: var(--color-background); /* Off-White */
-        }
-        
-        body {
-            /* Inherit global body styles from styles.css */
-            font-family: var(--font-body);
-            color: var(--color-theme-text);
-            background-color: var(--color-theme-background);
-            padding-top: 80px; /* Space for fixed header */
+            --color-primary: #1B365D;
+            --color-primary-dark: #132845;
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
+            --color-highlight-dark: #238579;
+            --color-highlight-light: #E8F4F2;
+            --color-text: #2F2F2F;
+            --color-text-muted: #666666;
+            --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --transition: all 0.2s ease;
+            --font-header: 'Inter', sans-serif;
+            --font-body: 'Lato', sans-serif;
         }
 
+        /* --- GLOBAL RESET --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.7;
+            background-color: var(--color-background);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-header);
+            line-height: 1.3;
+            color: var(--color-primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo a {
+            font-family: var(--font-header);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--color-highlight);
+            font-size: 1.4rem;
+        }
+
+        .logo span {
+            color: var(--color-highlight);
+        }
+
+        .desktop-nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            margin: 0;
+        }
+
+        .desktop-nav .nav-links li {
+            margin: 0;
+        }
+
+        .desktop-nav .nav-links a {
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover {
+            color: var(--color-highlight);
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-highlight);
+            transition: width 0.2s ease;
+        }
+
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after {
+            width: 100%;
+        }
+
+        .nav-btn-primary {
+            background-color: var(--color-highlight);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-1px);
+        }
+
+        .nav-btn-primary::after {
+            display: none !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primary);
+            padding: 8px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border-top: 1px solid #eee;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
+        .mobile-nav a:last-child {
+            background-color: var(--color-highlight);
+            color: white;
+            margin: 16px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
+        }
+
+        /* --- CHECKOUT LAYOUT --- */
         .checkout-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 60px 24px;
         }
 
-        /* Form/Summary Containers - Use Cream background, shadows, rounded corners */
-        .order-summary,
-        .checkout-form {
-            background: var(--color-theme-secondary); /* Warm Cream */
-            border-radius: var(--border-radius);
-            padding: 32px;
-            box-shadow: var(--box-shadow-subtle);
-        }
-
-        .order-summary h2,
-        .checkout-form h2 {
-            font-family: var(--font-header);
-            color: var(--color-theme-text);
-            margin-bottom: 24px;
-        }
-
-        /* Headers/Labels */
-        .checkout-form h3 {
-            font-family: var(--font-header);
-            color: var(--color-theme-primary); /* Sage Green for section titles */
-            margin-bottom: 16px;
-        }
-
-        .form-label {
-            color: var(--color-theme-text);
-            font-weight: 600;
-        }
-
-        /* Form Inputs (clean, minimal) */
-        .form-input {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            font-family: var(--font-body);
-        }
-
-        .form-input:focus {
-            border-color: var(--color-theme-primary); /* Sage focus border */
-        }
-
-        /* Order Item Card (Clean lines) */
-        .package-item {
-            border: 2px solid var(--color-theme-primary); /* Sage border */
-            background-color: var(--color-theme-background); /* Off-White inside card */
-            border-radius: 8px;
-        }
-
-        .package-name {
-            font-family: var(--font-header);
-            font-weight: 700;
-        }
-
-        .package-includes {
-            color: var(--color-theme-text);
-            opacity: 0.7;
-        }
-
-        .package-price {
-            color: var(--color-theme-primary); /* Sage Green price */
-        }
-
-        /* Price Breakdown */
-        .price-breakdown {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .price-total {
-            border-top: 2px solid var(--color-theme-primary); /* Sage total separator */
-            color: var(--color-theme-text);
-        }
-
-        /* Submit Button (Uses Primary Button Style) */
-        .checkout-submit {
-            background-color: var(--color-theme-primary);
-            color: var(--color-theme-background);
-            border-radius: var(--border-radius);
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-
-        .checkout-submit:hover {
-            background-color: #6a8373; /* Darker Sage */
-            transform: translateY(-2px);
-        }
-
-        .checkout-submit:disabled {
-            background-color: #b5c7bc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Security Badge - Enhanced Trust */
-        .security-badge {
-            color: var(--color-theme-text);
-            opacity: 0.8;
-        }
-
-        .security-badge svg {
-            color: var(--color-theme-accent); /* Gold Lock Icon */
-        }
-
-        /* Guarantee Box */
-        .order-summary > div:last-child {
-            background-color: rgba(124, 152, 133, 0.1); /* Light Sage background */
-            border: 1px solid rgba(124, 152, 133, 0.3);
-        }
-
-        .order-summary > div:last-child p {
-            color: var(--color-theme-primary);
-        }
-
-        /* Responsive */
         .checkout-layout {
             display: grid;
             grid-template-columns: 1fr 400px;
@@ -157,17 +243,300 @@
             .checkout-layout {
                 grid-template-columns: 1fr;
             }
+            .order-summary {
+                order: -1; /* Show summary first on mobile */
+            }
+        }
+
+        .order-summary,
+        .checkout-form {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .checkout-form h2, .order-summary h2 {
+            margin-bottom: 24px;
+            font-size: 1.8rem;
+        }
+
+        .checkout-form h3 {
+            font-size: 1.2rem;
+            color: var(--color-highlight);
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--color-highlight-light);
+            padding-bottom: 8px;
+        }
+
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--color-highlight);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+        }
+
+        /* Order Summary Styles */
+        .package-item {
+            background-color: var(--color-background-warm);
+            border: 2px solid var(--color-accent);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .package-name {
+            font-family: var(--font-header);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .package-includes {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .package-includes ul {
+            margin: 8px 0 0 20px;
+        }
+
+        .package-price {
+            font-weight: 700;
+            color: var(--color-highlight);
+            font-size: 1.2rem;
+            text-align: right;
+        }
+
+        .price-breakdown {
+            border-top: 1px solid #eee;
+            padding-top: 16px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: var(--color-text-muted);
+        }
+
+        .price-total {
+            border-top: 2px solid var(--color-primary);
+            padding-top: 12px;
+            margin-top: 12px;
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+
+        /* Button & Badges */
+        .checkout-submit {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--color-highlight);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .checkout-submit:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .checkout-submit:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .security-badge svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-highlight);
+        }
+
+        .guarantee-box {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: var(--border-radius);
+            background-color: var(--color-highlight-light);
+            border: 1px solid var(--color-highlight);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--color-highlight-dark);
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #0f1f33;
+            color: white;
+            padding: 80px 24px 40px;
+            margin-top: 60px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .footer__brand h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer__brand p {
+            opacity: 0.75;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer__links h4 {
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer__links ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer__links li {
+            margin-bottom: 12px;
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer__bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            max-width: 1200px;
+            margin: 0 auto;
         }
     </style>
 </head>
 
 <body>
-<div id="navigation-placeholder"></div>
-<script>
-    fetch('navigation.html').then(response => response.text()).then(data => {
-        document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="resources.html">Resources</a>
+            <a href="methodology.html">Get Started</a>
+        </nav>
+    </header>
+
     <div class="checkout-container">
         <div class="checkout-layout">
             <div class="checkout-form">
@@ -218,8 +587,8 @@
                         <h3>Payment Information</h3>
                         <div class="form-group">
                             <label class="form-label">Card Details</label>
-                            <div id="card-element"></div>
-                            <div id="card-errors"></div>
+                            <div id="card-element" style="border: 1px solid #ddd; padding: 12px; border-radius: 8px;"></div>
+                            <div id="card-errors" style="color: #dc3545; margin-top: 8px; font-size: 0.9rem;"></div>
                         </div>
                     </div>
 
@@ -243,7 +612,7 @@
                     <div class="package-name">Complete Assessment Package</div>
                     <div class="package-includes">
                         Includes:
-                        <ul style="margin-top: 8px; padding-left: 20px;">
+                        <ul>
                             <li>Parent Assessment (20 minutes)</li>
                             <li>Child Self-Assessment</li>
                             <li>Personalized 12-page report</li>
@@ -269,25 +638,75 @@
                     </div>
                 </div>
 
-                <div style="margin-top: 24px; padding: 16px; border-radius: 8px;">
-                    <p style="font-size: 0.875rem; text-align: center;">
-                        <strong>30-Day Money Back Guarantee</strong><br>
-                        If you're not satisfied, get a full refund.
-                    </p>
+                <div class="guarantee-box">
+                    <strong>30-Day Money Back Guarantee</strong><br>
+                    If you're not satisfied, get a full refund.
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="footer-placeholder"></div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        fetch('footer.html').then(response => response.text()).then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
+        // --- MOBILE MENU LOGIC ---
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
-    </script>
-    <script src="script.js"></script>
-    
-    <script>
+
+        // --- STRIPE & FORM LOGIC ---
         // Initialize Stripe
         const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); // Replace with your Stripe key
         const elements = stripe.elements();
@@ -297,7 +716,8 @@
             style: {
                 base: {
                     fontSize: '16px',
-                    color: '#2F2F2F', // Use new Charcoal text color
+                    color: '#2F2F2F', 
+                    fontFamily: '"Lato", sans-serif',
                     '::placeholder': {
                         color: '#94a3b8',
                     },
@@ -325,7 +745,7 @@
 
             // Disable submit button
             submitButton.disabled = true;
-            submitButton.innerHTML = 'Processing<span class="processing"></span>';
+            submitButton.innerHTML = 'Processing...';
 
             // Collect form data
             const formData = {
@@ -361,9 +781,6 @@
                 errorDiv.textContent = 'Payment failed. Please try again.';
             }
         });
-
-        // The fetch call for navigation is already handled at the top of the body.
     </script>
 </body>
-
 </html>
