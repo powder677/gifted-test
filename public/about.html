@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Navigator Kids AI™</title>
+    <title>About Us | Navigator Kids AI™ - Support for Exceptional Children</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* === STANDARD NAVIGATOR BRANDING === */
+        /* === NAVIGATOR BRAND VARIABLES === */
         :root {
-            --color-primary: #1B365D;    /* Navy */
+            --color-primary: #1B365D;
             --color-primary-dark: #132845;
             --color-primary-light: #2A4A7A;
-            --color-secondary: #FFFFFF;  /* White */
-            --color-accent: #E9C46A;     /* Gold */
-            --color-highlight: #2A9D8F;  /* Teal */
+            --color-secondary: #FFFFFF;
+            --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
+            --color-highlight: #2A9D8F;
             --color-highlight-dark: #238579;
             --color-highlight-light: #E8F4F2;
             --color-text: #2F2F2F;
@@ -25,32 +26,55 @@
             --color-background-warm: #FFFBF5;
             
             --border-radius: 8px;
-            --border-radius-lg: 12px;
+            --border-radius-lg: 16px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --transition: all 0.2s ease;
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
         }
 
-        /* === GLOBAL RESET === */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        
+        /* === RESET & BASE === */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--color-text);
             line-height: 1.7;
-            background-color: var(--color-background);
+            background-color: var(--color-secondary);
         }
 
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Inter', sans-serif;
-            color: var(--color-primary);
             line-height: 1.2;
+            color: var(--color-primary);
         }
 
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-        /* === STANDARD NAVIGATION === */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* === NAVIGATION === */
         .navbar {
             background-color: var(--color-secondary);
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
@@ -76,25 +100,50 @@
             align-items: center;
             gap: 10px;
         }
-        .navbar__logo i, .navbar__logo span { color: var(--color-highlight); }
 
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            align-items: center;
+        .navbar__logo i {
+            color: var(--color-highlight);
+            font-size: 1.4rem;
         }
-        .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
-        .nav-links a:hover { color: var(--color-highlight); }
 
-        .nav-btn-primary {
+        .navbar__logo span {
+            color: var(--color-highlight);
+        }
+
+        .navbar__nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .navbar__links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .navbar__links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-text);
+            transition: var(--transition);
+        }
+
+        .navbar__links a:hover {
+            color: var(--color-highlight);
+        }
+
+        .navbar__cta {
             background: var(--color-highlight);
-            color: white !important;
+            color: white;
             padding: 12px 24px;
             border-radius: var(--border-radius);
             font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
-        .nav-btn-primary:hover {
+
+        .navbar__cta:hover {
             background: var(--color-highlight-dark);
             transform: translateY(-2px);
         }
@@ -108,22 +157,34 @@
             cursor: pointer;
         }
 
-        /* Mobile Menu */
         .mobile-nav {
             display: none;
             position: absolute;
-            top: 100%; left: 0; right: 0;
+            top: 100%;
+            left: 0;
+            right: 0;
             background: white;
             flex-direction: column;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             border-top: 1px solid #eee;
         }
-        .mobile-nav.active { display: flex; }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
         .mobile-nav a {
             padding: 16px 24px;
             border-bottom: 1px solid #f0f0f0;
             font-weight: 600;
+            transition: var(--transition);
         }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
         .mobile-nav a:last-child {
             background-color: var(--color-highlight);
             color: white;
@@ -134,114 +195,417 @@
         }
 
         @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .navbar__toggle { display: block; }
+            .navbar__nav {
+                display: none;
+            }
+            .navbar__toggle {
+                display: block;
+            }
         }
 
-        /* === HERO SECTION === */
+        /* === HERO === */
         .hero {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
             color: white;
-            padding: 80px 0;
+            padding: 100px 24px;
             text-align: center;
         }
-        .hero h1 { color: white; font-size: 2.5rem; margin-bottom: 16px; }
-        .hero p { font-size: 1.15rem; max-width: 600px; margin: 0 auto; opacity: 0.9; }
 
-        /* === MISSION SECTION === */
-        .mission-section { padding: 80px 0; }
-        .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        
-        .mission-content h2 { font-size: 2rem; margin-bottom: 24px; }
-        .mission-content p { margin-bottom: 24px; color: var(--color-text-muted); font-size: 1.05rem; }
-        
-        .mission-highlight {
-            background: var(--color-background-warm);
-            border-left: 4px solid var(--color-accent);
-            padding: 24px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        @media (max-width: 768px) {
-            .mission-grid { grid-template-columns: 1fr; gap: 40px; }
-        }
-
-        /* === TEAM SECTION === */
-        .team-section { background: white; padding: 80px 0; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2rem; margin-bottom: 16px; }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-
-        .team-card {
-            background: var(--color-background);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            text-align: center;
-            padding: 32px 24px;
-        }
-        .team-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-
-        .team-avatar {
-            width: 100px;
-            height: 100px;
-            background: var(--color-primary);
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
             color: white;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* === STORY SECTION === */
+        .story {
+            background: var(--color-background-warm);
+            padding: 80px 24px;
+        }
+
+        .story__content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story__content p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .story__quote {
+            background: white;
+            border-left: 4px solid var(--color-accent);
+            padding: 32px 40px;
+            margin: 40px 0;
+            font-style: italic;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        /* === MISSION === */
+        .mission {
+            background: var(--color-highlight);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .mission h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .mission p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* === TEAM === */
+        .team {
+            background: var(--color-background);
+            padding: 100px 24px;
+        }
+
+        .team h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+        }
+
+        .team__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .team__grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        .team__member {
+            background: white;
+            box-shadow: var(--shadow-md);
+            border-radius: var(--border-radius-lg);
+            padding: 40px 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team__member:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Image container with fallback */
+        .team__avatar-container {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             margin: 0 auto 24px;
+            border: 4px solid var(--color-highlight);
+            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.2);
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+        }
+
+        .team__avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Fallback initials - shown if image fails */
+        .team__avatar-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
             font-weight: 700;
+            z-index: 0;
         }
 
-        .team-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
-        .team-role { color: var(--color-highlight); font-weight: 700; font-size: 0.9rem; margin-bottom: 16px; text-transform: uppercase; }
-        .team-card p { color: var(--color-text-muted); font-size: 0.95rem; }
+        .team__avatar {
+            position: relative;
+            z-index: 1;
+        }
 
-        /* === CTA SECTION === */
-        .cta-section {
-            background: var(--color-primary-dark);
+        .team__member h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .team__role {
+            color: var(--color-highlight);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .team__bio {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        /* === METHOD CALLOUT === */
+        .method-callout {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
             color: white;
-            padding: 80px 0;
+            padding: 80px 24px;
             text-align: center;
         }
-        .cta-section h2 { color: white; margin-bottom: 24px; }
-        .cta-section p { max-width: 600px; margin: 0 auto 32px; opacity: 0.8; }
-        
-        .btn-cta {
-            display: inline-block;
-            background: var(--color-accent);
-            color: var(--color-primary);
+
+        .method-callout h3 {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .method-callout h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .method-callout > .container > p {
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .method-steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .method-step {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 20px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             padding: 16px 32px;
             border-radius: var(--border-radius);
-            font-weight: 800;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
         }
-        .btn-cta:hover { background: #F4D78A; transform: translateY(-2px); }
+
+        .btn--accent {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .btn--accent:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* === SERVICES === */
+        .services {
+            background: white;
+            padding: 100px 24px;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .services__subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .services__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .services__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            background: var(--color-background);
+            padding: 32px 24px;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-card__icon {
+            width: 64px;
+            height: 64px;
+            background: var(--color-highlight-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 20px;
+        }
+
+        .service-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
 
         /* === FOOTER === */
-        .footer { background: #0f1f33; color: white; padding: 80px 0 40px; }
-        .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-        .footer h4 { color: white; margin-bottom: 16px; }
-        .footer h5 { color: var(--color-accent); margin-bottom: 20px; }
-        .footer a { color: rgba(255,255,255,0.7); display: block; margin-bottom: 12px; }
-        .footer a:hover { color: white; }
-        .footer__bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; font-size: 0.9rem; opacity: 0.6; }
-        
-        @media (max-width: 768px) { .footer__grid { grid-template-columns: 1fr; } }
+        .footer {
+            background: var(--color-primary-dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .footer__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer__brand h4 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer__brand h4 i {
+            color: var(--color-highlight);
+        }
+
+        .footer__brand p {
+            opacity: 0.7;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer__links h5 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--color-accent);
+        }
+
+        .footer__links ul {
+            list-style: none;
+        }
+
+        .footer__links li {
+            margin-bottom: 12px;
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: white;
+        }
+
+        .footer__bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
     </style>
 </head>
 
 <body>
-
+    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="container">
             <div class="navbar__inner">
@@ -250,21 +614,23 @@
                     Navigator <span>Kids AI</span>™
                 </a>
                 
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
-                </ul>
+                <div class="navbar__nav">
+                    <ul class="navbar__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                    <a href="methodology.html" class="navbar__cta">Get Started</a>
+                </div>
 
-                <button class="navbar__toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
         
-        <nav class="mobile-nav" id="mobileMenu">
+        <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
@@ -273,94 +639,181 @@
         </nav>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <h1>Our Mission</h1>
-            <p>We help parents of gifted, 2e, and neurodivergent children understand the specific "why" behind behavior—and exactly what to do about it.</p>
-        </div>
-    </header>
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <h1>Every Exceptional Child Has a Story</h1>
+                <p>Ours began in a quiet corner—and became a movement to ensure no exceptional child is misunderstood again.</p>
+            </div>
+        </section>
 
-    <section class="mission-section">
-        <div class="container">
-            <div class="mission-grid">
-                <div class="mission-content">
-                    <h2>Your Child Didn't Come With a Manual</h2>
-                    <p>Raising a gifted or twice-exceptional (2e) child is an extraordinary journey. It comes with breathtaking highs—moments of profound insight, creativity, and empathy. But it also comes with intense challenges that traditional parenting books don't cover.</p>
-                    <p>We created Navigator Kids AI™ because we believe that when parents understand the neurology behind the behavior, the "impossible" becomes manageable.</p>
-                    <div class="mission-highlight">
-                        <p><strong>Our Philosophy:</strong> Meltdowns aren't manipulation. Distraction isn't laziness. And intensity isn't a deficit—it's a superpower that just needs a guidance system.</p>
+        <!-- STORY -->
+        <section class="story">
+            <div class="container">
+                <div class="story__content">
+                    <p>Rachel Whitcomb never planned to revolutionize how we support gifted children. But watching her brilliant daughter slowly dim in a second-grade classroom changed everything.</p>
+
+                    <p>The teacher meant well. When Rachel's twice-exceptional daughter finished assignments early, asked complex questions, or needed to move while thinking, she was sent to the quiet corner. Not as punishment—but because the system didn't know what else to do with a mind that moved too fast and a body that needed to keep up.</p>
+
+                    <div class="story__quote">
+                        "She can't handle more," the teacher explained with genuine concern. "She needs different."
+                    </div>
+
+                    <p>For Rachel, who'd grown up as the "smart but struggling" kid with undiagnosed learning differences, those words hit like a thunderbolt. She saw her own painful school years reflected in her daughter's experience—the same misunderstandings, the same diminished expectations, the same slow erosion of self-worth.</p>
+
+                    <p>But this time would be different.</p>
+
+                    <p>Rachel dove deep into research, connected with specialists, and discovered a truth that changed everything: <strong>These children don't need less. They need different.</strong></p>
+
+                    <p>She assembled a team of professionals who understood that a child could be years ahead intellectually while struggling with basic tasks, could see patterns others missed while missing social cues others caught, could create masterpieces while unable to organize a backpack.</p>
+
+                    <p>Together, they built what Rachel wished had existed when she was young—and what thousands of families desperately need today.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION -->
+        <section class="mission">
+            <div class="container">
+                <h2>Our Mission</h2>
+                <p>We ensure no gifted or twice-exceptional child is misunderstood, mislabeled, or pushed aside. Every child deserves support that matches their unique wiring—not a one-size-fits-all solution that leaves them behind.</p>
+            </div>
+        </section>
+
+        <!-- TEAM -->
+        <section class="team">
+            <div class="container">
+                <h2>Meet Your Advocates</h2>
+
+                <div class="team__grid">
+                    <div class="team__member">
+                        <div class="team__avatar-container">
+                            <span class="team__avatar-fallback">RW</span>
+                            <img 
+                                src="images/rachel-whitcomb.jpg" 
+                                alt="Rachel Whitcomb" 
+                                class="team__avatar"
+                                onerror="this.style.display='none'"
+                            >
+                        </div>
+                        <h3>Rachel Whitcomb</h3>
+                        <span class="team__role">Founder & Parent Advocate</span>
+                        <p class="team__bio">Rachel transforms personal experience into powerful advocacy. As both a formerly misunderstood gifted child and a fierce parent advocate, she guides families through the complex journey of raising exceptional children with practical strategies and deep empathy.</p>
+                    </div>
+
+                    <div class="team__member">
+                        <div class="team__avatar-container">
+                            <span class="team__avatar-fallback">EC</span>
+                            <img 
+                                src="images/evan-calder.jpg" 
+                                alt="Evan Calder" 
+                                class="team__avatar"
+                                onerror="this.style.display='none'"
+                            >
+                        </div>
+                        <h3>Evan Calder</h3>
+                        <span class="team__role">Learning Architect</span>
+                        <p class="team__bio">With 15+ years translating between gifted minds and traditional systems, Evan helps children understand their own thinking patterns. He transforms overthinking into analysis, perfectionism into excellence, and confusion into clarity through metacognitive strategies that actually work.</p>
+                    </div>
+
+                    <div class="team__member">
+                        <div class="team__avatar-container">
+                            <span class="team__avatar-fallback">AS</span>
+                            <img 
+                                src="images/avery-sage.jpg" 
+                                alt="Avery Sage" 
+                                class="team__avatar"
+                                onerror="this.style.display='none'"
+                            >
+                        </div>
+                        <h3>Avery Sage</h3>
+                        <span class="team__role">Emotional Intelligence Specialist</span>
+                        <p class="team__bio">Avery sees beyond "behavior problems" to understand what children are really communicating. With 12+ years of clinical experience, they create practical tools that transform emotional intensity from a liability into a strength, building homes where sensitive children can thrive.</p>
                     </div>
                 </div>
-                <div class="mission-image" style="background: #E8F4F2; height: 100%; min-height: 300px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-compass" style="font-size: 5rem; color: #2A9D8F; opacity: 0.5;"></i>
+            </div>
+        </section>
+
+        <!-- METHOD CALLOUT -->
+        <section class="method-callout">
+            <div class="container">
+                <h3>Our Framework</h3>
+                <h2>The Navigator Method™</h2>
+                <p>A 5-step system to decode your child's unique operating system and build cooperation without conflict.</p>
+                <div class="method-steps">
+                    <span class="method-step">🔍 ASSESS</span>
+                    <span class="method-step">🗺️ MAP</span>
+                    <span class="method-step">🚀 LAUNCH</span>
+                    <span class="method-step">🔧 ADJUST</span>
+                    <span class="method-step">📈 EXPAND</span>
+                </div>
+                <a href="methodology.html" class="btn btn--accent">Learn the Method</a>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services">
+            <div class="container">
+                <h2>How We Help</h2>
+                <p class="services__subtitle">Every tool we build maps directly to The Navigator Method™</p>
+
+                <div class="services__grid">
+                    <div class="service-card">
+                        <div class="service-card__icon">🔍</div>
+                        <h4>AI Assessment</h4>
+                        <p>Discover your child's unique cognitive profile without clinical jargon or labels.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon">🗺️</div>
+                        <h4>Personalized Plans</h4>
+                        <p>Get strategies matched to YOUR child's specific strengths and challenges.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon">📦</div>
+                        <h4>Activity Packets</h4>
+                        <p>Gamified activities disguised as play that build real skills.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon">📊</div>
+                        <h4>Progress Tracking</h4>
+                        <p>See what's working, what needs adjustment, and celebrate wins.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="team-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Meet the Experts</h2>
-                <p>Our content is crafted by specialists with deep experience in neurodiversity.</p>
-            </div>
-            
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-avatar">RW</div>
-                    <h3>Rachel Whitcomb</h3>
-                    <div class="team-role">Founder & Parent Advocate</div>
-                    <p>Rachel specializes in navigating school systems, IEP/504 advocacy, and translating clinical jargon into practical parenting strategies.</p>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">EC</div>
-                    <h3>Evan Calder</h3>
-                    <div class="team-role">Learning Architect</div>
-                    <p>With 15+ years of experience, Evan focuses on executive function, organizational systems, and helping smart kids who struggle to "do the work."</p>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">AS</div>
-                    <h3>Avery Sage</h3>
-                    <div class="team-role">Emotional Intelligence Specialist</div>
-                    <p>Avery guides parents through the storms of emotional intensity, sensory processing issues, and social development challenges.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <h2>Start Your Journey Today</h2>
-            <p>Join thousands of parents who have stopped guessing and started understanding their child's unique brain.</p>
-            <a href="methodology.html" class="btn-cta">Start Your Diagnostic</a>
-        </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                    <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We're parents of exceptional children building the tools we wished we had.</p>
                 </div>
                 <div class="footer__links">
-                    <h5>Quick Links</h5>
+                    <h5>Product</h5>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
                         <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                        <li><a href="methodology.html">Membership</a></li>
+                        <li><a href="mission-control-preview.html">Free Reset Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h5>Support</h5>
+                    <h5>Resources</h5>
                     <ul>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="resources.html">Knowledge Base</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h5>Legal</h5>
+                    <ul>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -371,12 +824,13 @@
     </footer>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
             const toggle = document.querySelector('.navbar__toggle i');
-            menu.classList.toggle('active');
             
-            if (menu.classList.contains('active')) {
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
             } else {
