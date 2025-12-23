@@ -29,7 +29,7 @@
             --color-danger-light: #fff5f5;
             
             --border-radius: 8px;
-            --border-radius-lg: 16px;
+            --border-radius-lg: 12px; /* Standardized to 12px */
             --border-radius-xl: 24px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
@@ -74,7 +74,7 @@
             padding: 0 24px;
         }
 
-        /* === NAVIGATION === */
+        /* --- NAVIGATION --- */
         .navbar {
             background-color: var(--color-secondary);
             border-bottom: 1px solid rgba(27, 54, 93, 0.08);
@@ -82,9 +82,13 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: var(--shadow-sm);
         }
 
         .navbar__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -108,6 +112,93 @@
             color: var(--color-highlight);
         }
 
+        /* Desktop Nav */
+        .desktop-nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            margin: 0;
+        }
+
+        .desktop-nav .nav-links a {
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .desktop-nav .nav-links a:hover {
+            color: var(--color-highlight);
+        }
+
+        .nav-btn-primary {
+            background-color: var(--color-highlight);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .nav-btn-primary:hover {
+            background-color: var(--color-highlight-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border-top: 1px solid #eee;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
+
+        .mobile-nav a:last-child {
+            background-color: var(--color-highlight);
+            color: white;
+            margin: 16px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
+        }
+
         /* === HERO === */
         .hero {
             background: linear-gradient(135deg, var(--color-danger) 0%, #c82333 100%);
@@ -115,16 +206,6 @@
             padding: 80px 0 100px;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .hero__inner {
@@ -184,6 +265,7 @@
         .hero__points {
             list-style: none;
             margin-bottom: 32px;
+            padding: 0;
         }
 
         .hero__points li {
@@ -212,6 +294,7 @@
             border-radius: var(--border-radius-xl);
             padding: 40px;
             box-shadow: var(--shadow-xl);
+            color: var(--color-text);
         }
 
         .form-card__header {
@@ -244,6 +327,7 @@
 
         .form-group {
             margin-bottom: 16px;
+            text-align: left;
         }
 
         .form-group label {
@@ -661,7 +745,7 @@
         .final-cta__form {
             background: var(--color-background);
             padding: 32px;
-            border-radius: var(--border-radius-xl);
+            border-radius: var(--border-radius-lg); /* Fixed from xl to match design system */
         }
 
         .final-cta__form .form-row {
@@ -702,45 +786,72 @@
         .footer {
             background: var(--color-primary-dark);
             color: white;
-            padding: 40px 0;
-            text-align: center;
+            padding: 60px 24px 40px;
         }
 
-        .footer__logo {
-            font-family: 'Inter', sans-serif;
+        .footer__grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        .footer__brand h4 {
             font-size: 1.1rem;
-            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--color-accent);
+        }
+
+        .footer__brand p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer__links h4 {
+            color: var(--color-accent);
             margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
-        .footer__logo i {
-            color: var(--color-highlight);
+        .footer__links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .footer__links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 24px;
+        .footer__links li {
+            margin-bottom: 10px;
         }
 
         .footer__links a {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: var(--transition);
         }
 
         .footer__links a:hover {
-            color: white;
+            color: var(--color-accent);
         }
 
         .footer__bottom {
-            font-size: 0.85rem;
+            max-width: 1200px;
+            margin: 0 auto;
             opacity: 0.6;
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
         }
 
         /* === THANK YOU STATE === */
@@ -790,19 +901,39 @@
 </head>
 
 <body>
-    <!-- NAVIGATION -->
     <nav class="navbar">
-        <div class="container">
+        <div class="navbar-container">
             <div class="navbar__inner">
                 <a href="index.html" class="navbar__logo">
                     <i class="fas fa-compass"></i>
                     Navigator <span>Kids AI</span>™
                 </a>
+                
+                <nav class="desktop-nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
+        
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="resources.html">Resources</a>
+            <a href="methodology.html">Get Started</a>
+        </nav>
     </nav>
 
-    <!-- HERO WITH FORM -->
     <section class="hero">
         <div class="container">
             <div class="hero__inner">
@@ -872,7 +1003,6 @@
         </div>
     </section>
 
-    <!-- WHAT'S INSIDE -->
     <section class="whats-inside">
         <div class="container">
             <div class="whats-inside__header">
@@ -948,7 +1078,6 @@
         </div>
     </section>
 
-    <!-- EXERCISES PREVIEW -->
     <section class="exercises">
         <div class="container">
             <div class="exercises__header">
@@ -991,7 +1120,6 @@
         </div>
     </section>
 
-    <!-- STRATEGY DECK -->
     <section class="deck">
         <div class="container">
             <div class="deck__inner">
@@ -1042,7 +1170,6 @@
         </div>
     </section>
 
-    <!-- SCIENCE -->
     <section class="science">
         <div class="container">
             <div class="science__inner">
@@ -1061,7 +1188,6 @@
         </div>
     </section>
 
-    <!-- FINAL CTA -->
     <section class="final-cta">
         <div class="container">
             <div class="final-cta__inner">
@@ -1108,25 +1234,67 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="footer__logo">
-                <i class="fas fa-compass"></i> Navigator Kids AI™
-            </div>
-            <div class="footer__links">
-                <a href="index.html">Home</a>
-                <a href="gifted-assessment-tool.html">AI Assessment</a>
-                <a href="methodology.html">Membership</a>
-                <a href="about.html">About</a>
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="footer__bottom">
-                © 2024 Navigator Kids AI™. All rights reserved.
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
         // Form submission handler
         document.getElementById('downloadForm').addEventListener('submit', function(e) {
             e.preventDefault();
