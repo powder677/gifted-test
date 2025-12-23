@@ -579,7 +579,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
@@ -594,7 +593,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit-sales-page.html" class="nav-btn-primary">Get Reset Kit</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -606,11 +605,10 @@
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
-            <a href="emergency-reset-kit-sales-page.html">Get Reset Kit</a>
+            <a href="methodology.html">Get Started</a>
         </nav>
     </header>
 
-    <!-- Article Layout -->
     <div class="article-layout">
         <article class="article-content">
             <div class="breadcrumbs">
@@ -665,6 +663,8 @@
 
                 <h3>The Texture Amplification Effect</h3>
                 <p>For tactile-sensitive individuals:</p>
+                
+                
 
                 <ul>
                     <li>Seam ridges feel 3-5 times more pronounced than they appear visually</li>
@@ -723,6 +723,9 @@
                 <div class="product-rec">
                     <h3>Immediate Relief Solution</h3>
                     <p>Seamless socks eliminate the primary source of tactile discomfort for many sensitive children. These specially designed garments provide uniform texture without irritating seam lines.</p>
+                    
+                    
+                    
                     <p><strong>Recommended:</strong> Bamboo seamless socks offer natural antimicrobial properties and ultra-soft texture.</p>
                     <a href="#" class="affiliate-link"><i class="fas fa-shopping-cart"></i> Shop Seamless Sock Collection</a>
                 </div>
@@ -820,6 +823,9 @@
 
                 <div class="product-rec">
                     <h3>Recommended Solutions</h3>
+                    
+                    
+                    
                     <p>For immediate comfort, consider investing in:</p>
                     <ul>
                         <li>Seamless bamboo socks with antimicrobial properties</li>
@@ -857,7 +863,6 @@
         </aside>
     </div>
 
-    <!-- Read Next Section -->
     <section class="read-next">
         <div class="container">
             <h2>Read Next</h2>
@@ -874,7 +879,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
@@ -888,15 +892,16 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="emergency-reset-kit-sales-page.html">Emergency Reset Kit</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h4>Legal</h4>
+                    <h4>Support</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
@@ -911,7 +916,6 @@
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle i');
             menu.classList.toggle('active');
-            
             if (menu.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
@@ -920,27 +924,16 @@
                 toggle.classList.add('fa-bars');
             }
         }
-
+        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
-            
-            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+            if (menu.contains(e.target) || toggle.contains(e.target)) return;
+            if (menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
             }
-        });
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('mobileMenu');
-                const toggle = document.querySelector('.menu-toggle i');
-                menu.classList.remove('active');
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            });
         });
     </script>
 </body>
