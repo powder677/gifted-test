@@ -10,25 +10,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
+        /* === NAVIGATOR BRAND VARIABLES === */
         :root {
             --color-primary: #1B365D;
             --color-primary-dark: #132845;
             --color-primary-light: #2A4A7A;
             --color-secondary: #FFFFFF;
             --color-accent: #E9C46A;
+            --color-accent-light: #F4D78A;
             --color-highlight: #2A9D8F;
             --color-highlight-dark: #238579;
             --color-highlight-light: #E8F4F2;
             --color-text: #2F2F2F;
             --color-text-muted: #666666;
             --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
+            --color-danger: #ef4444;
+            --color-danger-light: #fef2f2;
+            
             --border-radius: 8px;
-            --border-radius-lg: 16px;
+            --border-radius-lg: 12px;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
         }
 
+        /* === RESET & BASE === */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -48,7 +55,10 @@
             line-height: 1.3;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
         /* Navigation */
         .navbar {
@@ -364,9 +374,8 @@
         }
     </style>
 </head>
-<body>
 
-    <!-- Navigation -->
+<body>
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
@@ -375,6 +384,7 @@
                     Navigator <span>Kids AI</span>
                 </a>
             </div>
+            
             <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -384,10 +394,12 @@
                     <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
             </nav>
+
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -397,13 +409,11 @@
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <h1>Privacy Policy</h1>
         <p>Your privacy and your child's privacy are our top priorities.</p>
     </section>
 
-    <!-- Content -->
     <div class="content">
         <div class="content-card">
             <div class="last-updated">
@@ -633,34 +643,35 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="footer__grid">
-            <div class="footer__brand">
-                <h4>Navigator Kids AI™</h4>
-                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer__links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
-                </ul>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
-            <div class="footer__links">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <p>&copy; 2025 Navigator Kids AI™. All rights reserved.</p>
         </div>
     </footer>
 
@@ -683,7 +694,7 @@
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
             
-            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
                 if (icon) {
@@ -691,6 +702,16 @@
                     icon.classList.add('fa-bars');
                 }
             }
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
         });
     </script>
 </body>
