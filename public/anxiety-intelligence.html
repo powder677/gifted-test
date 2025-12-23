@@ -23,6 +23,7 @@
             --color-text: #2F2F2F;
             --color-text-muted: #666666;
             --color-background: #F4F6F8;
+            --color-background-warm: #FFFBF5;
 
             --border-radius: 8px;
             --border-radius-lg: 12px;
@@ -68,22 +69,22 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 16px 0;
+            padding: 0;
             box-shadow: var(--shadow-sm);
         }
 
-        .navbar__inner {
+        .navbar-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar__logo {
+        .logo a {
             font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--color-primary);
             display: flex;
@@ -91,54 +92,50 @@
             gap: 10px;
         }
 
-        .navbar__logo i {
+        .logo i {
             color: var(--color-highlight);
             font-size: 1.4rem;
         }
 
-        .navbar__logo span {
+        .logo span {
             color: var(--color-highlight);
         }
 
-        .navbar__nav {
+        .desktop-nav .nav-links {
             display: flex;
             align-items: center;
             gap: 32px;
-        }
-
-        .navbar__links {
-            display: flex;
-            gap: 28px;
             list-style: none;
+            margin: 0;
         }
 
-        .navbar__links a {
+        .desktop-nav .nav-links a {
             font-weight: 600;
             font-size: 0.95rem;
             color: var(--color-text);
             transition: var(--transition);
         }
 
-        .navbar__links a:hover {
+        .desktop-nav .nav-links a:not(.nav-btn-primary):hover {
             color: var(--color-highlight);
         }
 
-        .navbar__cta {
+        .nav-btn-primary {
             background: var(--color-highlight);
-            color: white;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-weight: 700;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
             font-size: 0.9rem;
             transition: var(--transition);
         }
 
-        .navbar__cta:hover {
+        .nav-btn-primary:hover {
             background: var(--color-highlight-dark);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
-        .navbar__toggle {
+        .menu-toggle {
             display: none;
             background: none;
             border: none;
@@ -152,7 +149,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            right: 0;
+            width: 100%;
             background: white;
             flex-direction: column;
             box-shadow: var(--shadow-lg);
@@ -185,12 +182,8 @@
         }
 
         @media (max-width: 900px) {
-            .navbar__nav {
-                display: none;
-            }
-            .navbar__toggle {
-                display: block;
-            }
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
         }
 
         /* === HERO === */
@@ -227,6 +220,7 @@
             font-weight: 800;
             color: white;
             margin-bottom: 16px;
+            line-height: 1.2;
         }
 
         .hero p { 
@@ -236,61 +230,74 @@
             margin: 0 auto; 
         }
 
-        /* === ARTICLE CONTENT === */
-        .article-section { 
-            padding: 60px 24px; 
-            background: white;
+        /* === ARTICLE LAYOUT === */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
         }
 
-        .article-container { 
-            max-width: 800px; 
-            margin: 0 auto; 
+        @media (max-width: 1024px) {
+            .article-layout {
+                grid-template-columns: 1fr;
+            }
+            .article-sidebar {
+                order: -1;
+            }
         }
 
-        .article-container p { 
-            margin-bottom: 1.5rem; 
-            font-size: 1.1rem; 
+        .article-content p { 
+            margin-bottom: 24px; 
+            font-size: 1.05rem;
+            line-height: 1.8;
         }
 
-        .article-container h2 { 
-            margin-top: 2.5rem; 
-            margin-bottom: 1rem; 
-            font-size: 1.8rem; 
+        .article-content h2 { 
+            font-size: 1.6rem;
+            margin: 48px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--color-highlight-light);
         }
 
-        .article-container h3 { 
-            margin-top: 2rem; 
-            margin-bottom: 0.8rem; 
-            font-size: 1.4rem; 
-            color: var(--color-primary-dark); 
+        .article-content h3 { 
+            font-size: 1.25rem;
+            margin: 32px 0 16px;
+            color: var(--color-primary); 
         }
 
-        .article-container ul { 
-            margin-bottom: 1.5rem; 
+        .article-content ul { 
+            margin-bottom: 24px; 
             padding-left: 24px; 
         }
 
-        .article-container li { 
-            margin-bottom: 0.75rem; 
+        .article-content li { 
+            margin-bottom: 12px; 
         }
 
-        .article-container li strong {
+        .article-content li strong {
             color: var(--color-primary);
         }
 
         /* === KEY TAKEAWAYS === */
         .key-takeaways {
-            background: var(--color-highlight-light);
-            padding: 28px 32px;
+            background: white;
+            padding: 32px;
             border-radius: var(--border-radius-lg);
-            border-left: 5px solid var(--color-highlight);
+            border-left: 4px solid var(--color-highlight);
             margin-bottom: 40px;
+            box-shadow: var(--shadow-md);
         }
 
         .key-takeaways h3 {
             margin-top: 0;
             margin-bottom: 16px;
-            color: var(--color-highlight-dark);
+            color: var(--color-highlight);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -302,14 +309,15 @@
         }
 
         .key-takeaways li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            color: var(--color-text);
         }
 
         /* === HIGHLIGHT BOX === */
         .highlight-box {
-            background: var(--color-background);
-            padding: 24px 28px;
-            border-radius: var(--border-radius);
+            background: var(--color-background-warm);
+            padding: 28px 32px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
             border-left: 4px solid var(--color-accent);
             margin: 32px 0;
         }
@@ -318,26 +326,29 @@
             margin-top: 0;
             margin-bottom: 12px;
             font-size: 1.1rem;
+            color: var(--color-accent);
         }
 
         .highlight-box p {
             margin-bottom: 0;
+            font-size: 1rem;
         }
 
         /* === AUTHOR BOX === */
         .author-box {
             margin-top: 60px;
             padding: 28px;
-            background: var(--color-background);
+            background: white;
             border-radius: var(--border-radius-lg);
             display: flex;
             align-items: center;
             gap: 20px;
+            box-shadow: var(--shadow-sm);
         }
 
         .author-box__avatar {
-            width: 64px;
-            height: 64px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
             display: flex;
@@ -345,13 +356,14 @@
             justify-content: center;
             color: white;
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             flex-shrink: 0;
         }
 
         .author-box__info h4 {
-            margin-bottom: 4px;
+            margin: 0 0 4px 0;
             font-size: 1rem;
+            color: var(--color-primary);
         }
 
         .author-box__info p {
@@ -360,48 +372,113 @@
             color: var(--color-text-muted);
         }
 
-        /* === CTA SECTION === */
-        .cta-section {
-            background: var(--color-highlight-light);
-            padding: 60px 24px;
-            text-align: center;
+        /* === SIDEBAR === */
+        .article-sidebar {
+            position: relative;
         }
 
-        .cta-section h2 {
-            font-size: 1.75rem;
+        .sidebar-widget {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 32px;
+            position: sticky;
+            top: 100px;
+            text-align: center;
+            border-top: 4px solid var(--color-highlight);
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.2rem;
             margin-bottom: 12px;
         }
 
-        .cta-section p {
+        .sidebar-widget p {
+            font-size: 0.95rem;
             color: var(--color-text-muted);
-            margin-bottom: 24px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 20px;
         }
 
-        .cta-section .btn {
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
             background: var(--color-highlight);
             color: white;
-            padding: 16px 32px;
             border-radius: var(--border-radius);
-            font-weight: 700;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: var(--transition);
+            width: 100%;
         }
 
-        .cta-section .btn:hover {
+        .btn:hover {
             background: var(--color-highlight-dark);
             transform: translateY(-2px);
         }
 
+        /* === READ NEXT === */
+        .read-next {
+            background: var(--color-primary);
+            padding: 80px 24px;
+        }
+
+        .read-next h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+        }
+
+        .read-next-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .read-next-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .read-next-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            transition: var(--transition);
+        }
+
+        .read-next-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .read-next-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            transition: var(--transition);
+        }
+
+        .read-next-card:hover h3 {
+            color: var(--color-highlight);
+        }
+
+        .read-next-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
         /* === FOOTER === */
         .footer { 
-            background: var(--color-primary-dark); 
+            background: #0f1f33; 
             color: white; 
-            padding: 60px 24px 30px; 
+            padding: 80px 24px 40px; 
         }
 
         .footer__inner {
@@ -410,30 +487,27 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 48px;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
 
         @media (max-width: 768px) {
             .footer__inner {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 40px;
             }
         }
 
         .footer__brand h4 {
             font-size: 1.1rem;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            color: var(--color-accent);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .footer__brand h4 i {
-            color: var(--color-highlight);
-        }
-
         .footer__brand p {
-            opacity: 0.7;
+            opacity: 0.75;
             font-size: 0.95rem;
             line-height: 1.7;
         }
@@ -442,30 +516,33 @@
             color: var(--color-accent);
             margin-bottom: 16px;
             font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .footer__links ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .footer__links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer__links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
             font-size: 0.95rem;
             transition: var(--transition);
         }
 
         .footer__links a:hover {
-            color: white;
+            color: var(--color-accent);
         }
 
         .footer__bottom { 
             opacity: 0.6; 
             text-align: center; 
-            padding-top: 24px; 
+            padding-top: 32px; 
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.85rem;
         }
@@ -473,50 +550,53 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="navbar__inner">
-            <a href="index.html" class="navbar__logo">
-                <i class="fas fa-compass"></i>
-                Navigator <span>Kids AI</span>™
-            </a>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+            </div>
             
-            <div class="navbar__nav">
-                <ul class="navbar__links">
+            <nav class="desktop-nav">
+                <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
                     <li><a href="resources.html">Resources</a></li>
+                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
-                <a href="methodology.html" class="navbar__cta">Get Started</a>
-            </div>
+            </nav>
 
-            <button class="navbar__toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
         
-        <nav class="mobile-nav" id="mobileNav">
+        <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gifted-assessment-tool.html">AI Assessment</a>
             <a href="resources.html">Resources</a>
             <a href="methodology.html">Get Started</a>
         </nav>
-    </nav>
+    </header>
 
     <section class="hero">
         <div class="hero__breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
             <a href="resources.html">Resources</a>
             <span>/</span>
-            <a href="emotional-regulation.html">Emotional Regulation</a>
+            <span>Emotional Regulation</span>
         </div>
         <h1>Anxiety or Intelligence?</h1>
         <p>When smart kids over-calculate risk and get stuck in "Analysis Paralysis."</p>
     </section>
 
-    <section class="article-section">
-        <div class="article-container">
-
+    <div class="article-layout">
+        <article class="article-content">
             <div class="key-takeaways">
                 <h3><i class="fas fa-bolt"></i> Key Takeaways</h3>
                 <ul>
@@ -559,8 +639,6 @@
             </ul>
 
             <p>This isn't anxiety—it's computational overload. Their brains are running Monte Carlo simulations for everyday activities.</p>
-            
-            
 
             <div class="highlight-box">
                 <h3>Research Insight</h3>
@@ -616,90 +694,106 @@
                 <p>Ask: "Are they afraid of the thing itself, or the 47 ways it could go wrong that only they can see?" The answer reveals the root of their hesitation.</p>
             </div>
 
-            <h2>Practical Strategies for Parents</h2>
+            <h2>Strategies for Supporting Over-Calculating Minds</h2>
+            <p>Helping gifted children manage their analytical intensity requires honoring their cognitive abilities while teaching practical coping strategies.</p>
 
-            <h3>1. Validate Their Intelligence</h3>
-            <p>Instead of dismissing concerns with "Don't worry about it," acknowledge: "You're thinking about this really carefully. Let's look at which possibilities are most likely."</p>
+            <h3>1. Validate Their Thinking</h3>
+            <p>Acknowledge the sophistication of their analysis. Try saying: <em>"I can see you've thought through this really thoroughly. Your brain naturally considers lots of possibilities—that's actually a strength."</em></p>
 
-            <h3>2. Channel the Analysis</h3>
-            <p>Give their brain something productive to calculate: "What would you need to know to feel comfortable trying this?" This redirects overthinking toward problem-solving.</p>
-
-            <h3>3. Create Decision Frameworks</h3>
-            <p>Help them develop shortcuts for low-stakes decisions: "For choices that can be undone easily, we use the 'good enough' rule. For important decisions, we use the full analysis."</p>
-            
-            
-
-            <h3>4. Build Familiarity Gradually</h3>
-            <p>New situations trigger maximum analysis. Repeated exposure reduces variables and builds confidence through predictability.</p>
-
-            <h3>5. Model Imperfect Decision-Making</h3>
-            <p>Narrate your own "good enough" choices: "I'm not sure if this is the best restaurant, but it looks fine and I don't want to spend twenty minutes researching. Let's try it."</p>
-
-            <h2>When to Seek Professional Help</h2>
-            <p>While gifted overthinking is normal, professional support may be needed if:</p>
+            <h3>2. Teach Decision-Matrix Frameworks</h3>
+            <p>Channel their analytical nature into structured decision-making:</p>
             <ul>
-                <li>Anxiety significantly impairs daily functioning or relationships</li>
-                <li>Physical symptoms persist (sleep issues, stomach problems)</li>
-                <li>Avoidance behaviors are increasing over time</li>
-                <li>Your child expresses distress about their own thinking patterns</li>
+                <li>Identify 3-5 key criteria for decisions.</li>
+                <li>Rate options on these specific factors.</li>
+                <li>Set time limits for analysis (The "Stop Loss" strategy).</li>
             </ul>
-            <p>Look for professionals experienced with gifted children, as standard anxiety interventions may need modification.</p>
 
-            <div class="author-box">
-                <div class="author-box__avatar">NK</div>
-                <div class="author-box__info">
-                    <h4>Navigator Kids AI™ Editorial Team</h4>
-                    <p>Written by specialists who understand gifted and twice-exceptional children.</p>
-                </div>
+            <h3>3. Create Controlled Exposure</h3>
+            <p>Gradually expand comfort zones through scaffolded experiences. Start with low-stakes scenarios where outcomes are known, and reflect on actual vs. predicted outcomes after the fact.</p>
+
+            <div class="highlight-box">
+                <h3>Language Shift</h3>
+                <p>Replace <em>"What if something goes wrong?"</em> with <em>"What's the worst reasonable outcome, and how would we handle it?"</em> This shifts from vague fear to tactical planning.</p>
             </div>
 
-        </div>
-    </section>
+            <h2>The Bottom Line</h2>
+            <p>Your child's tendency to over-calculate risk isn't a disorder—it's evidence of a brain wired to see the world in high definition. While this creates challenges in a world that often rewards quick, approximate decisions, it also confers significant advantages in complex problem-solving.</p>
 
-    <section class="cta-section">
-        <h2>Need Help With Meltdowns?</h2>
-        <p>Get our free Emergency Reset Kit — science-backed strategies for when emotions run high.</p>
-        <a href="emergency-reset-kit.html" class="btn">
-            <i class="fas fa-download"></i> Get the Free Kit
-        </a>
+            <p>Rather than pathologizing their intensity, celebrate their ability to see what others miss—and then teach them when to look away.</p>
+
+            <div class="author-box">
+                <div class="author-box__avatar">EC</div>
+                <div class="author-box__info">
+                    <h4>Evan Calder</h4>
+                    <p>Learning Architect & Executive Function Specialist</p>
+                </div>
+            </div>
+        </article>
+
+        <aside class="article-sidebar">
+            <div class="sidebar-widget">
+                <h3>Is your child 2e?</h3>
+                <p>Take our free 2-minute quiz to understand their unique profile.</p>
+                <a href="gifted-assessment-tool.html" class="btn">
+                    <i class="fas fa-microchip"></i> Take the Free Quiz
+                </a>
+            </div>
+        </aside>
+    </div>
+
+    <section class="read-next">
+        <div class="container">
+            <h2>Read Next</h2>
+            <div class="read-next-grid">
+                <a href="perfectionism-trap.html" class="read-next-card">
+                    <h3>The Perfectionism Trap</h3>
+                    <p>Helping kids who cry over a 98%.</p>
+                </a>
+                <a href="restraint-collapse.html" class="read-next-card">
+                    <h3>Restraint Collapse</h3>
+                    <p>Why they are angels at school and monsters at home.</p>
+                </a>
+            </div>
+        </div>
     </section>
 
     <footer class="footer">
         <div class="footer__inner">
             <div class="footer__brand">
-                <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
+                <h4>Navigator Kids AI™</h4>
                 <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
             </div>
             <div class="footer__links">
-                <h5>Product</h5>
+                <h5>Quick Links</h5>
                 <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
                     <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="methodology.html">Membership</a></li>
-                    <li><a href="emergency-reset-kit.html">Free Reset Kit</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
                 </ul>
             </div>
             <div class="footer__links">
-                <h5>Resources</h5>
+                <h5>Support</h5>
                 <ul>
-                    <li><a href="resources.html">Knowledge Base</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer__bottom">
-            © 2024 Navigator Kids AI™. All rights reserved.
+            © 2025 Navigator Kids AI™. All Rights Reserved.
         </div>
     </footer>
 
     <script>
-        function toggleMobileNav() {
-            const mobileNav = document.getElementById('mobileNav');
-            const toggle = document.querySelector('.navbar__toggle i');
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
             
-            mobileNav.classList.toggle('active');
-            
-            if (mobileNav.classList.contains('active')) {
+            if (menu.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
             } else {
@@ -707,6 +801,20 @@
                 toggle.classList.add('fa-bars');
             }
         }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
     </script>
 </body>
 </html>
