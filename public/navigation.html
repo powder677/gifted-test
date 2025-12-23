@@ -1,166 +1,61 @@
-<style>
-    /* * NAVIGATION STYLES - Updated for Navigator Kids AI™
-     * Uses new --color-primary (Navy) and --color-highlight (Teal) variables
-     */
-    
-    .navbar {
-        background-color: #FFFFFF; /* Clean White */
-        border-bottom: 1px solid rgba(27, 54, 93, 0.1); /* Navy tint border */
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(27, 54, 93, 0.05);
-        font-family: var(--font-header);
-    }
-
-    .navbar-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 15px 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo a {
-        font-family: var(--font-header);
-        font-size: 1.4rem;
-        font-weight: 800;
-        color: var(--color-primary); /* Navy */
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    /* Icon for logo (optional, using font-awesome) */
-    .logo i {
-        color: var(--color-highlight); /* Teal icon */
-    }
-
-    .desktop-nav .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 25px;
-        margin: 0;
-        padding: 0;
-        align-items: center;
-    }
-
-    .desktop-nav .nav-links a {
-        color: var(--color-text);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: color 0.2s ease;
-    }
-
-    .desktop-nav .nav-links a:hover {
-        color: var(--color-highlight); /* Teal hover */
-    }
-
-    /* Primary Action Button (Reset Kit) */
-    .desktop-nav .nav-links a.nav-btn-primary {
-        background-color: var(--color-highlight); /* Teal */
-        color: white !important;
-        padding: 10px 20px;
-        border-radius: var(--border-radius);
-        box-shadow: 0 4px 6px rgba(42, 157, 143, 0.2);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .desktop-nav .nav-links a.nav-btn-primary:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 6px 12px rgba(42, 157, 143, 0.3);
-    }
-
-    /* Mobile Menu Styles */
-    .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: var(--color-primary);
-        padding: 0;
-    }
-
-    .mobile-nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #FFFFFF;
-        position: absolute;
-        width: 100%;
-        top: 100%;
-        left: 0;
-        box-shadow: 0 4px 10px rgba(27, 54, 93, 0.1);
-        z-index: 999;
-        border-top: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .mobile-nav-links.active {
-        display: flex;
-    }
-
-    .mobile-nav-links a {
-        padding: 15px 24px;
-        text-decoration: none;
-        color: var(--color-primary);
-        font-weight: 600;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    @media (max-width: 900px) {
-        .desktop-nav { display: none; }
-        .menu-toggle { display: block; }
-    }
-</style>
-
 <header class="navbar">
     <div class="navbar-container">
         <div class="logo">
-            <a href="index.html"><i class="fas fa-compass"></i> Navigator Kids AI™</a>
+            <a href="index.html">
+                <i class="fas fa-compass"></i>
+                Navigator <span>Kids AI™</span>
+            </a>
         </div>
+        
         <nav class="desktop-nav">
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                <li><a href="resources.html">Knowledge Base</a></li>
-                <li><a href="mission-control-preview.html" class="nav-btn-primary">Get Emergency Reset Kit</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
             </ul>
         </nav>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-            ☰
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
         </button>
     </div>
+    
+    <nav class="mobile-nav" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="gifted-assessment-tool.html">AI Assessment</a>
+        <a href="resources.html">Resources</a>
+        <a href="methodology.html">Get Started</a>
+    </nav>
 </header>
 
-<nav class="mobile-nav-links" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="gifted-assessment-tool.html">AI Assessment</a>
-    <a href="resources.html">Knowledge Base</a>
-    <a href="mission-control-preview.html">Get Emergency Reset Kit</a>
-</nav>
-
 <script>
-    // Mobile menu toggle logic
-    function initNav() {
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuToggle = document.getElementById('menuToggle');
+    function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const toggle = document.querySelector('.menu-toggle i');
+        menu.classList.toggle('active');
         
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                menuToggle.innerHTML = mobileMenu.classList.contains('active') ? '✖' : '☰';
-            });
+        if (menu.classList.contains('active')) {
+            toggle.classList.remove('fa-bars');
+            toggle.classList.add('fa-times');
+        } else {
+            toggle.classList.remove('fa-times');
+            toggle.classList.add('fa-bars');
         }
     }
-    if (document.readyState !== 'loading') {
-        initNav();
-    } else {
-        document.addEventListener('DOMContentLoaded', initNav);
-    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const menu = document.getElementById('mobileMenu');
+        const toggle = document.querySelector('.menu-toggle');
+        
+        if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            const icon = toggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
 </script>
