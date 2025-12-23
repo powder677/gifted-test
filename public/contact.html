@@ -25,6 +25,7 @@
             --color-background-warm: #FFFBF5;
             
             --border-radius: 8px;
+            --border-radius-lg: 12px; /* Standardized */
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
             --transition: all 0.2s ease;
@@ -56,17 +57,19 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 16px 0;
             box-shadow: var(--shadow-sm);
         }
 
-        .navbar__inner {
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar__logo {
+        .logo a {
             font-family: 'Inter', sans-serif;
             font-size: 1.3rem;
             font-weight: 800;
@@ -75,16 +78,16 @@
             align-items: center;
             gap: 10px;
         }
-        .navbar__logo i, .navbar__logo span { color: var(--color-highlight); }
+        .logo i, .logo span { color: var(--color-highlight); }
 
-        .nav-links {
+        .desktop-nav .nav-links {
             display: flex;
             gap: 32px;
             list-style: none;
             align-items: center;
         }
-        .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
-        .nav-links a:hover { color: var(--color-highlight); }
+        .desktop-nav .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
+        .desktop-nav .nav-links a:hover { color: var(--color-highlight); }
 
         .nav-btn-primary {
             background: var(--color-highlight);
@@ -98,7 +101,7 @@
             transform: translateY(-2px);
         }
 
-        .navbar__toggle {
+        .menu-toggle {
             display: none;
             background: none;
             border: none;
@@ -123,6 +126,10 @@
             border-bottom: 1px solid #f0f0f0;
             font-weight: 600;
         }
+        .mobile-nav a:hover {
+            background-color: var(--color-background);
+            color: var(--color-highlight);
+        }
         .mobile-nav a:last-child {
             background-color: var(--color-highlight);
             color: white;
@@ -133,8 +140,8 @@
         }
 
         @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .navbar__toggle { display: block; }
+            .desktop-nav { display: none; }
+            .menu-toggle { display: block; }
         }
 
         /* === CONTACT PAGE STYLES === */
@@ -151,7 +158,7 @@
         .contact-form {
             background: white;
             padding: 40px;
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-lg);
             box-shadow: var(--shadow-sm);
             border-top: 4px solid var(--color-highlight);
         }
@@ -211,7 +218,7 @@
             margin-top: 60px;
             background: var(--color-background-warm);
             padding: 40px;
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-lg);
             border-left: 4px solid var(--color-accent);
         }
 
@@ -234,14 +241,17 @@
         /* === STANDARD FOOTER === */
         .footer { background: #0f1f33; color: white; padding: 80px 0 40px; }
         .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-        .footer h4 { color: white; margin-bottom: 16px; }
-        .footer h5 { color: var(--color-accent); margin-bottom: 20px; }
-        .footer a { color: rgba(255,255,255,0.7); display: block; margin-bottom: 12px; }
-        .footer a:hover { color: white; }
-        .footer__bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; font-size: 0.9rem; opacity: 0.6; }
+        .footer h4 { color: var(--color-accent); margin-bottom: 16px; font-size: 1.1rem; }
+        .footer p { opacity: 0.75; font-size: 0.95rem; }
+        .footer h5 { color: var(--color-accent); margin-bottom: 16px; font-size: 1rem; }
+        .footer ul { list-style: none; }
+        .footer li { margin-bottom: 12px; }
+        .footer a { color: rgba(255,255,255,0.75); font-size: 0.95rem; transition: var(--transition); }
+        .footer a:hover { color: var(--color-accent); }
+        .footer__bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; font-size: 0.85rem; opacity: 0.6; }
         
         @media (max-width: 768px) {
-            .footer__grid { grid-template-columns: 1fr; }
+            .footer__grid { grid-template-columns: 1fr; gap: 40px; }
             .contact-form { padding: 24px; }
         }
     </style>
@@ -249,14 +259,16 @@
 
 <body>
 
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar__inner">
-                <a href="index.html" class="navbar__logo">
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
                     <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>™
+                    Navigator <span>Kids AI</span>
                 </a>
-                
+            </div>
+            
+            <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -264,11 +276,11 @@
                     <li><a href="resources.html">Resources</a></li>
                     <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
                 </ul>
+            </nav>
 
-                <button class="navbar__toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
         
         <nav class="mobile-nav" id="mobileMenu">
@@ -278,7 +290,7 @@
             <a href="resources.html">Resources</a>
             <a href="methodology.html">Get Started</a>
         </nav>
-    </nav>
+    </header>
 
     <div class="contact-layout">
         <div class="page-header">
@@ -327,7 +339,7 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <h4><i class="fas fa-compass"></i> Navigator Kids AI™</h4>
+                    <h4>Navigator Kids AI™</h4>
                     <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
@@ -344,13 +356,13 @@
                     <h5>Support</h5>
                     <ul>
                         <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer__bottom">
-                © 2024 Navigator Kids AI™. All rights reserved.
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -358,7 +370,7 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.navbar__toggle i');
+            const toggle = document.querySelector('.menu-toggle i');
             menu.classList.toggle('active');
             
             if (menu.classList.contains('active')) {
@@ -369,6 +381,30 @@
                 toggle.classList.add('fa-bars');
             }
         }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.menu-toggle i');
+                menu.classList.remove('active');
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            });
+        });
     </script>
 </body>
 </html>
