@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Welcome to Navigator! | Navigator Kids AI™</title>
+   <meta name="description" content="You're in! Complete these 3 steps to unlock your child's personalized Navigator Plan.">
+
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   <style>
+      :root {
+         --color-primary: #1B365D;
+         --color-primary-dark: #132845;
+         --color-primary-light: #2A4A7A;
+         --color-secondary: #FFFFFF;
+         --color-accent: #E9C46A;
+         --color-accent-light: #F4D78A;
+         --color-highlight: #2A9D8F;
+         --color-highlight-dark: #238579;
+         --color-highlight-light: #E8F4F2;
+         --color-text: #2F2F2F;
+         --color-text-muted: #666666;
+         --color-background: #F4F6F8;
+         --color-background-warm: #FFFBF5;
+         --color-success: #22c55e;
+         --color-success-light: #f0fdf4;
+
+         --border-radius: 8px;
+         --border-radius-lg: 16px;
+         --border-radius-xl: 24px;
+         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+         --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+         --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+         --transition: all 0.3s ease;
+      }
+
+      *,
+      *::before,
+      *::after {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
+      }
+
+      body {
+         font-family: 'Lato', -apple-system, sans-serif;
+         background: linear-gradient(180deg, var(--color-highlight-light) 0%, var(--color-background) 100%);
+         color: var(--color-text);
+         line-height: 1.7;
+         min-height: 100vh;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+         font-family: 'Inter', sans-serif;
+         color: var(--color-primary);
+         line-height: 1.3;
+      }
+
+      a {
+         text-decoration: none;
+         color: inherit;
+      }
+
+      /* Header */
+      .header {
+         background: var(--color-secondary);
+         padding: 20px 24px;
+         box-shadow: var(--shadow-sm);
+      }
+
+      .header__inner {
+         max-width: 800px;
+         margin: 0 auto;
+         display: flex;
+         justify-content: center;
+      }
+
+      .logo {
+         font-family: 'Inter', sans-serif;
+         font-size: 1.3rem;
+         font-weight: 800;
+         color: var(--color-primary);
+         display: flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .logo i {
+         color: var(--color-highlight);
+      }
+
+      .logo span {
+         color: var(--color-highlight);
+      }
+
+      /* Main Content */
+      .main {
+         max-width: 800px;
+         margin: 0 auto;
+         padding: 60px 24px 100px;
+      }
+
+      /* Welcome Hero */
+      .welcome-hero {
+         text-align: center;
+         margin-bottom: 60px;
+      }
+
+      .welcome-badge {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: var(--color-success-light);
+         color: var(--color-success);
+         padding: 10px 20px;
+         border-radius: 100px;
+         font-weight: 700;
+         font-size: 0.9rem;
+         margin-bottom: 24px;
+         border: 2px solid var(--color-success);
+      }
+
+      .welcome-badge i {
+         font-size: 1.1rem;
+      }
+
+      .welcome-hero h1 {
+         font-size: clamp(2rem, 5vw, 2.75rem);
+         margin-bottom: 16px;
+      }
+
+      .welcome-hero h1 span {
+         color: var(--color-highlight);
+      }
+
+      .welcome-hero p {
+         font-size: 1.15rem;
+         color: var(--color-text-muted);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      /* Steps Container */
+      .steps-container {
+         background: var(--color-secondary);
+         border-radius: var(--border-radius-xl);
+         box-shadow: var(--shadow-lg);
+         overflow: hidden;
+      }
+
+      .steps-header {
+         background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+         color: white;
+         padding: 32px;
+         text-align: center;
+      }
+
+      .steps-header h2 {
+         color: white;
+         font-size: 1.5rem;
+         margin-bottom: 8px;
+      }
+
+      .steps-header p {
+         opacity: 0.9;
+         font-size: 1rem;
+      }
+
+      /* Individual Steps */
+      .steps {
+         padding: 16px;
+      }
+
+      .step {
+         display: grid;
+         grid-template-columns: auto 1fr auto;
+         gap: 24px;
+         align-items: center;
+         padding: 28px;
+         background: var(--color-background);
+         border-radius: var(--border-radius-lg);
+         margin-bottom: 16px;
+         transition: var(--transition);
+         border: 2px solid transparent;
+      }
+
+      .step:hover {
+         border-color: var(--color-highlight);
+         transform: translateX(4px);
+      }
+
+      .step:last-child {
+         margin-bottom: 0;
+      }
+
+      .step__number {
+         width: 56px;
+         height: 56px;
+         background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+         color: white;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-family: 'Inter', sans-serif;
+         font-size: 1.5rem;
+         font-weight: 800;
+      }
+
+      .step__content h3 {
+         font-size: 1.2rem;
+         margin-bottom: 6px;
+         color: var(--color-primary);
+      }
+
+      .step__content p {
+         color: var(--color-text-muted);
+         font-size: 0.95rem;
+         margin-bottom: 8px;
+      }
+
+      .step__meta {
+         display: flex;
+         gap: 16px;
+         font-size: 0.85rem;
+      }
+
+      .step__meta span {
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         color: var(--color-text-muted);
+      }
+
+      .step__meta i {
+         color: var(--color-highlight);
+      }
+
+      .step__action {
+         flex-shrink: 0;
+      }
+
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         padding: 14px 24px;
+         border-radius: var(--border-radius);
+         font-weight: 700;
+         font-size: 0.95rem;
+         transition: var(--transition);
+         cursor: pointer;
+         border: none;
+      }
+
+      .btn--primary {
+         background: var(--color-highlight);
+         color: white;
+      }
+
+      .btn--primary:hover {
+         background: var(--color-highlight-dark);
+         transform: translateY(-2px);
+      }
+
+      .btn--secondary {
+         background: var(--color-secondary);
+         color: var(--color-primary);
+         border: 2px solid var(--color-primary);
+      }
+
+      .btn--secondary:hover {
+         background: var(--color-primary);
+         color: white;
+      }
+
+      @media (max-width: 700px) {
+         .step {
+            grid-template-columns: 1fr;
+            text-align: center;
+         }
+
+         .step__number {
+            margin: 0 auto;
+         }
+
+         .step__meta {
+            justify-content: center;
+         }
+
+         .step__action {
+            width: 100%;
+         }
+
+         .btn {
+            width: 100%;
+            justify-content: center;
+         }
+      }
+
+      /* Important Note */
+      .important-note {
+         background: var(--color-background-warm);
+         border: 2px solid var(--color-accent);
+         border-radius: var(--border-radius-lg);
+         padding: 24px 32px;
+         margin-top: 40px;
+         display: flex;
+         gap: 20px;
+         align-items: flex-start;
+      }
+
+      .important-note__icon {
+         width: 48px;
+         height: 48px;
+         background: var(--color-accent);
+         color: var(--color-primary);
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 1.25rem;
+         flex-shrink: 0;
+      }
+
+      .important-note h4 {
+         font-size: 1.1rem;
+         margin-bottom: 8px;
+         color: var(--color-primary);
+      }
+
+      .important-note p {
+         color: var(--color-text-muted);
+         font-size: 0.95rem;
+         margin: 0;
+      }
+
+      @media (max-width: 500px) {
+         .important-note {
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+         }
+      }
+
+      /* Help Box */
+      .help-box {
+         margin-top: 40px;
+         text-align: center;
+         padding: 32px;
+         background: var(--color-secondary);
+         border-radius: var(--border-radius-lg);
+         box-shadow: var(--shadow-sm);
+      }
+
+      .help-box h4 {
+         font-size: 1.1rem;
+         margin-bottom: 12px;
+      }
+
+      .help-box p {
+         color: var(--color-text-muted);
+         margin-bottom: 16px;
+      }
+
+      .help-box a {
+         color: var(--color-highlight);
+         font-weight: 700;
+      }
+
+      .help-box a:hover {
+         text-decoration: underline;
+      }
+
+      /* Checklist Preview */
+      .checklist-preview {
+         margin-top: 40px;
+         background: var(--color-secondary);
+         border-radius: var(--border-radius-lg);
+         padding: 32px;
+         box-shadow: var(--shadow-sm);
+      }
+
+      .checklist-preview h4 {
+         text-align: center;
+         margin-bottom: 24px;
+         font-size: 1.1rem;
+      }
+
+      .checklist-item {
+         display: flex;
+         align-items: center;
+         gap: 16px;
+         padding: 16px 0;
+         border-bottom: 1px solid var(--color-background);
+      }
+
+      .checklist-item:last-child {
+         border-bottom: none;
+      }
+
+      .checklist-item__checkbox {
+         width: 28px;
+         height: 28px;
+         border: 2px solid #ddd;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-shrink: 0;
+         color: transparent;
+      }
+
+      .checklist-item--complete .checklist-item__checkbox {
+         background: var(--color-success);
+         border-color: var(--color-success);
+         color: white;
+      }
+
+      .checklist-item__text {
+         flex-grow: 1;
+      }
+
+      .checklist-item__text strong {
+         display: block;
+         margin-bottom: 2px;
+      }
+
+      .checklist-item__text span {
+         font-size: 0.85rem;
+         color: var(--color-text-muted);
+      }
+
+      /* Footer */
+      .footer {
+         text-align: center;
+         padding: 40px 24px;
+         font-size: 0.9rem;
+         color: var(--color-text-muted);
+      }
+
+      .footer a {
+         color: var(--color-highlight);
+      }
+   </style>
+</head>
+
+<body>
+
+   <header class="header">
+      <div class="header__inner">
+         <div class="logo">
+            <i class="fas fa-compass"></i>
+            Navigator <span>Kids AI</span>™
+         </div>
+      </div>
+   </header>
+
+   <main class="main">
+      <!-- Welcome Hero -->
+      <div class="welcome-hero">
+         <div class="welcome-badge">
+            <i class="fas fa-check-circle"></i>
+            Payment Confirmed!
+         </div>
+         <h1>Welcome to <span>Navigator</span>!</h1>
+         <p>You've taken the most important step toward understanding your child's unique brain. Now let's build their personalized plan.</p>
+      </div>
+
+      <!-- Steps Container -->
+      <div class="steps-container">
+         <div class="steps-header">
+            <h2>Complete These 3 Steps</h2>
+            <p>Each step takes just a few minutes — do them in order for best results.</p>
+         </div>
+
+         <div class="steps">
+            <!-- Step 1 -->
+            <div class="step">
+               <div class="step__number">1</div>
+               <div class="step__content">
+                  <h3>Tell Us About Your Child</h3>
+                  <p>We'll personalize everything — their name, interests, friends, favorite games, and more.</p>
+                  <div class="step__meta">
+                     <span><i class="fas fa-clock"></i> 5 minutes</span>
+                     <span><i class="fas fa-user"></i> Parent completes</span>
+                  </div>
+               </div>
+               <div class="step__action">
+                  <a href="child-intake-form.html" class="btn btn--primary">
+                     Start <i class="fas fa-arrow-right"></i>
+                  </a>
+               </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+               <div class="step__number">2</div>
+               <div class="step__content">
+                  <h3>Complete Your Parent Assessment</h3>
+                  <p>Share your observations about your child's patterns, challenges, and strengths.</p>
+                  <div class="step__meta">
+                     <span><i class="fas fa-clock"></i> 15-20 minutes</span>
+                     <span><i class="fas fa-user"></i> Parent completes</span>
+                  </div>
+               </div>
+               <div class="step__action">
+                  <a href="gifted-assessment-tool.html" class="btn btn--primary">
+                     Start <i class="fas fa-arrow-right"></i>
+                  </a>
+               </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+               <div class="step__number">3</div>
+               <div class="step__content">
+                  <h3>Child's Self-Assessment</h3>
+                  <p>A fun, kid-friendly quiz your child will actually enjoy! Share this step with them.</p>
+                  <div class="step__meta">
+                     <span><i class="fas fa-clock"></i> 10 minutes</span>
+                     <span><i class="fas fa-child"></i> Child completes</span>
+                  </div>
+               </div>
+               <div class="step__action">
+                  <a href="child-self-assessment.html" class="btn btn--primary">
+                     Start <i class="fas fa-arrow-right"></i>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Important Note -->
+      <div class="important-note">
+         <div class="important-note__icon">
+            <i class="fas fa-lightbulb"></i>
+         </div>
+         <div>
+            <h4>Use the Same Email on Each Form</h4>
+            <p>Enter your email address at the start of each form so we can connect all three submissions and build your complete family profile. This is how we match your responses together!</p>
+         </div>
+      </div>
+
+      <!-- Checklist Preview -->
+      <div class="checklist-preview">
+         <h4>Your Onboarding Checklist</h4>
+
+         <div class="checklist-item">
+            <div class="checklist-item__checkbox">
+               <i class="fas fa-check"></i>
+            </div>
+            <div class="checklist-item__text">
+               <strong>Child Profile (Intake Form)</strong>
+               <span>Names, interests, family members, current challenges</span>
+            </div>
+         </div>
+
+         <div class="checklist-item">
+            <div class="checklist-item__checkbox">
+               <i class="fas fa-check"></i>
+            </div>
+            <div class="checklist-item__text">
+               <strong>Parent Assessment</strong>
+               <span>Your observations about their patterns and behaviors</span>
+            </div>
+         </div>
+
+         <div class="checklist-item">
+            <div class="checklist-item__checkbox">
+               <i class="fas fa-check"></i>
+            </div>
+            <div class="checklist-item__text">
+               <strong>Child Self-Assessment</strong>
+               <span>How your child sees themselves (often surprising insights!)</span>
+            </div>
+         </div>
+      </div>
+
+      <!-- Help Box -->
+      <div class="help-box">
+         <h4>Need Help?</h4>
+         <p>Questions about the assessments or having technical issues?</p>
+         <a href="mailto:support@navigatorkidsai.com">support@navigatorkidsai.com</a>
+      </div>
+   </main>
+
+   <footer class="footer">
+      <p>© 2025 Navigator Kids AI™ · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+   </footer>
+
+</body>
+
+</html>
