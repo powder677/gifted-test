@@ -541,6 +541,7 @@
             const [showResults, setShowResults] = useState(false);
             const [stars, setStars] = useState([]);
             const [showIntro, setShowIntro] = useState(true);
+            const [email, setEmail] = useState("");
 
             const currentSection = SECTIONS[currentSectionIndex];
 
@@ -602,6 +603,7 @@
             const generateReport = () => {
                 let report = "NAVIGATOR KIDS AI - CHILD SELF-ASSESSMENT REPORT\n";
                 report += "================================================\n\n";
+                report += `Account Email: ${email}\n\n`;
                 
                 SECTIONS.forEach((section, idx) => {
                     const stats = calculateSectionScore(idx);
@@ -611,9 +613,18 @@
                 });
 
                 report += "RAW DATA (JSON Format):\n";
-                report += JSON.stringify(answers);
+                report += JSON.stringify({ email, answers });
                 
                 return report;
+            };
+
+            const startAssessment = (e) => {
+                e.preventDefault();
+                if (!email || !email.includes('@')) {
+                    alert("Please enter a valid email address so we can keep your assessments together!");
+                    return;
+                }
+                setShowIntro(false);
             };
 
             // Intro Screen
@@ -629,8 +640,22 @@
                                 <p className="text-xl mb-8" style={{ color: '#2F2F2F', fontFamily: 'Lato, sans-serif' }}>
                                     Hi there! This is a simple assessment to learn about how your unique brain works. There are no right or wrong answers!
                                 </p>
+
+                                <div className="max-w-md mx-auto mb-8">
+                                    <label className="block text-sm font-bold text-navy mb-2 text-left px-2">Account Email</label>
+                                    <input 
+                                        type="email" 
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Enter account email"
+                                        className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-teal outline-none transition-all"
+                                        required
+                                    />
+                                    <p className="text-xs text-slate-500 mt-2 text-left px-2">Use the same email as your other assessments to stay connected.</p>
+                                </div>
+
                                 <button
-                                    onClick={() => setShowIntro(false)}
+                                    onClick={startAssessment}
                                     className="btn-primary"
                                 >
                                     Let's Begin! <i className="fas fa-arrow-right"></i>
