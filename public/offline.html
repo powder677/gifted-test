@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline | Navigator Kids AI™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .offline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            padding: 24px;
+        }
+        .offline-icon { font-size: 4rem; margin-bottom: 24px; }
+        .offline-title { color: var(--color-primary); margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container offline-container">
+        <div class="offline-icon">📡</div>
+        <h1 class="offline-title">Connection Lost</h1>
+        <p>It looks like you're offline. Don't worry—your "Emergency Reset Kit" and other downloaded resources are still available.</p>
+        <button onclick="window.location.reload()" class="btn btn--primary">Try Reconnecting</button>
+    </div>
+</body>
+</html>
