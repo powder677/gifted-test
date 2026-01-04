@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigator Kids AI - Icon Generator</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f0f0f0; }
+        .preview { margin: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border-radius: 20%; }
+        button { padding: 15px 30px; font-size: 18px; background: #1B365D; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        button:hover { background: #2A9D8F; }
+        #status { margin-top: 20px; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>PWA Icon Generator</h1>
+    <p>This tool will generate all required icon sizes for your manifest.</p>
+    
+    <svg id="masterIcon" width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+        <rect width="1024" height="1024" fill="#1B365D"/>
+        
+        <circle cx="512" cy="512" r="360" stroke="#2A9D8F" stroke-width="60" fill="none"/>
+        
+        <circle cx="512" cy="512" r="280" stroke="#132845" stroke-width="20" fill="none"/>
+        
+        <path d="M512 180 L590 434 L844 512 L590 590 L512 844 L434 590 L180 512 L434 434 Z" fill="#E9C46A"/>
+        
+        <circle cx="512" cy="512" r="40" fill="#FFFFFF"/>
+        
+        <rect x="492" y="100" width="40" height="40" fill="#2A9D8F" rx="5"/>
+        <rect x="492" y="884" width="40" height="40" fill="#2A9D8F" rx="5"/>
+        <rect x="100" y="492" width="40" height="40" fill="#2A9D8F" rx="5"/>
+        <rect x="884" y="492" width="40" height="40" fill="#2A9D8F" rx="5"/>
+    </svg>
+
+    <canvas id="previewCanvas" width="192" height="192" class="preview"></canvas>
+    <br><br>
+    <button onclick="generateAllIcons()">⬇️ Download All Icons</button>
+    <div id="status"></div>
+
+    <script>
+        // Preview the 192px version on load
+        window.onload = function() {
+            renderIcon(192, 'previewCanvas');
+        };
+
+        function renderIcon(size, canvasId) {
+            const svg = document.getElementById('masterIcon');
+            const canvas = document.getElementById(canvasId || document.createElement('canvas'));
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const img = new Image();
+            img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+            
+            return new Promise((resolve) => {
+                img.onload = () => {
+                    ctx.drawImage(img, 0, 0, size, size);
+                    resolve(canvas.toDataURL('image/png'));
+                };
+            });
+        }
+
+        async function generateAllIcons() {
+            const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+            const status = document.getElementById('status');
+            status.innerHTML = "Generating...";
+
+            for (let size of sizes) {
+                const dataUrl = await renderIcon(size);
+                const link = document.createElement('a');
+                link.download = `icon-${size}x${size}.png`;
+                link.href = dataUrl;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                await new Promise(r => setTimeout(r, 200)); // Slight delay to prevent browser blocking
+            }
+            
+            // Also generate the maskable versions (same icon is fine for this design)
+            const maskableSizes = [192, 512];
+            for (let size of maskableSizes) {
+                const dataUrl = await renderIcon(size);
+                const link = document.createElement('a');
+                link.download = `icon-maskable-${size}x${size}.png`; // Note filename change
+                link.href = dataUrl;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                await new Promise(r => setTimeout(r, 200));
+            }
+
+            status.innerHTML = "✅ All 10 icons downloaded! Move them to public/icons/";
+        }
+    </script>
+</body>
+</html>
