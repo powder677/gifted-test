@@ -23,15 +23,70 @@ app.use(express.static('public')); // Serve static files
 //   connectionString: process.env.DATABASE_URL,
 // });
 
-// Email setup (example with SendGrid)
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// Email setup (Optional - Requires 'npm install nodemailer')
+// const nodemailer = require('nodemailer'); 
 
 // Routes
 
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// ---------------------------------------------------------
+// NEW: Handle Contact Form Submission
+// ---------------------------------------------------------
+app.post('/api/contact', (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  // 1. Log to Console (So you can see it immediately)
+  console.log('\n=============================');
+  console.log('📬 NEW CONTACT FORM RECEIVED');
+  console.log('=============================');
+  console.log(`From:    ${name} (${email})`);
+  console.log(`Subject: ${subject}`);
+  console.log(`Message: ${message}`);
+  console.log('=============================\n');
+
+  // 2. (Optional) Email it to yourself
+  // sendEmailToJason(name, email, subject, message);
+
+  res.json({ success: true, message: 'Message received' });
+});
+
+// ---------------------------------------------------------
+// UPDATED: Save Assessment Data
+// ---------------------------------------------------------
+app.post('/api/save-assessment', async (req, res) => {
+  try {
+    const { userId, childId, assessmentType, responses, childName, parentEmail, answers } = req.body;
+
+    // Handle both formats (the full assessment or the quick quiz)
+    const pEmail = parentEmail || 'Anonymous';
+    const cName = childName || 'Unknown Child';
+    const data = answers || responses;
+
+    console.log('\n=============================');
+    console.log('🧠 NEW ASSESSMENT COMPLETED');
+    console.log('=============================');
+    console.log(`Parent: ${pEmail}`);
+    console.log(`Child:  ${cName}`);
+    console.log('-----------------------------');
+    console.log('ANSWERS:');
+    console.log(JSON.stringify(data, null, 2));
+    console.log('=============================\n');
+
+    // For demo purposes generate a fake ID
+    const assessmentId = Date.now();
+
+    res.json({
+      success: true,
+      assessmentId: assessmentId
+    });
+  } catch (error) {
+    console.error('Save assessment error:', error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // Create payment intent
@@ -86,57 +141,13 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, re
   res.json({received: true});
 });
 
-// Save assessment data
-app.post('/api/save-assessment', async (req, res) => {
-  try {
-    const { userId, childId, assessmentType, responses } = req.body;
-
-    // TODO: Save to database
-    // const result = await pool.query(
-    //   'INSERT INTO assessments (user_id, child_id, type, data) VALUES ($1, $2, $3, $4) RETURNING id',
-    //   [userId, childId, assessmentType, JSON.stringify(responses)]
-    // );
-
-    // For demo purposes
-    const assessmentId = Date.now();
-
-    res.json({
-      success: true,
-      assessmentId: assessmentId
-    });
-  } catch (error) {
-    console.error('Save assessment error:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
 // Generate report
 app.post('/api/generate-report', async (req, res) => {
   try {
     const { assessmentId, email } = req.body;
-
-    // TODO: Fetch assessment data from database
-    // const assessment = await pool.query(
-    //   'SELECT * FROM assessments WHERE id = $1',
-    //   [assessmentId]
-    // );
-
-    // TODO: Generate PDF report
-    // const pdfBuffer = await generatePDFReport(assessment.rows[0]);
-
-    // TODO: Send email with report
-    // await sgMail.send({
-    //   to: email,
-    //   from: 'reports@giftedinsights.com',
-    //   subject: 'Your Gifted Assessment Report',
-    //   text: 'Please find your personalized assessment report attached.',
-    //   attachments: [{
-    //     content: pdfBuffer.toString('base64'),
-    //     filename: 'gifted-assessment-report.pdf',
-    //     type: 'application/pdf',
-    //   }]
-    // });
-
+    
+    // TODO: Generate and send report
+    
     res.json({
       success: true,
       message: 'Report sent successfully'
@@ -151,18 +162,6 @@ app.post('/api/generate-report', async (req, res) => {
 app.post('/api/create-account', async (req, res) => {
   try {
     const { email, firstName, lastName, childName, childAge } = req.body;
-
-    // TODO: Create user in database
-    // const user = await pool.query(
-    //   'INSERT INTO users (email, first_name, last_name) VALUES ($1, $2, $3) RETURNING id',
-    //   [email, firstName, lastName]
-    // );
-
-    // TODO: Create child profile
-    // const child = await pool.query(
-    //   'INSERT INTO children (user_id, name, age) VALUES ($1, $2, $3) RETURNING id',
-    //   [user.rows[0].id, childName, childAge]
-    // );
 
     // For demo purposes
     const userId = Date.now();
@@ -183,12 +182,6 @@ app.post('/api/create-account', async (req, res) => {
 app.get('/api/results/:assessmentId', async (req, res) => {
   try {
     const { assessmentId } = req.params;
-
-    // TODO: Fetch from database
-    // const result = await pool.query(
-    //   'SELECT * FROM assessments WHERE id = $1',
-    //   [assessmentId]
-    // );
 
     // Demo response
     const mockResults = {
@@ -241,22 +234,10 @@ app.listen(PORT, () => {
   console.log('Environment:', process.env.NODE_ENV || 'development');
 });
 
-// Utility functions
-
-async function generatePDFReport(assessmentData) {
-  // TODO: Implement PDF generation
-  // const puppeteer = require('puppeteer');
-  // const browser = await puppeteer.launch();
-  // const page = await browser.newPage();
-  // ...
-  return Buffer.from('Sample PDF content');
+// Helper function placeholder
+async function sendEmailToJason(name, email, subject, message) {
+    // To enable this, you need to install nodemailer and configure a transport
+    // console.log("Would send email here...");
 }
 
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, shutting down gracefully');
-  // Close database connections, etc.
-  process.exit(0);
-});
-
-module.exports = app; // For testing
+module.exports = app;
