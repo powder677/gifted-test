@@ -837,7 +837,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="header-content">
             <a href="index.html" class="logo">
@@ -854,7 +853,6 @@
     </header>
 
     <div class="container">
-        <!-- Welcome Screen -->
         <div id="welcomeScreen" class="welcome-screen">
             <div class="welcome-icon">🧠</div>
             <h1>Discover Your Child's<br>Brain Profile</h1>
@@ -880,7 +878,6 @@
             </button>
         </div>
 
-        <!-- Quiz Screen -->
         <div id="quizScreen" class="hidden">
             <div class="progress-container">
                 <div class="progress-header">
@@ -893,11 +890,9 @@
             </div>
 
             <div class="question-card" id="questionCard">
-                <!-- Question content injected by JS -->
-            </div>
+                </div>
         </div>
 
-        <!-- Email Capture Screen -->
         <div id="emailScreen" class="email-screen hidden">
             <div class="email-card">
                 <div class="email-icon">✨</div>
@@ -921,7 +916,6 @@
             </div>
         </div>
 
-        <!-- Results Screen -->
         <div id="resultsScreen" class="results-screen hidden">
             <div class="results-header">
                 <h2><span id="childNameDisplay" class="child-name-display"></span>'s Brain Profile</h2>
@@ -929,10 +923,8 @@
             </div>
 
             <div class="trait-grid" id="traitGrid">
-                <!-- Trait cards injected by JS -->
-            </div>
+                </div>
 
-            <!-- Primary CTA: Full Assessment -->
             <div class="cta-box">
                 <div class="cta-badge">Recommended</div>
                 <h3>Want the Complete Picture?</h3>
@@ -962,7 +954,6 @@
 
             <div class="or-divider">or start here</div>
 
-            <!-- Secondary CTA: Reset Kit -->
             <div class="cta-box-secondary">
                 <div class="cta-badge">Quick Win</div>
                 <h3>Need Help With Meltdowns Now?</h3>
@@ -1174,18 +1165,39 @@
             document.getElementById('emailScreen').classList.remove('hidden');
         }
 
-        function submitEmail(e) {
+        // --- UPDATED SUBMISSION FUNCTION ---
+        async function submitEmail(e) {
             e.preventDefault();
             childName = document.getElementById('childName').value;
             parentEmail = document.getElementById('parentEmail').value;
 
-            // Store for later use (could send to backend here)
-            localStorage.setItem('screenerData', JSON.stringify({
+            const assessmentData = {
                 childName,
                 parentEmail,
                 answers,
                 completedAt: new Date().toISOString()
-            }));
+            };
+
+            // Send to backend
+            try {
+                const response = await fetch('/api/save-assessment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(assessmentData)
+                });
+                
+                if (response.ok) {
+                    console.log('Assessment sent to server successfully');
+                } else {
+                    console.error('Server returned error');
+                }
+            } catch (err) {
+                console.error('Failed to send assessment:', err);
+                // We don't stop the UI flow here because we want the user to see their results regardless of server status
+            }
+
+            // Store for local persistence as well
+            localStorage.setItem('screenerData', JSON.stringify(assessmentData));
 
             showResults();
         }
