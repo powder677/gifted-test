@@ -1306,29 +1306,56 @@
             }
         });
 
-        // Form submission handler
-        document.getElementById('downloadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Hide form, show thank you
-            document.getElementById('formState').classList.add('hidden');
-            document.getElementById('thankYou').classList.add('active');
-            
-            // In production, you would send form data to your email service here
-            // Example: send to ConvertKit, Mailchimp, etc.
-        });
+        // --- NEW SHARED FUNCTION TO HANDLE LEADS ---
+        async function handleDownloadSubmission(formData, formId) {
+            // 1. Send data to server
+            try {
+                await fetch('/api/download-kit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                console.log('Lead captured successfully');
+            } catch (err) {
+                console.error('Error capturing lead:', err);
+                // We continue anyway so the user still gets their download
+            }
 
-        // Bottom form submission
-        document.getElementById('downloadFormBottom').addEventListener('submit', function(e) {
-            e.preventDefault();
+            // 2. UI Updates (Show Download Link)
+            // If it's the bottom form, scroll to top where the success message is
+            if (formId === 'downloadFormBottom') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
             
-            // Scroll to top and show download
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            setTimeout(function() {
+            // Wait a tiny bit for the scroll (or just immediately for top form)
+            setTimeout(() => {
                 document.getElementById('formState').classList.add('hidden');
                 document.getElementById('thankYou').classList.add('active');
-            }, 500);
+            }, formId === 'downloadFormBottom' ? 500 : 0);
+        }
+
+        // Top Form Submission
+        document.getElementById('downloadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                name: document.getElementById('parentName').value,
+                email: document.getElementById('email').value,
+                childAge: document.getElementById('childAge').value,
+                source: 'Top Form'
+            };
+            handleDownloadSubmission(formData, 'downloadForm');
+        });
+
+        // Bottom Form Submission
+        document.getElementById('downloadFormBottom').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                name: document.getElementById('parentName2').value,
+                email: document.getElementById('email2').value,
+                childAge: document.getElementById('childAge2').value,
+                source: 'Bottom Form'
+            };
+            handleDownloadSubmission(formData, 'downloadFormBottom');
         });
     </script>
 </body>
