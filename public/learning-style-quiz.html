@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Free Learning Style Quiz | Navigator Kids AI™</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Quiz Specific Styles */
+        body { background-color: #F4F6F8; }
+        
+        .header { background: white; border-bottom: 1px solid #e5e7eb; padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.1rem; color: #1B365D; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .logo span { color: #2A9D8F; }
+        .time-badge { background: rgba(42, 157, 143, 0.1); color: #238579; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+
+        .container { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
+
+        .welcome-screen { text-align: center; padding: 60px 0; }
+        .welcome-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #1B365D 0%, #2A9D8F 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; font-size: 2.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .welcome-screen h1 { font-size: 2.25rem; color: #1B365D; margin-bottom: 16px; font-weight: 800; }
+        .subtitle { font-size: 1.1rem; color: #666; max-width: 480px; margin: 0 auto 40px; }
+        
+        .welcome-features { display: flex; justify-content: center; gap: 32px; margin-bottom: 48px; flex-wrap: wrap; }
+        .feature { display: flex; align-items: center; gap: 8px; color: #666; font-size: 0.9rem; }
+        .feature-icon { width: 24px; height: 24px; background: #E9C46A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: #1B365D; }
+
+        .btn-primary { background: #2A9D8F; color: white; border: none; padding: 18px 48px; font-size: 1.1rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 16px rgba(42, 157, 143, 0.3); }
+        .btn-primary:hover { background: #238579; transform: translateY(-2px); }
+
+        .progress-container { margin-bottom: 32px; }
+        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .progress-bar { height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #2A9D8F 0%, #E9C46A 100%); transition: width 0.4s ease; }
+
+        .question-card { background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; animation: slideIn 0.4s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        
+        .question-header { background: #1B365D; padding: 24px 32px; display: flex; align-items: center; gap: 16px; }
+        .question-emoji { font-size: 2rem; background: rgba(255,255,255,0.15); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .question-category { color: #E9C46A; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .question-title { color: white; font-size: 0.95rem; font-weight: 500; opacity: 0.9; }
+        
+        .question-body { padding: 32px; }
+        .question-text { font-size: 1.35rem; color: #1B365D; line-height: 1.5; margin-bottom: 32px; font-weight: 600; }
+        
+        .options-grid { display: grid; gap: 12px; }
+        .option-btn { background: #F4F6F8; border: 2px solid #e5e7eb; border-radius: 12px; padding: 18px 24px; text-align: left; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 16px; width: 100%; font-family: inherit; font-size: 1rem; }
+        .option-btn:hover { border-color: #2A9D8F; background: rgba(42, 157, 143, 0.1); }
+        .option-btn.selected { border-color: #2A9D8F; background: rgba(42, 157, 143, 0.1); box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.15); }
+        
+        .option-indicator { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #e5e7eb; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .option-btn.selected .option-indicator { background: #2A9D8F; border-color: #2A9D8F; }
+        .option-btn.selected .option-indicator::after { content: '✓'; color: white; font-size: 0.8rem; font-weight: bold; }
+
+        .nav-footer { padding: 24px 32px; background: #F4F6F8; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; }
+        .btn-back { background: transparent; border: none; color: #666; font-weight: 600; cursor: pointer; padding: 12px 20px; font-size: 0.95rem; }
+        .btn-next { background: #1B365D; color: white; border: none; padding: 14px 32px; font-weight: 700; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+        .btn-next:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .hidden { display: none !important; }
+
+        /* Email Screen */
+        .email-card { background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 48px 40px; text-align: center; }
+        .email-icon { font-size: 2.5rem; margin-bottom: 24px; }
+        .form-input { width: 100%; padding: 14px 18px; font-size: 1rem; border: 2px solid #e5e7eb; border-radius: 10px; margin-bottom: 16px; }
+        .form-label { display: block; text-align: left; font-weight: 600; margin-bottom: 8px; color: #1B365D; }
+
+        /* Results Screen */
+        .results-header { text-align: center; margin-bottom: 40px; }
+        .trait-grid { display: grid; gap: 16px; margin-bottom: 40px; }
+        .trait-card { background: white; border-radius: 12px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 16px; }
+        .trait-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+        .trait-icon.high { background: #FFF3CD; } .trait-icon.moderate { background: #E0F2FE; } .trait-icon.low { background: #DCFCE7; }
+        
+        .trait-content { flex: 1; }
+        .trait-name { font-weight: 700; color: #1B365D; margin-bottom: 4px; }
+        .trait-bar { height: 6px; background: #e5e7eb; border-radius: 3px; margin-top: 8px; overflow: hidden; }
+        .trait-bar-fill { height: 100%; border-radius: 3px; }
+        .trait-bar-fill.high { background: #F59E0B; } .trait-bar-fill.moderate { background: #0EA5E9; } .trait-bar-fill.low { background: #22C55E; }
+
+        .cta-box { background: linear-gradient(135deg, #1B365D 0%, #2A4A7A 100%); border-radius: 16px; padding: 40px 32px; text-align: center; color: white; margin-bottom: 24px; }
+        .cta-badge { display: inline-block; background: #E9C46A; color: #1B365D; padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; }
+        .cta-price-amount { font-size: 2.5rem; font-weight: 800; color: white; }
+        .btn-cta { background: #E9C46A; color: #1B365D; border: none; padding: 18px 48px; font-size: 1.1rem; font-weight: 800; border-radius: 12px; cursor: pointer; width: 100%; margin-top: 20px; }
+        
+        .or-divider { display: flex; align-items: center; gap: 16px; margin: 24px 0; color: #666; font-size: 0.85rem; font-weight: 600; }
+        .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: #e5e7eb; }
+        
+        .cta-box-secondary { background: white; border-radius: 16px; padding: 32px; text-align: center; border: 2px solid rgba(42, 157, 143, 0.2); }
+        .btn-cta-secondary { background: #2A9D8F; color: white; border: none; padding: 14px 36px; font-size: 1rem; font-weight: 700; border-radius: 10px; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-compass"></i>
+                Navigator<span>Kids AI</span>™
+            </a>
+            <div class="time-badge">
+                <i class="fas fa-clock"></i> 2-min quiz
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="welcomeScreen" class="welcome-screen">
+            <div class="welcome-icon">🧠</div>
+            <h1>Discover Your Child's<br>Learning Profile</h1>
+            <p class="subtitle">
+                Answer 8 quick questions to uncover your child's unique thinking patterns — and get personalized insights in under 2 minutes.
+            </p>
+            <div class="welcome-features">
+                <div class="feature"><div class="feature-icon">✓</div> <span>8 targeted questions</span></div>
+                <div class="feature"><div class="feature-icon">✓</div> <span>Instant trait snapshot</span></div>
+                <div class="feature"><div class="feature-icon">✓</div> <span>100% free</span></div>
+            </div>
+            <button class="btn-primary" onclick="startQuiz()">
+                Start the Quiz →
+            </button>
+        </div>
+
+        <div id="quizScreen" class="hidden">
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span style="font-size:0.85rem; color:#666;">Progress</span>
+                    <span style="font-size:0.85rem; color:#1B365D; font-weight:700;"><span id="currentQ">1</span> of 8</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 12.5%"></div>
+                </div>
+            </div>
+
+            <div class="question-card" id="questionCard">
+                </div>
+        </div>
+
+        <div id="emailScreen" class="hidden" style="text-align:center; padding:40px 0;">
+            <div class="email-card">
+                <div class="email-icon">✨</div>
+                <h2 style="font-size:1.75rem; color:#1B365D; margin-bottom:12px;">Your Results Are Ready!</h2>
+                <p class="subtitle" style="margin-bottom:32px;">Enter your details to see your child's personalized Learning Profile.</p>
+                
+                <form class="email-form" onsubmit="submitEmail(event)" style="max-width:360px; margin:0 auto;">
+                    <div class="form-group" style="text-align:left; margin-bottom:16px;">
+                        <label class="form-label">Your Child's First Name</label>
+                        <input type="text" class="form-input" id="childName" placeholder="e.g., Emma" required>
+                    </div>
+                    <div class="form-group" style="text-align:left; margin-bottom:16px;">
+                        <label class="form-label">Your Email Address</label>
+                        <input type="email" class="form-input" id="parentEmail" placeholder="you@email.com" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%;">
+                        See My Results →
+                    </button>
+                    <p style="font-size:0.8rem; color:#999; margin-top:16px;">🔒 We respect your privacy. No spam.</p>
+                </form>
+            </div>
+        </div>
+
+        <div id="resultsScreen" class="hidden">
+            <div class="results-header">
+                <h2><span id="childNameDisplay" style="color:#2A9D8F;"></span>'s Learning Profile</h2>
+                <p class="subtitle">Based on your responses, here's a snapshot of key traits:</p>
+            </div>
+
+            <div class="trait-grid" id="traitGrid">
+                </div>
+
+            <div class="cta-box">
+                <div class="cta-badge">Recommended</div>
+                <h3>Want the Complete Picture?</h3>
+                <p>The Navigator Club membership gives you a deep dive into these traits plus weekly activities.</p>
+                <div class="cta-price">
+                    <div class="cta-price-amount">$99</div>
+                    <div style="font-size:0.9rem; opacity:0.8;">/month • Cancel anytime</div>
+                </div>
+                <button class="btn-cta" onclick="goToClub()">
+                    Join the Club →
+                </button>
+            </div>
+
+            <div class="or-divider">or start here</div>
+
+            <div class="cta-box-secondary">
+                <div class="cta-badge" style="background:rgba(42,157,143,0.1); color:#238579;">Quick Win</div>
+                <h3 style="color:#1B365D; font-size:1.25rem; margin-bottom:12px;">Need Help With Meltdowns Now?</h3>
+                <p style="color:#666; margin-bottom:20px;">Get our Calm-Down Kit — 3 proven scripts to de-escalate meltdowns in under 90 seconds.</p>
+                <div style="margin-bottom:16px;">
+                    <div style="font-size:2rem; font-weight:800; color:#2A9D8F;">FREE</div>
+                </div>
+                <button class="btn-cta-secondary" onclick="goToResetKit()">
+                    Get the Calm-Down Kit →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz Data - 8 questions mapping to trait clusters
+        const QUESTIONS = [
+            {
+                id: 'executive',
+                category: 'Executive Function',
+                emoji: '🎯',
+                question: 'When it\'s time to start homework or a chore, my child typically...',
+                options: [
+                    { label: 'Jumps right in without much prompting', score: 1 },
+                    { label: 'Needs a reminder but then gets started', score: 2 },
+                    { label: 'Delays and needs multiple reminders', score: 3 },
+                    { label: 'Actively avoids or melts down before starting', score: 4 }
+                ]
+            },
+            {
+                id: 'sensory',
+                category: 'Sensory Processing',
+                emoji: '🌡️',
+                question: 'How does your child react to busy, loud, or visually stimulating environments?',
+                options: [
+                    { label: 'Handles them easily with no issues', score: 1 },
+                    { label: 'Gets a little tired but manages okay', score: 2 },
+                    { label: 'Becomes noticeably stressed or irritable', score: 3 },
+                    { label: 'Shuts down, hides, or has meltdowns', score: 4 }
+                ]
+            },
+            {
+                id: 'emotional',
+                category: 'Emotional Intensity',
+                emoji: '💗',
+                question: 'When something upsets my child (even something small), they...',
+                options: [
+                    { label: 'Recover quickly and move on', score: 1 },
+                    { label: 'Feel it strongly but calm down with support', score: 2 },
+                    { label: 'Get stuck in the emotion for a while', score: 3 },
+                    { label: 'Experience intense, prolonged reactions', score: 4 }
+                ]
+            },
+            {
+                id: 'motivation',
+                category: 'Motivation Pattern',
+                emoji: '🚀',
+                question: 'My child\'s effort and engagement depends on...',
+                options: [
+                    { label: 'They work hard on most things equally', score: 1 },
+                    { label: 'They prefer interesting tasks but do required ones', score: 2 },
+                    { label: 'They only engage when the topic excites them', score: 3 },
+                    { label: 'Interest is everything — no interest means no effort', score: 4 }
+                ]
+            },
+            {
+                id: 'social',
+                category: 'Social Connection',
+                emoji: '🤝',
+                question: 'When it comes to friendships and social situations, my child...',
+                options: [
+                    { label: 'Makes friends easily and enjoys groups', score: 1 },
+                    { label: 'Has a few close friends and prefers small groups', score: 2 },
+                    { label: 'Struggles to connect with same-age peers', score: 3 },
+                    { label: 'Feels very different from other kids their age', score: 4 }
+                ]
+            },
+            {
+                id: 'perfectionism',
+                category: 'Self-Expectations',
+                emoji: '⭐',
+                question: 'When my child makes a mistake or doesn\'t do something perfectly...',
+                options: [
+                    { label: 'They shrug it off and try again', score: 1 },
+                    { label: 'They feel disappointed but keep going', score: 2 },
+                    { label: 'They get very upset or self-critical', score: 3 },
+                    { label: 'They may refuse to try again or avoid similar tasks', score: 4 }
+                ]
+            },
+            {
+                id: 'avoidance',
+                category: 'Task Approach',
+                emoji: '🧩',
+                question: 'When facing a task that seems big or challenging, my child...',
+                options: [
+                    { label: 'Breaks it down and works through it', score: 1 },
+                    { label: 'Needs some help getting started, then is fine', score: 2 },
+                    { label: 'Gets overwhelmed and freezes up', score: 3 },
+                    { label: 'Avoids it completely or has an emotional reaction', score: 4 }
+                ]
+            },
+            {
+                id: 'learning',
+                category: 'Learning Style',
+                emoji: '📚',
+                question: 'My child learns best when...',
+                options: [
+                    { label: 'Following traditional step-by-step instruction', score: 1 },
+                    { label: 'They understand the "why" behind things', score: 2 },
+                    { label: 'They can explore deeply and at their own pace', score: 3 },
+                    { label: 'They\'re completely in control of what and how they learn', score: 4 }
+                ]
+            }
+        ];
+
+        const TRAIT_INFO = {
+            executive: { name: 'Task Initiation', icon: '🎯' },
+            sensory: { name: 'Sensory Sensitivity', icon: '🌡️' },
+            emotional: { name: 'Emotional Intensity', icon: '💗' },
+            motivation: { name: 'Interest-Based Drive', icon: '🚀' },
+            social: { name: 'Social Wiring', icon: '🤝' },
+            perfectionism: { name: 'Perfectionism', icon: '⭐' },
+            avoidance: { name: 'Task Overwhelm', icon: '🧩' },
+            learning: { name: 'Learning Autonomy', icon: '📚' }
+        };
+
+        let currentQuestion = 0;
+        let answers = {};
+        let childName = '';
+        let parentEmail = '';
+
+        function startQuiz() {
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('quizScreen').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = QUESTIONS[currentQuestion];
+            const selectedAnswer = answers[q.id];
+
+            document.getElementById('currentQ').textContent = currentQuestion + 1;
+            document.getElementById('progressFill').style.width = `${((currentQuestion + 1) / QUESTIONS.length) * 100}%`;
+
+            const card = document.getElementById('questionCard');
+            card.innerHTML = `
+                <div class="question-header">
+                    <div class="question-emoji">${q.emoji}</div>
+                    <div>
+                        <div class="question-category">${q.category}</div>
+                        <div class="question-title">Question ${currentQuestion + 1} of ${QUESTIONS.length}</div>
+                    </div>
+                </div>
+                <div class="question-body">
+                    <p class="question-text">${q.question}</p>
+                    <div class="options-grid">
+                        ${q.options.map((opt) => `
+                            <button class="option-btn ${selectedAnswer === opt.score ? 'selected' : ''}" 
+                                    onclick="selectOption('${q.id}', ${opt.score})">
+                                <div class="option-indicator"></div>
+                                <span style="font-weight:500; color:#2F2F2F;">${opt.label}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="nav-footer">
+                    <button class="btn-back" onclick="prevQuestion()" ${currentQuestion === 0 ? 'disabled' : ''}>
+                        ← Back
+                    </button>
+                    <button class="btn-next" onclick="nextQuestion()" ${!selectedAnswer ? 'disabled' : ''}>
+                        ${currentQuestion === QUESTIONS.length - 1 ? 'See Results' : 'Next'} →
+                    </button>
+                </div>
+            `;
+        }
+
+        function selectOption(questionId, score) {
+            answers[questionId] = score;
+            renderQuestion();
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < QUESTIONS.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showEmailCapture();
+            }
+        }
+
+        function showEmailCapture() {
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('emailScreen').classList.remove('hidden');
+        }
+
+        async function submitEmail(e) {
+            e.preventDefault();
+            childName = document.getElementById('childName').value;
+            parentEmail = document.getElementById('parentEmail').value;
+
+            // Optional: Send data to server
+            // const assessmentData = { childName, parentEmail, answers };
+            // await fetch('/api/save-quiz', { ... });
+
+            showResults();
+        }
+
+        function showResults() {
+            document.getElementById('emailScreen').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.remove('hidden');
+            document.getElementById('childNameDisplay').textContent = childName;
+
+            const traitGrid = document.getElementById('traitGrid');
+            
+            // Sort to show highest scores first
+            const sortedTraits = Object.entries(answers)
+                .map(([id, score]) => ({ id, score, ...TRAIT_INFO[id] }))
+                .sort((a, b) => b.score - a.score);
+
+            traitGrid.innerHTML = sortedTraits.map(trait => {
+                const level = trait.score >= 3 ? 'high' : trait.score === 2 ? 'moderate' : 'low';
+                const levelLabel = trait.score >= 3 ? 'Notable Pattern' : trait.score === 2 ? 'Moderate' : 'Typical Range';
+                const percentage = (trait.score / 4) * 100;
+
+                return `
+                    <div class="trait-card">
+                        <div class="trait-icon ${level}">${trait.icon}</div>
+                        <div class="trait-content">
+                            <div class="trait-name">${trait.name}</div>
+                            <div style="font-size:0.85rem; font-weight:600; color:${level === 'high' ? '#D97706' : level === 'moderate' ? '#0284C7' : '#16A34A'}">${levelLabel}</div>
+                            <div class="trait-bar">
+                                <div class="trait-bar-fill ${level}" style="width: ${percentage}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function goToClub() {
+            window.location.href = 'join-club.html';
+        }
+
+        function goToResetKit() {
+            window.location.href = 'calm-down-kit.html';
+        }
+    </script>
+</body>
+</html>
