@@ -3,212 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restraint Collapse: Angel at School, Monster at Home?</title>
+    <title>Restraint Collapse: Angel at School, Monster at Home? | Navigator Kids AI™</title>
     <meta name="description" content="Does your child hold it together all day only to explode the second they get home? This is Restraint Collapse. Here is how to handle the after-school crash.">
 
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.navigatorkidsai.com/restraint-collapse.html">
     <meta property="og:title" content="Restraint Collapse: Angel at School, Monster at Home?">
     <meta property="og:description" content="Does your child hold it together all day only to explode the second they get home? Here is how to handle the after-school crash.">
-    <meta property="og:image" content="https://www.navigatorkidsai.com/images/emergency-reset-kit-cover.png">
+    <meta property="og:image" content="https://www.navigatorkidsai.com/images/restraint-collapse-cover.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Restraint Collapse: Angel at School, Monster at Home?">
     <meta name="twitter:description" content="Does your child hold it together all day only to explode the second they get home? Here is how to handle the after-school crash.">
-    <meta name="twitter:image" content="https://www.navigatorkidsai.com/images/emergency-reset-kit-cover.png">
+    <meta name="twitter:image" content="https://www.navigatorkidsai.com/images/restraint-collapse-cover.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-        /* --- VARIABLES --- */
-        :root {
-            --color-primary: #1B365D;
-            --color-primary-dark: #132845;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
-            --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-background: #F4F6F8;
-            --color-background-warm: #FFFBF5;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
-        }
-
-        /* --- GLOBAL RESET --- */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--color-text);
-            line-height: 1.7;
-            background-color: var(--color-background);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.3;
-            color: var(--color-primary);
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        ul, ol { margin-left: 24px; }
-        li { margin-bottom: 8px; }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background-color: #FFFFFF;
-            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo a {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
-        .logo span { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            margin: 0;
-        }
-
-        .desktop-nav .nav-links li { margin: 0; }
-
-        .desktop-nav .nav-links a {
-            color: var(--color-text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary)::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-highlight);
-            transition: width 0.2s ease;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover::after { width: 100%; }
-
-        .nav-btn-primary {
-            background-color: var(--color-highlight);
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .nav-btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-1px);
-        }
-
-        .nav-btn-primary::after { display: none !important; }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-primary);
-            padding: 8px;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid #eee;
-        }
-
-        .mobile-nav.active { display: flex; }
-
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
-        }
-
-        /* --- ARTICLE LAYOUT --- */
+        /* === PAGE SPECIFIC STYLES === */
+        
+        /* Article Layout */
         .article-layout {
             display: grid;
             grid-template-columns: 1fr 300px;
@@ -219,13 +36,11 @@
         }
 
         @media (max-width: 1024px) {
-            .article-layout {
-                grid-template-columns: 1fr;
-            }
+            .article-layout { grid-template-columns: 1fr; }
             .article-sidebar { order: -1; }
         }
 
-        /* --- BREADCRUMBS --- */
+        /* Breadcrumbs */
         .breadcrumbs {
             font-size: 0.9rem;
             margin-bottom: 24px;
@@ -238,19 +53,16 @@
         }
 
         .breadcrumbs a:hover { color: var(--color-highlight-dark); }
+        .breadcrumbs span { margin: 0 8px; color: var(--color-text-muted); }
 
-        .breadcrumbs span {
-            margin: 0 8px;
-            color: var(--color-text-muted);
-        }
-
-        /* --- ARTICLE HEADER --- */
+        /* Article Header */
         .article-header { margin-bottom: 40px; }
 
         .article-header h1 {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 24px;
             line-height: 1.2;
+            color: var(--color-primary);
         }
 
         .author-byline {
@@ -278,22 +90,11 @@
             gap: 4px;
         }
 
-        .author-name {
-            font-weight: 700;
-            color: var(--color-primary);
-        }
+        .author-name { font-weight: 700; color: var(--color-primary); }
+        .author-role { font-size: 0.85rem; color: var(--color-highlight); }
+        .publish-date { font-size: 0.9rem; color: var(--color-text-muted); }
 
-        .author-role {
-            font-size: 0.85rem;
-            color: var(--color-highlight);
-        }
-
-        .publish-date {
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-        }
-
-        /* --- KEY TAKEAWAYS --- */
+        /* Key Takeaways */
         .key-takeaways {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -311,17 +112,10 @@
             letter-spacing: 0.05em;
         }
 
-        .key-takeaways ul {
-            margin: 0;
-            padding-left: 20px;
-        }
+        .key-takeaways ul { margin: 0; padding-left: 20px; }
+        .key-takeaways li { margin-bottom: 10px; color: var(--color-text); }
 
-        .key-takeaways li {
-            margin-bottom: 10px;
-            color: var(--color-text);
-        }
-
-        /* --- ARTICLE BODY --- */
+        /* Article Body */
         .article-body {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -344,6 +138,7 @@
             margin: 48px 0 24px;
             padding-bottom: 12px;
             border-bottom: 2px solid var(--color-highlight-light);
+            color: var(--color-primary);
         }
 
         .article-body h3 {
@@ -352,16 +147,11 @@
             color: var(--color-primary);
         }
 
-        .article-body ul, .article-body ol { margin-bottom: 24px; }
-
-        .article-body li {
-            margin-bottom: 12px;
-            line-height: 1.7;
-        }
-
+        .article-body ul, .article-body ol { margin-bottom: 24px; padding-left: 24px; }
+        .article-body li { margin-bottom: 12px; line-height: 1.7; }
         .article-body li strong { color: var(--color-primary); }
 
-        /* --- HIGHLIGHT BOX --- */
+        /* Highlight Box */
         .highlight-box {
             background: var(--color-background-warm);
             border-left: 4px solid var(--color-accent);
@@ -376,14 +166,9 @@
             margin-bottom: 12px;
         }
 
-        .highlight-box p {
-            margin: 0;
-            font-size: 1rem;
-        }
+        .highlight-box p { margin: 0; font-size: 1rem; }
 
-        /* --- SIDEBAR --- */
-        .article-sidebar { position: relative; }
-
+        /* Sidebar Widget */
         .sidebar-widget {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -395,16 +180,8 @@
             border-top: 4px solid var(--color-highlight);
         }
 
-        .sidebar-widget h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-        }
-
-        .sidebar-widget p {
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            margin-bottom: 20px;
-        }
+        .sidebar-widget h3 { font-size: 1.2rem; margin-bottom: 12px; }
+        .sidebar-widget p { font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 20px; }
 
         .btn {
             display: inline-flex;
@@ -424,12 +201,14 @@
         .btn:hover {
             background: var(--color-highlight-dark);
             transform: translateY(-2px);
+            color: white;
         }
 
-        /* --- READ NEXT --- */
+        /* Read Next */
         .read-next {
             background: var(--color-primary);
             padding: 80px 24px;
+            margin-top: 60px;
         }
 
         .read-next h2 {
@@ -456,6 +235,8 @@
             border-radius: var(--border-radius-lg);
             padding: 32px;
             transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .read-next-card:hover {
@@ -467,80 +248,11 @@
             font-size: 1.2rem;
             margin-bottom: 8px;
             transition: var(--transition);
+            color: var(--color-primary);
         }
 
         .read-next-card:hover h3 { color: var(--color-highlight); }
-
-        .read-next-card p {
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            margin: 0;
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            background-color: #0f1f33;
-            color: white;
-            padding: 80px 24px 40px;
-        }
-
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        @media (max-width: 768px) {
-            .footer__grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .footer__brand h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer__brand p {
-            opacity: 0.75;
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .footer__links h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer__links ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .footer__links li { margin-bottom: 12px; }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .footer__links a:hover { color: var(--color-accent); }
-
-        .footer__bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
+        .read-next-card p { font-size: 0.95rem; color: var(--color-text-muted); margin: 0; }
     </style>
 </head>
 
@@ -550,28 +262,31 @@
             <div class="logo">
                 <a href="index.html">
                     <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>
+                    Navigator <span>Kids AI™</span>
                 </a>
             </div>
+            
             <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                    <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                    <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
                 </ul>
             </nav>
+
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
-            <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a>
+            <a href="learning-style-quiz.html">Learning Style Quiz</a>
+            <a href="calm-down-kit.html">Calm-Down Kit</a>
+            <a href="join-club.html">Join the Club</a>
         </nav>
     </header>
 
@@ -580,7 +295,7 @@
             <div class="breadcrumbs">
                 <a href="index.html">Home</a> <span>/</span>
                 <a href="resources.html">Resources</a> <span>/</span>
-               <a href="resources.html">Emotional Regulation</a> <span>/</span>
+                <a href="#">Emotional Regulation</a> <span>/</span>
                 <span>Restraint Collapse</span>
             </div>
 
@@ -590,26 +305,26 @@
                     <div class="author-photo">AS</div>
                     <div class="author-info">
                         <div class="author-name">Avery Sage</div>
-                        <div class="author-role">Emotional Intelligence Specialist</div>
-                        <div class="publish-date">Published June 5, 2023</div>
+                        <div class="author-role">Student Success Coach</div>
+                        <div class="publish-date">Updated October 2025</div>
                     </div>
                 </div>
             </header>
 
             <div class="key-takeaways">
-                <h2>Key Takeaways</h2>
+                <h2>Key Insights</h2>
                 <ul>
-                    <li>"After school restraint collapse" is a neurological phenomenon, not behavioral defiance</li>
-                    <li>Children use executive function resources to maintain composure at school, leaving none for home</li>
-                    <li>This pattern indicates your child's self-regulation system is working hard, not failing</li>
-                    <li>Understanding this phenomenon helps parents respond with empathy instead of frustration</li>
+                    <li>"After school restraint collapse" is a brain-based phenomenon, not behavioral defiance.</li>
+                    <li>Children use executive function resources to maintain composure at school, leaving none for home.</li>
+                    <li>This pattern indicates your child's self-regulation system is working hard, not failing.</li>
+                    <li>Understanding this phenomenon helps parents respond with empathy instead of frustration.</li>
                 </ul>
             </div>
 
             <div class="article-body">
                 <p>Your phone buzzes with a text from the teacher: "Johnny had a wonderful day! So engaged and helpful during group work." You smile, feeling proud—until you pick him up and witness a complete personality transformation. Within minutes of getting in the car, he's screaming about the seatbelt, refusing to put his backpack away, and having a meltdown over snack choices.</p>
 
-                <p>This scenario plays out in households worldwide, leaving parents confused and exhausted. How can the same child be a model student at school and a tornado of emotion at home? The answer lies in a phenomenon psychologists call "restraint collapse"—and it's actually a compliment to your parenting, not a criticism.</p>
+                <p>This scenario plays out in households worldwide, leaving parents confused and exhausted. How can the same child be a model student at school and a tornado of emotion at home? The answer lies in a phenomenon experts call <strong>"restraint collapse"</strong>—and it's actually a compliment to your parenting, not a criticism.</p>
 
                 <div class="highlight-box">
                     <h3>What Is Restraint Collapse?</h3>
@@ -620,18 +335,20 @@
                 <p>Executive function—the brain's management system—requires significant mental energy to operate. Throughout the school day, your child unconsciously expends enormous effort to:</p>
 
                 <ul>
-                    <li>Suppress impulsive reactions to frustrating situations</li>
-                    <li>Maintain appropriate volume and tone of voice</li>
-                    <li>Follow social expectations and classroom rules</li>
-                    <li>Manage sensory input from fluorescent lights, noise, and crowds</li>
-                    <li>Navigate peer interactions and social hierarchies</li>
-                    <li>Transition between activities and demands</li>
+                    <li>Suppress impulsive reactions to frustrating situations.</li>
+                    <li>Maintain appropriate volume and tone of voice.</li>
+                    <li>Follow social expectations and classroom rules.</li>
+                    <li>Manage sensory input from fluorescent lights, noise, and crowds.</li>
+                    <li>Navigate peer interactions and social hierarchies.</li>
+                    <li>Transition between activities and demands.</li>
                 </ul>
 
-                <p>For neurotypical children, this effort is largely automatic. For gifted and twice-exceptional children, it's often a conscious, exhausting battle. Their heightened sensitivity amplifies every stimulus, making self-regulation even more demanding.</p>
+                <p>For many students, this effort is largely automatic. For Deep Thinkers and High-Energy kids, it's often a conscious, exhausting battle. Their heightened sensitivity amplifies every stimulus, making self-regulation even more demanding.</p>
 
                 <h3>The Home Paradox</h3>
-                <p>Home represents psychological safety for your child. Unlike school, where they must perform and comply, home is where they can authentically express their emotions and vulnerabilities. This safety paradox explains why meltdowns often occur after school:</p>
+                <p>Home represents psychological safety for your child. Unlike school, where they must perform and comply, home is where they can authentically express their emotions and vulnerabilities. This safety paradox explains why big feelings often occur after school:</p>
+
+                
 
                 <div class="highlight-box">
                     <h3>The Emotional Equation</h3>
@@ -642,10 +359,10 @@
                 <p>Contrary to what frustrated parents might believe, restraint collapse signals that your child:</p>
 
                 <ol>
-                    <li><strong>Possesses intact emotional awareness:</strong> They recognize and feel their emotions deeply</li>
-                    <li><strong>Has developed social skills:</strong> They understand appropriate behavior in public settings</li>
-                    <li><strong>Feels secure with you:</strong> They trust you enough to show their authentic selves</li>
-                    <li><strong>Maintains cognitive control:</strong> They can regulate behavior in demanding environments</li>
+                    <li><strong>Possesses intact emotional awareness:</strong> They recognize and feel their emotions deeply.</li>
+                    <li><strong>Has developed social skills:</strong> They understand appropriate behavior in public settings.</li>
+                    <li><strong>Feels secure with you:</strong> They trust you enough to show their authentic selves.</li>
+                    <li><strong>Maintains cognitive control:</strong> They can regulate behavior in demanding environments.</li>
                 </ol>
 
                 <p>This pattern demonstrates emotional intelligence and resilience—qualities to celebrate, not punish.</p>
@@ -654,16 +371,16 @@
                 <p>Restraint collapse follows predictable patterns:</p>
 
                 <ul>
-                    <li>Explosive reactions to minor frustrations immediately after school</li>
-                    <li>Extreme fatigue or shutdown behaviors</li>
-                    <li>Increased sensitivity to sensory stimuli (sounds, textures, lights)</li>
-                    <li>Regression to younger behaviors (baby talk, tantrums)</li>
-                    <li>Difficulty with routine transitions</li>
+                    <li>Explosive reactions to minor frustrations immediately after school.</li>
+                    <li>Extreme fatigue or shutdown behaviors.</li>
+                    <li>Increased sensitivity to sensory stimuli (sounds, textures, lights).</li>
+                    <li>Regression to younger behaviors (baby talk, tantrums).</li>
+                    <li>Difficulty with routine transitions.</li>
                 </ul>
 
                 <div class="highlight-box">
-                    <h3>Research Insight</h3>
-                    <p>Studies show that children with high emotional intelligence often experience more intense restraint collapse because they're acutely aware of social expectations and feel pressure to meet them.</p>
+                    <h3>Coaching Insight</h3>
+                    <p>Studies suggest that children with high emotional intelligence often experience more intense restraint collapse because they're acutely aware of social expectations and feel pressure to meet them.</p>
                 </div>
 
                 <h2>Strategies for Supporting Your Child</h2>
@@ -671,16 +388,14 @@
 
                 <h3>1. Create Transition Rituals</h3>
                 <p>Build decompression time between school and home demands:</p>
-
                 <ul>
-                    <li>Allow 15-30 minutes of unstructured downtime</li>
-                    <li>Offer sensory comfort items (weighted blanket, fidget toy)</li>
-                    <li>Create a "feelings check-in" routine</li>
+                    <li>Allow 15-30 minutes of unstructured downtime.</li>
+                    <li>Offer sensory comfort items (weighted blanket, fidget toy).</li>
+                    <li>Create a "feelings check-in" routine.</li>
                 </ul>
 
                 <h3>2. Reframe Your Perspective</h3>
                 <p>Instead of viewing explosive emotions as misbehavior, recognize them as communication:</p>
-
                 <ul>
                     <li>"I notice you're feeling overwhelmed. Let's figure out what you need."</li>
                     <li>"It sounds like school was really hard today. How can I support you?"</li>
@@ -689,12 +404,11 @@
 
                 <h3>3. Build Regulation Resources</h3>
                 <p>Help your child replenish their self-regulation reserves:</p>
-
                 <ul>
-                    <li>Ensure adequate sleep and nutrition</li>
-                    <li>Teach breathing and mindfulness techniques</li>
-                    <li>Create a calm-down kit with preferred comfort items</li>
-                    <li>Establish predictable routines that reduce decision fatigue</li>
+                    <li>Ensure adequate sleep and nutrition.</li>
+                    <li>Teach breathing and mindfulness techniques.</li>
+                    <li>Create a <strong>Calm-Down Kit</strong> with preferred comfort items.</li>
+                    <li>Establish predictable routines that reduce decision fatigue.</li>
                 </ul>
 
                 <h2>The Long-Term View</h2>
@@ -707,33 +421,28 @@
                     <p>Next time you witness a post-school explosion, remind yourself: "My child maintained composure for 6+ hours in a challenging environment. Their emotional release shows they trust our relationship and possess healthy emotional awareness."</p>
                 </div>
 
-                <h2>When to Seek Additional Support</h2>
-                <p>While restraint collapse is normal, certain patterns warrant professional consultation:</p>
-
+                <h2>When to Seek Additional Guidance</h2>
+                <p>While restraint collapse is normal, certain patterns may warrant professional consultation:</p>
                 <ul>
-                    <li>Episodes last longer than 2-3 hours consistently</li>
-                    <li>Your child expresses self-harm or harm to others</li>
-                    <li>School performance significantly declines</li>
-                    <li>Family functioning is severely disrupted</li>
+                    <li>Episodes last longer than 2-3 hours consistently.</li>
+                    <li>Your child expresses self-harm or harm to others.</li>
+                    <li>School performance significantly declines.</li>
+                    <li>Family functioning is severely disrupted.</li>
                 </ul>
-
-                <p>In these cases, consider consulting with a pediatrician, child psychologist, or occupational therapist who specializes in sensory processing and executive function.</p>
 
                 <h2>The Bottom Line</h2>
                 <p>Restraint collapse reflects your child's remarkable ability to navigate complex social environments while managing intense internal experiences. Rather than indicating poor behavior or weak character, it demonstrates emotional authenticity and trust in your relationship.</p>
 
-                <p>Your child isn't switching personalities—they're releasing the enormous effort required to be "good" all day. Responding with empathy and structure, rather than punishment, builds resilience and strengthens your connection. Remember: their emotional intensity is often proportional to their capacity for love, creativity, and deep thinking.</p>
-
-                <p>In a world that rewards conformity, your child's authenticity—even when it's messy—is a gift worth nurturing.</p>
+                <p>Your child isn't switching personalities—they're releasing the enormous effort required to be "good" all day. Responding with empathy and structure, rather than punishment, builds resilience and strengthens your connection.</p>
             </div>
         </article>
 
         <aside class="article-sidebar">
             <div class="sidebar-widget">
-                <h3>Understand Your Child's Emotional Patterns</h3>
-                <p>Our AI assessment reveals regulation needs and provides targeted support strategies.</p>
-                <a href="gifted-assessment-tool.html" class="btn">
-                    <i class="fas fa-microchip"></i> Start Free Assessment
+                <h3>Understand Their Patterns</h3>
+                <p>Our Learning Style Quiz identifies regulation needs and provides targeted support strategies.</p>
+                <a href="learning-style-quiz.html" class="btn">
+                    <i class="fas fa-clipboard-list"></i> Start Free Quiz
                 </a>
             </div>
         </aside>
@@ -749,7 +458,7 @@
                 </a>
                 <a href="emotional-intensity.html" class="read-next-card">
                     <h3>Emotional Intensity</h3>
-                    <p>Why gifted children feel everything so deeply.</p>
+                    <p>Why High-Potential children feel everything so deeply.</p>
                 </a>
             </div>
         </div>
@@ -760,16 +469,16 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed support strategies for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                        <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                        <li><a href="join-club.html">Join the Club</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
@@ -782,12 +491,13 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+                <p>&copy; 2026 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile Menu Toggle
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle i');
@@ -802,6 +512,7 @@
             }
         }
 
+        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
@@ -814,16 +525,6 @@
                     icon.classList.add('fa-bars');
                 }
             }
-        });
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('mobileMenu');
-                const toggle = document.querySelector('.menu-toggle i');
-                menu.classList.remove('active');
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            });
         });
     </script>
 </body>
