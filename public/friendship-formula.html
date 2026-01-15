@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Friendship Formula: Helping Deep Thinkers Connect | Navigator Kids AI™</title>
+    <meta name="description" content="Discover why Deep Thinkers struggle to find friends and learn practical strategies to help them build deep, lasting connections with peers who truly understand them.">
+    
+    <meta property="og:title" content="The Friendship Formula: Helping Deep Thinkers Connect">
+    <meta property="og:description" content="Your child's preference for books over people isn't antisocial—it's selective connection. Learn how to help them find their tribe.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.navigatorkidsai.com/images/friendship-cover.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* === PAGE SPECIFIC STYLES === */
+        
+        /* Article Layout */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        @media (max-width: 1024px) {
+            .article-layout { grid-template-columns: 1fr; }
+            .article-sidebar { order: -1; }
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            color: var(--color-text-muted);
+        }
+
+        .breadcrumbs a {
+            color: var(--color-highlight);
+            transition: var(--transition);
+        }
+
+        .breadcrumbs a:hover { color: var(--color-highlight-dark); }
+        .breadcrumbs span { margin: 0 8px; color: var(--color-text-muted); }
+
+        /* Article Header */
+        .article-header { margin-bottom: 40px; }
+
+        .article-tag {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .article-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 24px;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        .author-byline {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-photo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .author-name { font-weight: 700; color: var(--color-primary); }
+        .author-role { font-size: 0.85rem; color: var(--color-highlight); }
+        .publish-date { font-size: 0.9rem; color: var(--color-text-muted); }
+
+        /* Key Takeaways */
+        .key-takeaways {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 32px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--color-highlight);
+        }
+
+        .key-takeaways h2 {
+            font-size: 1.1rem;
+            color: var(--color-highlight);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .key-takeaways ul { margin: 0; padding-left: 20px; }
+        .key-takeaways li { margin-bottom: 10px; color: var(--color-text); }
+
+        /* Article Body */
+        .article-body {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 48px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 600px) {
+            .article-body { padding: 32px 24px; }
+        }
+
+        .article-body p {
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .article-body h2 {
+            font-size: 1.6rem;
+            margin: 48px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--color-highlight-light);
+            color: var(--color-primary);
+        }
+
+        .article-body h3 {
+            font-size: 1.25rem;
+            margin: 32px 0 16px;
+            color: var(--color-primary);
+        }
+
+        .article-body ul, .article-body ol { margin-bottom: 24px; padding-left: 24px; }
+        .article-body li { margin-bottom: 12px; line-height: 1.7; }
+        .article-body li strong { color: var(--color-primary); }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--color-background-warm);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+
+        .highlight-box h3 {
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p { margin: 0; font-size: 1rem; }
+
+        /* Insight Box */
+        .insight-box {
+            background: var(--color-highlight-light);
+            border-left: 4px solid var(--color-highlight);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+
+        .insight-box h3 {
+            font-size: 1.1rem;
+            color: var(--color-highlight-dark);
+            margin-bottom: 12px;
+        }
+
+        .insight-box p { margin: 0; font-size: 1rem; }
+
+        /* Formula Visual */
+        .formula-visual {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            margin: 40px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .formula-visual h3 {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .formula-equation {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .formula-element {
+            background: rgba(255,255,255,0.15);
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .formula-element .icon { font-size: 1.5rem; }
+        .formula-element .label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .formula-operator {
+            font-size: 1.8rem;
+            color: var(--color-accent);
+        }
+
+        .formula-result {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 16px 32px;
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 600px) {
+            .formula-equation { font-size: 1.1rem; gap: 12px; }
+            .formula-element { padding: 10px 14px; }
+            .formula-operator { font-size: 1.4rem; }
+        }
+
+        /* Friendship Stages */
+        .stages-container {
+            display: grid;
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .stage-card {
+            background: var(--color-background);
+            border-radius: var(--border-radius-lg);
+            padding: 28px;
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .stage-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-highlight-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .stage-content h4 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--color-primary);
+        }
+
+        .stage-content p {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 500px) {
+            .stage-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .stage-number { margin: 0 auto 12px; }
+        }
+
+        /* Sidebar Widget */
+        .sidebar-widget {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 32px;
+            position: sticky;
+            top: 100px;
+            text-align: center;
+            border-top: 4px solid var(--color-highlight);
+        }
+
+        .sidebar-widget h3 { font-size: 1.2rem; margin-bottom: 12px; }
+        .sidebar-widget p { font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 20px; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: var(--color-highlight);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: var(--color-highlight-dark);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Read Next */
+        .read-next {
+            background: var(--color-primary);
+            padding: 80px 24px;
+            margin-top: 60px;
+        }
+
+        .read-next h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+        }
+
+        .read-next-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .read-next-grid { grid-template-columns: 1fr; }
+        }
+
+        .read-next-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .read-next-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .read-next-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            transition: var(--transition);
+            color: var(--color-primary);
+        }
+
+        .read-next-card:hover h3 { color: var(--color-highlight); }
+        .read-next-card p { font-size: 0.95rem; color: var(--color-text-muted); margin: 0; }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI™</span>
+                </a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                    <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="learning-style-quiz.html">Learning Style Quiz</a>
+            <a href="calm-down-kit.html">Calm-Down Kit</a>
+            <a href="join-club.html">Join the Club</a>
+        </nav>
+    </header>
+
+    <div class="article-layout">
+        <article class="article-content">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> <span>/</span>
+                <a href="calm-down-kit.html">Resources</a> <span>/</span>
+                <a href="#">Social & Emotional</a> <span>/</span>
+                <span>The Friendship Formula</span>
+            </div>
+
+            <header class="article-header">
+                <span class="article-tag">Start Here</span>
+                <h1>The Friendship Formula: How to Help Deep Thinkers Build Meaningful Connections</h1>
+                <div class="author-byline">
+                    <div class="author-photo">EM</div>
+                    <div class="author-info">
+                        <div class="author-name">Dr. Elena Martinez</div>
+                        <div class="author-role">Child Development Expert</div>
+                        <div class="publish-date">Updated December 2025</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="key-takeaways">
+                <h2>Key Insights</h2>
+                <ul>
+                    <li>Deep Thinkers' friendship struggles stem from developmental asynchrony—not social deficits.</li>
+                    <li>Quality over quantity: one genuine connection outweighs dozens of superficial relationships.</li>
+                    <li>Interest-based friendships work better than age-based ones for intense kids.</li>
+                    <li>Parents can actively engineer social opportunities without being pushy.</li>
+                </ul>
+            </div>
+
+            <div class="article-body">
+                <p>Your child can debate philosophy with adults but freezes during playground small talk. They'd rather read alone than join the birthday party chaos. When they do engage with peers, they take over—correcting, directing, explaining why everyone's doing it wrong.</p>
+
+                <p>You've tried everything: playdates, social skills groups, forced extracurriculars. Nothing sticks. The birthday party invitations have slowed to a trickle. Your heart breaks watching them eat lunch alone while insisting they "prefer it that way."</p>
+
+                <p>Here's what most advice gets wrong: your child doesn't have a friendship problem. They have a <em>matching</em> problem. And the solution isn't teaching them to be more "normal"—it's helping them find the right people.</p>
+
+                <div class="highlight-box">
+                    <h3>The Core Truth</h3>
+                    <p>Your child's preference for books over people isn't antisocial—it's a sign of deep thinking and selective connection. They're not failing at friendship. They're waiting for friendships worth having.</p>
+                </div>
+
+                <h2>Why High-Potential Kids Struggle Socially</h2>
+                <p>Before we fix the problem, we need to understand what's actually happening. Deep Thinkers face unique social challenges that standard advice completely misses.</p>
+
+                <h3>Developmental Asynchrony</h3>
+                <p>Your child might have the vocabulary of a 16-year-old, the emotional intensity of a 4-year-old, and the physical coordination of their actual age. This internal mismatch creates external friction.</p>
+
+                <ul>
+                    <li><strong>Intellectual Age:</strong> They want to discuss black holes, not recess games.</li>
+                    <li><strong>Emotional Age:</strong> Big feelings that don't match their logical capabilities.</li>
+                    <li><strong>Social Age:</strong> May lag behind due to fewer opportunities with true peers.</li>
+                    <li><strong>Physical Age:</strong> The only thing that matches their classmates.</li>
+                </ul>
+
+                <h3>Intensity Differences</h3>
+                <p>Deep Thinkers experience everything more deeply—including social interaction. What feels like normal engagement to them can overwhelm typical peers:</p>
+
+                <ul>
+                    <li><strong>Conversational Depth:</strong> They want to go deep immediately; peers want surface chat.</li>
+                    <li><strong>Interest Obsession:</strong> They want to talk about dinosaurs for three hours straight.</li>
+                    <li><strong>Correction Compulsion:</strong> Factual errors feel physically uncomfortable.</li>
+                    <li><strong>Justice Sensitivity:</strong> Rule violations trigger intense emotional responses.</li>
+                </ul>
+
+                <div class="insight-box">
+                    <h3>Coaching Insight</h3>
+                    <p>Experts note that High-Potential children often have advanced theory of mind—they understand others' perspectives deeply. The problem isn't empathy deficiency; it's finding peers who can reciprocate their level of engagement.</p>
+                </div>
+
+                <h3>The "Bossy" Misconception</h3>
+                <p>When your child takes over games, corrects peers constantly, or insists on being in charge, teachers see "bossy behavior." What's actually happening:</p>
+
+                <ul>
+                    <li>They see inefficiencies and can't ignore them.</li>
+                    <li>They have superior strategies but lack diplomatic delivery skills.</li>
+                    <li>They're frustrated that others don't meet their engagement standards.</li>
+                </ul>
+
+                <p>This isn't a character flaw—it's a mismatch. The solution isn't to suppress their leadership; it's to find contexts where it's valued.</p>
+
+                <h2>The Friendship Formula</h2>
+                <p>After years of working with families, we've identified four essential components for building meaningful friendships.</p>
+
+                <div class="formula-visual">
+                    <h3>The Four Elements</h3>
+                    <div class="formula-equation">
+                        <div class="formula-element">
+                            <span class="icon">🎯</span>
+                            <span class="label">Shared Interest</span>
+                        </div>
+                        <span class="formula-operator">+</span>
+                        <div class="formula-element">
+                            <span class="icon">🧠</span>
+                            <span class="label">Matched Intensity</span>
+                        </div>
+                        <span class="formula-operator">+</span>
+                        <div class="formula-element">
+                            <span class="icon">⏰</span>
+                            <span class="label">Unstructured Time</span>
+                        </div>
+                        <span class="formula-operator">+</span>
+                        <div class="formula-element">
+                            <span class="icon">🔄</span>
+                            <span class="label">Repeated Contact</span>
+                        </div>
+                    </div>
+                    <div class="formula-result">= Genuine Friendship</div>
+                </div>
+
+                <h3>Element 1: Shared Interest</h3>
+                <p>Generic social skills training fails because it ignores this truth: Deep Thinkers connect through passion, not proximity. They need friends who care about the same things they do—at the same depth.</p>
+
+                <h3>Element 2: Matched Intensity</h3>
+                <p>Finding someone who shares an interest isn't enough. They need someone who matches their intensity level. A casual Star Wars fan won't satisfy a child who's memorized every ship specification.</p>
+
+                <h2>The Friendship Development Stages</h2>
+                <p>Understanding how these friendships develop helps you support each phase appropriately.</p>
+
+                <div class="stages-container">
+                    <div class="stage-card">
+                        <div class="stage-number">1</div>
+                        <div class="stage-content">
+                            <h4>Parallel Play Extended</h4>
+                            <p>Unlike typical kids who outgrow parallel play early, Deep Thinkers often prefer "alone together" well into elementary years. They're comfortable in proximity without direct interaction—and that's okay.</p>
+                        </div>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">2</div>
+                        <div class="stage-content">
+                            <h4>Interest-Based Connection</h4>
+                            <p>First real bonds form around shared passions. Conversations are topic-centered rather than relationship-centered. They're friends "about" something, not friends "with" someone.</p>
+                        </div>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">3</div>
+                        <div class="stage-content">
+                            <h4>Intellectual Intimacy</h4>
+                            <p>Deeper connection emerges through shared ideas, debates, and collaborative projects. They trust each other with their "weird" thoughts. This is often where friendships stabilize.</p>
+                        </div>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">4</div>
+                        <div class="stage-content">
+                            <h4>Emotional Reciprocity</h4>
+                            <p>The final stage involves sharing feelings, supporting each other through difficulties, and maintaining connection even when interests diverge.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Practical Strategies That Work</h2>
+                <p>Here's how to apply the Friendship Formula in real life.</p>
+
+                <h3>Engineer Opportunity (Without Being Pushy)</h3>
+                <p>Your job isn't to make friends for your child—it's to create conditions where friendships can happen naturally.</p>
+                <ul>
+                    <li><strong>Research specialized programs:</strong> Coding camps, science olympiad, chess clubs, robotics teams.</li>
+                    <li><strong>Consider older/younger peers:</strong> Same-age matching often fails; try mixed-age activities.</li>
+                    <li><strong>Leverage online communities:</strong> Virtual friendships around shared interests are real friendships.</li>
+                </ul>
+
+                <h3>Teach the "Why" Behind Social Rules</h3>
+                <p>Deep Thinkers won't follow rules they don't understand. Instead of "don't correct people," explain the social mechanics:</p>
+                <ul>
+                    <li><strong>Explain the trade-off:</strong> "Being right feels good for 10 seconds. Being connected feels good for hours. Which do you want?"</li>
+                    <li><strong>Teach timing:</strong> "Corrections work better when you've built trust first."</li>
+                </ul>
+
+                <div class="insight-box">
+                    <h3>The Geography Problem</h3>
+                    <p>If your child's interests are highly specialized, their potential friends may not live nearby. Online friendships and summer programs expand the search radius dramatically. Don't limit the tribe hunt to your zip code.</p>
+                </div>
+
+                <h2>When to Seek Support</h2>
+                <p>Not all social struggles require intervention. But consider professional support when:</p>
+                <ul>
+                    <li>Your child expresses genuine distress about loneliness (not just preference for solitude).</li>
+                    <li>Social difficulties are impacting self-esteem significantly.</li>
+                    <li>You observe persistent patterns that might need specialized support (e.g., neurodivergent traits or extreme social anxiety).</li>
+                    <li>Your child shows no interest in connection at all—complete social avoidance.</li>
+                </ul>
+
+                <h2>The Bottom Line</h2>
+                <p>Your child isn't broken. They're not antisocial, difficult, or destined for loneliness. They're selective—and that selectivity, properly channeled, will lead them to the kind of deep, meaningful friendships most people never experience.</p>
+
+                <p>The tribe exists. You just need to know where to look.</p>
+            </div>
+        </article>
+
+        <aside class="article-sidebar">
+            <div class="sidebar-widget">
+                <h3>Understand Their Social Style</h3>
+                <p>Take our free quiz to discover their unique social and emotional profile—including where to find their tribe.</p>
+                <a href="learning-style-quiz.html" class="btn">Start Free Quiz</a>
+            </div>
+        </aside>
+    </div>
+
+    <section class="read-next">
+        <div class="container">
+            <h2>Read Next</h2>
+            <div class="read-next-grid">
+                <a href="restraint-collapse.html" class="read-next-card">
+                    <h3>Restraint Collapse</h3>
+                    <p>Why your child falls apart at home after holding it together all day at school.</p>
+                </a>
+                <a href="emotional-intensity.html" class="read-next-card">
+                    <h3>Emotional Intensity</h3>
+                    <p>Understanding the deep feelings of High-Potential children.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4>Navigator Kids AI™</h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed support strategies for raising exceptional children.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                        <li><a href="join-club.html">Join the Club</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Navigator Kids AI™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle i');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                toggle.classList.remove('fa-bars');
+                toggle.classList.add('fa-times');
+            } else {
+                toggle.classList.remove('fa-times');
+                toggle.classList.add('fa-bars');
+            }
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
