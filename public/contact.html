@@ -4,317 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Navigator Kids AI™</title>
-    <meta name="description" content="Questions about your gifted or twice-exceptional child? Reach out to Navigator Kids AI. We're here to help you understand and support your unique learner.">
+    <meta name="description" content="Questions about your creative or high-potential child? Reach out to Navigator Kids AI. We're here to help you understand and support your unique learner.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* === NAVIGATOR KIDS AI™ STANDARD IDENTITY === */
-        :root {
-            --color-primary: #1B365D;    /* Navy */
-            --color-primary-dark: #132845;
-            --color-primary-light: #2A4A7A;
-            --color-secondary: #FFFFFF;  /* White */
-            --color-accent: #E9C46A;     /* Gold */
-            --color-highlight: #2A9D8F;  /* Teal */
-            --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-background: #F4F6F8;
-            --color-background-warm: #FFFBF5;
-            
-            --border-radius: 8px;
-            --border-radius-lg: 12px; /* Standardized */
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --transition: all 0.2s ease;
-        }
-
-        /* === GLOBAL RESET === */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Lato', sans-serif;
-            color: var(--color-text);
-            line-height: 1.7;
-            background-color: var(--color-background);
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Inter', sans-serif;
-            color: var(--color-primary);
-            line-height: 1.2;
-        }
-
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-        /* === STANDARD NAVIGATION === */
-        .navbar {
-            background-color: var(--color-secondary);
-            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo a {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo i, .logo span { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            align-items: center;
-        }
-        .desktop-nav .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
-        .desktop-nav .nav-links a:hover { color: var(--color-highlight); }
-
-        .nav-btn-primary {
-            background: var(--color-highlight);
-            color: white !important;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-weight: 700;
-        }
-        .nav-btn-primary:hover {
-            background: var(--color-highlight-dark);
-            transform: translateY(-2px);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            cursor: pointer;
-        }
-
-        /* Mobile Menu */
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%; left: 0; right: 0;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-md);
-            border-top: 1px solid #eee;
-        }
-        .mobile-nav.active { display: flex; }
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
-        }
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
-        }
-
-        /* === CONTACT PAGE STYLES === */
-        .contact-layout {
-            max-width: 600px;
-            margin: 60px auto 100px;
-            padding: 0 24px;
-        }
-
+        /* Contact Page Specific Styles */
+        .contact-layout { max-width: 600px; margin: 60px auto 100px; padding: 0 24px; }
         .page-header { text-align: center; margin-bottom: 40px; }
-        .page-header h1 { font-size: 2.5rem; margin-bottom: 16px; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 16px; color: var(--color-primary); }
         .page-header p { font-size: 1.1rem; color: var(--color-text-muted); }
 
-        .contact-form {
-            background: white;
-            padding: 40px;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-sm);
-            border-top: 4px solid var(--color-highlight);
-        }
+        .contact-form { background: white; padding: 40px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-highlight); }
+        @media (max-width: 768px) { .contact-form { padding: 24px; } }
 
         .form-group { margin-bottom: 24px; }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            color: var(--color-primary);
-            font-size: 0.95rem;
-        }
-
-        .form-group input, 
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-family: 'Lato', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus, 
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-highlight);
-            box-shadow: 0 0 0 3px var(--color-highlight-light);
-        }
-
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--color-primary); font-size: 0.95rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: var(--border-radius); font-family: 'Lato', sans-serif; font-size: 1rem; transition: var(--transition); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-highlight); box-shadow: 0 0 0 3px var(--color-highlight-light); }
         .form-group textarea { min-height: 150px; resize: vertical; }
 
-        .btn-full {
-            width: 100%;
-            display: block;
-            text-align: center;
-            padding: 16px;
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-        }
+        .btn-full { width: 100%; display: block; text-align: center; padding: 16px; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius); font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
+        .btn-full:hover { background: var(--color-primary-dark); transform: translateY(-2px); }
 
-        .btn-full:hover {
-            background: var(--color-primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* FAQ Section */
-        .faq-box {
-            margin-top: 60px;
-            background: var(--color-background-warm);
-            padding: 40px;
-            border-radius: var(--border-radius-lg);
-            border-left: 4px solid var(--color-accent);
-        }
-
-        .faq-box h2 { font-size: 1.5rem; margin-bottom: 24px; text-align: center; }
-        
+        .faq-box { margin-top: 60px; background: var(--color-background-warm); padding: 40px; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-accent); }
+        .faq-box h2 { font-size: 1.5rem; margin-bottom: 24px; text-align: center; color: var(--color-primary); }
         .faq-item { margin-bottom: 24px; }
         .faq-item:last-child { margin-bottom: 0; }
-        
-        .faq-q {
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .faq-q { font-weight: 700; color: var(--color-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
         .faq-q i { color: var(--color-accent); }
         .faq-a { font-size: 0.95rem; color: var(--color-text-muted); padding-left: 26px; }
-
-        /* === STANDARD FOOTER === */
-        .footer { background: #0f1f33; color: white; padding: 80px 0 40px; }
-        .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-        .footer h4 { color: var(--color-accent); margin-bottom: 16px; font-size: 1.1rem; }
-        .footer p { opacity: 0.75; font-size: 0.95rem; }
-        .footer h5 { color: var(--color-accent); margin-bottom: 16px; font-size: 1rem; }
-        .footer ul { list-style: none; }
-        .footer li { margin-bottom: 12px; }
-        .footer a { color: rgba(255,255,255,0.75); font-size: 0.95rem; transition: var(--transition); }
-        .footer a:hover { color: var(--color-accent); }
-        .footer__bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; font-size: 0.85rem; opacity: 0.6; }
-        
-        @media (max-width: 768px) {
-            .footer__grid { grid-template-columns: 1fr; gap: 40px; }
-            .contact-form { padding: 24px; }
-        }
     </style>
 </head>
 
 <body>
-
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="/">
                     <i class="fas fa-compass"></i>
                     Navigator <span>Kids AI</span>
                 </a>
             </div>
-            
             <nav class="desktop-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="learning-style-quiz.html">Free Quiz</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
                 </ul>
             </nav>
-
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        
         <nav class="mobile-nav" id="mobileMenu">
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
             <a href="about.html">About</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="learning-style-quiz.html">Free Quiz</a>
             <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a>
+            <a href="join-club.html">Join the Club</a>
         </nav>
     </header>
 
     <div class="contact-layout">
         <div class="page-header">
             <h1>Get in Touch</h1>
-            <p>Have questions about the membership or assessment? We're here to help.</p>
+            <p>Have questions about the club or quiz? We're here to help.</p>
         </div>
 
         <form class="contact-form" id="contactForm">
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" placeholder="Your name">
+                <input type="text" placeholder="Your name" required>
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" placeholder="your@email.com">
+                <input type="email" placeholder="your@email.com" required>
             </div>
             <div class="form-group">
                 <label>Subject</label>
-                <input type="text" placeholder="Question about assessment package">
+                <input type="text" placeholder="Question about the club" required>
             </div>
             <div class="form-group">
                 <label>Message</label>
-                <textarea placeholder="How can we help?"></textarea>
+                <textarea placeholder="How can we help?" required></textarea>
             </div>
             <button type="submit" class="btn-full">Send Message</button>
         </form>
@@ -322,16 +100,16 @@
         <div class="faq-box">
             <h2>Quick Answers</h2>
             <div class="faq-item">
-                <p class="faq-q"><i class="fas fa-circle-question"></i> Where do I access the assessment?</p>
-                <p class="faq-a">You will be automatically redirected to the secure assessment portal immediately after joining the membership.</p>
+                <p class="faq-q"><i class="fas fa-circle-question"></i> Where do I access the quiz?</p>
+                <p class="faq-a">You can take the free quiz <a href="learning-style-quiz.html" style="color: var(--color-highlight); text-decoration: underline;">right here</a>. No account needed to start.</p>
             </div>
             <div class="faq-item">
                 <p class="faq-q"><i class="fas fa-circle-question"></i> What is your refund policy?</p>
-                <p class="faq-a">We offer a <strong>30-day money-back guarantee</strong>. If the insights aren't valuable to your family, just email us for a full refund.</p>
+                <p class="faq-a">We offer a <strong>30-day money-back guarantee</strong> on the Navigator Club membership. If it's not a fit, just email us.</p>
             </div>
             <div class="faq-item">
                 <p class="faq-q"><i class="fas fa-circle-question"></i> Is my child's data private?</p>
-                <p class="faq-a">Yes. All assessment data is strictly confidential, encrypted, and used ONLY to generate your personalized report. We never sell data.</p>
+                <p class="faq-a">Yes. All data is strictly confidential, encrypted, and used ONLY to generate your personalized report. We never sell data.</p>
             </div>
         </div>
     </div>
@@ -341,20 +119,20 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and coaching for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
-                    <h5>Quick Links</h5>
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                        <li><a href="learning-style-quiz.html">Free Quiz</a></li>
                         <li><a href="resources.html">Resources</a></li>
-                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h5>Support</h5>
+                    <h4>Support</h4>
                     <ul>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
@@ -383,61 +161,10 @@
             }
         }
 
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                const icon = toggle.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
-        });
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('mobileMenu');
-                const toggle = document.querySelector('.menu-toggle i');
-                menu.classList.remove('active');
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            });
-        });
-
-        // --- NEW SCRIPT TO HANDLE FORM SUBMISSION ---
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Collect the data from fields using their placeholders to identify them
-            // (Robust app would use name attributes, but this works with current HTML)
-            const formData = {
-                name: this.querySelector('input[placeholder="Your name"]').value,
-                email: this.querySelector('input[placeholder="your@email.com"]').value,
-                subject: this.querySelector('input[placeholder="Question about assessment package"]').value,
-                message: this.querySelector('textarea').value
-            };
-
-            try {
-                // Send to the server endpoint we created
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    alert('Message sent! Jason will get back to you shortly.');
-                    this.reset();
-                } else {
-                    alert('Something went wrong. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error connecting to the server. Please check your connection.');
-            }
+            alert('Message sent! We will get back to you shortly.');
+            this.reset();
         });
     </script>
 </body>
