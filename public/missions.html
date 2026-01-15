@@ -8,197 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-        /* === NAVIGATOR BRAND VARIABLES === */
-        :root {
-            --color-primary: #1B365D;
-            --color-primary-dark: #132845;
-            --color-primary-light: #2A4A7A;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
-            --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-text-light: #94a3b8;
-            --color-background: #F4F6F8;
-            --color-background-warm: #FFFBF5;
-            --color-danger: #ef4444;
-            --color-danger-light: #fef2f2;
-            
-            --border-radius: 8px;
-            --border-radius-lg: 16px;
-            --border-radius-xl: 24px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
-            --transition: all 0.3s ease;
-        }
-
-        /* === RESET & BASE === */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--color-text);
-            line-height: 1.7;
-            background-color: var(--color-secondary);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.2;
-            color: var(--color-primary);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background-color: var(--color-secondary);
-            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo a {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
-        .logo span { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            margin: 0;
-        }
-
-        .desktop-nav .nav-links a {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--color-text);
-            transition: var(--transition);
-        }
-
-        .desktop-nav .nav-links a:hover { color: var(--color-highlight); }
-
-        .nav-btn-primary {
-            background-color: var(--color-highlight);
-            color: white !important;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .nav-btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-2px);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid #eee;
-        }
-
-        .mobile-nav.active { display: flex; }
-
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
-        }
+        /* === PAGE SPECIFIC STYLES === */
+        /* Note: Most base styles are now pulled from styles.css */
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1a1a5e 0%, #4169e1 50%, #2A9D8F 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-light) 50%, var(--color-highlight) 100%);
+            color: var(--color-secondary);
             padding: 80px 0 100px;
             text-align: center;
             position: relative;
@@ -208,12 +27,11 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Simple pattern overlay */
+            background-image: radial-gradient(var(--color-secondary) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.1;
         }
 
         .hero-content {
@@ -232,10 +50,11 @@
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 24px;
+            color: var(--color-secondary);
         }
 
         .hero h1 {
-            color: white;
+            color: var(--color-secondary);
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
             margin-bottom: 20px;
@@ -246,6 +65,7 @@
             opacity: 0.9;
             max-width: 700px;
             margin: 0 auto 32px;
+            color: var(--color-secondary);
         }
 
         .hero-stats {
@@ -256,26 +76,25 @@
             flex-wrap: wrap;
         }
 
-        .hero-stat {
-            text-align: center;
-        }
-
+        .hero-stat { text-align: center; }
+        
         .hero-stat-number {
             font-family: 'Inter', sans-serif;
             font-size: 2.5rem;
             font-weight: 800;
             display: block;
+            color: var(--color-accent);
         }
 
         .hero-stat-label {
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         /* How It Works */
         .how-it-works {
             padding: 80px 0;
-            background: white;
+            background: var(--color-secondary);
         }
 
         .section-header {
@@ -301,18 +120,6 @@
             gap: 24px;
         }
 
-        @media (max-width: 900px) {
-            .workflow-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .workflow-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .workflow-step {
             background: var(--color-background);
             border-radius: var(--border-radius-lg);
@@ -332,13 +139,7 @@
             font-weight: bold;
         }
 
-        .workflow-step:last-child::after {
-            display: none;
-        }
-
-        @media (max-width: 900px) {
-            .workflow-step::after { display: none; }
-        }
+        .workflow-step:last-child::after { display: none; }
 
         .workflow-icon {
             width: 64px;
@@ -353,20 +154,10 @@
             color: white;
         }
 
-        .workflow-step h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .workflow-step p {
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-        }
-
-        /* Weekly Missions */
+        /* Missions Section */
         .missions-section {
             padding: 80px 0;
-            background: linear-gradient(180deg, var(--color-background) 0%, white 100%);
+            background: linear-gradient(180deg, var(--color-background) 0%, var(--color-secondary) 100%);
         }
 
         .missions-preview {
@@ -376,14 +167,8 @@
             margin-top: 48px;
         }
 
-        @media (max-width: 768px) {
-            .missions-preview {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .mission-card {
-            background: white;
+            background: var(--color-secondary);
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-md);
@@ -403,10 +188,11 @@
             justify-content: space-between;
         }
 
-        .mission-header.executive { background: linear-gradient(135deg, #4169e1, #6366f1); }
-        .mission-header.emotional { background: linear-gradient(135deg, #ec4899, #f43f5e); }
-        .mission-header.sensory { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
-        .mission-header.social { background: linear-gradient(135deg, #10b981, #14b8a6); }
+        /* Header Gradients */
+        .mission-header.executive { background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary)); }
+        .mission-header.emotional { background: linear-gradient(135deg, #ec4899, #be185d); }
+        .mission-header.sensory { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .mission-header.social { background: linear-gradient(135deg, var(--color-highlight), var(--color-highlight-dark)); }
 
         .mission-title {
             display: flex;
@@ -414,15 +200,8 @@
             gap: 12px;
         }
 
-        .mission-title span {
-            font-size: 1.5rem;
-        }
-
-        .mission-title h3 {
-            color: white;
-            font-size: 1rem;
-            margin: 0;
-        }
+        .mission-title span { font-size: 1.5rem; }
+        .mission-title h3 { color: white; font-size: 1rem; margin: 0; }
 
         .mission-badge {
             background: rgba(255,255,255,0.2);
@@ -432,9 +211,7 @@
             font-weight: 700;
         }
 
-        .mission-content {
-            padding: 24px;
-        }
+        .mission-content { padding: 24px; }
 
         .mission-target {
             display: flex;
@@ -445,27 +222,12 @@
             margin-bottom: 16px;
         }
 
-        .mission-target i {
-            color: var(--color-highlight);
-        }
-
-        .mission-description {
-            margin-bottom: 20px;
-        }
-
-        .mission-description h4 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .mission-description p {
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-        }
+        .mission-target i { color: var(--color-highlight); }
 
         .mission-pages {
             display: flex;
             gap: 12px;
+            margin-top: 20px;
         }
 
         .page-preview {
@@ -476,17 +238,12 @@
             text-align: center;
         }
 
-        .page-preview-icon {
-            font-size: 1.5rem;
-            margin-bottom: 4px;
-        }
-
+        .page-preview-icon { font-size: 1.5rem; margin-bottom: 4px; }
         .page-preview-label {
             font-size: 0.7rem;
             font-weight: 600;
             color: var(--color-text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
         /* Personalization */
@@ -496,29 +253,15 @@
             color: white;
         }
 
-        .personalization-section h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .personalization-section > .container > p {
-            text-align: center;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 48px;
+        .personalization-section h2 { color: white; text-align: center; }
+        .personalization-section p.lead { 
+            text-align: center; opacity: 0.9; max-width: 600px; margin: 0 auto 48px; 
         }
 
         .personalization-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .personalization-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         .personalization-card {
@@ -529,32 +272,13 @@
             text-align: center;
         }
 
-        .personalization-card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-
-        .personalization-card h3 {
-            color: var(--color-accent);
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-        }
-
-        .personalization-card p {
-            font-size: 0.95rem;
-            opacity: 0.85;
-        }
+        .personalization-card-icon { font-size: 2.5rem; margin-bottom: 16px; }
+        .personalization-card h3 { color: var(--color-accent); font-size: 1.1rem; margin-bottom: 12px; }
+        .personalization-card p { font-size: 0.95rem; opacity: 0.85; }
 
         /* Sample Mission */
-        .sample-mission {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .sample-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
+        .sample-mission { padding: 80px 0; background: var(--color-secondary); }
+        .sample-container { max-width: 700px; margin: 0 auto; }
 
         .sample-packet {
             background: white;
@@ -565,36 +289,21 @@
         }
 
         .sample-packet-header {
-            background: linear-gradient(135deg, #4169e1, #1a1a5e);
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
             color: white;
             padding: 24px 32px;
             text-align: center;
         }
 
-        .sample-packet-header h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
+        .sample-packet-header h3 { color: white; font-size: 1.5rem; margin-bottom: 8px; }
 
-        .sample-packet-header p {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
-        .sample-packet-body {
-            padding: 32px;
-        }
+        .sample-packet-body { padding: 32px; }
 
         .sample-page {
             background: var(--color-background);
             border-radius: var(--border-radius);
             padding: 24px;
             margin-bottom: 20px;
-        }
-
-        .sample-page:last-child {
-            margin-bottom: 0;
         }
 
         .sample-page-header {
@@ -631,27 +340,20 @@
             border-left: 4px solid var(--color-highlight);
         }
 
-        .sample-activity:last-child {
-            margin-bottom: 0;
-        }
-
         .sample-activity h5 {
             font-size: 0.95rem;
             margin-bottom: 6px;
             color: var(--color-primary);
         }
 
-        .sample-activity p {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            margin: 0;
-        }
+        .sample-activity p { font-size: 0.85rem; color: var(--color-text-muted); margin: 0; }
 
         .personalized-highlight {
-            background: linear-gradient(90deg, #fef3c7, #fde68a);
+            background: var(--color-accent-light);
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 600;
+            color: var(--color-primary-dark);
         }
 
         /* CTA Section */
@@ -662,18 +364,8 @@
             text-align: center;
         }
 
-        .cta-section h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 32px;
-        }
+        .cta-section h2 { color: white; font-size: 2.5rem; margin-bottom: 16px; }
+        .cta-section p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
 
         .cta-button {
             display: inline-flex;
@@ -692,6 +384,7 @@
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            color: var(--color-highlight);
         }
 
         .cta-features {
@@ -709,81 +402,16 @@
             font-size: 0.95rem;
             opacity: 0.9;
         }
+        
+        .cta-feature i { color: var(--color-accent); }
 
-        .cta-feature i {
-            color: var(--color-accent);
+        /* Media Queries */
+        @media (max-width: 900px) {
+            .workflow-grid { grid-template-columns: repeat(2, 1fr); }
+            .workflow-step::after { display: none; }
         }
-
-        /* Footer */
-        .footer {
-            background-color: #0f1f33;
-            color: white;
-            padding: 80px 24px 40px;
-        }
-
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         @media (max-width: 768px) {
-            .footer__grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .footer__brand h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer__brand p {
-            opacity: 0.75;
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .footer__links h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer__links ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .footer__links li {
-            margin-bottom: 12px;
-        }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .footer__links a:hover {
-            color: var(--color-accent);
-        }
-
-        .footer__bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
+            .missions-preview, .personalization-grid, .workflow-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -802,9 +430,9 @@
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                    <li><a href="missions.html" style="color: var(--color-highlight);">Missions</a></li>
+                    <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
                 </ul>
             </nav>
 
@@ -816,9 +444,9 @@
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
-            <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a>
+            <a href="missions.html">Missions</a>
+            <a href="learning-style-quiz.html">Learning Style Quiz</a>
+            <a href="join-club.html">Join the Club</a>
         </nav>
     </header>
 
@@ -830,7 +458,7 @@
                     NAVIGATOR MEMBERSHIP
                 </div>
                 <h1>Mission Control Center</h1>
-                <p>Your child's personalized command center. Every week, receive 2 targeted "stealth" missions designed specifically for YOUR child's brain — disguised as games they'll actually want to do.</p>
+                <p>Your child's personalized command center. Every week, receive 2 targeted "stealth" missions designed specifically for YOUR child's brain — disguised as games they'll actually want to play.</p>
                 
                 <div class="hero-stats">
                     <div class="hero-stat">
@@ -854,29 +482,29 @@
         <div class="container">
             <div class="section-header">
                 <h2>How Mission Control Works</h2>
-                <p>A personalized skill-building system that adapts to your child's needs every month.</p>
+                <p>A personalized system that adapts to your child's learning profile every month.</p>
             </div>
 
             <div class="workflow-grid">
                 <div class="workflow-step">
                     <div class="workflow-icon">🔍</div>
-                    <h3>We Assess</h3>
-                    <p>Your child's Deep Dive Assessment reveals their unique challenges and strengths</p>
+                    <h3>We Explore</h3>
+                    <p>Your child's <strong>Learning Style Quiz</strong> reveals their unique traits and strengths.</p>
                 </div>
                 <div class="workflow-step">
                     <div class="workflow-icon">🎯</div>
-                    <h3>We Target</h3>
-                    <p>Monthly "Friction Heat Map" identifies exactly where struggles are happening</p>
+                    <h3>We Focus</h3>
+                    <p>Monthly "Interest & Energy Snapshot" identifies exactly where support is needed.</p>
                 </div>
                 <div class="workflow-step">
                     <div class="workflow-icon">🎮</div>
                     <h3>We Personalize</h3>
-                    <p>Missions use THEIR interests, friends' names, and favorite things</p>
+                    <p>Missions use THEIR interests, friends' names, and favorite things.</p>
                 </div>
                 <div class="workflow-step">
                     <div class="workflow-icon">📈</div>
                     <h3>We Adapt</h3>
-                    <p>Track progress and adjust next month's missions based on results</p>
+                    <p>Track progress and adjust next month's coaching strategies based on results.</p>
                 </div>
             </div>
         </div>
@@ -886,7 +514,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Your Weekly Mission Drops</h2>
-                <p>Every week, 2 new missions appear in your Mission Control dashboard — each one targeting specific skills your child needs to develop.</p>
+                <p>Every week, 2 new missions appear in your dashboard — each one targeting specific skills your child needs to develop.</p>
             </div>
 
             <div class="missions-preview">
@@ -939,7 +567,7 @@
                         </div>
                         <div class="mission-description">
                             <h4>The Feelings Detective</h4>
-                            <p>A mystery-themed activity where kids identify and name emotions using their favorite characters. Builds vocabulary for big feelings.</p>
+                            <p>A mystery-themed activity where kids identify and name feelings using their favorite characters. Builds vocabulary for big emotions.</p>
                         </div>
                         <div class="mission-pages">
                             <div class="page-preview">
@@ -958,18 +586,18 @@
                     <div class="mission-header sensory">
                         <div class="mission-title">
                             <span>🌈</span>
-                            <h3>Sensory Shield</h3>
+                            <h3>Calm-Down Tools</h3>
                         </div>
                         <span class="mission-badge">WEEK 2</span>
                     </div>
                     <div class="mission-content">
                         <div class="mission-target">
                             <i class="fas fa-crosshairs"></i>
-                            Targets: Sensory Awareness, Coping Strategies
+                            Targets: Sensory Awareness, Regulation Strategies
                         </div>
                         <div class="mission-description">
                             <h4>The Comfort Zone Builder</h4>
-                            <p>Kids create their own sensory toolkit by identifying what helps when things feel "too much." Personalized to their specific triggers.</p>
+                            <p>Kids create their own regulation toolkit by identifying what helps when inputs feel "too much." Personalized to their specific preferences.</p>
                         </div>
                         <div class="mission-pages">
                             <div class="page-preview">
@@ -995,7 +623,7 @@
                     <div class="mission-content">
                         <div class="mission-target">
                             <i class="fas fa-crosshairs"></i>
-                            Targets: Social Skills, Friendship Building
+                            Targets: Social Confidence, Friendship Building
                         </div>
                         <div class="mission-description">
                             <h4>The Friend Finder Map</h4>
@@ -1008,7 +636,7 @@
                             </div>
                             <div class="page-preview">
                                 <div class="page-preview-icon">💬</div>
-                                <div class="page-preview-label">Conversation Cards</div>
+                                <div class="page-preview-label">Chat Cards</div>
                             </div>
                         </div>
                     </div>
@@ -1020,7 +648,7 @@
     <section class="personalization-section">
         <div class="container">
             <h2>Personalized to YOUR Child</h2>
-            <p>Generic worksheets don't work. That's why every mission is customized using details from your child's profile.</p>
+            <p class="lead">Generic worksheets don't work. That's why every mission is customized using details from your child's profile.</p>
 
             <div class="personalization-grid">
                 <div class="personalization-card">
@@ -1031,12 +659,12 @@
                 <div class="personalization-card">
                     <div class="personalization-card-icon">👦</div>
                     <h3>Real Names</h3>
-                    <p>Activities use their friends' actual names, their teacher's name, real scenarios they face daily.</p>
+                    <p>Activities use their friends' actual names, their teacher's name, and real scenarios they face daily.</p>
                 </div>
                 <div class="personalization-card">
                     <div class="personalization-card-icon">🎯</div>
                     <h3>Targeted Skills</h3>
-                    <p>Based on assessment results, we focus on THEIR specific challenges — not generic "executive function."</p>
+                    <p>Based on quiz results, we focus on THEIR specific growth areas — not generic "executive function."</p>
                 </div>
             </div>
         </div>
@@ -1092,21 +720,6 @@
                                 <p>Complete the sequence in under 5 minutes = Earn 10 minutes of <span class="personalized-highlight">Minecraft</span> after homework!</p>
                             </div>
                         </div>
-
-                        <div class="sample-page">
-                            <div class="sample-page-header">
-                                <span class="sample-page-title">
-                                    <span>⭐</span> Page 3: Mission Log
-                                </span>
-                                <span class="sample-page-badge">2 MIN</span>
-                            </div>
-                            <div class="sample-activity">
-                                <h5>Commander's Report</h5>
-                                <p>Today's launch time: _____ minutes<br>
-                                What helped me start faster: _____<br>
-                                Next mission goal: _____</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1116,11 +729,11 @@
     <section class="cta-section">
         <div class="container">
             <h2>Ready to Build Their Launch System?</h2>
-            <p>Start with the free assessment to discover your child's unique operating system. Then unlock personalized missions designed just for them.</p>
+            <p>Start with the free quiz to discover your child's unique operating system. Then unlock personalized missions designed just for them.</p>
             
-            <a href="checkout.html" class="cta-button">
+            <a href="learning-style-quiz.html" class="cta-button">
                 <i class="fas fa-rocket"></i>
-                Start Free Assessment
+                Take the Learning Style Quiz
             </a>
 
             <div class="cta-features">
@@ -1145,16 +758,16 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed support strategies for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                        <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                        <li><a href="join-club.html">Join the Club</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
@@ -1173,6 +786,7 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle i');
@@ -1187,6 +801,7 @@
             }
         }
 
+        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
@@ -1199,16 +814,6 @@
                     icon.classList.add('fa-bars');
                 }
             }
-        });
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('mobileMenu');
-                const toggle = document.querySelector('.menu-toggle i');
-                menu.classList.remove('active');
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            });
         });
     </script>
 </body>
