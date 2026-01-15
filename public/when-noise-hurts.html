@@ -3,181 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>When Noise Hurts: Sensory Overload | Navigator Kids AI</title>
-    <meta name="description" content="For some kids, everyday sounds physically hurt. Learn how to help your noise-sensitive child survive birthday parties, cafeterias, and loud spaces.">
+    <title>When Noise Hurts: Helping Your Child Survive Loud Spaces | Navigator Kids AI™</title>
+    <meta name="description" content="For some kids, everyday sounds physically hurt. Learn how to help your sensitive child survive birthday parties, cafeterias, and loud spaces without the meltdown.">
+    
+    <meta property="og:title" content="When Noise Hurts: Helping Your Child Survive Loud Spaces">
+    <meta property="og:description" content="It's not behavior, it's biology. Strategies for auditory sensitivity in Deep Thinkers.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.navigatorkidsai.com/images/noise-hurts-cover.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-        /* --- VARIABLES --- */
-        :root {
-            --color-primary: #1B365D; /* Navy */
-            --color-primary-dark: #132845;
-            --color-secondary: #FFFFFF; /* White */
-            --color-accent: #E9C46A; /* Gold */
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F; /* Teal */
-            --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-background: #F4F6F8;
-            --color-background-warm: #FFFBF5;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
-        }
-
-        /* --- GLOBAL RESET --- */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            color: var(--color-text);
-            line-height: 1.7;
-            background-color: var(--color-background);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.3;
-            color: var(--color-primary);
-        }
-
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul, ol { margin-left: 24px; margin-bottom: 16px; }
-        li { margin-bottom: 8px; }
-        p { margin-bottom: 24px; }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background-color: var(--color-secondary);
-            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo a {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
-        .logo span { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            margin: 0;
-        }
-
-        .desktop-nav .nav-links a {
-            color: var(--color-text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover { color: var(--color-highlight); }
-
-        .nav-btn-primary {
-            background-color: var(--color-highlight);
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .nav-btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-1px);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-primary);
-            padding: 8px;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid #eee;
-        }
-
-        .mobile-nav.active { display: flex; }
-
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
-        }
-
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
-        }
-
-        /* --- ARTICLE LAYOUT --- */
+        /* === PAGE SPECIFIC STYLES === */
+        
+        /* Article Layout */
         .article-layout {
             display: grid;
             grid-template-columns: 1fr 300px;
@@ -192,23 +34,41 @@
             .article-sidebar { order: -1; }
         }
 
-        /* --- BREADCRUMBS --- */
+        /* Breadcrumbs */
         .breadcrumbs {
             font-size: 0.9rem;
             margin-bottom: 24px;
             color: var(--color-text-muted);
         }
 
-        .breadcrumbs a { color: var(--color-highlight); }
+        .breadcrumbs a {
+            color: var(--color-highlight);
+            transition: var(--transition);
+        }
+
         .breadcrumbs a:hover { color: var(--color-highlight-dark); }
         .breadcrumbs span { margin: 0 8px; color: var(--color-text-muted); }
 
-        /* --- ARTICLE HEADER --- */
+        /* Article Header */
         .article-header { margin-bottom: 40px; }
+
+        .article-tag {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-family: 'Inter', sans-serif;
+        }
 
         .article-header h1 {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 24px;
+            line-height: 1.2;
+            color: var(--color-primary);
         }
 
         .author-byline {
@@ -228,15 +88,19 @@
             color: white;
             font-weight: 700;
             font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
         }
 
-        .author-info { display: flex; flex-direction: column; gap: 4px; }
-        .author-name { font-weight: 700; color: var(--color-primary); font-family: 'Inter', sans-serif; }
+        .author-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .author-name { font-weight: 700; color: var(--color-primary); }
         .author-role { font-size: 0.85rem; color: var(--color-highlight); }
         .publish-date { font-size: 0.9rem; color: var(--color-text-muted); }
 
-        /* --- KEY TAKEAWAYS --- */
+        /* Key Takeaways */
         .key-takeaways {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -254,7 +118,10 @@
             letter-spacing: 0.05em;
         }
 
-        /* --- ARTICLE BODY --- */
+        .key-takeaways ul { margin: 0; padding-left: 20px; }
+        .key-takeaways li { margin-bottom: 10px; color: var(--color-text); }
+
+        /* Article Body */
         .article-body {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -262,15 +129,22 @@
             box-shadow: var(--shadow-sm);
         }
 
-        @media (max-width: 600px) { .article-body { padding: 32px 24px; } }
+        @media (max-width: 600px) {
+            .article-body { padding: 32px 24px; }
+        }
 
-        .article-body p { font-size: 1.05rem; line-height: 1.8; }
-        
+        .article-body p {
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
         .article-body h2 {
             font-size: 1.6rem;
             margin: 48px 0 24px;
             padding-bottom: 12px;
             border-bottom: 2px solid var(--color-highlight-light);
+            color: var(--color-primary);
         }
 
         .article-body h3 {
@@ -279,9 +153,11 @@
             color: var(--color-primary);
         }
 
+        .article-body ul, .article-body ol { margin-bottom: 24px; padding-left: 24px; }
+        .article-body li { margin-bottom: 12px; line-height: 1.7; }
         .article-body li strong { color: var(--color-primary); }
 
-        /* --- HIGHLIGHT BOX --- */
+        /* Highlight Box */
         .highlight-box {
             background: var(--color-background-warm);
             border-left: 4px solid var(--color-accent);
@@ -292,11 +168,13 @@
 
         .highlight-box h3 {
             font-size: 1.1rem;
-            color: #D4A017; /* Darker gold for text legibility */
+            color: var(--color-accent);
             margin-bottom: 12px;
         }
 
-        /* --- NOISE CHART --- */
+        .highlight-box p { margin: 0; font-size: 1rem; }
+
+        /* Noise Chart */
         .noise-chart {
             background: var(--color-highlight-light);
             border-radius: var(--border-radius-lg);
@@ -355,9 +233,7 @@
             line-height: 1.4;
         }
 
-        /* --- SIDEBAR --- */
-        .article-sidebar { position: relative; }
-
+        /* Sidebar Widget */
         .sidebar-widget {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -383,18 +259,21 @@
             border-radius: var(--border-radius);
             font-weight: 600;
             font-size: 0.95rem;
+            transition: var(--transition);
             width: 100%;
         }
 
         .btn:hover {
             background: var(--color-highlight-dark);
             transform: translateY(-2px);
+            color: white;
         }
 
-        /* --- READ NEXT --- */
+        /* Read Next */
         .read-next {
             background: var(--color-primary);
             padding: 80px 24px;
+            margin-top: 60px;
         }
 
         .read-next h2 {
@@ -412,14 +291,17 @@
             margin: 0 auto;
         }
 
-        @media (max-width: 600px) { .read-next-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) {
+            .read-next-grid { grid-template-columns: 1fr; }
+        }
 
         .read-next-card {
             background: white;
             border-radius: var(--border-radius-lg);
             padding: 32px;
             transition: var(--transition);
-            display: block;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .read-next-card:hover {
@@ -431,61 +313,11 @@
             font-size: 1.2rem;
             margin-bottom: 8px;
             transition: var(--transition);
+            color: var(--color-primary);
         }
 
         .read-next-card:hover h3 { color: var(--color-highlight); }
         .read-next-card p { font-size: 0.95rem; color: var(--color-text-muted); margin: 0; }
-
-        /* --- FOOTER --- */
-        .footer {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 80px 24px 40px;
-        }
-
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        @media (max-width: 768px) {
-            .footer__grid { grid-template-columns: 1fr; gap: 40px; }
-        }
-
-        .footer__brand h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-        }
-
-        .footer__brand p { opacity: 0.75; line-height: 1.7; font-size: 0.95rem; }
-
-        .footer__links h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1rem;
-        }
-
-        .footer__links ul { list-style: none; margin: 0; padding: 0; }
-        .footer__links li { margin-bottom: 12px; }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .footer__links a:hover { color: var(--color-accent); }
-
-        .footer__bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
     </style>
 </head>
 
@@ -495,28 +327,31 @@
             <div class="logo">
                 <a href="index.html">
                     <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>
+                    Navigator <span>Kids AI™</span>
                 </a>
             </div>
+            
             <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                    <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                    <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
                 </ul>
             </nav>
+
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
-            <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a>
+            <a href="learning-style-quiz.html">Learning Style Quiz</a>
+            <a href="calm-down-kit.html">Calm-Down Kit</a>
+            <a href="join-club.html">Join the Club</a>
         </nav>
     </header>
 
@@ -525,73 +360,60 @@
             <div class="breadcrumbs">
                 <a href="index.html">Home</a> <span>/</span>
                 <a href="resources.html">Resources</a> <span>/</span>
-                <a href="resources.html">Sensory & Physical</a> <span>/</span>
+                <a href="#">Sensory Needs</a> <span>/</span>
                 <span>When Noise Hurts</span>
             </div>
 
             <header class="article-header">
+                <span class="article-tag">Sensory Guide</span>
                 <h1>When Noise Hurts: Helping Your Child Survive Loud Spaces</h1>
                 <div class="author-byline">
                     <div class="author-photo">AS</div>
                     <div class="author-info">
                         <div class="author-name">Avery Sage</div>
-                        <div class="author-role">Emotional Intelligence Specialist</div>
-                        <div class="publish-date">Published November 22, 2024</div>
+                        <div class="author-role">Student Success Coach</div>
+                        <div class="publish-date">Updated October 2025</div>
                     </div>
                 </div>
             </header>
 
             <div class="key-takeaways">
-                <h2>Key Takeaways</h2>
+                <h2>Key Insights</h2>
                 <ul>
-                    <li>Noise sensitivity in gifted children is a neurological difference, not a behavioral choice</li>
-                    <li>Loud environments trigger genuine pain responses in sensitive auditory systems</li>
-                    <li>Prevention through environmental design works better than reactive coping strategies</li>
-                    <li>Understanding auditory processing differences helps parents respond with empathy rather than frustration</li>
+                    <li>Noise sensitivity in High-Potential children is a brain-based difference, not a behavioral choice.</li>
+                    <li>Loud environments trigger genuine stress responses in sensitive auditory systems.</li>
+                    <li>Prevention through environmental design works better than reactive coping strategies.</li>
+                    <li>Understanding auditory processing differences helps parents respond with empathy rather than frustration.</li>
                 </ul>
             </div>
 
             <div class="article-body">
-                <p>The birthday party starts innocently enough. Balloons pop, children laugh, music plays, and parents chat. Within minutes, your child is covering their ears, tears streaming down their face. The school assembly begins with enthusiastic applause and microphone feedback—your child bolts from the auditorium. The restaurant fills with families during dinner rush—you watch your child retreat into themselves, overwhelmed by the cacophony.</p>
+                <p>The birthday party starts innocently enough. Balloons pop, children laugh, music plays, and parents chat. Within minutes, your child is covering their ears, tears streaming down their face. The school assembly begins with enthusiastic applause and microphone feedback—your child bolts from the auditorium.</p>
 
-                <p>This isn't dramatic behavior or attention-seeking—it's auditory over-responsiveness, a neurological difference that makes ordinary sounds feel overwhelming or even painful to sensitive ears.</p>
+                <p>This isn't dramatic behavior or attention-seeking—it's <strong>auditory sensitivity</strong>, a brain-based difference that makes ordinary sounds feel overwhelming or even painful to sensitive ears.</p>
 
                 <p>Understanding the science behind noise sensitivity transforms parental frustration into strategic intervention.</p>
 
                 <div class="highlight-box">
                     <h3>The Auditory Reality</h3>
-                    <p>Gifted children's auditory systems often process sound with heightened intensity, making everyday noise levels feel amplified and overwhelming to their sensitive nervous systems.</p>
+                    <p>Deep Thinkers' auditory systems often process sound with heightened intensity, making everyday noise levels feel amplified and overwhelming to their sensitive nervous systems.</p>
                 </div>
 
-                <h2>The Neuroscience of Noise Sensitivity</h2>
+                <h2>The Science of Noise Sensitivity</h2>
                 <p>How auditory processing creates daily challenges:</p>
 
                 <h3>Auditory Processing Differences</h3>
-                <p>Gifted children's ears and brains process sound differently:</p>
+                <p>High-Potential children's ears and brains process sound differently:</p>
 
                 <ul>
-                    <li><strong>Enhanced Frequency Detection:</strong> Notice subtle pitch and tone variations others miss</li>
-                    <li><strong>Amplified Volume Perception:</strong> Experience sounds as louder than neurotypical peers</li>
-                    <li><strong>Reduced Filtering Ability:</strong> Struggle to tune out background noise</li>
-                    <li><strong>Increased Temporal Sensitivity:</strong> React more intensely to sudden or unexpected sounds</li>
-                </ul>
-
-                <h3>The Auditory Gateway Theory</h3>
-                <p>Why noise sensitivity matters:</p>
-
-                <ul>
-                    <li><strong>Attention Drain:</strong> Constant sound processing consumes cognitive resources</li>
-                    <li><strong>Stress Activation:</strong> Loud environments trigger fight-or-flight responses</li>
-                    <li><strong>Communication Interference:</strong> Background noise masks important verbal information</li>
-                    <li><strong>Regulatory Overload:</strong> Multiple sounds simultaneously overwhelm processing capacity</li>
+                    <li><strong>Enhanced Frequency Detection:</strong> Noticing subtle pitch and tone variations others miss.</li>
+                    <li><strong>Amplified Volume Perception:</strong> Experiencing sounds as louder than typical peers.</li>
+                    <li><strong>Reduced Filtering Ability:</strong> Struggling to tune out background noise.</li>
+                    <li><strong>Increased Temporal Sensitivity:</strong> Reacting more intensely to sudden or unexpected sounds.</li>
                 </ul>
 
                 <div class="noise-chart">
                     <h3>Noise Level Comparison</h3>
-                    
-
-[Image of decibel level comparison chart]
-
                     <div class="noise-levels">
                         <div class="noise-level">
                             <h4>Quiet Library</h4>
@@ -616,259 +438,66 @@
                     </div>
                 </div>
 
-                <div class="highlight-box">
-                    <h3>Research Insight</h3>
-                    <p>Audiological studies show that gifted children with noise sensitivity demonstrate 200-300% greater activation in auditory processing regions when exposed to typical environmental sounds, explaining why ordinary noise feels amplified.</p>
-                </div>
-
                 <h2>Common Trigger Environments</h2>
                 <p>Where noise sensitivity creates challenges:</p>
 
                 <h3>Social Gathering Spaces</h3>
                 <ul>
-                    <li><strong>Birthday Parties:</strong> Music, laughter, balloons popping, excited voices</li>
-                    <li><strong>Restaurants:</strong> Clattering dishes, multiple conversations, background music</li>
-                    <li><strong>Malls/Shops:</strong> Announcements, crowd noise, cash registers, footsteps</li>
-                    <li><strong>Playgrounds:</strong> Screaming children, equipment sounds, echoing voices</li>
+                    <li><strong>Birthday Parties:</strong> Music, laughter, balloons popping, excited voices.</li>
+                    <li><strong>Restaurants:</strong> Clattering dishes, multiple conversations, background music.</li>
+                    <li><strong>Malls/Shops:</strong> Announcements, crowd noise, cash registers, footsteps.</li>
                 </ul>
 
                 <h3>Educational Environments</h3>
                 <ul>
-                    <li><strong>School Cafeterias:</strong> 85-95 decibels of echoing voices and clattering trays</li>
-                    <li><strong>Assemblies/Auditoriums:</strong> Microphone feedback, applause, group singing</li>
-                    <li><strong>Gymnasiums:</strong> Echoing voices, bouncing balls, whistles blowing</li>
-                    <li><strong>Hallways:</strong> Foot traffic, locker slamming, group conversations</li>
-                </ul>
-
-                <h3>Public Venues</h3>
-                <ul>
-                    <li><strong>Airports:</strong> Announcements, luggage carts, crying babies, jet engines</li>
-                    <li><strong>Movie Theaters:</strong> Commercials, previews, surround sound systems</li>
-                    <li><strong>Churches/Temples:</strong> Organ music, group singing, echo effects</li>
-                    <li><strong>Sports Events:</strong> Crowd cheering, announcements, music, whistles</li>
-                </ul>
-
-                <h2>Recognizing Noise Sensitivity Patterns</h2>
-                <p>Look for these behavioral indicators:</p>
-
-                <h3>Pre-Event Anxiety</h3>
-                <ul>
-                    <li>Refusing invitations to noisy events</li>
-                    <li>Expressing worry about sound levels</li>
-                    <li>Requesting to leave before arrival</li>
-                    <li>Attempting to negotiate quieter alternatives</li>
-                </ul>
-
-                <h3>During-Event Reactions</h3>
-                <ul>
-                    <li>Covering ears or head</li>
-                    <li>Withdrawing from group activities</li>
-                    <li>Seeking quiet corners or exits</li>
-                    <li>Expressing physical discomfort (headache, stomach ache)</li>
-                </ul>
-
-                <h3>Post-Event Recovery</h3>
-                <ul>
-                    <li>Extended processing time needed</li>
-                    <li>Increased irritability or emotional volatility</li>
-                    <li>Physical symptoms (fatigue, headache)</li>
-                    <li>Reluctance to attend similar future events</li>
+                    <li><strong>School Cafeterias:</strong> 85-95 decibels of echoing voices and clattering trays.</li>
+                    <li><strong>Assemblies:</strong> Microphone feedback, applause, group singing.</li>
+                    <li><strong>Gymnasiums:</strong> Echoing voices, bouncing balls, whistles blowing.</li>
                 </ul>
 
                 <div class="highlight-box">
-                    <h3>Diagnostic Question</h3>
+                    <h3>Discovery Question</h3>
                     <p>Ask: "Does my child seem to hear sounds more intensely than others, or do they react more strongly to ordinary noise levels?" If yes, auditory sensitivity likely contributes to overwhelm experiences.</p>
                 </div>
-
-                <h2>Why Traditional Approaches Fail</h2>
-                <p>Standard parenting strategies often worsen noise sensitivity:</p>
-
-                <h3>Dismissal and Minimization</h3>
-                <ul>
-                    <li><strong>"It's not that loud":</strong> Invalidates genuine sensory experiences</li>
-                    <li><strong>"Everyone deals with it":</strong> Ignores individual neurological differences</li>
-                    <li><strong>"You're being dramatic":</strong> Damages trust and communication</li>
-                    <li><strong>"Just ignore it":</strong> Ignores the neurological reality of processing</li>
-                </ul>
-
-                <h3>Forced Exposure Tactics</h3>
-                <ul>
-                    <li><strong>Gradual Desensitization:</strong> Often increases anxiety without addressing root causes</li>
-                    <li><strong>Exposure Therapy:</strong> Can traumatize rather than acclimate sensitive individuals</li>
-                    <li><strong>Peer Pressure:</strong> Creates shame around legitimate sensory needs</li>
-                    <li><strong>Consequence-Based:</strong> Punishes neurological responses rather than supporting coping</li>
-                </ul>
 
                 <h2>Effective Support Strategies</h2>
                 <p>Focus on accommodation rather than confrontation:</p>
 
                 <h3>Prevention Through Preparation</h3>
                 <ul>
-                    <li><strong>Environmental Research:</strong> Scout venues for noise levels before visiting</li>
-                    <li><strong>Timing Strategies:</strong> Attend events during quieter periods</li>
-                    <li><strong>Alternative Arrangements:</strong> Request quieter seating or spaces</li>
-                    <li><strong>Escape Planning:</strong> Identify quiet areas and exit routes in advance</li>
+                    <li><strong>Environmental Research:</strong> Scout venues for noise levels before visiting.</li>
+                    <li><strong>Timing Strategies:</strong> Attend events during quieter periods.</li>
+                    <li><strong>Escape Planning:</strong> Identify quiet areas and exit routes in advance.</li>
                 </ul>
 
                 <h3>Protective Equipment</h3>
                 <ul>
-                    <li><strong>Noise-Canceling Headphones:</strong> Professional-grade options for older children</li>
-                    <li><strong>Earplugs:</strong> Disposable or reusable options for various settings</li>
-                    <li><strong>Musicians' Earplugs:</strong> Flat-frequency reduction for music events</li>
-                    <li><strong>Personal Sound Amplifiers:</strong> Devices that enhance desired sounds while reducing background noise</li>
+                    <li><strong>Noise-Canceling Headphones:</strong> Professional-grade options for older children.</li>
+                    <li><strong>Earplugs:</strong> Disposable or reusable options for various settings.</li>
+                    <li><strong>Calm-Down Kit:</strong> Keep sensory tools handy for immediate regulation.</li>
                 </ul>
 
-                <h3>Environmental Modifications</h3>
+                <h2>When to Seek Professional Guidance</h2>
+                <p>Consider consulting a specialist when:</p>
                 <ul>
-                    <li><strong>Seating Selection:</strong> Choose quieter areas away from sound sources</li>
-                    <li><strong>Time Management:</strong> Arrive early or leave before peak noise periods</li>
-                    <li><strong>Physical Barriers:</strong> Use walls, corners, or furniture to reduce sound exposure</li>
-                    <li><strong>Alternative Activities:</strong> Provide quiet options during noisy events</li>
+                    <li>Noise sensitivity significantly impacts academic performance.</li>
+                    <li>Family relationships suffer due to noise-related conflicts.</li>
+                    <li>Child expresses genuine distress about auditory environments.</li>
+                    <li>Self-advocacy skills need professional development support.</li>
                 </ul>
-
-                <div class="highlight-box">
-                    <h3>Implementation Strategy</h3>
-                    <p>Introduce protective strategies gradually, allowing time for adaptation. Start with low-stress environments to build confidence before progressing to more challenging noise situations.</p>
-                </div>
-
-                <h2>Building Coping Skills</h2>
-                <p>Develop sustainable regulation strategies:</p>
-
-                <h3>Self-Advocacy Development</h3>
-                <ul>
-                    <li><strong>Communication Scripts:</strong> Teach phrases for requesting accommodations</li>
-                    <li><strong>Boundary Setting:</strong> Help children identify and express their limits</li>
-                    <li><strong>Alternative Requests:</strong> Provide options for quieter participation</li>
-                    <li><strong>Professional Support:</strong> Practice requesting accommodations in safe environments</li>
-                </ul>
-
-                <h3>Regulation Techniques</h3>
-                <ul>
-                    <li><strong>Breathing Exercises:</strong> Controlled breathing to reduce stress responses</li>
-                    <li><strong>Grounding Strategies:</strong> Focus on physical sensations to anchor attention</li>
-                    <li><strong>Mindfulness Practices:</strong> Present-moment awareness to reduce anxiety</li>
-                    <li><strong>Recovery Rituals:</strong> Established routines for post-event decompression</li>
-                </ul>
-
-                <h3>Stress Reduction Methods</h3>
-                <ul>
-                    <li><strong>Predictable Routines:</strong> Consistent pre- and post-event schedules</li>
-                    <li><strong>Comfort Items:</strong> Preferred objects for emotional regulation</li>
-                    <li><strong>Sensory Tools:</strong> Fidget items or weighted accessories for grounding</li>
-                    <li><strong>Recovery Time:</strong> Scheduled quiet periods after noisy experiences</li>
-                </ul>
-
-                <h2>School-Based Accommodations</h2>
-                <p>Advocate for educational environment modifications:</p>
-
-                <h3>Classroom Supports</h3>
-                <ul>
-                    <li><strong>Seating Arrangements:</strong> Strategic positioning away from noise sources</li>
-                    <li><strong>Quiet Spaces:</strong> Designated areas for sensory breaks</li>
-                    <li><strong>Alternative Testing:</strong> Quieter environments for assessments</li>
-                    <li><strong>Technology Tools:</strong> Personal amplification or noise reduction devices</li>
-                </ul>
-
-                <h3>Special Event Planning</h3>
-                <ul>
-                    <li><strong>Advance Notice:</strong> Early warning about noisy activities or assemblies</li>
-                    <li><strong>Alternative Participation:</strong> Options for quieter involvement</li>
-                    <li><strong>Escape Routes:</strong> Permission to leave overwhelming situations</li>
-                    <li><strong>Recovery Time:</strong> Scheduled breaks after intense auditory experiences</li>
-                </ul>
-
-                <h3>Communication Protocols</h3>
-                <ul>
-                    <li><strong>Teacher Education:</strong> Inform educators about auditory sensitivity needs</li>
-                    <li><strong>Emergency Plans:</strong> Clear procedures for overwhelming situations</li>
-                    <li><strong>Regular Check-ins:</strong> Ongoing assessment of accommodation effectiveness</li>
-                    <li><strong>Documentation:</strong> Record successful strategies and needed adjustments</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h3>Research Evidence</h3>
-                    <p>Controlled studies show that students with auditory sensitivity accommodations demonstrate 45% improved attention and 35% reduced anxiety in educational settings when provided with appropriate noise management supports.</p>
-                </div>
-
-                <h2>Creating Home Sanctuary Spaces</h2>
-                <p>Design quiet retreat areas:</p>
-
-                <h3>Physical Environment</h3>
-                <ul>
-                    <li><strong>Soundproofing:</strong> Heavy curtains, rugs, and soft furnishings to absorb noise</li>
-                    <li><strong>Dedicated Spaces:</strong> Specific rooms or areas designated as quiet zones</li>
-                    <li><strong>Technology Solutions:</strong> White noise machines or sound masking systems</li>
-                    <li><strong>Visual Barriers:</strong> Doors or partitions to reduce visual noise</li>
-                </ul>
-
-                <h3>Family Communication</h3>
-                <ul>
-                    <li><strong>Noise Awareness:</strong> Family education about sensitivity needs</li>
-                    <li><strong>Quiet Hours:</strong> Established times for reduced household noise</li>
-                    <li><strong>Alternative Activities:</strong> Quieter options for family entertainment</li>
-                    <li><strong>Respect Protocols:</strong> Clear boundaries around noise expectations</li>
-                </ul>
-
-                <h3>Recovery Systems</h3>
-                <ul>
-                    <li><strong>Decompression Routines:</strong> Structured time for sensory processing</li>
-                    <li><strong>Comfort Items:</strong> Preferred objects for emotional regulation</li>
-                    <li><strong>Sensory Tools:</strong> Fidget items or weighted accessories for grounding</li>
-                    <li><strong>Recovery Time:</strong> Scheduled quiet periods after noisy experiences</li>
-                </ul>
-
-                <h2>When to Seek Professional Support</h2>
-                <p>Consider specialized intervention when:</p>
-
-                <ul>
-                    <li>Noise sensitivity significantly impacts academic performance</li>
-                    <li>Family relationships suffer due to noise-related conflicts</li>
-                    <li>Child expresses genuine distress about auditory environments</li>
-                    <li>Self-advocacy skills need professional development support</li>
-                    <li>Co-occurring sensory processing challenges emerge</li>
-                </ul>
-
-                <h2>The Long-Term Outlook</h2>
-                <p>Auditory sensitivity typically improves:</p>
-
-                <ul>
-                    <li>Neurological maturation reduces intensity of responses</li>
-                    <li>Coping strategies become more sophisticated over time</li>
-                    <li>Self-advocacy skills improve ability to manage environments</li>
-                    <li>Preferred accommodations become second nature with practice</li>
-                </ul>
-
-                <p>However, some individuals retain auditory sensitivity preferences throughout life, often developing careers and lifestyles that accommodate their sensory needs.</p>
-
-                <div class="highlight-box">
-                    <h3>Future Advantage</h3>
-                    <p>Adults who learn to understand and accommodate their auditory sensitivity often become exceptional sound engineers, musicians, audiologists, and acoustic designers who leverage their heightened auditory awareness for professional success.</p>
-                </div>
 
                 <h2>The Bottom Line</h2>
-                <p>Your child's noise sensitivity isn't a character flaw or attention-seeking behavior—it's a genuine neurological difference that deserves understanding and accommodation.</p>
-
+                <p>Your child's noise sensitivity isn't a character flaw—it's a genuine brain-based difference that deserves understanding and accommodation.</p>
                 <p>The key to successful noise management lies in prevention rather than reaction. By creating supportive environments and teaching self-advocacy skills, you help your child navigate auditory challenges with confidence.</p>
-
-                <p>Rather than fighting their auditory sensitivity, support their regulation through understanding and accommodation. This approach reduces daily stress for everyone while building genuine independence.</p>
-
-                <p>Remember: The goal isn't to eliminate all noise sensitivity but to create systems where your child can thrive comfortably. Sometimes the simplest solution—like noise-canceling headphones or a quiet corner—makes the biggest difference in daily quality of life.</p>
-
-                <p>In a world that often expects uniform sensory experiences, your role is to advocate for your child's unique neurological profile. Their auditory patterns aren't obstacles to overcome but realities to support with compassion and practical solutions.</p>
-
-                <div class="highlight-box">
-                    <h3>Family Harmony Strategy</h3>
-                    <p>Create a family noise management plan that includes everyone's auditory needs. When sound sensitivity is normalized and accommodated, family energy can focus on connection rather than daily battles over environmental stressors.</p>
-                </div>
             </div>
         </article>
 
         <aside class="article-sidebar">
             <div class="sidebar-widget">
-                <h3>Understand Your Child's Sensory Profile</h3>
-                <p>Our AI assessment identifies auditory patterns and provides targeted strategies.</p>
-                <a href="gifted-assessment-tool.html" class="btn">
-                    <i class="fas fa-microchip"></i> Start Free Assessment
+                <h3>Identify Their Profile</h3>
+                <p>Our Learning Style Quiz identifies auditory patterns and provides targeted strategies.</p>
+                <a href="learning-style-quiz.html" class="btn">
+                    <i class="fas fa-clipboard-list"></i> Start Free Quiz
                 </a>
             </div>
         </aside>
@@ -878,13 +507,13 @@
         <div class="container">
             <h2>Read Next</h2>
             <div class="read-next-grid">
-                <a href="the-sock-war.html" class="read-next-card">
+                <a href="sock-war.html" class="read-next-card">
                     <h3>The Sock War</h3>
-                    <p>Why seams feel like razor blades to sensitive children.</p>
+                    <p>Why clothing seams feel like razor blades to sensitive kids.</p>
                 </a>
-                <a href="seekers-vs-avoiders.html" class="read-next-card">
-                    <h3>Seekers vs. Avoiders</h3>
-                    <p>Does your child crash into walls or hide under tables?</p>
+                <a href="restraint-collapse.html" class="read-next-card">
+                    <h3>Restraint Collapse</h3>
+                    <p>Why your child falls apart at home after holding it together all day.</p>
                 </a>
             </div>
         </div>
@@ -895,16 +524,16 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed support strategies for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                        <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                        <li><a href="join-club.html">Join the Club</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
@@ -917,16 +546,18 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+                <p>&copy; 2026 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile Menu Toggle
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle i');
             menu.classList.toggle('active');
+            
             if (menu.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
@@ -935,15 +566,19 @@
                 toggle.classList.add('fa-bars');
             }
         }
+
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
-            if (menu.contains(e.target) || toggle.contains(e.target)) return;
-            if (menu.classList.contains('active')) {
+            
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
-                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         });
     </script>
