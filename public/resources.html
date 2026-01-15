@@ -4,179 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources Library | Navigator Kids AI™</title>
-    <meta name="description" content="A library of science-backed strategies for raising exceptional kids. Articles on sensory processing, emotional regulation, executive function.">
+    <meta name="description" content="A library of science-backed strategies for raising High-Potential and Deep Thinking kids. Articles on sensory processing, emotional regulation, and executive function.">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.navigatorkidsai.com/resources.html">
     <meta property="og:title" content="Resources Library | Navigator Kids AI™">
     <meta property="og:description" content="A library of science-backed strategies for raising exceptional kids. Articles on sensory processing, emotional regulation, and more.">
-    <meta property="og:image" content="https://www.navigatorkidsai.com/images/emergency-reset-kit-cover.png">
+    <meta property="og:image" content="https://www.navigatorkidsai.com/images/resources-cover.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Resources Library | Navigator Kids AI™">
     <meta name="twitter:description" content="A library of science-backed strategies for raising exceptional kids. Articles on sensory processing, emotional regulation, and more.">
-    <meta name="twitter:image" content="https://www.navigatorkidsai.com/images/emergency-reset-kit-cover.png">
+    <meta name="twitter:image" content="https://www.navigatorkidsai.com/images/resources-cover.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-        /* --- VARIABLES --- */
-        :root {
-            --color-primary: #1B365D;
-            --color-primary-dark: #132845;
-            --color-primary-light: #2A4A7A;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
-            --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-background: #F4F6F8;
-            --color-background-warm: #FFFBF5;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
-        }
-
-        /* --- GLOBAL RESET --- */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        /* === PAGE SPECIFIC STYLES === */
         
-        body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--color-text);
-            line-height: 1.7;
-            background-color: var(--color-background);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.2;
-            color: var(--color-primary);
-        }
-
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-        /* --- STANDARD NAVIGATION (Fixed to match Index/About) --- */
-        .navbar {
-            background-color: var(--color-secondary);
-            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 16px 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar__inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar__logo {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .navbar__logo i, .navbar__logo span { color: var(--color-highlight); }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--color-text);
-        }
-
-        .nav-links a:hover { color: var(--color-highlight); }
-
-        .nav-btn-primary {
-            background: var(--color-highlight);
-            color: white !important;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-weight: 700;
-        }
-
-        .nav-btn-primary:hover {
-            background: var(--color-highlight-dark);
-            transform: translateY(-2px);
-        }
-
-        .navbar__toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            cursor: pointer;
-        }
-
-        /* Mobile Nav */
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%; left: 0; right: 0;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid #eee;
-        }
-
-        .mobile-nav.active { display: flex; }
-
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
-        }
-
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .navbar__toggle { display: block; }
-        }
-
-        /* --- LIBRARY HEADER --- */
+        /* Library Header */
         .library-header {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            color: white;
+            color: var(--color-secondary);
             padding: 80px 0;
             text-align: center;
         }
 
         .library-header h1 {
-            color: white;
+            color: var(--color-secondary);
             font-size: clamp(2rem, 5vw, 2.75rem);
             margin-bottom: 16px;
         }
@@ -188,10 +46,11 @@
             margin: 0 auto;
         }
 
-        /* --- FEATURED SECTION --- */
+        /* Featured Section */
         .featured-section {
             padding: 60px 0;
             background: white;
+            border-bottom: 1px solid var(--color-background);
         }
 
         .featured-card {
@@ -225,7 +84,7 @@
             margin-bottom: 16px;
         }
 
-        .featured-content h2 { font-size: 1.75rem; margin-bottom: 12px; }
+        .featured-content h2 { font-size: 1.75rem; margin-bottom: 12px; color: var(--color-primary); }
         .featured-content p { color: var(--color-text-muted); margin-bottom: 24px; font-size: 1.05rem; }
 
         .featured-cta {
@@ -237,11 +96,16 @@
             padding: 14px 28px;
             border-radius: var(--border-radius);
             font-weight: 700;
+            transition: var(--transition);
         }
-        .featured-cta:hover { background: var(--color-highlight-dark); transform: translateY(-2px); }
+        .featured-cta:hover { 
+            background: var(--color-highlight-dark); 
+            transform: translateY(-2px); 
+        }
 
         .featured-image { display: flex; justify-content: center; }
 
+        /* Kit Preview Visualization */
         .kit-preview {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -249,6 +113,7 @@
             text-align: center;
             box-shadow: var(--shadow-lg);
             position: relative;
+            min-width: 250px;
         }
 
         .kit-preview__icon { font-size: 3rem; color: var(--color-highlight); margin-bottom: 16px; }
@@ -263,7 +128,7 @@
         }
         .kit-preview__subtitle { font-size: 0.9rem; color: var(--color-text-muted); }
 
-        /* --- LIBRARY CONTENT --- */
+        /* Library Content */
         .library-content { padding: 60px 0 80px; }
         .library-section { margin-bottom: 60px; }
 
@@ -289,6 +154,7 @@
             transition: var(--transition);
             display: flex; flex-direction: column;
             border: 1px solid transparent;
+            text-decoration: none;
         }
 
         .resource-card:hover {
@@ -312,7 +178,7 @@
 
         .resource-card .card-desc {
             font-size: 0.95rem; color: var(--color-text-muted);
-            flex-grow: 1; margin-bottom: 16px;
+            flex-grow: 1; margin-bottom: 16px; line-height: 1.5;
         }
 
         .resource-card .card-arrow {
@@ -321,56 +187,42 @@
         }
 
         .resource-card:hover .card-arrow { gap: 10px; }
-
-        /* --- FOOTER --- */
-        .footer { background: #0f1f33; color: white; padding: 80px 0 40px; }
-        .footer__grid {
-            display: grid; grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px; margin-bottom: 48px;
-        }
-        @media (max-width: 768px) { .footer__grid { grid-template-columns: 1fr; } }
-
-        .footer h4 { color: white; margin-bottom: 16px; font-family: 'Inter', sans-serif; }
-        .footer p { opacity: 0.75; font-size: 0.95rem; }
-        .footer__links ul { list-style: none; padding: 0; }
-        .footer__links li { margin-bottom: 12px; }
-        .footer__links a { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; }
-        .footer__links a:hover { color: var(--color-accent); }
-        .footer__bottom {
-            padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center; font-size: 0.85rem; opacity: 0.6;
-        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar__inner">
-                <a href="index.html" class="navbar__logo">
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
                     <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>™
+                    Navigator <span>Kids AI™</span>
                 </a>
-                
+            </div>
+            
+            <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li> <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                    <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
                 </ul>
+            </nav>
 
-                <button class="navbar__toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
         
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a> <a href="gifted-assessment-tool.html">AI Assessment</a>
-            <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a> </nav>
-    </nav>
+            <a href="about.html">About</a>
+            <a href="learning-style-quiz.html">Learning Style Quiz</a>
+            <a href="calm-down-kit.html">Calm-Down Kit</a>
+            <a href="join-club.html">Join the Club</a>
+        </nav>
+    </header>
 
     <section class="library-header">
         <div class="container">
@@ -384,9 +236,9 @@
             <div class="featured-card">
                 <div class="featured-content">
                     <span class="featured-tag">🚨 Free Download</span>
-                    <h2>Emergency Reset Kit</h2>
+                    <h2>Calm-Down Kit</h2>
                     <p>The 4-step protocol for de-escalating meltdowns without yelling, bribing, or losing your mind. Science-backed strategies you can use tonight.</p>
-                    <a href="emergency-reset-kit.html" class="featured-cta">
+                    <a href="calm-down-kit.html" class="featured-cta">
                         Get Instant Access <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -396,8 +248,8 @@
                             <i class="fas fa-kit-medical"></i>
                         </div>
                         <div class="kit-preview__badge">PDF + PRINTABLE</div>
-                        <div class="kit-preview__title">Emergency<br>Reset Kit</div>
-                        <div class="kit-preview__subtitle">4-Step De-Escalation Protocol</div>
+                        <div class="kit-preview__title">Calm-Down<br>Kit</div>
+                        <div class="kit-preview__subtitle">4-Step Regulation Protocol</div>
                     </div>
                 </div>
             </div>
@@ -410,7 +262,7 @@
             <section class="library-section">
                 <div class="section-header">
                     <div class="section-icon">⭐</div>
-                    <h2 class="section-title">Understanding Giftedness</h2>
+                    <h2 class="section-title">Understanding Learning Profiles</h2>
                 </div>
                 <div class="resource-list">
                     <a href="asynchronous-development.html" class="resource-card">
@@ -440,22 +292,22 @@
                     <h2 class="section-title">Executive Function & Focus</h2>
                 </div>
                 <div class="resource-list">
-                    <a href="laziness-vs-dysfunction.html" class="resource-card">
-                        <span class="tag">Essential</span>
-                        <span class="card-title">Laziness vs. Dysfunction</span>
-                        <span class="card-desc">How to tell if they won't do it, or can't do it—and what to do either way.</span>
-                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-                    </a>
                     <a href="cant-vs-wont.html" class="resource-card">
                         <span class="tag">Deep Dive</span>
                         <span class="card-title">Can't vs. Won't</span>
-                        <span class="card-desc">The critical distinction that changes everything about how you respond.</span>
+                        <span class="card-desc">The critical distinction between lack of skill and lack of will.</span>
                         <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                     </a>
                     <a href="freeze-on-easy-work.html" class="resource-card">
                         <span class="tag">Common Issue</span>
                         <span class="card-title">Why They Freeze on Easy Work</span>
-                        <span class="card-desc">The paradox of gifted kids who shut down on simple tasks.</span>
+                        <span class="card-desc">The paradox of high-potential kids who shut down on simple tasks.</span>
+                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="smart-child-lost-shoes.html" class="resource-card">
+                        <span class="tag">Daily Life</span>
+                        <span class="card-title">Why Smart Kids Lose Shoes</span>
+                        <span class="card-desc">Understanding the disconnect between intelligence and organization.</span>
                         <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                     </a>
                     <a href="black-hole-backpack.html" class="resource-card">
@@ -515,7 +367,7 @@
                         <span class="card-desc">When overthinking is a feature, not a bug—and when it's a problem.</span>
                         <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="perfectionism-trap.html" class="resource-card">
+                    <a href="perfectionism.html" class="resource-card">
                         <span class="tag">Perfectionism</span>
                         <span class="card-title">The Perfectionism Trap</span>
                         <span class="card-desc">Breaking the cycle of impossible standards and paralysis.</span>
@@ -536,13 +388,13 @@
                         <span class="card-desc">Two opposite sensory profiles that require completely different approaches.</span>
                         <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="the-sock-war.html" class="resource-card">
+                    <a href="sock-war.html" class="resource-card">
                         <span class="tag">Practical</span>
                         <span class="card-title">The Sock War</span>
                         <span class="card-desc">Winning the battle against seams, tags, and "wrong feeling" clothes.</span>
                         <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="the-touch-factor.html" class="resource-card">
+                    <a href="touch-factor.html" class="resource-card">
                         <span class="tag">Tactile</span>
                         <span class="card-title">The Touch Factor</span>
                         <span class="card-desc">When tags, seams, and fabrics cause morning meltdowns.</span>
@@ -570,43 +422,43 @@
             </section>
 
             <section class="library-section">
-    <div class="section-header">
-        <div class="section-icon">👥</div>
-        <h2 class="section-title">Social & Communication</h2>
-    </div>
-    <div class="resource-list">
-        <a href="social-connection.html" class="resource-card">
-            <span class="tag">Start Here</span>
-            <span class="card-title">Social Connection Guide</span>
-            <span class="card-desc">Building meaningful relationships when you think differently.</span>
-            <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="finding-peer-groups.html" class="resource-card">
-            <span class="tag">Connection</span>
-            <span class="card-title">Finding Their Tribe</span>
-            <span class="card-desc">Why gifted kids often feel like outsiders—and how to help them find their people.</span>
-            <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="the-friendship-formula.html" class="resource-card">
-            <span class="tag">Friendships</span>
-            <span class="card-title">The Friendship Formula</span>
-            <span class="card-desc">The four elements gifted kids need to build meaningful connections.</span>
-            <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="introvert-or-isolated.html" class="resource-card">
-            <span class="tag">Understanding</span>
-            <span class="card-title">Introvert or Isolated?</span>
-            <span class="card-desc">Knowing the difference between preference and struggle.</span>
-            <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="not-everyone-will-get-them.html" class="resource-card">
-            <span class="tag">Acceptance</span>
-            <span class="card-title">Not Everyone Will Get Them</span>
-            <span class="card-desc">Helping your child find peace with being different.</span>
-            <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
-        </a>
-    </div>
-</section>
+                <div class="section-header">
+                    <div class="section-icon">👥</div>
+                    <h2 class="section-title">Social & Communication</h2>
+                </div>
+                <div class="resource-list">
+                    <a href="social-connection.html" class="resource-card">
+                        <span class="tag">Start Here</span>
+                        <span class="card-title">Social Connection Guide</span>
+                        <span class="card-desc">Building meaningful relationships when you think differently.</span>
+                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="finding-peer-groups.html" class="resource-card">
+                        <span class="tag">Connection</span>
+                        <span class="card-title">Finding Their Tribe</span>
+                        <span class="card-desc">Why High-Potential kids feel like outsiders—and how to find their people.</span>
+                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="friendship-formula.html" class="resource-card">
+                        <span class="tag">Friendships</span>
+                        <span class="card-title">The Friendship Formula</span>
+                        <span class="card-desc">The four elements Deep Thinkers need to build meaningful connections.</span>
+                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="introvert-or-isolated.html" class="resource-card">
+                        <span class="tag">Understanding</span>
+                        <span class="card-title">Introvert or Isolated?</span>
+                        <span class="card-desc">Knowing the difference between preference and struggle.</span>
+                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="not-everyone-will-get-them.html" class="resource-card">
+                        <span class="tag">Acceptance</span>
+                        <span class="card-title">Not Everyone Will Get Them</span>
+                        <span class="card-desc">Helping your child find peace with being different.</span>
+                        <span class="card-arrow">Read article <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </section>
 
         </div>
     </main>
@@ -616,37 +468,38 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed support strategies for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                        <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                        <li><a href="join-club.html">Join the Club</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
                     <h4>Support</h4>
                     <ul>
                         <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2025 Navigator Kids AI™. All rights reserved.</p>
+                <p>&copy; 2026 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile Menu Logic
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.navbar__toggle i');
+            const toggle = document.querySelector('.menu-toggle i');
             menu.classList.toggle('active');
             
             if (menu.classList.contains('active')) {
@@ -658,12 +511,11 @@
             }
         }
 
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.navbar__toggle');
+            const toggle = document.querySelector('.menu-toggle');
             
-            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
                 if (icon) {
@@ -671,19 +523,6 @@
                     icon.classList.add('fa-bars');
                 }
             }
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('mobileMenu');
-                const toggle = document.querySelector('.navbar__toggle i');
-                if (menu) menu.classList.remove('active');
-                if (toggle) {
-                    toggle.classList.remove('fa-times');
-                    toggle.classList.add('fa-bars');
-                }
-            });
         });
     </script>
 </body>
