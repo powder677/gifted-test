@@ -1,7 +1,7 @@
 <header class="navbar">
     <div class="navbar-container">
         <div class="logo">
-            <a href="/">
+            <a href="index.html">
                 <i class="fas fa-compass"></i>
                 Navigator <span>Kids AI™</span>
             </a>
@@ -9,11 +9,11 @@
         
         <nav class="desktop-nav">
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
             </ul>
         </nav>
 
@@ -23,39 +23,43 @@
     </div>
     
     <nav class="mobile-nav" id="mobileMenu">
-        <a href="/">Home</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="gifted-assessment-tool.html">AI Assessment</a>
-        <a href="resources.html">Resources</a>
-        <a href="methodology.html">Get Started</a>
+        <a href="learning-style-quiz.html">Learning Style Quiz</a>
+        <a href="calm-down-kit.html">Calm-Down Kit</a>
+        <a href="join-club.html">Join the Club</a>
     </nav>
 </header>
 
 <script>
     function toggleMenu() {
         const menu = document.getElementById('mobileMenu');
-        const toggle = document.querySelector('.menu-toggle i');
+        const toggleIcon = document.querySelector('.menu-toggle i');
         menu.classList.toggle('active');
         
+        // Toggle icon between bars and times (X)
         if (menu.classList.contains('active')) {
-            toggle.classList.remove('fa-bars');
-            toggle.classList.add('fa-times');
+            toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-times');
         } else {
-            toggle.classList.remove('fa-times');
-            toggle.classList.add('fa-bars');
+            toggleIcon.classList.remove('fa-times');
+            toggleIcon.classList.add('fa-bars');
         }
     }
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
         const menu = document.getElementById('mobileMenu');
-        const toggle = document.querySelector('.menu-toggle');
+        const toggleBtn = document.querySelector('.menu-toggle');
         
-        if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+        // If the click is NOT inside the menu AND NOT on the toggle button
+        if (!menu.contains(e.target) && !toggleBtn.contains(e.target) && menu.classList.contains('active')) {
             menu.classList.remove('active');
-            const icon = toggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         }
     });
 </script>
