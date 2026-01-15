@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Amazing Brain Journey - Self Assessment | Navigator Kids AI™</title>
+    <title>My Amazing Brain Journey - Kids Quiz | Navigator Kids AI™</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -12,177 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <link rel="stylesheet" href="styles.css">
+
     <style>
-        /* --- NAVIGATOR KIDS AI BRAND VARIABLES --- */
-        :root {
-            --color-primary: #1B365D;
-            --color-primary-dark: #132845;
-            --color-secondary: #FFFFFF;
-            --color-accent: #E9C46A;
-            --color-accent-light: #F4D78A;
-            --color-highlight: #2A9D8F;
-            --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-background: #F4F6F8;
-            --color-background-warm: #FFFBF5;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body { 
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--color-background);
-            min-height: 100vh;
-            color: var(--color-text);
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background-color: #FFFFFF;
-            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo a {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
-        .logo span { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .desktop-nav .nav-links a {
-            color: var(--color-text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-            text-decoration: none;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover { color: var(--color-highlight); }
-
-        .nav-btn-primary {
-            background-color: var(--color-highlight);
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .nav-btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-1px);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-primary);
-            padding: 8px;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid #eee;
-        }
-
-        .mobile-nav.active { display: flex; }
-
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
-            transition: var(--transition);
-            text-decoration: none;
-            color: var(--color-text);
-        }
-
-        .mobile-nav a:hover {
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-        }
-
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
-        }
-
-        /* --- MAIN CONTENT WRAPPER --- */
-        .main-content {
-            padding-top: 80px;
-        }
-
-        /* --- ASSESSMENT SPECIFIC STYLES --- */
-        .bounce-in {
-            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
+        /* Specific Styles for React App Container */
+        .main-content { padding-top: 80px; }
         
+        .bounce-in { animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
         @keyframes bounceIn {
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -206,16 +42,8 @@
             0% { transform: scale(0.5); opacity: 0.8; }
             100% { transform: scale(1.5); opacity: 0; }
         }
-        
-        .progress-star {
-            color: var(--color-text-muted) !important;
-        }
-        
-        .progress-star.filled {
-            color: var(--color-accent) !important;
-            transform: scale(1.1) !important;
-        }
 
+        /* React Button Overrides to match Site Theme */
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -236,7 +64,7 @@
             background: var(--color-highlight-dark);
             transform: translateY(-2px);
         }
-
+        
         .btn-secondary {
             background: var(--color-accent);
             color: var(--color-primary);
@@ -245,103 +73,39 @@
         .btn-secondary:hover {
             background: var(--color-accent-light);
         }
-
-        /* --- FOOTER --- */
-        .footer {
-            background-color: #0f1f33;
-            color: white;
-            padding: 80px 24px 40px;
-            margin-top: 80px;
-        }
-
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (max-width: 768px) {
-            .footer__grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .footer__brand h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer__brand p {
-            opacity: 0.75;
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .footer__links h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer__links ul { list-style: none; }
-        .footer__links li { margin-bottom: 12px; }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .footer__links a:hover { color: var(--color-accent); }
-
-        .footer__bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body>
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="/">
                     <i class="fas fa-compass"></i>
                     Navigator <span>Kids AI</span>
                 </a>
             </div>
+            
             <nav class="desktop-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="learning-style-quiz.html">Free Quiz</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
                 </ul>
             </nav>
+
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <nav class="mobile-nav" id="mobileMenu">
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
             <a href="about.html">About</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
+            <a href="learning-style-quiz.html">Free Quiz</a>
             <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a>
+            <a href="join-club.html">Join the Club</a>
         </nav>
     </header>
 
@@ -353,16 +117,16 @@
         <div class="footer__grid">
             <div class="footer__brand">
                 <h4>Navigator Kids AI™</h4>
-                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and coaching for raising exceptional children.</p>
             </div>
             <div class="footer__links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
+                    <li><a href="learning-style-quiz.html">Free Quiz</a></li>
                     <li><a href="resources.html">Resources</a></li>
-                    <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                    <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
                 </ul>
             </div>
             <div class="footer__links">
@@ -382,29 +146,8 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle i');
             menu.classList.toggle('active');
-            
-            if (menu.classList.contains('active')) {
-                toggle.classList.remove('fa-bars');
-                toggle.classList.add('fa-times');
-            } else {
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            }
         }
-
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                const icon = toggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
     </script>
 
     <script type="text/babel">
@@ -413,7 +156,7 @@
         const SECTIONS = [
             {
                 id: 'emotional',
-                title: 'Emotional Awareness',
+                title: 'Feelings & Heart',
                 emoji: '💖',
                 questions: [
                     "I can usually tell what I'm feeling inside.",
@@ -426,7 +169,7 @@
             },
             {
                 id: 'confidence',
-                title: 'Self-Confidence & Identity',
+                title: 'Being Me',
                 emoji: '👑',
                 questions: [
                     "I feel confident doing things I'm good at.",
@@ -439,7 +182,7 @@
             },
             {
                 id: 'friendship',
-                title: 'Friendship & Social Safety',
+                title: 'Friends & Fun',
                 emoji: '🤝',
                 questions: [
                     "I can tell when someone is safe to be around.",
@@ -452,7 +195,7 @@
             },
             {
                 id: 'sensory',
-                title: 'Sensory Reactions',
+                title: 'Senses & World',
                 emoji: '👂',
                 questions: [
                     "Loud noises bother me a lot.",
@@ -465,7 +208,7 @@
             },
             {
                 id: 'motivation',
-                title: 'Motivation Patterns',
+                title: 'Doing Things',
                 emoji: '💡',
                 questions: [
                     "I get excited when I'm working on something I love.",
@@ -478,7 +221,7 @@
             },
             {
                 id: 'overthinking',
-                title: 'Overthinking & Stress Patterns',
+                title: 'Thinking & Worrying',
                 emoji: '🧠',
                 questions: [
                     "I think a lot about 'what if' things.",
@@ -491,7 +234,7 @@
             },
             {
                 id: 'executive',
-                title: 'Executive Function & Focus',
+                title: 'Focus & Plans',
                 emoji: '🧭',
                 questions: [
                     "I forget things even when I try not to.",
@@ -601,7 +344,7 @@
             };
 
             const generateReport = () => {
-                let report = "NAVIGATOR KIDS AI - CHILD SELF-ASSESSMENT REPORT\n";
+                let report = "NAVIGATOR KIDS AI - CHILD SELF-QUIZ RESULTS\n";
                 report += "================================================\n\n";
                 report += `Account Email: ${email}\n\n`;
                 
@@ -612,7 +355,7 @@
                     report += `Intensity: ${stats.percentage > 66 ? 'High' : stats.percentage > 33 ? 'Moderate' : 'Low'}\n\n`;
                 });
 
-                report += "RAW DATA (JSON Format):\n";
+                report += "RAW DATA FOR AI ANALYSIS:\n";
                 report += JSON.stringify({ email, answers });
                 
                 return report;
@@ -638,7 +381,7 @@
                                 </h1>
                                 <div className="text-5xl mb-6">🧠✨</div>
                                 <p className="text-xl mb-8" style={{ color: '#2F2F2F', fontFamily: 'Lato, sans-serif' }}>
-                                    Hi there! This is a simple assessment to learn about how your unique brain works. There are no right or wrong answers!
+                                    Hi there! This is a simple quiz to learn about how your unique brain works. There are no right or wrong answers!
                                 </p>
 
                                 <div className="max-w-md mx-auto mb-8">
@@ -647,11 +390,11 @@
                                         type="email" 
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="Enter account email"
+                                        placeholder="Enter parent email address"
                                         className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-teal outline-none transition-all"
                                         required
                                     />
-                                    <p className="text-xs text-slate-500 mt-2 text-left px-2">Use the same email as your other assessments to stay connected.</p>
+                                    <p className="text-xs text-slate-500 mt-2 text-left px-2">Use the same email as your parent's account.</p>
                                 </div>
 
                                 <button
