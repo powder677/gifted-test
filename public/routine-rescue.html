@@ -3,172 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Routine Rescue for Sensitive Kids | Navigator Kids AI</title>
-    <meta name="description" content="Predictable routines aren't rigid—they're regulating. Learn how consistent schedules calm your child's sensitive nervous system and reduce meltdowns.">
+    <title>Routine Rescue for Sensitive Kids | Navigator Kids AI™</title>
+    <meta name="description" content="Predictable routines aren't rigid—they're regulating. Learn how consistent schedules calm your child's sensitive nervous system and reduce big feelings.">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-        /* --- VARIABLES --- */
-        :root {
-            --color-primary: #1B365D; /* Navy */
-            --color-secondary: #FFFFFF; /* White */
-            --color-accent: #E9C46A; /* Gold */
-            --color-highlight: #2A9D8F; /* Teal */
-            --color-highlight-dark: #238579;
-            --color-highlight-light: #E8F4F2;
-            --color-text: #2F2F2F;
-            --color-text-muted: #666666;
-            --color-background: #F4F6F8; /* Light Grey */
-            --color-background-warm: #FFFBF5;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --transition: all 0.2s ease;
-        }
-
-        /* --- GLOBAL RESET --- */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            color: var(--color-text);
-            line-height: 1.7;
-            background-color: var(--color-background);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.3;
-            color: var(--color-primary);
-        }
-
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul, ol { margin-left: 24px; margin-bottom: 16px; }
-        li { margin-bottom: 8px; }
-        p { margin-bottom: 24px; }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background-color: var(--color-secondary);
-            border-bottom: 1px solid rgba(27, 54, 93, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo a {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i { color: var(--color-highlight); font-size: 1.4rem; }
-        .logo span { color: var(--color-highlight); }
-
-        .desktop-nav .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            margin: 0;
-        }
-
-        .desktop-nav .nav-links a {
-            color: var(--color-text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        .desktop-nav .nav-links a:not(.nav-btn-primary):hover { color: var(--color-highlight); }
-
-        .nav-btn-primary {
-            background-color: var(--color-highlight);
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-        }
-
-        .nav-btn-primary:hover {
-            background-color: var(--color-highlight-dark);
-            transform: translateY(-1px);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-primary);
-        }
-
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid #eee;
-        }
-
-        .mobile-nav.active { display: flex; }
-
-        .mobile-nav a {
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
-        }
-
-        .mobile-nav a:last-child {
-            background-color: var(--color-highlight);
-            color: white;
-            margin: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 900px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: block; }
-        }
-
-        /* --- ARTICLE LAYOUT --- */
+        /* === PAGE SPECIFIC STYLES === */
+        
+        /* Article Layout */
         .article-layout {
             display: grid;
             grid-template-columns: 1fr 300px;
@@ -180,26 +26,32 @@
 
         @media (max-width: 1024px) {
             .article-layout { grid-template-columns: 1fr; }
-            .article-sidebar { order: 2; }
+            .article-sidebar { order: -1; }
         }
 
-        /* --- BREADCRUMBS --- */
+        /* Breadcrumbs */
         .breadcrumbs {
             font-size: 0.9rem;
             margin-bottom: 24px;
             color: var(--color-text-muted);
         }
 
-        .breadcrumbs a { color: var(--color-highlight); }
+        .breadcrumbs a {
+            color: var(--color-highlight);
+            transition: var(--transition);
+        }
+
         .breadcrumbs a:hover { color: var(--color-highlight-dark); }
         .breadcrumbs span { margin: 0 8px; color: var(--color-text-muted); }
 
-        /* --- ARTICLE HEADER --- */
+        /* Article Header */
         .article-header { margin-bottom: 40px; }
 
         .article-header h1 {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 24px;
+            line-height: 1.2;
+            color: var(--color-primary);
         }
 
         .author-byline {
@@ -219,15 +71,19 @@
             color: white;
             font-weight: 700;
             font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
         }
 
-        .author-info { display: flex; flex-direction: column; gap: 4px; }
-        .author-name { font-weight: 700; color: var(--color-primary); font-family: 'Inter', sans-serif; }
+        .author-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .author-name { font-weight: 700; color: var(--color-primary); }
         .author-role { font-size: 0.85rem; color: var(--color-highlight); }
         .publish-date { font-size: 0.9rem; color: var(--color-text-muted); }
 
-        /* --- KEY TAKEAWAYS --- */
+        /* Key Takeaways */
         .key-takeaways {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -245,7 +101,10 @@
             letter-spacing: 0.05em;
         }
 
-        /* --- ARTICLE BODY --- */
+        .key-takeaways ul { margin: 0; padding-left: 20px; }
+        .key-takeaways li { margin-bottom: 10px; color: var(--color-text); }
+
+        /* Article Body */
         .article-body {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -253,15 +112,22 @@
             box-shadow: var(--shadow-sm);
         }
 
-        @media (max-width: 600px) { .article-body { padding: 32px 24px; } }
+        @media (max-width: 600px) {
+            .article-body { padding: 32px 24px; }
+        }
 
-        .article-body p { font-size: 1.05rem; line-height: 1.8; }
-        
+        .article-body p {
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
         .article-body h2 {
             font-size: 1.6rem;
             margin: 48px 0 24px;
             padding-bottom: 12px;
             border-bottom: 2px solid var(--color-highlight-light);
+            color: var(--color-primary);
         }
 
         .article-body h3 {
@@ -270,9 +136,11 @@
             color: var(--color-primary);
         }
 
+        .article-body ul, .article-body ol { margin-bottom: 24px; padding-left: 24px; }
+        .article-body li { margin-bottom: 12px; line-height: 1.7; }
         .article-body li strong { color: var(--color-primary); }
 
-        /* --- HIGHLIGHT BOX --- */
+        /* Highlight Box */
         .highlight-box {
             background: var(--color-background-warm);
             border-left: 4px solid var(--color-accent);
@@ -283,11 +151,13 @@
 
         .highlight-box h3 {
             font-size: 1.1rem;
-            color: #D4A017; /* Darker gold for text legibility */
+            color: var(--color-accent); /* Darker gold for text legibility */
             margin-bottom: 12px;
         }
 
-        /* --- ROUTINE CHART --- */
+        .highlight-box p { margin: 0; font-size: 1rem; }
+
+        /* Routine Chart */
         .routine-chart {
             background: var(--color-highlight-light);
             border-radius: var(--border-radius-lg);
@@ -337,9 +207,7 @@
             line-height: 1.5;
         }
 
-        /* --- SIDEBAR --- */
-        .article-sidebar { position: relative; }
-
+        /* Sidebar Widget */
         .sidebar-widget {
             background: white;
             border-radius: var(--border-radius-lg);
@@ -365,18 +233,21 @@
             border-radius: var(--border-radius);
             font-weight: 600;
             font-size: 0.95rem;
+            transition: var(--transition);
             width: 100%;
         }
 
         .btn:hover {
             background: var(--color-highlight-dark);
             transform: translateY(-2px);
+            color: white;
         }
 
-        /* --- READ NEXT --- */
+        /* Read Next */
         .read-next {
             background: var(--color-primary);
             padding: 80px 24px;
+            margin-top: 60px;
         }
 
         .read-next h2 {
@@ -401,7 +272,8 @@
             border-radius: var(--border-radius-lg);
             padding: 32px;
             transition: var(--transition);
-            display: block;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .read-next-card:hover {
@@ -413,61 +285,11 @@
             font-size: 1.2rem;
             margin-bottom: 8px;
             transition: var(--transition);
+            color: var(--color-primary);
         }
 
         .read-next-card:hover h3 { color: var(--color-highlight); }
         .read-next-card p { font-size: 0.95rem; color: var(--color-text-muted); margin: 0; }
-
-        /* --- FOOTER --- */
-        .footer {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 80px 24px 40px;
-        }
-
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        @media (max-width: 768px) {
-            .footer__grid { grid-template-columns: 1fr; gap: 40px; }
-        }
-
-        .footer__brand h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-        }
-
-        .footer__brand p { opacity: 0.75; line-height: 1.7; font-size: 0.95rem; }
-
-        .footer__links h4 {
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-size: 1rem;
-        }
-
-        .footer__links ul { list-style: none; margin: 0; padding: 0; }
-        .footer__links li { margin-bottom: 12px; }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .footer__links a:hover { color: var(--color-accent); }
-
-        .footer__bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
     </style>
 </head>
 
@@ -477,28 +299,31 @@
             <div class="logo">
                 <a href="index.html">
                     <i class="fas fa-compass"></i>
-                    Navigator <span>Kids AI</span>
+                    Navigator <span>Kids AI™</span>
                 </a>
             </div>
+            
             <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="methodology.html" class="nav-btn-primary">Get Started</a></li>
+                    <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                    <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
                 </ul>
             </nav>
+
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <nav class="mobile-nav" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="gifted-assessment-tool.html">AI Assessment</a>
-            <a href="resources.html">Resources</a>
-            <a href="methodology.html">Get Started</a>
+            <a href="learning-style-quiz.html">Learning Style Quiz</a>
+            <a href="calm-down-kit.html">Calm-Down Kit</a>
+            <a href="join-club.html">Join the Club</a>
         </nav>
     </header>
 
@@ -506,90 +331,75 @@
         <article class="article-content">
             <div class="breadcrumbs">
                 <a href="index.html">Home</a> <span>/</span>
-                <a href="resources.html">Resources</a> <span>/</span>
-                <a href="resources.html">
+                <a href="calm-down-kit.html">Resources</a> <span>/</span>
                 <span>Routine Rescue</span>
             </div>
 
             <header class="article-header">
-                <h1>Routine Rescue: Using Predictable Schedules to Calm a Sensitive Nervous System</h1>
+                <h1>Routine Rescue: Using Predictable Schedules to Calm a Sensitive System</h1>
                 <div class="author-byline">
                     <div class="author-photo">AS</div>
                     <div class="author-info">
                         <div class="author-name">Avery Sage</div>
-                        <div class="author-role">Emotional Intelligence Specialist</div>
-                        <div class="publish-date">Published June 15, 2024</div>
+                        <div class="author-role">Student Success Coach</div>
+                        <div class="publish-date">Updated October 2025</div>
                     </div>
                 </div>
             </header>
 
             <div class="key-takeaways">
-                <h2>Key Takeaways</h2>
+                <h2>Key Insights</h2>
                 <ul>
-                    <li>Predictable routines reduce sensory overwhelm by minimizing decision-making demands</li>
-                    <li>Preparation cues help sensitive children anticipate and prepare for transitions</li>
-                    <li>Gradual exposure builds tolerance for necessary environmental changes</li>
-                    <li>Consistent structures create safety that enables flexibility in other areas</li>
+                    <li>Predictable routines reduce sensory overwhelm by minimizing decision-making demands.</li>
+                    <li>Preparation cues help sensitive children anticipate and prepare for transitions.</li>
+                    <li>Gradual exposure builds tolerance for necessary environmental changes.</li>
+                    <li>Consistent structures create safety that enables flexibility in other areas.</li>
                 </ul>
             </div>
 
             <div class="article-body">
                 <p>Your child thrives on sameness yet struggles with change. They demand the same breakfast every morning, refuse to try new restaurants, and become distraught when their usual parking spot is taken. Meanwhile, they crave novelty in books, games, and intellectual pursuits.</p>
 
-                <p>This isn't rigidity or inflexibility—it's sensory regulation through predictability. For children with heightened sensory processing, routines create the neurological stability needed to navigate an overwhelming world.</p>
+                <p>This isn't rigidity or inflexibility—it's <strong>sensory regulation through predictability</strong>. For children with heightened processing needs, routines create the stability needed to navigate an overwhelming world.</p>
 
                 <p>Understanding this distinction transforms parental frustration into strategic support.</p>
 
                 <div class="highlight-box">
                     <h3>The Predictability Principle</h3>
-                    <p>Gifted children with sensory sensitivity use routines as neurological anchors—consistent structures that provide stability for exploring novelty in safe environments.</p>
+                    <p>Deep Thinkers with sensory preferences use routines as anchors—consistent structures that provide stability for exploring novelty in safe environments.</p>
                 </div>
 
-                <h2>The Neuroscience of Routine Dependence</h2>
-                <p>How predictability supports sensory regulation:</p>
+                <h2>The Science of Routine Dependence</h2>
+                <p>How predictability supports regulation:</p>
 
                 <h3>Brain Processing Differences</h3>
                 <p>Sensitive nervous systems require additional resources:</p>
 
                 <ul>
-                    <li><strong>Enhanced Attention:</strong> Notice environmental details others overlook entirely</li>
-                    <li><strong>Intensified Responses:</strong> Experience sensations with greater intensity</li>
-                    <li><strong>Reduced Filtering:</strong> Struggle to ignore irrelevant sensory input</li>
-                    <li><strong>Increased Processing:</strong> Require more time to analyze environmental changes</li>
+                    <li><strong>Enhanced Attention:</strong> Noticing environmental details others overlook entirely.</li>
+                    <li><strong>Intensified Responses:</strong> Experiencing sensations with greater intensity.</li>
+                    <li><strong>Reduced Filtering:</strong> Struggling to ignore irrelevant sensory input.</li>
+                    <li><strong>Increased Processing:</strong> Requiring more time to analyze environmental changes.</li>
                 </ul>
 
                 <h3>The Cognitive Load Theory</h3>
                 <p>Why routines reduce overwhelm:</p>
 
                 <ul>
-                    <li><strong>Decision Fatigue:</strong> Eliminating daily choices frees mental resources</li>
-                    <li><strong>Predictive Processing:</strong> Anticipating events reduces surprise stress</li>
-                    <li><strong>Energy Conservation:</strong> Automatic routines preserve regulatory capacity</li>
-                    <li><strong>Stress Reduction:</strong> Familiar patterns lower cortisol production</li>
+                    <li><strong>Decision Fatigue:</strong> Eliminating daily choices frees mental resources.</li>
+                    <li><strong>Predictive Processing:</strong> Anticipating events reduces surprise stress.</li>
+                    <li><strong>Energy Conservation:</strong> Automatic routines preserve regulatory capacity.</li>
+                    <li><strong>Stress Reduction:</strong> Familiar patterns lower stress hormone production.</li>
                 </ul>
-
-                <div class="highlight-box">
-                    <h3>Research Insight</h3>
-                    <p>Neuroimaging studies show that children with sensory sensitivity who receive structured routine support demonstrate 200-300% greater activation in stress response regions when faced with unexpected changes, explaining their dependence on predictable routines.</p>
-                </div>
 
                 <h2>Why Traditional Approaches Backfire</h2>
                 <p>Standard parenting strategies often increase stress:</p>
 
                 <h3>Forced Flexibility</h3>
                 <ul>
-                    <li><strong>Increased Anxiety:</strong> Spontaneous changes trigger fight-or-flight responses</li>
-                    <li><strong>Relationship Damage:</strong> Creates adversarial dynamics that reduce cooperation</li>
-                    <li><strong>Shame Induction:</strong> Damages self-concept and increases avoidance behaviors</li>
-                    <li><strong>Trust Erosion:</strong> Breaks down confidence in caregiver protection</li>
-                </ul>
-
-                <h3>Punishment and Consequences</h3>
-                <ul>
-                    <li><strong>Stress Amplification:</strong> Raises cortisol levels that impair sensory regulation</li>
-                    <li><strong>Neurological Impact:</strong> Impairs the nervous system's ability to adapt</li>
-                    <li><strong>Behavioral Backlash:</strong> Creates resistance rather than accommodation</li>
-                    <li><strong>Long-term Trauma:</strong> May create lasting aversions to change</li>
+                    <li><strong>Increased Stress:</strong> Spontaneous changes trigger fight-or-flight responses.</li>
+                    <li><strong>Relationship Damage:</strong> Creates adversarial dynamics that reduce cooperation.</li>
+                    <li><strong>Negative Feelings:</strong> Damages self-concept and increases avoidance behaviors.</li>
                 </ul>
 
                 <h2>Effective Routine Strategies</h2>
@@ -597,18 +407,9 @@
 
                 <h3>Core Structure Development</h3>
                 <ul>
-                    <li><strong>Daily Anchors:</strong> Consistent morning, afternoon, and evening routines</li>
-                    <li><strong>Weekly Patterns:</strong> Predictable activity schedules and family traditions</li>
-                    <li><strong>Seasonal Rituals:</strong> Recurring celebrations and seasonal activities</li>
-                    <li><strong>Transition Markers:</strong> Clear signals between different activities</li>
-                </ul>
-
-                <h3>Flexible Framework Creation</h3>
-                <ul>
-                    <li><strong>Choice Within Structure:</strong> Controlled decision-making within established bounds</li>
-                    <li><strong>Gradual Changes:</strong> Slow introduction of new elements over time</li>
-                    <li><strong>Alternative Options:</strong> Multiple acceptable approaches to routine elements</li>
-                    <li><strong>Emergency Protocols:</strong> Backup plans for unavoidable disruptions</li>
+                    <li><strong>Daily Anchors:</strong> Consistent morning, afternoon, and evening routines.</li>
+                    <li><strong>Weekly Patterns:</strong> Predictable activity schedules and family traditions.</li>
+                    <li><strong>Transition Markers:</strong> Clear signals between different activities.</li>
                 </ul>
 
                 <div class="routine-chart">
@@ -633,157 +434,60 @@
                     </div>
                 </div>
 
-                <div class="highlight-box">
-                    <h3>Implementation Strategy</h3>
-                    <p>Introduce one routine element at a time, allowing 2-3 weeks for habit formation before adding additional structures. Rushing creates overwhelm and abandonment of potentially effective strategies.</p>
-                </div>
-
                 <h2>Preparation Cue Systems</h2>
                 <p>Help children anticipate and prepare for changes:</p>
 
                 <h3>Visual Preparation Tools</h3>
                 <ul>
-                    <li><strong>Calendar Systems:</strong> Daily and weekly visual schedules with activity markers</li>
-                    <li><strong>Countdown Timers:</strong> Visual or auditory cues for upcoming transitions</li>
-                    <li><strong>Photo Sequences:</strong> Picture-based preparation for multi-step activities</li>
-                    <li><strong>Symbol Cards:</strong> Simple icons representing routine elements</li>
+                    <li><strong>Calendar Systems:</strong> Daily and weekly visual schedules.</li>
+                    <li><strong>Countdown Timers:</strong> Visual or auditory cues for upcoming transitions.</li>
+                    <li><strong>Photo Sequences:</strong> Picture-based preparation for multi-step activities.</li>
                 </ul>
 
                 <h3>Verbal Preparation Scripts</h3>
                 <ul>
-                    <li><strong>Advance Notice:</strong> "In 10 minutes, we'll start getting ready for bed"</li>
-                    <li><strong>Sequence Preview:</strong> "First we'll brush teeth, then put on pajamas"</li>
+                    <li><strong>Advance Notice:</strong> "In 10 minutes, we'll start getting ready for bed."</li>
+                    <li><strong>Sequence Preview:</strong> "First we'll brush teeth, then put on pajamas."</li>
                     <li><strong>Choice Offering:</strong> "Would you prefer to read or listen to music first?"</li>
-                    <li><strong>Reassurance Statements:</strong> "After dinner, we can do your favorite activity"</li>
                 </ul>
-
-                <h3>Physical Preparation Rituals</h3>
-                <ul>
-                    <li><strong>Transition Objects:</strong> Special items that signal activity changes</li>
-                    <li><strong>Sensory Preparation:</strong> Brief tactile or movement activities before transitions</li>
-                    <li><strong>Environmental Setup:</strong> Preparing spaces in advance of activity changes</li>
-                    <li><strong>Routine Cues:</strong> Consistent physical signals for different activities</li>
-                </ul>
-
-                <h2>Gradual Exposure Techniques</h2>
-                <p>Build tolerance for necessary changes:</p>
-
-                <h3>Systematic Desensitization</h3>
-                <ul>
-                    <li><strong>Start Small:</strong> Begin with minor variations in familiar routines</li>
-                    <li><strong>Gradual Progression:</strong> Slowly increase change complexity over time</li>
-                    <li><strong>Positive Reinforcement:</strong> Celebrate successful adaptations without pressure</li>
-                    <li><strong>Stress Monitoring:</strong> Watch for overwhelm signs and adjust accordingly</li>
-                </ul>
-
-                <h3>Controlled Novelty Introduction</h3>
-                <ul>
-                    <li><strong>One Change at a Time:</strong> Introduce single variables to isolate stressors</li>
-                    <li><strong>Safe Environment:</strong> Practice changes in comfortable, familiar settings</li>
-                    <li><strong>Escape Routes:</strong> Provide options to retreat if overwhelm occurs</li>
-                    <li><strong>Recovery Time:</strong> Allow processing periods after new experiences</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h3>Research Evidence</h3>
-                    <p>Controlled studies show that children with sensory sensitivity who receive structured routine support demonstrate 45% less anxiety and 35% improved adaptability compared to those receiving traditional behavioral interventions.</p>
-                </div>
 
                 <h2>Creating Flexible Structure</h2>
                 <p>Balance consistency with necessary variation:</p>
 
-                <h3>Routine vs. Rigidity</h3>
+                <h3>Family Communication Strategies</h3>
                 <ul>
-                    <li><strong>Healthy Routine:</strong> Provides stability while allowing reasonable flexibility</li>
-                    <li><strong>Problematic Rigidity:</strong> Creates inflexibility that interferes with functioning</li>
-                    <li><strong>Adaptive Structure:</strong> Maintains core elements while permitting variation</li>
-                    <li><strong>Functional Consistency:</strong> Focuses on essential routines rather than every detail</li>
-                </ul>
-
-                <h3>Structure Modification</h3>
-                <ul>
-                    <li><strong>Core vs. Variable:</strong> Identify essential routine elements versus flexible components</li>
-                    <li><strong>Change Preparation:</strong> Develop systems for introducing necessary variations</li>
-                    <li><strong>Alternative Options:</strong> Create multiple acceptable approaches to routine elements</li>
-                    <li><strong>Emergency Protocols:</strong> Establish backup plans for unavoidable disruptions</li>
-                </ul>
-
-                <h2>Family Communication Strategies</h2>
-                <p>Create supportive dialogue around routine needs:</p>
-
-                <h3>Understanding Language</h3>
-                <ul>
-                    <li><strong>Instead of "You're so rigid" →</strong> "You prefer consistency, which helps you feel secure"</li>
-                    <li><strong>Instead of "Be more flexible" →</strong> "Let's find ways to make changes easier for you"</li>
-                    <li><strong>Instead of "Stop being so picky" →</strong> "Your preferences help you feel comfortable"</li>
-                    <li><strong>Instead of "Deal with it" →</strong> "Let's work together to make this easier"</li>
-                </ul>
-
-                <h3>Collaborative Approach</h3>
-                <ul>
-                    <li><strong>Involve in Planning:</strong> Include children in routine development and modification</li>
-                    <li><strong>Respect Preferences:</strong> Honor stated needs while finding reasonable compromises</li>
-                    <li><strong>Explain Changes:</strong> Provide clear rationales for necessary routine modifications</li>
-                    <li><strong>Celebrate Success:</strong> Acknowledge adaptation efforts without pressure</li>
+                    <li><strong>Instead of "You're so rigid" →</strong> "You prefer consistency, which helps you feel secure."</li>
+                    <li><strong>Instead of "Be more flexible" →</strong> "Let's find ways to make changes easier for you."</li>
+                    <li><strong>Instead of "Stop being so picky" →</strong> "Your preferences help you feel comfortable."</li>
                 </ul>
 
                 <div class="highlight-box">
-                    <h3>Diagnostic Question</h3>
-                    <p>Ask: "Does my child need routines for emotional regulation, or do they resist all change regardless of context?" The former indicates sensory sensitivity; the latter may suggest other challenges.</p>
+                    <h3>Coaching Question</h3>
+                    <p>Ask: "Does my child need routines for emotional regulation, or do they resist all change regardless of context?" The former indicates sensory needs; the latter may suggest other challenges.</p>
                 </div>
 
-                <h2>When to Seek Professional Support</h2>
-                <p>Consider specialized intervention when:</p>
-
+                <h2>When to Seek Additional Guidance</h2>
+                <p>Consider specialized support when:</p>
                 <ul>
-                    <li>Routine dependence significantly impacts family functioning</li>
-                    <li>Child expresses genuine distress about necessary changes</li>
-                    <li>Flexibility development shows no improvement over time</li>
-                    <li>Academic or social participation continues to decline</li>
-                    <li>Other anxiety-related symptoms emerge or worsen</li>
+                    <li>Routine dependence significantly impacts family functioning.</li>
+                    <li>Child expresses genuine distress about necessary changes.</li>
+                    <li>Flexibility development shows no improvement over time.</li>
+                    <li>Academic or social participation continues to decline.</li>
                 </ul>
-
-                <h2>The Long-Term Outlook</h2>
-                <p>Routine dependence typically improves:</p>
-
-                <ul>
-                    <li>Neurological maturation reduces intensity of sensory responses</li>
-                    <li>Coping strategies become more sophisticated over time</li>
-                    <li>Increased self-awareness of personal regulatory needs</li>
-                    <li>Advanced accommodation skills for complex environments</li>
-                </ul>
-
-                <p>However, some individuals retain routine preferences throughout life, often developing careers and lifestyles that accommodate their sensory needs.</p>
-
-                <div class="highlight-box">
-                    <h3>Future Advantage</h3>
-                    <p>Adults who learn to understand and accommodate their routine needs often become exceptional project managers, system designers, and organizational consultants who leverage their structure preferences for professional success.</p>
-                </div>
 
                 <h2>The Bottom Line</h2>
-                <p>Your child's routine dependence isn't a character flaw or behavioral problem—it's a genuine neurological response to overwhelming sensory input that responds beautifully to systematic support.</p>
-
-                <p>The key to successful routine management lies in providing structure that creates safety while gradually building flexibility skills. Rather than fighting their need for consistency, support their development through understanding and accommodation.</p>
-
-                <p>Rather than expecting internal flexibility to magically emerge, create external systems that compensate for sensory processing differences. This approach reduces daily stress for everyone while building genuine independence.</p>
+                <p>Your child's routine dependence isn't a character flaw—it's a genuine brain-based response to overwhelming sensory input. The key to successful routine management lies in providing structure that creates safety while gradually building flexibility skills.</p>
 
                 <p>Remember: The goal isn't to eliminate all routine dependence but to create systems where your child can thrive comfortably. Sometimes the simplest solution—like a visual schedule or consistent bedtime routine—makes the biggest difference in daily quality of life.</p>
-
-                <p>In a world that often expects uniform adaptability, your role is to advocate for your child's unique neurological profile. Their routine patterns aren't obstacles to overcome but realities to support with compassion and practical solutions.</p>
-
-                <div class="highlight-box">
-                    <h3>Family Harmony Strategy</h3>
-                    <p>Create a family routine framework that includes everyone's regulatory needs. When structure is normalized and supported, family energy can focus on connection rather than daily battles over environmental stressors.</p>
-                </div>
             </div>
         </article>
 
         <aside class="article-sidebar">
             <div class="sidebar-widget">
-                <h3>Understand Your Child's Sensory Profile</h3>
-                <p>Our AI assessment identifies sensory patterns and provides targeted strategies.</p>
-                <a href="gifted-assessment-tool.html" class="btn">
-                    <i class="fas fa-microchip"></i> Start Free Assessment
+                <h3>Identify Their Style</h3>
+                <p>Our Learning Style Quiz identifies sensory patterns and provides targeted strategies.</p>
+                <a href="learning-style-quiz.html" class="btn">
+                    <i class="fas fa-clipboard-list"></i> Start Free Quiz
                 </a>
             </div>
         </aside>
@@ -793,13 +497,13 @@
         <div class="container">
             <h2>Read Next</h2>
             <div class="read-next-grid">
-                <a href="classroom-sensory-solutions.html" class="read-next-card">
-                    <h3>Classroom Sensory Solutions</h3>
-                    <p>IEP-ready accommodations for sensory-sensitive students.</p>
+                <a href="restraint-collapse.html" class="read-next-card">
+                    <h3>Restraint Collapse</h3>
+                    <p>Why they are angels at school and monsters at home.</p>
                 </a>
-                <a href="beige-diet.html" class="read-next-card">
-                    <h3>The Beige Diet</h3>
-                    <p>Why your child only eats five foods—and what to do about it.</p>
+                <a href="emotional-intensity.html" class="read-next-card">
+                    <h3>Emotional Intensity</h3>
+                    <p>Understanding the "Deep Thinker" emotional experience.</p>
                 </a>
             </div>
         </div>
@@ -810,16 +514,16 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed strategies for raising exceptional children.</p>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed support strategies for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="gifted-assessment-tool.html">AI Assessment</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="emergency-reset-kit.html">Emergency Reset Kit</a></li>
+                        <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                        <li><a href="join-club.html">Join the Club</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
@@ -832,16 +536,18 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+                <p>&copy; 2026 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile Menu Toggle
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle i');
             menu.classList.toggle('active');
+            
             if (menu.classList.contains('active')) {
                 toggle.classList.remove('fa-bars');
                 toggle.classList.add('fa-times');
@@ -850,15 +556,19 @@
                 toggle.classList.add('fa-bars');
             }
         }
+
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const menu = document.getElementById('mobileMenu');
             const toggle = document.querySelector('.menu-toggle');
-            if (menu.contains(e.target) || toggle.contains(e.target)) return;
-            if (menu.classList.contains('active')) {
+            
+            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
-                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         });
     </script>
