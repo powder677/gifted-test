@@ -12,23 +12,19 @@
     <link rel="stylesheet" href="styles.css">
     
     <style>
-        /* === PAGE SPECIFIC STYLES === */
-        
-        /* Hero */
-        .hero {
+        /* Hero for text pages */
+        .hero-text {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
             color: var(--color-secondary);
-            padding: 80px 24px;
+            padding: 140px 24px 80px; /* Increased top padding for fixed nav */
             text-align: center;
         }
-
-        .hero h1 {
+        .hero-text h1 {
             color: var(--color-secondary);
             font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 16px;
         }
-
-        .hero p {
+        .hero-text p {
             opacity: 0.9;
             font-size: 1.1rem;
             max-width: 600px;
@@ -38,22 +34,20 @@
         /* Content Container */
         .content {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 24px;
+            margin: -40px auto 60px; /* Pull up over hero */
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
         }
-
         .content-card {
             background: var(--color-secondary);
             border-radius: var(--border-radius-lg);
             padding: 48px;
             box-shadow: var(--shadow-md);
         }
+        @media (max-width: 600px) { .content-card { padding: 32px 24px; } }
 
-        @media (max-width: 600px) {
-            .content-card { padding: 32px 24px; }
-        }
-
-        /* Typography & Elements */
+        /* Typography */
         .last-updated {
             background: var(--color-highlight-light);
             color: var(--color-highlight-dark);
@@ -64,7 +58,6 @@
             display: inline-block;
             margin-bottom: 32px;
         }
-
         .content h2 {
             font-size: 1.5rem;
             margin: 40px 0 16px;
@@ -72,33 +65,13 @@
             border-bottom: 2px solid var(--color-background);
             color: var(--color-primary);
         }
-
-        .content h2:first-of-type { margin-top: 0; }
-
         .content h3 {
             font-size: 1.15rem;
             margin: 24px 0 12px;
             color: var(--color-primary);
         }
-
-        .content p {
-            margin-bottom: 16px;
-            color: var(--color-text);
-        }
-
-        .content ul, .content ol { margin: 16px 0 24px 24px; }
-        .content li { margin-bottom: 10px; color: var(--color-text); }
-
-        /* Highlight Box */
-        .highlight-box {
-            background: var(--color-background-warm);
-            border-left: 4px solid var(--color-accent);
-            padding: 20px 24px;
-            margin: 24px 0;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-        }
-
-        .highlight-box p { margin-bottom: 0; }
+        .content ul { margin: 16px 0 24px 24px; }
+        .content li { margin-bottom: 10px; }
 
         /* Contact Box */
         .contact-box {
@@ -108,52 +81,47 @@
             border-radius: var(--border-radius);
             margin-top: 40px;
         }
-
-        .contact-box h3 {
-            color: var(--color-accent);
-            margin-top: 0;
-        }
-
+        .contact-box h3 { color: var(--color-accent); margin-top: 0; }
         .contact-box a { color: var(--color-accent); }
         .contact-box a:hover { text-decoration: underline; }
     </style>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <a href="index.html">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <a href="/" class="navbar__logo">
                     <i class="fas fa-compass"></i>
                     Navigator <span>Kids AI™</span>
                 </a>
-            </div>
-            
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
-                    <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
-                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
-                </ul>
-            </nav>
+                
+                <div class="navbar__nav">
+                    <ul class="navbar__links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="learning-style-quiz.html">Free Quiz</a></li> 
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                    <a href="join-club.html" class="navbar__cta">Join the Club</a>
+                </div>
 
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
         
         <nav class="mobile-nav" id="mobileMenu">
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
             <a href="about.html">About</a>
-            <a href="learning-style-quiz.html">Learning Style Quiz</a>
-            <a href="calm-down-kit.html">Calm-Down Kit</a>
-            <a href="join-club.html">Join the Club</a>
+            <a href="learning-style-quiz.html">Free Quiz</a> 
+            <a href="resources.html">Resources</a>
+            <a href="join-club.html">Join the Club</a> 
         </nav>
-    </header>
+    </nav>
 
-    <section class="hero">
+    <section class="hero-text">
         <h1>Terms of Service</h1>
         <p>Please read these terms carefully before using our services.</p>
     </section>
@@ -277,21 +245,26 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed support strategies for raising exceptional children.</p>
+                    <h4 style="color: white;">
+                        <i class="fas fa-compass" style="color: var(--color-highlight);"></i>
+                        Navigator Kids AI™
+                    </h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and coaching for raising creative, high-energy children.</p>
                 </div>
+                
                 <div class="footer__links">
-                    <h4>Quick Links</h4>
+                    <h5>Quick Links</h5>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
-                        <li><a href="join-club.html">Join the Club</a></li>
+                        <li><a href="learning-style-quiz.html">Free Quiz</a></li>
+                        <li><a href="resources.html">Resources</a></li>
                         <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer__links">
-                    <h4>Support</h4>
+                    <h5>Support</h5>
                     <ul>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
@@ -299,42 +272,13 @@
                     </ul>
                 </div>
             </div>
+            
             <div class="footer__bottom">
-                <p>&copy; 2026 Navigator Kids AI™. All Rights Reserved.</p>
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle i');
-            menu.classList.toggle('active');
-            
-            if (menu.classList.contains('active')) {
-                toggle.classList.remove('fa-bars');
-                toggle.classList.add('fa-times');
-            } else {
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            }
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                const icon = toggle.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
