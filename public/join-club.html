@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-       /* === KEEPING YOUR EXISTING STYLES === */
+       /* === KEEPING YOUR EXISTING PAGE-SPECIFIC STYLES === */
+       /* Note: Some root variables might duplicate styles.css, but keeping them ensures the specific look of this sales page is preserved */
        :root {
           --color-primary: #1B365D;
           --color-primary-dark: #132845;
@@ -51,14 +52,6 @@
        img { max-width: 100%; height: auto; }
        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
        
-       /* === NAVIGATION === */
-       .navbar { background-color: var(--color-secondary); border-bottom: 1px solid rgba(27, 54, 93, 0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; }
-       .navbar__inner { display: flex; justify-content: space-between; align-items: center; }
-       .navbar__logo { font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--color-primary); display: flex; align-items: center; gap: 8px; }
-       .navbar__logo i { color: var(--color-highlight); }
-       .navbar__cta { background: var(--color-highlight); color: white; padding: 12px 24px; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; transition: var(--transition); }
-       .navbar__cta:hover { background: var(--color-highlight-dark); transform: translateY(-2px); }
-
        /* === HERO SECTION === */
        .hero { padding: 140px 0 100px; background: linear-gradient(180deg, var(--color-background) 0%, var(--color-secondary) 100%); text-align: center; }
        .hero__badge { display: inline-flex; align-items: center; gap: 8px; background: var(--color-highlight-light); color: var(--color-highlight-dark); padding: 8px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; }
@@ -204,16 +197,6 @@
        .final-cta__feature { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; opacity: 0.9; }
        .final-cta__feature i { color: var(--color-accent); }
 
-       /* === FOOTER === */
-       .footer { background: var(--color-primary-dark); color: white; padding: 60px 0 40px; }
-       .footer__inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-       .footer__logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.1rem; }
-       .footer__logo i { color: var(--color-highlight); margin-right: 8px; }
-       .footer__links { display: flex; gap: 24px; }
-       .footer__links a { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; transition: var(--transition); }
-       .footer__links a:hover { color: white; }
-       .footer__bottom { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 0.85rem; opacity: 0.6; }
-
        /* === STICKY CTA BAR === */
        .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--color-secondary); box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15); padding: 16px 24px; z-index: 999; transform: translateY(100%); transition: var(--transition); }
        .sticky-bar.visible { transform: translateY(0); }
@@ -229,12 +212,34 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar__inner">
-                <a href="index.html" class="navbar__logo">
-                    <i class="fas fa-compass"></i> Navigator Kids AI™
+                <a href="/" class="navbar__logo">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
                 </a>
-                <a href="#pricing" class="navbar__cta">Get Your Profile</a>
+                
+                <div class="navbar__nav">
+                    <ul class="navbar__links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="learning-style-quiz.html">Free Quiz</a></li> 
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                    <a href="join-club.html" class="navbar__cta">Join the Club</a> 
+                </div>
+
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
+        
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="/">Home</a>
+            <a href="about.html">About</a>
+            <a href="learning-style-quiz.html">Free Quiz</a> 
+            <a href="resources.html">Resources</a>
+            <a href="join-club.html">Join the Club</a> 
+        </nav>
     </nav>
 
     <section class="hero">
@@ -420,405 +425,4 @@
                         <span class="offer__price-amount">$99</span>
                         <span class="offer__price-period">/month</span>
                     </div>
-                    <p class="offer__price-note">Cancel anytime • No contracts</p>
-                </div>
-
-                <div class="offer__card-body">
-                    <ul class="offer__features">
-                         <li class="offer__feature">
-                            <div class="offer__feature-icon"><i class="fas fa-star"></i></div>
-                            <div class="offer__feature-text">
-                                <strong>Live "Focus Lounge" (Group Study Hall)</strong>
-                                <span>Weekly video sessions with a Success Guide. Your child joins a group of peers to get work done together (Body Doubling).</span>
-                            </div>
-                        </li>
-                        <li class="offer__feature">
-                            <div class="offer__feature-icon"><i class="fas fa-check"></i></div>
-                            <div class="offer__feature-text">
-                                <strong>Initial "Deep Dive" Profile</strong>
-                                <span>Comprehensive parent + child quizzes that reveal exactly how their brain processes, regulates, and learns.</span>
-                            </div>
-                        </li>
-                        <li class="offer__feature">
-                            <div class="offer__feature-icon"><i class="fas fa-check"></i></div>
-                            <div class="offer__feature-text">
-                                <strong>Monthly "Challenge Heat Map" Updates</strong>
-                                <span>We identify WHERE the struggles are happening and update your strategies accordingly.</span>
-                            </div>
-                        </li>
-                        <li class="offer__feature">
-                            <div class="offer__feature-icon"><i class="fas fa-check"></i></div>
-                            <div class="offer__feature-text">
-                                <strong>8x Personalized "Stealth" Packets Per Month</strong>
-                                <span>Activities disguised as games, designed specifically for THEIR challenges and interests.</span>
-                            </div>
-                        </li>
-                        <li class="offer__feature">
-                            <div class="offer__feature-icon"><i class="fas fa-check"></i></div>
-                            <div class="offer__feature-text">
-                                <strong>Names & Interests Integration</strong>
-                                <span>We use their friends' names, favorite games, and passions to make everything click.</span>
-                            </div>
-                        </li>
-                        <li class="offer__feature">
-                            <div class="offer__feature-icon"><i class="fas fa-check"></i></div>
-                            <div class="offer__feature-text">
-                                <strong>Progress Tracking Dashboard</strong>
-                                <span>See what's working, what needs adjustment, and celebrate the wins together.</span>
-                            </div>
-                        </li>
-                        <li class="offer__feature">
-                            <div class="offer__feature-icon"><i class="fas fa-check"></i></div>
-                            <div class="offer__feature-text">
-                                <strong>Parent Support Resources</strong>
-                                <span>Scripts for hard conversations, calming strategies for YOU, and sanity-saving tips.</span>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="offer__cta">
-                        <a href="checkout.html" class="btn btn--primary">
-                            Join the Club <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <p class="offer__cta-note">
-                            <i class="fas fa-shield-check"></i>
-                            30-day money-back guarantee
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="transformation">
-        <div class="container">
-            <div class="transformation__header">
-                <h2 class="transformation__title">Imagine 90 Days From Now...</h2>
-            </div>
-
-            <div class="transformation__grid">
-                <div class="transformation__item transformation__item--before">
-                    <div class="transformation__label">
-                        <i class="fas fa-times-circle"></i> Today
-                    </div>
-                    <ul class="transformation__list">
-                        <li><i class="fas fa-times"></i> Morning battles that set the tone for the whole day</li>
-                        <li><i class="fas fa-times"></i> "What's wrong with my kid?" thoughts on repeat</li>
-                        <li><i class="fas fa-times"></i> Homework meltdowns lasting hours</li>
-                        <li><i class="fas fa-times"></i> Feeling like their external brain 24/7</li>
-                        <li><i class="fas fa-times"></i> Exhaustion from constant negotiation</li>
-                    </ul>
-                </div>
-
-                <div class="transformation__item transformation__item--after">
-                    <div class="transformation__label">
-                        <i class="fas fa-check-circle"></i> 90 Days Later
-                    </div>
-                    <ul class="transformation__list">
-                        <li><i class="fas fa-check"></i> "Mom, I'm ready!" instead of a 45-minute battle</li>
-                        <li><i class="fas fa-check"></i> "I finally understand how they're wired"</li>
-                        <li><i class="fas fa-check"></i> They start homework on their own (most days)</li>
-                        <li><i class="fas fa-check"></i> You're their cheerleader, not their brain</li>
-                        <li><i class="fas fa-check"></i> Peace — and time to breathe</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="container">
-            <div class="testimonials__header">
-                <h2 class="testimonials__title">Parents Like You Are Seeing Results</h2>
-            </div>
-
-            <div class="testimonials__grid">
-                <div class="testimonial">
-                    <div class="testimonial__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial__quote">
-                        "Finally, something that explains why my son acts the way he does. The profile was like someone had been watching our family for years. The 6-week plan gave us concrete steps to follow — and they actually worked."
-                    </p>
-                    <div class="testimonial__author">
-                        <div class="testimonial__avatar">SM</div>
-                        <div>
-                            <div class="testimonial__name">Sarah M.</div>
-                            <div class="testimonial__details">Parent of a creative 8-year-old • Member for 3 months</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial">
-                    <div class="testimonial__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial__quote">
-                        "I wish I had this years ago. The explanation of his thinking style alone was worth the price — I finally stopped blaming myself. Now I understand my daughter so much better."
-                    </p>
-                    <div class="testimonial__author">
-                        <div class="testimonial__avatar">MT</div>
-                        <div>
-                            <div class="testimonial__name">Michael T.</div>
-                            <div class="testimonial__details">Parent of a high-potential 10-year-old • Member for 5 months</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial">
-                    <div class="testimonial__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial__quote">
-                        "The personalized packets are genius. My daughter actually WANTS to do them because they use her interests. For the first time, I'm not fighting her to practice skills."
-                    </p>
-                    <div class="testimonial__author">
-                        <div class="testimonial__avatar">JL</div>
-                        <div>
-                            <div class="testimonial__name">Jennifer L.</div>
-                            <div class="testimonial__details">Parent of a high-energy 7-year-old • Member for 2 months</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial">
-                    <div class="testimonial__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial__quote">
-                        "We've tried standard tutoring and advice — this is the first thing that gave us a complete system. The monthly heat maps show us exactly where to focus."
-                    </p>
-                    <div class="testimonial__author">
-                        <div class="testimonial__avatar">RK</div>
-                        <div>
-                            <div class="testimonial__name">Rachel K.</div>
-                            <div class="testimonial__details">Parent of twins (9) • Member for 4 months</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="guarantee">
-        <div class="container">
-            <div class="guarantee__inner">
-                <div class="guarantee__badge">
-                    <span class="guarantee__badge-number">30</span>
-                    <span class="guarantee__badge-text">Day Guarantee</span>
-                </div>
-                <div class="guarantee__content">
-                    <h3>Our "It Has to Work" Guarantee</h3>
-                    <p>
-                        Try the Navigator Club for a full 30 days. Complete the profile, use the strategies, try the activities with your child. If you don't see meaningful shifts in your daily battles, email us and we'll refund every penny. No questions, no hassle, no hard feelings.
-                    </p>
-                    <p>
-                        We can make this guarantee because we've seen what happens when parents finally have the right tools for their specific child.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq">
-        <div class="container">
-            <div class="faq__header">
-                <h2 class="faq__title">Common Questions</h2>
-            </div>
-
-            <div class="faq__list">
-                <div class="faq__item">
-                    <button class="faq__question">
-                        How is this different from standard tutoring?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-inner">
-                            Standard tutoring focuses on "what" to learn (math, reading). We focus on "how" they learn (focus, organization, emotional regulation). The Navigator Club is an operating system. We don't replace subject tutoring; we give you the daily framework that connects everything and makes school easier.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <button class="faq__question">
-                        My child is already working with a specialist. Can this work alongside?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-inner">
-                            Absolutely — in fact, it enhances whatever support you're already providing. The Navigator Club gives you daily tools and strategies that reinforce their progress. Many parents share their Navigator profiles with their child's teachers for a more coordinated approach.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <button class="faq__question">
-                        What ages does this work for?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-inner">
-                            Our core program is designed for ages 6-14, with the sweet spot being 8-12. The profile and strategies automatically adapt to your child's developmental stage. We have separate tracks for younger kids (more visual, more game-based) and older kids (more independence-focused).
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <button class="faq__question">
-                        How much time does this take?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-inner">
-                            The initial profile takes about 20 minutes for you, and 10-15 minutes for your child (theirs is gamified and fun). After that, you'll spend 10-15 minutes per day on the activities — and they're designed to fit into routines you're already doing, like homework time or morning prep.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <button class="faq__question">
-                        What if my child won't engage with the activities?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-inner">
-                            That's exactly why we personalize everything. We use their interests, their friends' names, their favorite games and characters. The activities don't look like "work" — they look like play. And when something doesn't work? That's Step 4 (ADJUST) of our method. We iterate until we find what clicks for YOUR kid.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <button class="faq__question">
-                        Do I need a formal evaluation or diagnosis?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-inner">
-                            No formal diagnosis required. Our profile identifies how your child's brain works — their strengths, challenges, and preferences — without requiring any medical labels. Many families use Navigator to understand their child better without needing a clinical path.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <button class="faq__question">
-                        Can I cancel anytime?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-inner">
-                            Yes — one click, no questions asked. We don't do contracts or cancellation fees. If Navigator isn't working for your family, you can cancel instantly from your dashboard. Plus, you keep access to everything you've already received, including your profile results and downloaded packets.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="final-cta">
-        <div class="container">
-            <h2 class="final-cta__title">You've tried everything else.</h2>
-            <p class="final-cta__subtitle">
-                Try something built specifically for YOUR child's brain.
-            </p>
-            <a href="checkout.html" class="btn btn--primary">
-                Join the Club — $99/month <i class="fas fa-arrow-right"></i>
-            </a>
-            <div class="final-cta__features">
-                <div class="final-cta__feature">
-                    <i class="fas fa-check"></i> Deep Dive Profile
-                </div>
-                <div class="final-cta__feature">
-                    <i class="fas fa-check"></i> 8 Personalized Packets/Month
-                </div>
-                <div class="final-cta__feature">
-                    <i class="fas fa-check"></i> Live Study Halls
-                </div>
-                <div class="final-cta__feature">
-                    <i class="fas fa-check"></i> 30-Day Guarantee
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__inner">
-                <div class="footer__logo">
-                    <i class="fas fa-compass"></i> Navigator Kids AI™
-                </div>
-                <div class="footer__links">
-                    <a href="about.html">About</a>
-                    <a href="resources.html">Resources</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                © 2024 Navigator Kids AI™. All rights reserved. Your child's brain didn't come with a manual. Until now.
-            </div>
-        </div>
-    </footer>
-
-    <div class="sticky-bar" id="stickyBar">
-        <div class="sticky-bar__inner">
-            <div class="sticky-bar__text">
-                Ready to understand your child? <span>$99/month</span> — Cancel anytime
-            </div>
-            <a href="checkout.html" class="btn btn--primary">
-                Start Your Profile <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-
-    <script>
-        // FAQ Accordion
-        document.querySelectorAll('.faq__question').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                const isActive = item.classList.contains('active');
-
-                // Close all others
-                document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('active'));
-
-                // Toggle current
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Sticky Bar Visibility
-        const stickyBar = document.getElementById('stickyBar');
-        const pricingSection = document.getElementById('pricing');
-
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            const pricingPosition = pricingSection.offsetTop;
-            const windowHeight = window.innerHeight;
-
-            // Show sticky bar after scrolling past hero, hide when pricing is visible
-            if (scrollPosition > 600 && scrollPosition < pricingPosition - windowHeight / 2) {
-                stickyBar.classList.add('visible');
-            } else {
-                stickyBar.classList.remove('visible');
-            }
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-
-</html>
+                    <p class="offer
