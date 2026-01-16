@@ -182,7 +182,7 @@ img {
 
 @media (max-width: 900px) {
     .navbar__nav { display: none; }
-    .navbar__toggle { display: block; }
+    .menu-toggle { display: block; }
 }
 
 /* === HERO SECTION === */
