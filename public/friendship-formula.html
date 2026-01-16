@@ -393,8 +393,38 @@
 </head>
 
 <body>
-    <nav class="navbar" id="global-header">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <a href="/" class="navbar__logo">
+                    <i class="fas fa-compass"></i>
+                    Navigator <span>Kids AI</span>
+                </a>
+                
+                <div class="navbar__nav">
+                    <ul class="navbar__links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="learning-style-quiz.html">Free Quiz</a></li> 
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                    <a href="join-club.html" class="navbar__cta">Join the Club</a> 
+                </div>
+
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileMenu">
+            <a href="/">Home</a>
+            <a href="about.html">About</a>
+            <a href="learning-style-quiz.html">Free Quiz</a> 
+            <a href="resources.html">Resources</a>
+            <a href="join-club.html">Join the Club</a> 
         </nav>
+    </nav>
 
     <div class="article-layout">
         <article class="article-content">
@@ -612,8 +642,43 @@
         </div>
     </section>
 
-    <footer class="footer" id="global-footer">
-        </footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h4 style="color: white;">
+                        <i class="fas fa-compass" style="color: var(--color-highlight);"></i>
+                        Navigator Kids AI™
+                    </h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and coaching for raising creative, high-energy children.</p>
+                </div>
+                
+                <div class="footer__links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="learning-style-quiz.html">Free Quiz</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__links">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
