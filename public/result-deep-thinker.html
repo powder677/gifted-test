@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Profile: The Deep Thinker | Navigator Kids AI™</title>
-    <meta name="description" content="Your child fits the Deep Thinker profile. Learn why they hold it together all day and fall apart at home, and how to support their unique nervous system.">
-    <link rel="canonical" href="https://www.navigatorkidsai.com/result-deep-thinker.html">
+    <title>Gifted Students & Meaningful Friendships | Navigator Kids AI</title>
+    <meta name="description" content="Most kids won't understand your gifted child, and that's okay. Help them find their people and build deep, meaningful friendships that last.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,54 +14,95 @@
     <style>
         /* === PAGE SPECIFIC STYLES === */
         
-        /* Result Header */
-        .result-header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            color: var(--color-secondary);
-            padding: 80px 24px;
-            text-align: center;
-        }
-
-        .result-badge {
-            display: inline-block;
-            background: var(--color-accent);
-            color: var(--color-primary-dark);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .result-header h1 {
-            color: var(--color-secondary);
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 16px;
-        }
-
-        .result-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Article Layout */
+        /* Layout Grid */
         .article-layout {
             display: grid;
             grid-template-columns: 1fr 300px;
             gap: 60px;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 24px 80px;
+            padding: 40px 24px 80px;
         }
 
         @media (max-width: 1024px) {
             .article-layout { grid-template-columns: 1fr; }
-            .article-sidebar { order: 2; }
+            .article-sidebar { order: -1; }
         }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            color: var(--color-text-muted);
+        }
+
+        .breadcrumbs a {
+            color: var(--color-highlight);
+            transition: var(--transition);
+        }
+
+        .breadcrumbs a:hover { color: var(--color-highlight-dark); }
+        .breadcrumbs span { margin: 0 8px; color: var(--color-text-muted); }
+
+        /* Article Header */
+        .article-header { margin-bottom: 40px; }
+
+        .article-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 24px;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        .author-byline {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-photo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .author-name { font-weight: 700; color: var(--color-primary); }
+        .author-role { font-size: 0.85rem; color: var(--color-highlight); }
+        .publish-date { font-size: 0.9rem; color: var(--color-text-muted); }
+
+        /* Key Takeaways */
+        .key-takeaways {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 32px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--color-highlight);
+        }
+
+        .key-takeaways h2 {
+            font-size: 1.1rem;
+            color: var(--color-highlight);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .key-takeaways ul { margin: 0; padding-left: 20px; }
+        .key-takeaways li { margin-bottom: 10px; color: var(--color-text); }
 
         /* Article Body */
         .article-body {
@@ -72,11 +112,19 @@
             box-shadow: var(--shadow-sm);
         }
 
-        @media (max-width: 600px) { .article-body { padding: 32px 24px; } }
+        @media (max-width: 600px) {
+            .article-body { padding: 32px 24px; }
+        }
+
+        .article-body p {
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
 
         .article-body h2 {
             font-size: 1.6rem;
-            margin: 40px 0 20px;
+            margin: 48px 0 24px;
             padding-bottom: 12px;
             border-bottom: 2px solid var(--color-highlight-light);
             color: var(--color-primary);
@@ -88,7 +136,7 @@
             color: var(--color-primary);
         }
 
-        .article-body p { margin-bottom: 24px; font-size: 1.05rem; line-height: 1.8; }
+        .article-body ul, .article-body ol { margin-bottom: 24px; padding-left: 24px; }
         .article-body li { margin-bottom: 12px; line-height: 1.7; }
         .article-body li strong { color: var(--color-primary); }
 
@@ -96,13 +144,70 @@
         .highlight-box {
             background: var(--color-background-warm);
             border-left: 4px solid var(--color-accent);
-            padding: 24px 32px;
-            margin: 32px 0;
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 28px 32px;
+            margin: 32px 0;
         }
 
-        .highlight-box h3 { margin-top: 0; color: var(--color-accent); }
-        .highlight-box p { margin-bottom: 0; }
+        .highlight-box h3 {
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p { margin: 0; font-size: 1rem; }
+
+        /* Friendship Matrix */
+        .friendship-matrix {
+            background: var(--color-highlight-light);
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            margin: 32px 0;
+        }
+
+        .friendship-matrix h3 {
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 1.3rem;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .matrix-grid { grid-template-columns: 1fr; }
+        }
+
+        .matrix-item {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border-top: 3px solid var(--color-highlight);
+            transition: var(--transition);
+        }
+
+        .matrix-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .matrix-item h4 {
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .matrix-item p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
 
         /* Sidebar Widget */
         .sidebar-widget {
@@ -140,49 +245,80 @@
             color: white;
         }
 
-        /* Recommended Tool Section */
-        .recommended-tool {
-            background: var(--color-background);
-            padding: 24px;
-            border-radius: var(--border-radius);
-            margin-top: 40px;
-            border: 1px solid #e2e8f0;
+        /* Read Next */
+        .read-next {
+            background: var(--color-primary);
+            padding: 80px 24px;
+            margin-top: 60px;
         }
 
-        .recommended-tool h4 {
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .read-next h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
         }
-        
-        .recommended-tool i { color: var(--color-highlight); }
+
+        .read-next-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .read-next-grid { grid-template-columns: 1fr; }
+        }
+
+        .read-next-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .read-next-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .read-next-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            transition: var(--transition);
+            color: var(--color-primary);
+        }
+
+        .read-next-card:hover h3 { color: var(--color-highlight); }
+        .read-next-card p { font-size: 0.95rem; color: var(--color-text-muted); margin: 0; }
     </style>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <a href="index.html">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <a href="index.html" class="navbar__logo">
                     <i class="fas fa-compass"></i>
                     Navigator <span>Kids AI™</span>
                 </a>
-            </div>
-            
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
-                    <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
-                    <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
-                </ul>
-            </nav>
+                
+                <div class="navbar__nav">
+                    <ul class="navbar__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="learning-style-quiz.html">Learning Style Quiz</a></li>
+                        <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+                        <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
+                    </ul>
+                </div>
 
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
         
         <nav class="mobile-nav" id="mobileMenu">
@@ -192,95 +328,219 @@
             <a href="calm-down-kit.html">Calm-Down Kit</a>
             <a href="join-club.html">Join the Club</a>
         </nav>
-    </header>
-
-    <section class="result-header">
-        <div class="container">
-            <span class="result-badge">Quiz Result</span>
-            <h1>Your Child is a "Deep Thinker"</h1>
-            <p>They have a powerful engine, but sometimes the brakes fail. Here is the most common challenge for this profile.</p>
-        </div>
-    </section>
+    </nav>
 
     <div class="article-layout">
         <article class="article-content">
-            <div class="article-body">
-                <h2>The Deep Thinker Paradox: Angel at School, Monster at Home?</h2>
-                <p>Your phone buzzes with a text from the teacher: "Johnny had a wonderful day! So engaged and helpful during group work." You smile, feeling proud—until you pick him up and witness a complete personality transformation. Within minutes of getting in the car, he's screaming about the seatbelt, refusing to put his backpack away, and having a meltdown over snack choices.</p>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> <span>/</span>
+                <a href="resources.html">Support Strategies</a> <span>/</span>
+                <a href="#">Social Connection</a> <span>/</span>
+                <span>Meaningful Friendships</span>
+            </div>
 
-                <p>This scenario is the hallmark of the <strong>Deep Thinker</strong> profile. Experts call it <strong>"Restraint Collapse."</strong></p>
+            <header class="article-header">
+                <h1>Meaningful Friendships: Helping Your High-Energy Child Build Deep Connections</h1>
+                <div class="author-byline">
+                    <div class="author-photo">AS</div>
+                    <div class="author-info">
+                        <div class="author-name">Avery Sage</div>
+                        <div class="author-role">Social Strategy Coach</div>
+                        <div class="publish-date">Updated October 2025</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="key-takeaways">
+                <h2>Key Insights</h2>
+                <ul>
+                    <li>Deep Thinkers' friendship selectivity reflects genuine intellectual and emotional needs.</li>
+                    <li>Quality connections with compatible peers matter more than quantity of acquaintances.</li>
+                    <li>Interest-based friendships provide deeper satisfaction than age-based groupings.</li>
+                    <li>Understanding and supporting their friendship patterns reduces family stress.</li>
+                </ul>
+            </div>
+
+            <div class="article-body">
+                <p>Your child would rather spend Saturday afternoon designing elaborate Dungeons & Dragons campaigns than attending another generic birthday party. While other parents worry about their solitude, you've noticed something different: when they're with their gaming group, they're animated, collaborative, and genuinely happy.</p>
+
+                <p>This isn't antisocial behavior—it's <strong>selective socialization</strong>. High-potential children don't reject friendship—they reject superficial connections that don't engage their intellectual and emotional intensity. Their need for meaningful relationships runs so deep that they'd often rather be alone than settle for incompatible companionship.</p>
+
+                <p>The solution isn't to push them toward typical peer groups but to help them find their intellectual tribe.</p>
 
                 <div class="highlight-box">
-                    <h3>What Is Restraint Collapse?</h3>
-                    <p>It occurs when a child exhausts their self-regulation resources maintaining composure in demanding environments (like school), leading to an emotional release once they are in a "safe" space (home) where they can finally let their guard down.</p>
+                    <h3>The Friendship Paradox</h3>
+                    <p>Complex learners often have better social skills with intellectual peers than with age-peers. Their apparent "friendlessness" may actually reflect a sophisticated understanding of what constitutes meaningful connection.</p>
                 </div>
 
-                <h2>The Science Behind the Crash</h2>
-                <p>Executive function—the brain's management system—requires significant mental energy. Throughout the day, your Deep Thinker unconsciously expends enormous effort to:</p>
+                <h2>Understanding Their Friendship Patterns</h2>
+                <p>Why their social approach differs:</p>
+
+                <h3>The Depth vs. Breadth Philosophy</h3>
+                <p>Deep Thinkers typically prefer:</p>
 
                 <ul>
-                    <li>Suppress impulsive reactions to frustrating situations.</li>
-                    <li>Manage intense sensory input (lights, noise, crowds).</li>
-                    <li>Navigate complex social hierarchies.</li>
-                    <li>Transition between activities.</li>
+                    <li><strong>Intense Connections:</strong> Fewer, deeper relationships with compatible individuals.</li>
+                    <li><strong>Intellectual Compatibility:</strong> Friends who match or exceed their cognitive pace.</li>
+                    <li><strong>Authentic Expression:</strong> Relationships where they can be genuinely themselves.</li>
+                    <li><strong>Meaningful Interaction:</strong> Conversations that engage their curiosity and interests.</li>
                 </ul>
 
-                <p>For many children, this effort is automatic. For <strong>Deep Thinkers</strong>, it's often a conscious, exhausting battle. Their heightened sensitivity amplifies every stimulus, draining their battery faster.</p>
+                <h3>The Selectivity Factor</h3>
+                <p>Their choosiness serves important purposes:</p>
 
-                <div class="highlight-box">
-                    <h3>The Emotional Equation</h3>
-                    <p><strong>School Self-Regulation</strong> (High Effort) + <strong>Home Safety</strong> (Letting Go) = <strong>Restraint Collapse</strong></p>
+                <ul>
+                    <li><strong>Energy Conservation:</strong> Investing in compatible relationships maximizes social return.</li>
+                    <li><strong>Emotional Protection:</strong> Careful selection reduces relationship disappointment.</li>
+                    <li><strong>Intellectual Stimulation:</strong> Compatible peers provide mental engagement.</li>
+                </ul>
+
+                <div class="friendship-matrix">
+                    <h3>Friendship Compatibility Matrix</h3>
+                    <div class="matrix-grid">
+                        <div class="matrix-item">
+                            <h4>Intellectual Peers</h4>
+                            <p>Match cognitive abilities and interests (Mental Sparring Partners).</p>
+                        </div>
+                        <div class="matrix-item">
+                            <h4>Age Peers</h4>
+                            <p>Match chronological development (Classmates).</p>
+                        </div>
+                        <div class="matrix-item">
+                            <h4>Interest Peers</h4>
+                            <p>Share passions regardless of age or ability (Guildmates).</p>
+                        </div>
+                        <div class="matrix-item">
+                            <h4>Personality Peers</h4>
+                            <p>Compatible temperaments and social styles (Kindred Spirits).</p>
+                        </div>
+                    </div>
                 </div>
 
-                <h2>Why This Is Actually Good News</h2>
-                <p>Contrary to what frustrated parents might believe, this pattern signals that your child:</p>
+                <h2>The Power of Shared Passion</h2>
+                <p>Interest-based friendships create unique opportunities:</p>
 
-                <ol>
-                    <li><strong>Possesses intact emotional awareness:</strong> They feel deeply.</li>
-                    <li><strong>Has developed social skills:</strong> They know how to behave in public.</li>
-                    <li><strong>Feels secure with you:</strong> They trust you enough to show their messy side.</li>
-                </ol>
+                <h3>Intellectual Equality</h3>
+                <p>When children gather around shared interests:</p>
 
-                <h2>3 Strategies for the Deep Thinker</h2>
-                
-                <h3>1. The Silent Re-Entry</h3>
-                <p>Deep Thinkers need a buffer zone. When they get home (or in the car), avoid asking "How was your day?" immediately. Offer a snack and 15 minutes of low-demand silence or music.</p>
+                <ul>
+                    <li><strong>Hierarchical Dissolution:</strong> Age and ability differences become irrelevant.</li>
+                    <li><strong>Vocabulary Appreciation:</strong> Advanced language becomes an asset rather than barrier.</li>
+                    <li><strong>Complex Thinking:</strong> Sophisticated ideas are valued rather than dismissed.</li>
+                    <li><strong>Intense Focus:</strong> Deep concentration is understood rather than viewed as a problem.</li>
+                </ul>
 
-                <h3>2. Sensory Reset</h3>
-                <p>Their nervous system is likely fried. Offer sensory comfort: a weighted blanket, a dark room, or a specific "calm down" activity before starting homework/chores.</p>
+                <h3>Collaborative Engagement</h3>
+                <p>Shared activities naturally foster cooperation:</p>
 
-                <h3>3. Validate, Don't Punish</h3>
-                <p>Instead of punishing the after-school attitude, validate the exhaustion. "I can see your brain is tired from working so hard at school. Let's take a break."</p>
+                <ul>
+                    <li><strong>Problem-Solving:</strong> Requires teamwork and mutual contribution.</li>
+                    <li><strong>Success Dependence:</strong> Achievement relies on collective effort.</li>
+                    <li><strong>Leadership Rotation:</strong> Roles shift based on expertise and interest.</li>
+                    <li><strong>Conflict Resolution:</strong> Disagreements become learning opportunities.</li>
+                </ul>
 
-                <div class="recommended-tool">
-                    <h4><i class="fas fa-toolbox"></i> Recommended Tool: The Calm-Down Kit</h4>
-                    <p>Since your child fits the Deep Thinker profile, we've prepared a free digital kit to help manage these after-school crashes.</p>
-                    <a href="calm-down-kit.html" style="color: var(--color-primary); font-weight: 700; text-decoration: underline;">Get the Free Kit →</a>
+                <h2>Types of Interest-Based Groups</h2>
+                <p>Explore diverse connection opportunities:</p>
+
+                <h3>Academic Enrichment</h3>
+                <ul>
+                    <li><strong>Math Circles:</strong> Problem-solving groups for mathematical enthusiasts.</li>
+                    <li><strong>Science Olympiad:</strong> Competition teams for scientific inquiry lovers.</li>
+                    <li><strong>Debate Teams:</strong> Verbal sparring for argumentation aficionados.</li>
+                </ul>
+
+                <h3>Gaming Communities</h3>
+                <ul>
+                    <li><strong>Tabletop RPGs:</strong> Narrative collaboration for strategic thinkers.</li>
+                    <li><strong>Strategy Games:</strong> Tactical competition for analytical minds.</li>
+                    <li><strong>Video Game Design:</strong> Creative coding for digital innovators.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Coaching Tip</h3>
+                    <p>Start with one or two groups that align with your child's strongest interests. Allow 2-3 months for relationship development before adding additional social commitments.</p>
+                </div>
+
+                <h2>Supporting Group Participation</h2>
+                <p>Help maximize social learning opportunities:</p>
+
+                <h3>Prepare for Success</h3>
+                <ul>
+                    <li><strong>Discuss Dynamics:</strong> Talk about group expectations beforehand.</li>
+                    <li><strong>Practice Skills:</strong> Role-play specific social interactions.</li>
+                    <li><strong>Establish Communication:</strong> Create dialogue about group experiences.</li>
+                </ul>
+
+                <h3>Maintain Balance</h3>
+                <ul>
+                    <li><strong>Respect Solitude:</strong> Honor their need for alone time to recharge.</li>
+                    <li><strong>Avoid Overscheduling:</strong> Prevent excessive social commitments.</li>
+                    <li><strong>Support Diversity:</strong> Encourage multiple relationship types.</li>
+                </ul>
+
+                <h2>When to Seek Additional Guidance</h2>
+                <p>Consider professional coaching or support when:</p>
+
+                <ul>
+                    <li><strong>Persistent Loneliness:</strong> Genuine isolation despite interest group participation.</li>
+                    <li><strong>Social Discomfort:</strong> Significant unease interfering with group engagement.</li>
+                    <li><strong>Social Friction:</strong> Repeated exclusion or misunderstandings in multiple settings.</li>
+                    <li><strong>Family Impact:</strong> Relationship strain due to social concerns.</li>
+                    <li><strong>Self-Doubt:</strong> Avoidance of all social opportunities.</li>
+                </ul>
+
+                <h2>The Bottom Line</h2>
+                <p>Your child's preference for selective friendships isn't a deficit—it's a sophisticated approach to relationship building. They understand that meaningful connections require intellectual compatibility, shared values, and mutual respect.</p>
+
+                <p>Instead of pushing them toward superficial peer groups, support their instinct for authentic connection. Help them find communities where their intensity is valued, their curiosity is welcomed, and their unique perspective is celebrated.</p>
+
+                <div class="highlight-box">
+                    <h3>Family Harmony Strategy</h3>
+                    <p>Remember: The most socially successful adults often have a few close friends with whom they share intense interests, rather than many casual acquaintances. Help your child build quality relationships that will serve them throughout their lives.</p>
                 </div>
             </div>
         </article>
 
         <aside class="article-sidebar">
             <div class="sidebar-widget">
-                <h3>Take the Next Step</h3>
-                <p>You've identified the profile. Now get the full manual for raising a Deep Thinker.</p>
-                <a href="join-club.html" class="btn">
-                    <i class="fas fa-users"></i> Join the Navigator Club
+                <h3>Understand Their Style</h3>
+                <p>Our Learning Style Quiz identifies connection patterns and provides targeted support strategies.</p>
+                <a href="learning-style-quiz.html" class="btn">
+                    <i class="fas fa-clipboard-list"></i> Start Free Quiz
                 </a>
-                <p style="margin-top: 16px; font-size: 0.85rem;"><a href="calm-down-kit.html" style="color: var(--color-text-muted);">Or just get the free Calm-Down Kit</a></p>
             </div>
         </aside>
     </div>
+
+    <section class="read-next">
+        <div class="container">
+            <h2>Read Next</h2>
+            <div class="read-next-grid">
+                <a href="little-professor.html" class="read-next-card">
+                    <h3>The "Little Professor" Dynamic</h3>
+                    <p>Why your child corrects adults constantly and how to handle it.</p>
+                </a>
+                <a href="asynchronous-development.html" class="read-next-card">
+                    <h3>Asynchronous Development</h3>
+                    <p>Understanding the 12-year-old mind with 6-year-old emotions.</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <h4>Navigator Kids AI™</h4>
-                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and science-backed support strategies for raising exceptional children.</p>
+                    <h4 style="color: white;">
+                        <i class="fas fa-compass" style="color: var(--color-highlight);"></i>
+                        Navigator Kids AI™
+                    </h4>
+                    <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and coaching for raising exceptional children.</p>
                 </div>
                 <div class="footer__links">
-                    <h4>Quick Links</h4>
+                    <h5>Quick Links</h5>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
@@ -290,7 +550,7 @@
                     </ul>
                 </div>
                 <div class="footer__links">
-                    <h4>Support</h4>
+                    <h5>Support</h5>
                     <ul>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
@@ -299,41 +559,11 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2026 Navigator Kids AI™. All Rights Reserved.</p>
+                <p>&copy; 2025 Navigator Kids AI™. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle i');
-            menu.classList.toggle('active');
-            
-            if (menu.classList.contains('active')) {
-                toggle.classList.remove('fa-bars');
-                toggle.classList.add('fa-times');
-            } else {
-                toggle.classList.remove('fa-times');
-                toggle.classList.add('fa-bars');
-            }
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                const icon = toggle.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
