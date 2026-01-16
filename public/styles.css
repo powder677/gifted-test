@@ -878,3 +878,123 @@ img {
     font-size: 1.5rem;
     margin-bottom: 12px;
     color: var(--color
+/* === FINAL CTA SECTION === */
+.final-cta { 
+    padding: 100px 0; 
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); 
+    text-align: center; 
+    color: white; 
+}
+
+.final-cta__title { 
+    color: white; 
+    font-size: 2.5rem; 
+    margin-bottom: 16px; 
+}
+
+.final-cta__subtitle { 
+    font-size: 1.25rem; 
+    opacity: 0.9; 
+    max-width: 600px; 
+    margin: 0 auto 40px; 
+}
+
+.final-cta__buttons { 
+    display: flex; 
+    justify-content: center; 
+    gap: 16px; 
+    flex-wrap: wrap; 
+}
+
+.final-cta .btn--primary { 
+    background: var(--color-accent); 
+    color: var(--color-primary); 
+}
+
+.final-cta .btn--secondary { 
+    border-color: rgba(255, 255, 255, 0.5); 
+}
+
+.final-cta .btn--secondary:hover { 
+    background: rgba(255, 255, 255, 0.15); 
+    border-color: white; 
+}
+
+/* === FOOTER === */
+.footer { 
+    background: var(--color-primary-dark); 
+    color: white; 
+    padding: 80px 0 40px; 
+}
+
+.footer__grid { 
+    display: grid; 
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: 48px; 
+    margin-bottom: 48px; 
+}
+
+@media (max-width: 768px) { 
+    .footer__grid { 
+        grid-template-columns: 1fr 1fr; 
+        gap: 32px; 
+    } 
+}
+
+@media (max-width: 500px) { 
+    .footer__grid { 
+        grid-template-columns: 1fr; 
+    } 
+}
+
+.footer__brand h4 { 
+    font-size: 1.25rem; 
+    margin-bottom: 16px; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    color: white; /* Ensures text is visible */
+}
+
+.footer__brand h4 i { 
+    color: var(--color-highlight); 
+}
+
+.footer__brand p { 
+    opacity: 0.7; 
+    line-height: 1.7; 
+    font-size: 0.95rem; 
+}
+
+.footer__links h5 { 
+    font-size: 1rem; 
+    margin-bottom: 20px; 
+    color: var(--color-accent); 
+    font-weight: 700;
+}
+
+.footer__links ul { 
+    list-style: none; 
+}
+
+.footer__links li { 
+    margin-bottom: 12px; 
+}
+
+.footer__links a { 
+    color: rgba(255, 255, 255, 0.7); 
+    font-size: 0.95rem; 
+    transition: var(--transition); 
+}
+
+.footer__links a:hover { 
+    color: white; 
+}
+
+.footer__bottom { 
+    padding-top: 32px; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    text-align: center; 
+    font-size: 0.85rem; 
+    opacity: 0.6; 
+}
